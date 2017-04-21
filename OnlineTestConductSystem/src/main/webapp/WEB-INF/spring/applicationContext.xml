@@ -11,7 +11,7 @@
 	<bean id="entityManagerFactory"
 		class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
 		<property name="dataSource" ref="dataSource" />
-		<property name="packagesToScan" value="mum.edu.onlinetest.model" />
+		<property name="packagesToScan" value="edu.mum.onlinetest.model" />
 		<property name="jpaVendorAdapter" ref="hibernateJpaVendorAdapter">
 
 		</property>
@@ -41,7 +41,7 @@
 	</bean>
 
 	<!-- Scan for transaction-based resources -->
-	<context:component-scan base-package="mum.edu.onlinetest.model" />
+	<context:component-scan base-package="edu.mum.onlinetest.model" />
 	
 	
 
@@ -50,7 +50,7 @@
 
 	<bean id="persistenceExceptionTranslationPostProcessor"
 		class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor" />
-	<jpa:repositories base-package="mum.edu.onlinetest.repository" />
+	<jpa:repositories base-package="edu.mum.onlinetest.repository" />
 	<context:annotation-config />
 
 
