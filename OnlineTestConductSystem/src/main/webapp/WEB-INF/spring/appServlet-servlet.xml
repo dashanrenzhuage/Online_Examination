@@ -14,7 +14,7 @@
 	<mvc:annotation-driven />
 
 
-	<context:component-scan base-package="edu.mum.onlinetest.controller" />
+	<context:component-scan base-package="edu.mum.onlinetest" />
 	
 	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 	<property name="prefix" value="/WEB-INF/view/" />
