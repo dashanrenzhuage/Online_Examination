@@ -10,7 +10,7 @@ import javax.persistence.OneToMany;
 public class Coach extends Employee{
 	@javax.persistence.Id
 	@GeneratedValue
-	private int id;
+	private Long id;
 
 	@OneToMany
 	private List<Report>reports;
@@ -22,11 +22,11 @@ public class Coach extends Employee{
 		this.reports = reports;
 	}
 
-	public int getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 

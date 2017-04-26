@@ -51,7 +51,7 @@
 
 	<bean id="persistenceExceptionTranslationPostProcessor"
 		class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor" />
-	<jpa:repositories base-package="edu.mum.onlinetest.repository" />
+	<jpa:repositories base-package="edu.mum.onlinetest.dao" />
 	<context:annotation-config />
 
 

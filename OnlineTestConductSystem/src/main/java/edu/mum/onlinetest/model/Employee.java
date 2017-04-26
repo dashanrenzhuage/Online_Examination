@@ -1,22 +1,30 @@
 package edu.mum.onlinetest.model;
 
+import javax.persistence.CascadeType;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 @Entity
-@DiscriminatorValue("E")
-public abstract class Employee extends Person{
+@JsonIgnoreProperties(ignoreUnknown = true)
+public  class Employee {
 	@javax.persistence.Id
 	@GeneratedValue
-	private int id;
-	@OneToOne
+	private Long id;
+	@OneToOne(cascade=CascadeType.ALL)
+	
+	
+	 
+	
 	private Credential credential;
-	public int getId() {
+	public Long getId() {
 		return id;
 	}
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 	public Credential getCredential() {

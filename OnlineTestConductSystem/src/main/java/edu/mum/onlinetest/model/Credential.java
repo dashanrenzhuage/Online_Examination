@@ -11,15 +11,17 @@ public class Credential {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	private int id;
+	private Long id;
 	private String username;
 	private String password;
+	private boolean enabled;
+	
 	@Enumerated(EnumType.STRING)
 	private Role role;
-	public int getId() {
+	public Long getId() {
 		return id;
 	}
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 	public String getUsername() {
@@ -39,5 +41,11 @@ public class Credential {
 	}
 	public void setRole(Role role) {
 		this.role = role;
+	}
+	public boolean isEnabled() {
+		return enabled;
+	}
+	public void setEnabled(boolean enabled) {
+		this.enabled = enabled;
 	}
 }
