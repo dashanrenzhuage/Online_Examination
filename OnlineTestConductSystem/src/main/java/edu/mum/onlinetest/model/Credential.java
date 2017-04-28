@@ -19,6 +19,16 @@ public class Credential {
 	private String password;
 	private boolean enabled;
 
+	public Credential(String username, String password, boolean enabled, Role role) {
+		this.username = username;
+		setPassword(password);
+		this.enabled = enabled;
+		this.role = role;
+	}
+
+	public Credential() {
+	}
+
 	@Enumerated(EnumType.STRING)
 	private Role role;
 

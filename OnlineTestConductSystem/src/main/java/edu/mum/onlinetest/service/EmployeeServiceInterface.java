@@ -2,7 +2,6 @@ package edu.mum.onlinetest.service;
 
 import java.util.List;
 
-import org.springframework.stereotype.Service;
 
 import edu.mum.onlinetest.model.Employee;
 

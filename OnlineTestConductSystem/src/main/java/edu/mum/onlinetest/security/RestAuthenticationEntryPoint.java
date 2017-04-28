@@ -72,7 +72,7 @@ public class RestAuthenticationEntryPoint extends HandlerInterceptorAdapter {
 				System.out.println("ACCESS GRANTED >> resource = dataadmin, Role = DATAADMIN");
 				return true;
 			}
-			if (uriResource.contains("coach") && credential.getRole().equals(Role.COACH)) {
+			if ((uriResource.contains("coach") || uriResource.contains("mail")) && credential.getRole().equals(Role.COACH)) {
 				System.out.println("ACCESS GRANTED >> resource = coach, Role = COACH");
 				return true;
 			}
@@ -102,13 +102,15 @@ public class RestAuthenticationEntryPoint extends HandlerInterceptorAdapter {
 
 	}
 
+	//dummy data
 	private void generateCredentials() {
-		Credential credential = new Credential();
-		credential.setUsername("bsejawal");
-		credential.setPassword("123");
-		credential.setRole(Role.ADMIN);
-		credential.setEnabled(true);
-		credentialService.saveCredential(credential);
+		credentialService.saveCredential(new Credential("santosh", "123", true, Role.ADMIN));
+		credentialService.saveCredential(new Credential("ashish", "123", true, Role.ADMIN));
+		credentialService.saveCredential(new Credential("deepak", "123", true, Role.ADMIN));
+		credentialService.saveCredential(new Credential("sushil", "123", true, Role.ADMIN));
+		credentialService.saveCredential(new Credential("rusina", "123", true, Role.ADMIN));
+		credentialService.saveCredential(new Credential("cong", "123", true, Role.ADMIN));
+		credentialService.saveCredential(new Credential("bsejawal", "123", true, Role.ADMIN));
 	}
 
 }
