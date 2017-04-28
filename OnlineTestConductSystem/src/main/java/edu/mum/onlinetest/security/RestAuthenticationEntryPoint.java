@@ -20,64 +20,66 @@ public class RestAuthenticationEntryPoint extends HandlerInterceptorAdapter {
 
 	@Autowired
 	LoginService loginService;
-	
+
 	@Autowired
 	CredentialServiceImpl credentialService;
 
 	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
 			throws Exception {
-		System.out.println("######################  PRE HANDLE BEGIN  ######################");
+
+		System.out.println("###################### PRE HANDLE BEGIN  ######################");
 		List<Credential> credentials = credentialService.getAllCredentials();
-		if(credentials.size() <= 0){
-			System.out.println("*********************************");
+		if (credentials.size() <= 0)
 			generateCredentials();
-		}else{
-			System.out.println("not null");
-		}
+
 		List<String> uriResource = Arrays.asList(request.getRequestURI().split("/"));
 
-		//can access without credential
-		if (uriResource.contains("students") || uriResource.contains("home")){
-			System.out.println("ACCESS GRANTED >> no need credential, ");
-			System.out.println("uri = "+request.getRequestURI());
+		/* /students, /home can access without credential */
+		if (uriResource.contains("students") || uriResource.contains("home")) {
+			System.out.println("ACCESS GRANTED >> no need credential, uri = " + request.getRequestURI());
 			return true;
-			
+
 		}
 
 		String authParam = request.getHeader("authorization");
 
-		if (null == authParam || !authParam.contains("Basic ")){
+		if (null == authParam || !authParam.contains("Basic ")) {
 			System.out.println("AUTHENTICATION FAILED >> authentication parameters not found");
 			return false;
 		}
 		String[] authTokens = decodeLoginParam(authParam).split(":");
 
 		Credential credential = loginService.login(authTokens[0], Based64Util.md5(authTokens[1]));
-		if (null == credential){
+		if (null == credential) {
 			System.out.println("AUTHENTICATION FAILED >> User not found");
 			return false;
 		}
-		
-		if(!credential.isEnabled()){
+
+		if (!credential.isEnabled()) {
 			System.out.println("AUTHENTICATION FAILED >> User is not enable");
 			return false;
 		}
 
 		// checking role wise access
-		if (uriResource.contains("admin") && credential.getRole().equals(Role.ADMIN)){
-			System.out.println("ACCESS GRANTED >> resource = admin, Role = ADMIN");
-			return true;
+
+		if (uriResource.contains("employee")) {
+			if (uriResource.contains("admin") && credential.getRole().equals(Role.ADMIN)) {
+				System.out.println("ACCESS GRANTED >> resource = admin, Role = ADMIN");
+				return true;
+			}
+			if (uriResource.contains("dataadmin") && credential.getRole().equals(Role.DATAADMIN)) {
+				System.out.println("ACCESS GRANTED >> resource = dataadmin, Role = DATAADMIN");
+				return true;
+			}
+			if (uriResource.contains("coach") && credential.getRole().equals(Role.COACH)) {
+				System.out.println("ACCESS GRANTED >> resource = coach, Role = COACH");
+				return true;
+			}
+			return false;
 		}
-		if (uriResource.contains("dataadmin") && credential.getRole().equals(Role.DATAADMIN)){
-			System.out.println("ACCESS GRANTED >> resource = dataadmin, Role = DATAADMIN");
-			return true;
-		}
-		if (uriResource.contains("coach") && credential.getRole().equals(Role.COACH)){
-			System.out.println("ACCESS GRANTED >> resource = coach, Role = COACH");
-			return true;
-		}
-		System.out.println("AUTHORIZATION FAILED >> resource ="+ request.getRequestURI()+", "+ credential.getRole().toString());
+		System.out.println("AUTHORIZATION FAILED >> resource =" + request.getRequestURI() + ", "
+				+ credential.getRole().toString());
 		System.out.println("######################  PRE HANDLE END  ######################");
 		return false;
 	}
@@ -100,7 +102,7 @@ public class RestAuthenticationEntryPoint extends HandlerInterceptorAdapter {
 
 	}
 
-	private void generateCredentials() {		
+	private void generateCredentials() {
 		Credential credential = new Credential();
 		credential.setUsername("bsejawal");
 		credential.setPassword("123");
