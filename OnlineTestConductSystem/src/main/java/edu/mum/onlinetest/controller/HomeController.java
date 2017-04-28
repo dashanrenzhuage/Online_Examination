@@ -1,15 +1,15 @@
 package edu.mum.onlinetest.controller;
 
 
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-@Controller
+@RestController
+@RequestMapping("/home")
 public class HomeController {
-	@RequestMapping("/")
-	public String home(){
+	
+	public String index(){
 		return "Homepage";
 	}
 	@RequestMapping(value="/login", method= RequestMethod.GET)
