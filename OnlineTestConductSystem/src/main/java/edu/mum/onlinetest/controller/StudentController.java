@@ -38,7 +38,7 @@ public class StudentController {
 	        return new ResponseEntity<List<Student>>(students, HttpStatus.OK);
 	    }
 
-	//Get employee by ID------
+	//Get student by ID------
 	 
 	 @RequestMapping(value = "{id}", method = RequestMethod.GET)
 	    public ResponseEntity<Student> get(@PathVariable("id") Long id){
@@ -46,7 +46,7 @@ public class StudentController {
 		 Student student = studentService.getStudentByID(id);
 
 	        /*if (user == null){
-	            LOG.info("Employee with id {} not found", id);
+	            LOG.info("student with id {} not found", id);
 	            return new ResponseEntity<User>(HttpStatus.NOT_FOUND);
 	        }*/
 
@@ -80,11 +80,11 @@ public class StudentController {
 	        return new ResponseEntity<Student>(currentStudent, HttpStatus.OK);
 	    }
 	 
-	 // Delete employee -----
+	 // Delete student -----
 	 
 	 @RequestMapping(value = "{id}", method = RequestMethod.DELETE)
 	    public ResponseEntity<Void> delete(@PathVariable("id") Long id){
-	        //LOG.info("deleting employee with id: {}", id);
+	        //LOG.info("deleting student with id: {}", id);
 	        Student student = studentService.getStudentByID(id);
 
 	        if (student == null){
