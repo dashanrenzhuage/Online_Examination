@@ -19,7 +19,7 @@ import edu.mum.onlinetest.model.Student;
 import edu.mum.onlinetest.service.StudentServiceInterface;
 
 @RestController
-@RequestMapping("/student")
+@RequestMapping("/students")
 public class StudentController {
 	
 	@Autowired

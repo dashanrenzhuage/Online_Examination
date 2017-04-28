@@ -6,6 +6,8 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+
+import edu.mum.onlinetest.utils.Based64Util;
 @Entity
 public class Credential {
 
@@ -33,7 +35,10 @@ public class Credential {
 	public String getPassword() {
 		return password;
 	}
-	public void setPassword(String password) {
+	public void setPassword(String password) {		
+		if(Based64Util.isValidMD5(password)){
+			password = Based64Util.md5(password);
+		}		
 		this.password = password;
 	}
 	public Role getRole() {

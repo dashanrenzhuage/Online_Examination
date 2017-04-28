@@ -11,10 +11,19 @@
 		
 
 
-	<mvc:annotation-driven />
 
 
 	<context:component-scan base-package="edu.mum.onlinetest" />
+	
+	<mvc:interceptors>
+		<mvc:interceptor>
+			<mvc:mapping path="/**" />
+			<bean class="edu.mum.onlinetest.security.RestAuthenticationEntryPoint" />
+		</mvc:interceptor>
+	</mvc:interceptors>
+	
+	<mvc:annotation-driven />
+	
 	
 	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 	<property name="prefix" value="/WEB-INF/view/" />

@@ -17,7 +17,7 @@ import edu.mum.onlinetest.model.Category;
 import edu.mum.onlinetest.service.CategoryServiceInterface;
 
 @RestController
-@RequestMapping("/category")
+@RequestMapping("/categories")
 public class CategoryController {
 	@Autowired
 	CategoryServiceInterface categoryService;
