@@ -62,7 +62,6 @@ public class RestAuthenticationEntryPoint extends HandlerInterceptorAdapter {
 		}
 
 		// checking role wise access
-
 		if (uriResource.contains("employee")) {
 			if (uriResource.contains("admin") && credential.getRole().equals(Role.ADMIN)) {
 				System.out.println("ACCESS GRANTED >> resource = admin, Role = ADMIN");
@@ -77,6 +76,12 @@ public class RestAuthenticationEntryPoint extends HandlerInterceptorAdapter {
 				return true;
 			}
 			return false;
+		}else if(uriResource.contains("mail")){
+			if(credential.getRole().equals(Role.ADMIN)  || credential.getRole().equals(Role.DATAADMIN) || credential.getRole().equals(Role.COACH)){
+				return true;
+			}else{
+				return false;
+			}
 		}
 		System.out.println("AUTHORIZATION FAILED >> resource =" + request.getRequestURI() + ", "
 				+ credential.getRole().toString());
