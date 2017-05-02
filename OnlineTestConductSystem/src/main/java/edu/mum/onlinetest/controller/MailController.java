@@ -21,12 +21,12 @@ public class MailController {
 	@RequestMapping(value = "/send", method = RequestMethod.POST)
 	public String doSendEmail(HttpServletRequest request, @RequestBody Email email) {
 
-		String from = "sk6434362@gmail.com";
+		/*//String from = "sk6434362@gmail.com";
 		String to = email.getToEmail();
 		String subject = email.getSubject();
-		String msg = email.getBody();
+		String msg = email.getBody();*/
 
-		mailService.sendMail(from, to, subject, msg);
+		mailService.sendMail (email);
 		System.out.println("message sent");
 
 		// show msg done

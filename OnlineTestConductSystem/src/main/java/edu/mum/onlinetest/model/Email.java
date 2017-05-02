@@ -4,7 +4,7 @@ public class Email {
 
 	private String name;
 	private String toEmail;
-	private String fromEmail;
+	private final  String fromEmail= "sk6434362@gmail.com";
 	private String subject;
 	private String body;
 
@@ -28,10 +28,6 @@ public class Email {
 		return fromEmail;
 	}
 
-	public void setFromEmail(String fromEmail) {
-		this.fromEmail = fromEmail;
-	}
-
 	public String getSubject() {
 		return subject;
 	}
@@ -53,5 +49,14 @@ public class Email {
 		return "Email [name=" + name + ", toEmail=" + toEmail + ", fromEmail=" + fromEmail + ", subject=" + subject
 				+ ", body=" + body + "]";
 	}
+
+	public Email(String name, String toEmail, String subject, String body) {
+		this.name = name;
+		this.toEmail = toEmail;
+		this.subject = subject;
+		this.body = body;
+	}
+	
+	
 
 }

@@ -27,7 +27,11 @@ public class RestAuthenticationEntryPoint extends HandlerInterceptorAdapter {
 	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
 			throws Exception {
-
+		
+		
+		
+		
+	
 		System.out.println("###################### PRE HANDLE BEGIN  ######################");
 		List<Credential> credentials = credentialService.getAllCredentials();
 		if (credentials.size() <= 0)
@@ -36,7 +40,7 @@ public class RestAuthenticationEntryPoint extends HandlerInterceptorAdapter {
 		List<String> uriResource = Arrays.asList(request.getRequestURI().split("/"));
 
 		/* /students, /home can access without credential */
-		if (uriResource.contains("students") || uriResource.contains("home")) {
+		if (uriResource.contains("students") || uriResource.contains("home") ||uriResource.contains("coach")) {
 			System.out.println("ACCESS GRANTED >> no need credential, uri = " + request.getRequestURI());
 			return true;
 
@@ -118,4 +122,5 @@ public class RestAuthenticationEntryPoint extends HandlerInterceptorAdapter {
 		credentialService.saveCredential(new Credential("bsejawal", "123", true, Role.ADMIN));
 	}
 
+	
 }
