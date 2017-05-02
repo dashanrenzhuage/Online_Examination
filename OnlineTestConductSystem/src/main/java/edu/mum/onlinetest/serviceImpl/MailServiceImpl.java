@@ -5,6 +5,7 @@ import org.springframework.mail.MailSender;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.stereotype.Service;
 
+import edu.mum.onlinetest.model.Email;
 import edu.mum.onlinetest.service.MailServiceInterface;
 
 @Service
@@ -18,14 +19,14 @@ public class MailServiceImpl  implements MailServiceInterface{
     }
     
     
-    public void sendMail(String from, String to, String subject, String msg) {
+    public void sendMail(Email email) {
     	
     	//creating message
     	SimpleMailMessage message = new SimpleMailMessage();
-    	message.setFrom(from);
-    	message.setTo(to);
-    	message.setSubject(subject);
-    	message.setText(msg);
+    	message.setFrom(email.getFromEmail());
+    	message.setTo(email.getToEmail());
+    	message.setSubject(email.getSubject());
+    	message.setText(email.getBody());
     	
     	//sending message
     	mailSender.send(message);

@@ -2,10 +2,6 @@ package edu.mum.onlinetest.model;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
-
-import org.hibernate.annotations.ManyToAny;
 
 @Entity
 public class Report {
