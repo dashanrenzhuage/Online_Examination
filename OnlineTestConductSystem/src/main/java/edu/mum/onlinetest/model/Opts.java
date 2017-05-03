@@ -3,26 +3,31 @@ package edu.mum.onlinetest.model;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 @Entity
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Opts {
 	@javax.persistence.Id
 	@GeneratedValue
-	private int Id;
-	private String opt;
-
-	public String getOption() {
-		return opt;
+	private Long id;
+	private String options;
+	
+	public Long getId() {
+		return id;
 	}
 
-	public void setOption(String opt) {
-		this.opt = opt;
+	public void setId(Long id) {
+		this.id = id;
 	}
 
-	public int getId() {
-		return Id;
+	public String getOptions() {
+		return options;
 	}
 
-	public void setId(int id) {
-		Id = id;
+	public void setOptions(String options) {
+		this.options = options;
 	}
+
+
 }

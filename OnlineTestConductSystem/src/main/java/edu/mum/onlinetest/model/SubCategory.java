@@ -1,11 +1,15 @@
 package edu.mum.onlinetest.model;
 
+
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
@@ -13,22 +17,62 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 public class SubCategory {
 	@javax.persistence.Id
 	@GeneratedValue
-	private int Id;
+	private Long id;
+	private String subCatName;
 	
+	@ManyToOne(fetch= FetchType.LAZY)
+	@JsonIgnore
+	private Category category;
 	
-	@OneToMany
-	private List<Question>questions;
-	public int getId() {
-		return Id;
-	}
-	public void setId(int id) {
-		Id = id;
-	}
+//	@JsonIgnore
+	/*@OneToMany(fetch= FetchType.LAZY, cascade = CascadeType.ALL)
+	private List<Question> questions;
+	
 	public List<Question> getQuestions() {
 		return questions;
 	}
+
+	public void setQuestions(List<Question> questions) {
+		this.questions = questions;
+	}*/
+
+	public Category getCategory() {
+		return category;
+	}
+
+	public void setCategory(Category category) {
+		this.category = category;
+	}
+
+	
+	
+	/*public List<Question> getQuestions() {
+		return questions;
+	}
+
 	public void setQuestions(List<Question> questions) {
 		this.questions = questions;
 	}
+*/
+	
+	public Long getId() {
+		return id;
+	}
 
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public String getSubCatName() {
+		return subCatName;
+	}
+
+	public void setSubCatName(String subCatName) {
+		this.subCatName = subCatName;
+	}
+	
+	
+	
+	
+	
 }

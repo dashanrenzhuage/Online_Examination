@@ -17,7 +17,7 @@ import edu.mum.onlinetest.model.Category;
 import edu.mum.onlinetest.service.CategoryServiceInterface;
 
 @RestController
-@RequestMapping("/categories")
+@RequestMapping("/category")
 public class CategoryController {
 	@Autowired
 	CategoryServiceInterface categoryService;
@@ -26,8 +26,9 @@ public class CategoryController {
 	
 	 @RequestMapping(method = RequestMethod.GET)
 	    public ResponseEntity<List<Category>> getAll() {
-	       /* LOG.info("getting all categories");*/
+	     
 	        List<Category> categories = categoryService.getAllCategory();
+	        
 
 	       /* if (categories == null || categories.isEmpty()){
 	            LOG.info("no category found");

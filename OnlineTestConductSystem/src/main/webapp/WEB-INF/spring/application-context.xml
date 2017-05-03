@@ -42,12 +42,12 @@
 	</bean>
 
 	<!-- Scan for transaction-based resources -->
-	<context:component-scan base-package="edu.mum.onlinetest.model" />
+	<context:component-scan base-package="edu.mum.onlinetest.serviceImpl" />
 	
 	
 
 
-	<tx:annotation-driven transaction-manager="transactionManager" />
+	<tx:annotation-driven />
 
 	<bean id="persistenceExceptionTranslationPostProcessor"
 		class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor" />
