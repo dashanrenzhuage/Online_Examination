@@ -13,9 +13,9 @@ public class HomeController {
 		System.out.println("jkjj");
 		return "log";
 	}
-	@RequestMapping(value="/login", method= RequestMethod.GET)
-	public String login(){
-		return "login";
-	}
+	/*@RequestMapping(value="/page/coach", method= RequestMethod.GET)
+	public String coachPage(){
+		return "list_student_detail";
+	}*/
 
 }

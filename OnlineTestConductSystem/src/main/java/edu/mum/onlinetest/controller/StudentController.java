@@ -7,18 +7,21 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.util.UriComponentsBuilder;
 
 
 import edu.mum.onlinetest.model.Student;
 import edu.mum.onlinetest.service.StudentServiceInterface;
 
-@RestController
+@Controller
 @RequestMapping("/students")
 public class StudentController {
 	
@@ -26,16 +29,18 @@ public class StudentController {
 	StudentServiceInterface studentService;
 	
 	 @RequestMapping(method = RequestMethod.GET)
-	    public ResponseEntity<List<Student>> getAll() {
+	    public String getAll(Model model) {
 	       /* LOG.info("getting all students");*/
-	        List<Student> students = studentService.getAllStudent();
+		 	model.addAttribute("listOfStudents", studentService.getAllStudent());
+	        //List<Student> students = studentService.getAllStudent();
 
 	       /* if (students == null || students.isEmpty()){
 	            LOG.info("no student found");
 	            return new ResponseEntity<List<Student>>(HttpStatus.NO_CONTENT);
 	        }*/
 
-	        return new ResponseEntity<List<Student>>(students, HttpStatus.OK);
+	        //return new ResponseEntity<List<Student>>(students, HttpStatus.OK);
+		 	return "coach_home_page";
 	    }
 
 	//Get student by ID------
@@ -82,19 +87,23 @@ public class StudentController {
 	 
 	 // Delete student -----
 	 
-	 @RequestMapping(value = "{id}", method = RequestMethod.DELETE)
-	    public ResponseEntity<Void> delete(@PathVariable("id") Long id){
+	    @RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
+	    public String delete(@PathVariable("id") Long id, RedirectAttributes rm){
 	        //LOG.info("deleting student with id: {}", id);
-	        Student student = studentService.getStudentByID(id);
+	        //Student student = studentService.getStudentByID(id);
 
-	        if (student == null){
+	        /*if (student == null){
 	          //  LOG.info("Unable to delete. Student with id {} not found", id);
 	        	
 	            return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
-	        }
-
+	        }*/
+	    	
+	    	System.out.println("here im");
+	        
+	        rm.addFlashAttribute("studentDeleteMessage", "Student has been successfully deleted!");
 	        studentService.deleteStudentByID(id);
-	        return new ResponseEntity<Void>(HttpStatus.OK);
+	        //return new ResponseEntity<Void>(HttpStatus.OK);
+	        return "redirect:/coach/studentList";
 	    }
 	
 
