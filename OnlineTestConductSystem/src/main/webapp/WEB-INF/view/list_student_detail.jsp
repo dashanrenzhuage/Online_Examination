@@ -20,19 +20,6 @@
 <link
 	href="<c:url value = '/resources/js/nprogress/nprogress.css'></c:url>"
 	rel="stylesheet">
-	
-<link href="https://cdn.datatables.net/1.10.15/css/jquery.dataTables.min.css" rel="stylesheet" type="text/css"/>
- 
- 
-<%-- <script src='<spring:url value="/resources/js/abc.js"></spring:url>'></script> --%>
-<script>
-alert("hello");
-$(document).ready(function() {
-	$('#list_stu').DataTable();
-} );
-
-$('#list_stu').removeClass( 'display' ).addClass('table table-striped table-bordered');
-</script>
 
 <!-- Custom Theme Style -->
 <link href="<c:url value = '/resources/css/custom.min.css'></c:url>"
@@ -41,7 +28,7 @@ $('#list_stu').removeClass( 'display' ).addClass('table table-striped table-bord
 	rel="stylesheet">
 <link href="<c:url value = '/resources/css/coach.css'></c:url>"
 	rel="stylesheet">
-	
+
 
 
 <title>Insert title here</title>
@@ -192,67 +179,10 @@ $('#list_stu').removeClass( 'display' ).addClass('table table-striped table-bord
 				<div id="left_col">
 					<h2 id="report">List Of Student</h2>
 				</div>
-				<table id="list_stu" class="table table-bordered display" cellspacing="0" width="100%">
-					<thead>
-						<tr>
-							<th>S.N</th>
-							<th>Student ID</th>
-							<th>Name</th>
-							<th>Email</th>
-							<th>Access ID</th>
-							<th>Send Email</th>
-							<th>View Report</th>
-							<th>Delete</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr>
-							<td>1</td>
-							<td>984985</td>
-							<td>John Carter</td>
-							<td>johncarter@mail.com</td>
-							<td>siei52dfdf5</td>
-							<td><a href= "coach_send_email.html">Send Email</a></td>
-							<td><a href= "student_report.html">View Report</a></td>
-							<td>
-								<button type="button" id="del1" class="btn del" onclick="delCategory(this)">
-									<span class="glyphicon glyphicon-remove"></span>
-								</button>
-							</td>
-						</tr>
-						<tr>
-							<td>2</td>
-							<td>989626</td>
-							<td>Peter Parker</td>
-							<td>peterparker@mail.com</td>
-							<td>siei52dfdf5</td>
-							<td><a href= "coach_send_email.html">Send Email</a></td>
-							<td><a href= "student_report.html">View Report</a></td>
-							<td>
-								<button type="button" id="del2" class="btn del" onclick="delCategory(this)">
-									<span class="glyphicon glyphicon-remove"></span>
-								</button>
-							</td>
-						</tr>
-						<tr>
-							<td>3</td>
-							<td>895952</td>
-							<td>Hari Krishna</td>
-							<td>johnrambo@mail.com</td>
-							<td>siei52dfdf5</td>
-							<td><a href= "coach_send_email.html">Send Email</a></td>
-							<td><a href= "student_report.html">View Report</a></td>
-							<td>
-								<button type="button" id="del3" class="btn del" onclick="delCategory(this)">
-									<span class="glyphicon glyphicon-remove"></span>
-								</button>
-							</td>
-						</tr>
-					</tbody>
-				</table>
-				
-				
-				<%-- <c:if test="${not empty successMessage}">
+
+
+
+				<c:if test="${not empty successMessage}">
 					<script>
 						setTimeout(function() {
 							$('#successMessage').fadeOut('medium');
@@ -271,12 +201,13 @@ $('#list_stu').removeClass( 'display' ).addClass('table table-striped table-bord
 							$('#studentDeleteMessage').fadeOut('medium');
 						}, 2000);
 					</script>
-					<div id="studentDeleteMessage" class="alert alert-danger alert-dismissable">
+					<div id="studentDeleteMessage"
+						class="alert alert-danger alert-dismissable">
 						<a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
 						<strong>Success!</strong> You have successfully deleted student.
 					</div>
 				</c:if>
-				<table class="table table-bordered">
+				<table id="example" class="table table-bordered display" cellspacing="0" width="100%">
 					<thead>
 						<tr>
 							<th>S.N</th>
@@ -304,20 +235,50 @@ $('#list_stu').removeClass( 'display' ).addClass('table table-striped table-bord
 								<td>${std.id}</td>
 								<td>${std.name}</td>
 								<td>${std.email}</td>
-								<td><a
+								<td>
+									<a
 									href="<spring:url value="/coach/student/${std.id}" />"
-									class="btn btn-info" role="button">Send Access ID</a></td>
+									class="btn btn-info" role="button">Send Access ID</a> 
+								</td>
 								<td><a href="#" class="btn btn-info" role="button">View
 										Report</a></td>
-								<td><a
+								<td>
+								<a data-toggle="modal" data-target="#myModal"
+														class="btn btn-info" role="button">Delete</a>
+									<!-- <button type="button" class="btn btn-info btn-lg"
+										data-toggle="modal" data-target="#myModal" style="margin:0px;">Send
+										Access ID</button> --> <!-- Modal -->
+									<div class="modal fade" id="myModal" role="dialog">
+										<div class="modal-dialog">
+
+											<!-- Modal content-->
+											<div class="modal-content">
+												<div class="modal-header">
+													<button type="button" class="close" data-dismiss="modal">&times;</button>
+													<h4 class="modal-title">
+														<b>Delete Student</b>
+													</h4>
+												</div>
+												<div class="modal-body">
+													<p>Are you sure you want to delete student?</p>
+												</div>
+												<div class="modal-footer">
+													<a href="<spring:url value="/students/delete/${std.id}" />"
+														class="btn btn-info" role="button">Delete</a>
+												</div>
+											</div>
+										</div>
+									</div> 
+								
+								<%-- <a
 									href="<spring:url value="/students/delete/${std.id}" />"
-									class="btn btn-info" role="button">Delete Student</a></td>
+									class="btn btn-info" role="button">Delete Student</a> --%></td>
 							</tr>
 						</c:forEach>
 
 
 					</tbody>
-				</table> --%>
+				</table>
 			</div>
 			<!-- /page content -->
 
@@ -347,11 +308,13 @@ $('#list_stu').removeClass( 'display' ).addClass('table table-striped table-bord
 	<!-- Custom Theme Scripts -->
 	<script
 		src='<spring:url value="/resources/js/custom.min.js"></spring:url>'></script>
-	
-	
-	<!--DataTable-->
-	<script type="text/javascript" src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
-	
+	<script
+		src='<spring:url value="/resources/js/jquery.dataTables.min.js"></spring:url>'></script>
+	<script
+		src='<spring:url value="/resources/js/dataTables.bootstrap.min.js"></spring:url>'></script>
+	<script
+		src='<spring:url value="/resources/js/data_table.js"></spring:url>'></script>
+
 
 </body>
 </html>

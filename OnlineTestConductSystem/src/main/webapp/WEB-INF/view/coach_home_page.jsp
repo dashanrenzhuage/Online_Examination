@@ -197,8 +197,6 @@
 	<!-- Custom Theme Scripts -->
 	<script
 		src='<spring:url value="/resources/js/custom.min.js"></spring:url>'></script>
-	<script
-		src='<spring:url value="/resources/js/list_student_detail.js"></spring:url>'></script>
 
 </body>
 </html>

@@ -11,7 +11,7 @@ public class HomeController {
 	@RequestMapping("/")
 	public String index(){
 		System.out.println("jkjj");
-		return "log";
+		return "login";
 	}
 	/*@RequestMapping(value="/page/coach", method= RequestMethod.GET)
 	public String coachPage(){
