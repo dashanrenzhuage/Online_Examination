@@ -14,11 +14,9 @@
 
 
 	<context:component-scan base-package="edu.mum.onlinetest" />
-<<<<<<< HEAD
+
 	<mvc:resources mapping="/resources/**" location="WEB-INF/resources/" />
-=======
-	
->>>>>>> cdfce32f48608c626e232e6ac66def0685844124
+
 	<mvc:interceptors>
 		<mvc:interceptor>
 			<mvc:mapping path="/**" />

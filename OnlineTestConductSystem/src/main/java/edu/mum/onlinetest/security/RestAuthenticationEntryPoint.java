@@ -36,11 +36,9 @@ public class RestAuthenticationEntryPoint extends HandlerInterceptorAdapter {
 		List<String> uriResource = Arrays.asList(request.getRequestURI().split("/"));
 
 		/* /students, /home can access without credential */
-<<<<<<< HEAD
-		if (uriResource.contains("home") ||uriResource.contains("category")||uriResource.contains("subCategories")||uriResource.contains("question")) {
-=======
+
 		if (uriResource.contains("students") || uriResource.contains("home") || uriResource.contains("OnlineTestConductSystem") ) {
->>>>>>> cdfce32f48608c626e232e6ac66def0685844124
+
 			System.out.println("ACCESS GRANTED >> no need credential, uri = " + request.getRequestURI());
 			return true;
 
