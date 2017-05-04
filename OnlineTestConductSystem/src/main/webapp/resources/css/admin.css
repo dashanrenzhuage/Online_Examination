@@ -1,0 +1,10 @@
+body,.nav_title,.left_col,.nav.side-menu>li.active>a{
+	background:#17502A;
+}
+#addcoach{
+	text-align:center;
+}
+#submit{
+	float:right;
+	margin-right:0px;
+}

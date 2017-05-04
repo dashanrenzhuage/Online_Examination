@@ -1,0 +1,13 @@
+#report{
+	font-size: 24px;
+}
+#category{
+	font-size: 20px;
+}
+#grade{
+	font-size: 20px;
+	text-align: center;
+}
+hr{
+	border-color: #000;
+}

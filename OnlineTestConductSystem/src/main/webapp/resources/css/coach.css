@@ -1,0 +1,11 @@
+body,.nav_title,.left_col,.nav.side-menu>li.active>a{
+	/*background: #450F17;*/
+	background: #482A54;
+}
+.right_col{
+	padding: 50px;
+}
+#submit{
+	float:right;
+	margin-right:0px;
+}
