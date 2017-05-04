@@ -196,7 +196,7 @@
 
 	<!-- Custom Theme Scripts -->
 	<script
-		src='<spring:url value="/resources/js/custom.min.js"></spring:url>'></script>
+		src='<spring:url value="/resources/js/custom.js"></spring:url>'></script>
 
 </body>
 </html>
