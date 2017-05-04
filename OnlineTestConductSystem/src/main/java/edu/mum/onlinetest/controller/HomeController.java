@@ -10,12 +10,11 @@ import org.springframework.web.bind.annotation.RestController;
 
 
 public class HomeController {
-	@RequestMapping(value="/home", method= RequestMethod.GET)
+	@RequestMapping("/")
 	public String index(){
-		System.out.println("Welcome !!!!!!!!!!!!!!!!!");
-		return "hello";
+		System.out.println("jkjj");
+		return "login";
 	}
-	
 	/*@RequestMapping(value="/page/coach", method= RequestMethod.GET)
 	public String coachPage(){
 		return "list_student_detail";
