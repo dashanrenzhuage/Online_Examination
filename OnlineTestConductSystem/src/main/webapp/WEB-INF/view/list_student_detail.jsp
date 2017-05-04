@@ -31,7 +31,7 @@
 
 
 
-<title>Insert title here</title>
+<title>MUM Online Test Conduct System</title>
 </head>
 <body class="nav-md">
 
