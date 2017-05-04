@@ -1,0 +1,8 @@
+#add,#submit{
+	float:right;
+	margin-right:0px;
+}
+#c_table{
+	table-layout:fixed;
+	word-wrap:break-word;
+}

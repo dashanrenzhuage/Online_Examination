@@ -16,11 +16,13 @@ public class Category {
 	
 	@javax.persistence.Id
 	@GeneratedValue
-	private Long Id;
+	private Long id;
 	private String name;
 	
-	@OneToMany(fetch= FetchType.LAZY, cascade = CascadeType.ALL)
+	
+	@OneToMany( cascade = CascadeType.ALL, fetch=FetchType.LAZY,mappedBy="category")
 	private List<SubCategory>subcategories;
+	
 	public List<SubCategory> getSubcategories() {
 		return subcategories;
 	}
@@ -28,10 +30,10 @@ public class Category {
 		this.subcategories = subcategories;
 	}
 	public Long getId() {
-		return Id;
+		return id;
 	}
 	public void setId(Long id) {
-		Id = id;
+		this.id = id;
 	}
 	public String getName() {
 		return name;

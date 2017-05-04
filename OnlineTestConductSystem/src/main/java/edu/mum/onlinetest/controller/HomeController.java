@@ -7,17 +7,15 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 @Controller
-@RequestMapping("/")
 public class HomeController {
-	
-	@RequestMapping(value="/home", method= RequestMethod.GET)
+	@RequestMapping("/")
 	public String index(){
-		//return "Homepage";
-		return "clickViewPdf";
-	}
-	@RequestMapping(value="/login", method= RequestMethod.GET)
-	public String login(){
+		System.out.println("jkjj");
 		return "login";
 	}
+	/*@RequestMapping(value="/page/coach", method= RequestMethod.GET)
+	public String coachPage(){
+		return "list_student_detail";
+	}*/
 
 }
