@@ -41,4 +41,12 @@ public class Student extends Person{
 	public void setEmail(String email) {
 		this.email = email;
 	}
+
+	
+	/*Added Jasper Report*/
+	/*public Student(String email) {
+		this.email = email;
+	}*/
+	
+	
 }

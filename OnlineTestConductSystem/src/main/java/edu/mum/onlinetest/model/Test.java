@@ -2,7 +2,9 @@ package edu.mum.onlinetest.model;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
@@ -12,6 +14,14 @@ public class Test {
 	@javax.persistence.Id
 	@GeneratedValue
 	private int id;
+	
+	//@OneToMany(fetch = FetchType.EAGER, mappedBy = "topic", cascade = CascadeType.ALL)
+	@OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	List<SubCategory> subCategories;
+	@OneToOne
+	private Category category;
+	
+	
 	@OneToOne
 	private AnswerSheet answersheet;
 	@OneToMany
@@ -33,6 +43,18 @@ public class Test {
 	}
 	public void setId(int id) {
 		this.id = id;
+	}
+	public List<SubCategory> getSubCategories() {
+		return subCategories;
+	}
+	public void setSubCategories(List<SubCategory> subCategories) {
+		this.subCategories = subCategories;
+	}
+	public Category getCategory() {
+		return category;
+	}
+	public void setCategory(Category category) {
+		this.category = category;
 	}
 	
 	

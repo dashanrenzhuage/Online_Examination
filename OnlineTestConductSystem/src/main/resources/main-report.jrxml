@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.3.1.final using JasperReports Library version 6.3.1  -->
+<!-- 2017-05-04T13:57:32 -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="student-report" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="ec5818d3-9561-4da9-9a0a-48482d2ea13d">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
+	<subDataset name="subLists" uuid="cdbf4eb7-b281-4c5f-b2ae-6e567f7b6703">
+		<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
+		<queryString>
+			<![CDATA[]]>
+		</queryString>
+	</subDataset>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<field name="email" class="java.lang.String"/>
+	<field name="name" class="java.lang.String"/>
+	<field name="address" class="java.lang.String"/>
+	<field name="subCategoryName" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="52" splitType="Stretch">
+			<staticText>
+				<reportElement x="230" y="0" width="310" height="40" uuid="a9f54366-a606-4646-888c-a2357610919c"/>
+				<textElement textAlignment="Center">
+					<font size="24" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Student Report Card]]></text>
+			</staticText>
+			<line>
+				<reportElement x="-20" y="40" width="601" height="1" uuid="ae2f8c86-e5ab-409a-b0ea-4fd773d219c9"/>
+			</line>
+		</band>
+	</title>
+	<columnHeader>
+		<band height="91" splitType="Stretch">
+			<textField>
+				<reportElement x="110" y="60" width="240" height="22" uuid="8e102085-e187-4396-bbb6-d74bbc462327"/>
+				<textFieldExpression><![CDATA[$F{email}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="60" width="100" height="22" uuid="0438755f-55fb-486f-93f2-4487d9e6ecbf"/>
+				<text><![CDATA[Email ID]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="3" width="100" height="20" uuid="4ee5c219-114d-4fea-9671-def53e267f44"/>
+				<text><![CDATA[Name]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="110" y="3" width="190" height="20" uuid="5a4dac0d-fc2c-4252-9531-937471cd95b3"/>
+				<textFieldExpression><![CDATA[$F{name}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="29" width="100" height="24" uuid="9f94715d-23e0-4bb7-830a-0c66d04b4e1e"/>
+				<text><![CDATA[Address]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="110" y="29" width="190" height="24" uuid="7ccc09b1-5e1c-41ee-a1cb-772aeb5b2ff6"/>
+				<textFieldExpression><![CDATA[$F{address}]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="43" splitType="Stretch">
+			<textField>
+				<reportElement x="168" y="5" width="100" height="30" uuid="9ef54d5e-5a54-4783-86f1-db7f87feb30c"/>
+				<textFieldExpression><![CDATA[$F{subCategoryName}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="80" splitType="Stretch">
+			<staticText>
+				<reportElement x="131" y="9" width="100" height="30" uuid="b2e3479f-6fa1-49ba-a830-52891b154672"/>
+				<text><![CDATA[Overall Grade : ]]></text>
+			</staticText>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

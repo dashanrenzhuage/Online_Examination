@@ -1,20 +1,27 @@
 package edu.mum.onlinetest.controller;
 
-import javax.servlet.http.HttpServletRequest;
+import java.util.HashMap;
+import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.ModelAndView;
 
 import edu.mum.onlinetest.model.Email;
 import edu.mum.onlinetest.serviceImpl.CoachServiceImpl;
 import edu.mum.onlinetest.serviceImpl.MailServiceImpl;
+import edu.mum.onlinetest.serviceImpl.ReportServiceImpl;
 import edu.mum.onlinetest.serviceImpl.StudentServiceImpl;
+import net.sf.jasperreports.engine.JRDataSource;
 
 @RestController
 @RequestMapping("coach")
@@ -26,6 +33,8 @@ public class CoachController {
 	MailServiceImpl mailService;
 	@Autowired
 	StudentServiceImpl studentService;
+	@Autowired
+	ReportServiceImpl reportService;
 	
 	
 	@SuppressWarnings("null")
@@ -58,4 +67,24 @@ public class CoachController {
         return new ResponseEntity<Void>(HttpStatus.OK);
     }
 	
+	
+	@RequestMapping(value = "/download/pdf/{id}", method = RequestMethod.GET)
+    public ModelAndView viewPDF(ModelAndView modelAndView, @PathVariable("id") Long id ) 
+    {
+		//JRDataSource datasource = reportService.getDataSourceStudent(id);
+		//JRDataSource datasource1 = reportService.getDataSourceSubCategories(id);
+		
+		JRDataSource datasource = reportService.getDataSourceStudent4(id);
+		
+		Map<String,Object> parameterMap = new HashMap<String,Object>();
+		
+		//parameterMap.put("datasource", datasource);
+		parameterMap.put("datasource", datasource);
+	//	parameterMap.put("datasource1", datasource1);
+
+		
+		modelAndView = new ModelAndView("pdfReport", parameterMap);
+		return modelAndView;
+		
+	}
 }
