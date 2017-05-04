@@ -13,20 +13,37 @@
 
 
 
-	<context:component-scan base-package="edu.mum.onlinetest.controller" />
-	
+	<context:component-scan base-package="edu.mum.onlinetest" />
+	<mvc:resources mapping="/resources/**" location="WEB-INF/resources/" />
 	<mvc:interceptors>
 		<mvc:interceptor>
 			<mvc:mapping path="/**" />
 			<bean class="edu.mum.onlinetest.security.RestAuthenticationEntryPoint" />
+			
 		</mvc:interceptor>
+		
 	</mvc:interceptors>
 	
 	<mvc:annotation-driven />
 	
 	
-	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+	<!-- <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 	<property name="prefix" value="/WEB-INF/view/" />
 	<property name="suffix" value=".jsp" />
+	</bean> -->
+	<bean id="tilesConfigurer"
+		class="org.springframework.web.servlet.view.tiles3.TilesConfigurer">
+		<property name="definitions">
+			<list>
+				<value>/WEB-INF/defs/general.xml</value>
+
+			</list>
+		</property>
+	</bean>
+	<bean id="viewResolver"
+		class="org.springframework.web.servlet.view.UrlBasedViewResolver">
+		<property name="viewClass"
+			value="org.springframework.web.servlet.view.tiles3.TilesView" />
+
 	</bean>
 </beans>
