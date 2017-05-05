@@ -45,6 +45,7 @@ public class CategoryController {
 	       
 		 Category category = categoryService.getCategoryByID(id);
 
+		 
 	        /*if (user == null){
 	            LOG.info("Category with id {} not found", id);
 	            return new ResponseEntity<Category>(HttpStatus.NOT_FOUND);

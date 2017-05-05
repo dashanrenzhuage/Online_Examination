@@ -22,6 +22,7 @@ import edu.mum.onlinetest.model.Question;
 import edu.mum.onlinetest.parser.XLSXParser;
 import edu.mum.onlinetest.service.CategoryServiceInterface;
 import edu.mum.onlinetest.service.QuestionServiceInterface;
+import edu.mum.onlinetest.service.SubCategoryInterface;
 
 @RestController
 @RequestMapping("/question")
@@ -30,7 +31,7 @@ public class QuestionController {
 	QuestionServiceInterface questionService;
 
 	@Autowired
-	CategoryServiceInterface categoryService;
+	SubCategoryInterface subCatService;
 
 /*	@RequestMapping(method = RequestMethod.POST)
 	public ResponseEntity<Void> create(@RequestBody Question question, UriComponentsBuilder ucBuilder) {
@@ -63,11 +64,13 @@ public class QuestionController {
 	}
 	
 	
+
 	@RequestMapping(value = "/generate", method = RequestMethod.POST)
 	public ResponseEntity<List<Question>> generateQuestions(HttpServletRequest request, @RequestBody Category category) {
 		System.out.println("i m here--------------");
 		List<Question> quesList= questionService.getRandomQuestion(category);
 		return new ResponseEntity<List<Question>>(quesList, HttpStatus.OK);
 	}
+
 
 }

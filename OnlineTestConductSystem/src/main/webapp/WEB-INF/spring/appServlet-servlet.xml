@@ -13,6 +13,8 @@
 
 
 
+	
+
 	<context:component-scan base-package="edu.mum.onlinetest" />
 	
 	<mvc:interceptors>

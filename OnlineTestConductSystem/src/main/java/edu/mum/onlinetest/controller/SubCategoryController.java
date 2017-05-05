@@ -58,7 +58,7 @@ public class SubCategoryController {
 		 
 		 @RequestMapping(method = RequestMethod.POST)
 		    public ResponseEntity<Void> create(@RequestBody SubCategory subCategory, UriComponentsBuilder ucBuilder){
-			 subCategory.setCategory(categoryService.getCategoryByID((long) 1));
+			 subCategory.setCategory(categoryService.getCategoryByID((long) 8));
 			subCategoryService.saveSubCategory(subCategory);
 		        HttpHeaders headers = new HttpHeaders();
 		        return new ResponseEntity<Void>(headers, HttpStatus.CREATED);
