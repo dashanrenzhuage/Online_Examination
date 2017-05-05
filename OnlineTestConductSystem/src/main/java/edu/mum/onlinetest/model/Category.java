@@ -20,7 +20,7 @@ public class Category {
 	private String name;
 	
 	
-	@OneToMany( cascade = CascadeType.ALL, fetch=FetchType.LAZY,mappedBy="category")
+	@OneToMany( cascade = CascadeType.ALL, fetch=FetchType.EAGER,mappedBy="category")
 	private List<SubCategory>subcategories;
 	
 	public List<SubCategory> getSubcategories() {

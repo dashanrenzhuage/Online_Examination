@@ -11,6 +11,6 @@
 </head>
 <body>
 	 <a href="<spring:url value="/students" /> ">COACH</a><br>
-	 <a href="<spring:url value="/students" /> ">CATEROGY ADD</a>
+	 <a href="<spring:url value="/students/studentExamLogin" /> ">CATEROGY ADD</a>
 </body>
 </html>

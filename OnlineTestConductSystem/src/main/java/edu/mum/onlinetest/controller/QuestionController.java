@@ -65,6 +65,7 @@ public class QuestionController {
 	
 	@RequestMapping(value = "/generate", method = RequestMethod.POST)
 	public ResponseEntity<List<Question>> generateQuestions(HttpServletRequest request, @RequestBody Category category) {
+		System.out.println("i m here--------------");
 		List<Question> quesList= questionService.getRandomQuestion(category);
 		return new ResponseEntity<List<Question>>(quesList, HttpStatus.OK);
 	}

@@ -28,6 +28,7 @@ public class QuestionUploadController {
 
 	@Autowired
 	SubCategoryInterface subcategoryService;
+	
 
 	@RequestMapping(value = "/upload", method = RequestMethod.GET)
 	public void upload() {
@@ -57,7 +58,7 @@ public class QuestionUploadController {
 	}
 	
 	@RequestMapping(value = "/generate", method= RequestMethod.GET)
-	public void questionGenerate(@ ModelAttribute ("category") Category category,BindingResult result){
+	public void questionGenerate(@ModelAttribute ("category") Category category,BindingResult result){
 //		List<SubCategory> subCatList = category.getSubcategories();
 //		for(SubCategory subCategory: subCatList){
 			
