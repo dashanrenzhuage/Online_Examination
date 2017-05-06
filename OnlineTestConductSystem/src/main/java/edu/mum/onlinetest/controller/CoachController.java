@@ -67,7 +67,9 @@ public class CoachController {
 	@RequestMapping(value = "/download/pdf/{id}", method = RequestMethod.GET)
     public ModelAndView viewPDF(ModelAndView modelAndView, @PathVariable("id") Long id ) 
     {
+		System.out.println("************************* controller1");
 		JRDataSource datasource = reportService.getDataSourceStudent(id);
+		System.out.println("************************* controller2");
 		Map<String,Object> parameterMap = new HashMap<String,Object>();
 		parameterMap.put("datasource", datasource);
 		modelAndView = new ModelAndView("pdfReport", parameterMap);

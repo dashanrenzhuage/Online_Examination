@@ -21,7 +21,8 @@ public class SubCategory {
 	private Long id;
 	private String subCatName;
 	
-	@ManyToOne(fetch= FetchType.LAZY)
+	//@ManyToOne(fetch= FetchType.LAZY)
+	@ManyToOne
 	@JoinColumn(name = "category_id", nullable = false)
 	@JsonIgnore
 	private Category category;

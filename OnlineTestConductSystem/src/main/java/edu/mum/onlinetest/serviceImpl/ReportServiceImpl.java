@@ -71,6 +71,7 @@ public class ReportServiceImpl implements ReportServiceInterface{
 	*/
 	@Override
 	public JRDataSource getDataSourceStudent(Long id) {
+		System.out.println("************************* service1");
 		List<Marksheet> items = new ArrayList<>();
 		Student student = studentService.getStudentByID(id);
 		List<SubCategory> subCategoryList = student.getTest().getSubCategories();
@@ -84,6 +85,7 @@ public class ReportServiceImpl implements ReportServiceInterface{
 			marksheet.setSubCategoryName(student.getTest().getSubCategories().get(i).getSubCatName().toString());
 			items.add(marksheet);
 		}
+		System.out.println("************************* service2");
 		JRDataSource ds = new JRBeanCollectionDataSource(items);
 		return ds;
 	}

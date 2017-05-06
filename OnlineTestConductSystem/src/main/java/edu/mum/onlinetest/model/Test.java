@@ -18,8 +18,8 @@ public class Test {
 	//@OneToMany(fetch = FetchType.EAGER, mappedBy = "topic", cascade = CascadeType.ALL)
 	@OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	List<SubCategory> subCategories;
-	@OneToOne
-	private Category category;
+	/*@OneToOne
+	private Category category;*/
 	
 	
 	@OneToOne
@@ -55,12 +55,12 @@ public class Test {
 	public void setSubCategories(List<SubCategory> subCategories) {
 		this.subCategories = subCategories;
 	}
-	public Category getCategory() {
+	/*public Category getCategory() {
 		return category;
 	}
 	public void setCategory(Category category) {
 		this.category = category;
-	}
+	}*/
 	public int getTotalmarks() {
 		return totalmarks;
 	}
