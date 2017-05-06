@@ -23,7 +23,7 @@ public class ReportServiceImpl implements ReportServiceInterface{
 	@Autowired
 	StudentServiceImpl studentService;
 
-	@Override
+	/*@Override
 	public JRDataSource getDataSourceStudent(Long id) {
 		List<Marksheet> items = new ArrayList<>();
 		Student student = studentService.getStudentByID(id);
@@ -57,9 +57,9 @@ public class ReportServiceImpl implements ReportServiceInterface{
 		
 		//JRDataSource ds = new JRBeanCollectionDataSource(items);	
 		return ds;
-	}
+	}*/
 	
-	@Override
+	/*@Override
 	public JRDataSource getDataSourceSubCategories(Long id) {
 		Student student = studentService.getStudentByID(id);
 		List<SubCategory> subCategoryList = student.getTest().getSubCategories();
@@ -68,25 +68,23 @@ public class ReportServiceImpl implements ReportServiceInterface{
 		JRDataSource ds = new JRBeanCollectionDataSource(items);	
 		return ds;
 	}
-	
-	public JRDataSource getDataSourceStudent4(Long id) {
+	*/
+	@Override
+	public JRDataSource getDataSourceStudent(Long id) {
 		List<Marksheet> items = new ArrayList<>();
-		
 		Student student = studentService.getStudentByID(id);
 		List<SubCategory> subCategoryList = student.getTest().getSubCategories();
-
 		for(int i = 0; i < subCategoryList.size(); i++){
 			Marksheet marksheet = new Marksheet();
 			marksheet.setStudentId(student.getId());
 			marksheet.setName(student.getName());
 			marksheet.setEmail(student.getEmail());
 			marksheet.setAddress(student.getAddress());
-			marksheet.setSubCategoryName(student.getTest().getSubCategories().get(i).getSubCategoryName().toString());
+			marksheet.setCategory(student.getTest().getSubCategories().get(0).getCategory().getName().toString());
+			marksheet.setSubCategoryName(student.getTest().getSubCategories().get(i).getSubCatName().toString());
 			items.add(marksheet);
 		}
-				
 		JRDataSource ds = new JRBeanCollectionDataSource(items);
-		
 		return ds;
 	}
 	

@@ -42,13 +42,6 @@ public class CoachController {
 	@Autowired
 	ReportServiceImpl reportService;
 	
-	
-	@SuppressWarnings("null")
-	@RequestMapping(value = "{id}", method = RequestMethod.GET)
-    public ResponseEntity<Void> generateId(@PathVariable("id") Long id){
-        //LOG.info("deleting category with id: {}", id);
-	}
-
 	@RequestMapping(value = "/student/{id}", method = RequestMethod.GET)
 	public String generateId(@PathVariable("id") Long id, Model model, RedirectAttributes rm) {
 		// LOG.info("deleting category with id: {}", id);
@@ -74,18 +67,9 @@ public class CoachController {
 	@RequestMapping(value = "/download/pdf/{id}", method = RequestMethod.GET)
     public ModelAndView viewPDF(ModelAndView modelAndView, @PathVariable("id") Long id ) 
     {
-		//JRDataSource datasource = reportService.getDataSourceStudent(id);
-		//JRDataSource datasource1 = reportService.getDataSourceSubCategories(id);
-		
-		JRDataSource datasource = reportService.getDataSourceStudent4(id);
-		
+		JRDataSource datasource = reportService.getDataSourceStudent(id);
 		Map<String,Object> parameterMap = new HashMap<String,Object>();
-		
-		//parameterMap.put("datasource", datasource);
 		parameterMap.put("datasource", datasource);
-	//	parameterMap.put("datasource1", datasource1);
-
-		
 		modelAndView = new ModelAndView("pdfReport", parameterMap);
 		return modelAndView;
 		

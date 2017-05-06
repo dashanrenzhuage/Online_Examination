@@ -29,8 +29,8 @@ public class SubCategory {
 	private String grade;
 	
 	
-	@OneToMany(fetch = FetchType.EAGER)
-	private List<Question>questions;
+	//@OneToMany(fetch = FetchType.EAGER)
+	//private List<Question>questions;
 
 //	@JsonIgnore
 	/*@OneToMany(fetch= FetchType.LAZY, cascade = CascadeType.ALL)
@@ -90,9 +90,7 @@ public class SubCategory {
 	public void setSubCatName(String subCatName) {
 		this.subCatName = subCatName;
 	}
-	
-	
-	
+
 	
 	
 }

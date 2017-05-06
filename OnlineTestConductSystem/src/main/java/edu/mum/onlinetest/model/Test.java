@@ -24,8 +24,13 @@ public class Test {
 	
 	@OneToOne
 	private AnswerSheet answersheet;
+	
 	@OneToMany
 	private List<Question>questionList;
+	
+	private int totalmarks;
+	
+	
 	public List<Question> getQuestionList() {
 		return questionList;
 	}
@@ -55,6 +60,12 @@ public class Test {
 	}
 	public void setCategory(Category category) {
 		this.category = category;
+	}
+	public int getTotalmarks() {
+		return totalmarks;
+	}
+	public void setTotalmarks(int totalmarks) {
+		this.totalmarks = totalmarks;
 	}
 	
 	

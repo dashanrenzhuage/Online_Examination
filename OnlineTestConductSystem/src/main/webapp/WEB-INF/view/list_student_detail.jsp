@@ -240,7 +240,7 @@
 									href="<spring:url value="/coach/student/${std.id}" />"
 									class="btn btn-info" role="button">Send Access ID</a> 
 								</td>
-								<td><a href="#" class="btn btn-info" role="button">View
+								<td><a href="<spring:url value="/coach/download/pdf/${std.id}" />" class="btn btn-info" role="button">View
 										Report</a></td>
 								<td>
 								<a data-toggle="modal" data-target="#myModal"
