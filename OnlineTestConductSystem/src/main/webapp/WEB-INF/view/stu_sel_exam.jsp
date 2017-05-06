@@ -44,8 +44,9 @@
 					<!-- menu profile quick info -->
 					<div class="profile clearfix">
 						<div class="profile_pic">
-							<img src="images/img.jpg" alt="..."
-								class="img-circle profile_img">
+							<img
+								src='<spring:url value="/resources/images/img.jpg"></spring:url>'
+								alt="..." class="img-circle profile_img">
 						</div>
 						<div class="profile_info">
 							<span>Welcome,</span>
@@ -98,8 +99,9 @@
 					<ul class="nav navbar-nav navbar-right">
 						<li class=""><a href="javascript:;"
 							class="user-profile dropdown-toggle" data-toggle="dropdown"
-							aria-expanded="false"> <img src="images/img.jpg" alt="">John
-								Doe <span class=" fa fa-angle-down"></span>
+							aria-expanded="false"> <img
+								src='<spring:url value="/resources/images/img.jpg"></spring:url>'
+								alt="">John Doe <span class=" fa fa-angle-down"></span>
 						</a>
 							<ul class="dropdown-menu dropdown-usermenu pull-right">
 								<li><a href="javascript:;"> Profile</a></li>
@@ -158,7 +160,7 @@
 
 			<!-- page content -->
 			<div class="right_col" role="main">
-				<form action="<spring:url value="/question/generate" />" method="post">
+				<form action="<spring:url value="/question/generate"/>" method="get">
 					<div id="category" class="form-group">
 						<div class="row">
 							<div class="col-sm-1"></div>
@@ -171,14 +173,7 @@
 						<div class="row">
 							<div class="col-sm-1"></div>
 							<div class="col-sm-2">
-								<!-- <select class="form-control" id="sel1">
-								<option>Java</option>
-								<option>C#</option>
-								<option>PHP</option>
-								<option>C++</option>
-							</select> -->
-
-								<select id = "listOfCatagoryDropDown" name="listOfCatagoryDropDown" style= "padding: 5px 20px;">
+								<select id="category" name="category" style="padding: 5px 30px ;">
 									<c:forEach var="item" items="${listOfCategories}">
 										<option value="${item.id}">${item.name}</option>
 									</c:forEach>
@@ -198,7 +193,8 @@
 						<div class="row">
 							<div class="col-sm-1"></div>
 							<div class="col-sm-4">
-								<select id= "listOfSubCatagoryDropDown" name="listOfSubCatagoryDropDown" style= "padding: 5px 20px;">
+								<select id="subCategory" name="subCategory"
+									style="padding: 5px 20px;" multiple="multiple">
 									<c:forEach var="item" items="${listOfSubcategories}">
 										<option value="${item.id}">${item.subCatName}</option>
 									</c:forEach>
