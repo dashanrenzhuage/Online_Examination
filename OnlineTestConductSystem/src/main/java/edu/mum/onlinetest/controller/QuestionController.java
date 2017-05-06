@@ -64,13 +64,13 @@ public class QuestionController {
 	}
 	
 	
-	 @RequestMapping(method = RequestMethod.POST)
-	    public ResponseEntity<Void> create(@RequestBody Question question, UriComponentsBuilder ucBuilder){
-		question.setSubCategory(subCatService.getSubCategoryByID((long) 13));
-		
-		 questionService.saveQuestion(question);
-	        HttpHeaders headers = new HttpHeaders();
-	        return new ResponseEntity<Void>(headers, HttpStatus.CREATED);
- }
+
+	@RequestMapping(value = "/generate", method = RequestMethod.POST)
+	public ResponseEntity<List<Question>> generateQuestions(HttpServletRequest request, @RequestBody Category category) {
+		System.out.println("i m here--------------");
+		List<Question> quesList= questionService.getRandomQuestion(category);
+		return new ResponseEntity<List<Question>>(quesList, HttpStatus.OK);
+	}
+
 
 }
