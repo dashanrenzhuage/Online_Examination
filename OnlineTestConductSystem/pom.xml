@@ -38,7 +38,10 @@
 			<groupId>javax.servlet</groupId>
 			<artifactId>servlet-api</artifactId>
 			<version>2.5</version>
+			<scope>provided</scope>
 		</dependency>
+		
+	
 		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
@@ -117,13 +120,13 @@
 			<version>4.3.4.RELEASE</version>
 		</dependency>
 		
-		<!-- <dependency>
+		<dependency>
 			<groupId>com.sun.mail</groupId>
 			<artifactId>javax.mail</artifactId>
 			<version>1.5.6</version>
-		</dependency> -->
+		</dependency>
 		
-		<dependency>
+		<!-- <dependency>
 			<groupId>javax.mail</groupId>
 			<artifactId>mail</artifactId>
 			<version>1.4.7</version>
@@ -132,7 +135,7 @@
 			<groupId>javax.mail</groupId>
 			<artifactId>javax.mail-api</artifactId>
 			<version>1.5.5</version>
-		</dependency>
+		</dependency> -->
 		
 		<!-- Jasper report -->
 		<dependency>
@@ -176,24 +179,34 @@
     	<type>jar</type>
     	<scope>compile</scope>
     </dependency>
-     <dependency>
+     <!-- <dependency>
     	<groupId>org.apache.poi</groupId>
     	<artifactId>poi</artifactId>
     	<version>3.6</version>
     	<type>jar</type>
     	<scope>compile</scope>
-    </dependency>
+    </dependency> -->
     
     <!-- Apache Tiles -->
 		
-	<!-- <dependency>
+	<dependency>
         <groupId>org.apache.poi</groupId>
         <artifactId>poi-ooxml</artifactId>
         <version>3.11-beta2</version>
-	</dependency> -->
+	</dependency>
     
+   
     
-    
+	<dependency>
+		<groupId>javax.servlet</groupId>
+		<artifactId>javax.servlet-api</artifactId>
+		<version>3.1.0</version>
+	</dependency>
+	<dependency>
+		<groupId>javax.servlet.jsp</groupId>
+		<artifactId>jsp-api</artifactId>
+		<version>2.2</version>
+	</dependency>
 	</dependencies>
 	<build>
 		<plugins>
