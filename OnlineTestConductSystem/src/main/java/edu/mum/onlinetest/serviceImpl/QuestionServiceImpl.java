@@ -2,6 +2,7 @@ package edu.mum.onlinetest.serviceImpl;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 import java.util.logging.Logger;
 
@@ -65,20 +66,37 @@ public class QuestionServiceImpl implements QuestionServiceInterface {
 	}
 
 	@Override
-	public List<Question> getRandomQuestion(Category category) {
+	public List<Question> getRandomQuestion(List<SubCategory> subCatList) {
 		List<Question> questionList = new ArrayList<>();
-		List<SubCategory> subCatList = category.getSubcategories();
-		for(SubCategory subCategory: subCatList){
-			System.out.println("subCategory: "+subCategory.getSubCatName());
-			List<Long> quesIds = dao.findIdByName(subCategory.getSubCatName());
-			for(Long id: quesIds){
-				System.out.println("questionId: "+ id);
-				
+		
+		//List<Long> quesIds = new ArrayList<Long>();
+//		List<SubCategory> subCatList = category.getSubcategories();
+		for (SubCategory subCategory : subCatList) {
+			//System.out.println("subCategory: " + subCategory.getSubCatName());
+			System.out.println("SubCategory: " + subCategory.getSubCatName());
+			List<Long> quesIds1 = new ArrayList<>();
+			List<Long> allQuestionIds = new ArrayList<>();
+			quesIds1 = dao.findIdByName(subCategory.getSubCatName());
+			
+
+			for (Long id : quesIds1) {
+				System.out.println("questionId: " + id);
+
 			}
-			questionList.addAll((Collection<? extends Question>) dao.findAll(quesIds));
-			questionList.forEach(qL->{
-			System.out.println(qL.getQuesName());
-			});
+			Collections.shuffle(quesIds1);
+			List<Long> newIds = new ArrayList<Long>();
+			if (quesIds1.size() >= 1) {
+				for (int i = 0; i < 3; i++) {
+					newIds.add(quesIds1.get(i));
+				}
+				//quesIds.clear();
+				allQuestionIds.addAll(newIds);
+			}
+
+			questionList.addAll((List<Question>) dao.findAll(allQuestionIds));
+			/*questionList.forEach(qL -> {
+				System.out.println(qL.getQuesName());
+			});*/
 		}
 		return questionList;
 		

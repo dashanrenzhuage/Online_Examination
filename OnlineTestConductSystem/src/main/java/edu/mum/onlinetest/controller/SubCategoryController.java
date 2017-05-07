@@ -6,10 +6,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.util.UriComponentsBuilder;
 
@@ -17,7 +19,7 @@ import edu.mum.onlinetest.model.Category;
 import edu.mum.onlinetest.model.SubCategory;
 import edu.mum.onlinetest.service.CategoryServiceInterface;
 import edu.mum.onlinetest.service.SubCategoryInterface;
-@RestController
+@Controller
 @RequestMapping("/subCategories")
 public class SubCategoryController {
 	
@@ -28,6 +30,19 @@ public class SubCategoryController {
 		CategoryServiceInterface categoryService;
 		
 		// Get all Category------
+		
+		@RequestMapping(value = "/getSubCategoryFromCategory/{id}", method = RequestMethod.GET)
+		public @ResponseBody List<SubCategory> getSubCategoryByCategory(@RequestBody @PathVariable("id") Long id){
+			System.out.println("--------------category---------herhe");
+			List<SubCategory> listOfSubcategories = subCategoryService.getListOfSubCategoryFromCategoryID(id);
+			for(SubCategory l : listOfSubcategories){
+				System.out.println(l.getSubCatName());
+			}
+			
+			return listOfSubcategories;
+			
+		}
+		
 		
 		 @RequestMapping(method = RequestMethod.GET)
 		    public ResponseEntity<List<SubCategory>> getAll() {

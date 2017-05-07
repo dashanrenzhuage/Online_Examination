@@ -7,10 +7,10 @@ import edu.mum.onlinetest.model.SubCategory;
 
 public interface SubCategoryInterface {
 	
-	public List<SubCategory>getAllSubCategory(); 
+	public List<SubCategory> getAllSubCategory(); 
 	public SubCategory getSubCategoryByID(Long i);
 	public void saveSubCategory(SubCategory subCategory);
 	public void deleteSubCategoryByID(Long id);
-
+	public List<SubCategory> getListOfSubCategoryFromCategoryID(Long id);
 
 }

@@ -11,12 +11,16 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.util.UriComponentsBuilder;
+
+import com.google.gson.Gson;
 
 import edu.mum.onlinetest.model.Category;
 import edu.mum.onlinetest.model.Employee;
@@ -73,22 +77,47 @@ public class QuestionController {
 	
 
 	@RequestMapping(value = "/generate", method = RequestMethod.GET)
-	public void generateQuestions(@RequestParam("category") Long categoryid,  HttpServletRequest request) {
+	public String generateQuestions(@RequestParam("category") Long categoryid,  HttpServletRequest request, Model model) {
 		System.out.println("i m here--------------");
+		
 		//List<Question> quesList= questionService.getRandomQuestion();
 		Category category = categoryService.getCategoryByID(categoryid);
 		String[] listOfString = request.getParameterValues("subCategory");
+		
+		//System.out.println();
 		
 		List<SubCategory> listOfSubCategory = new ArrayList<>();
 		for(int i=0; i<listOfString.length; i++){
 			SubCategory subCat = subCatService.getSubCategoryByID(Long.parseLong(listOfString[i]));
 			listOfSubCategory.add(subCat);
 		}
-		/*for(SubCategory c: listOfSubCategory){
+		for(SubCategory c: listOfSubCategory){
 			System.out.println(c.getSubCatName());
-		}*/
-		//List<Question> quesList= questionService.getRandomQuestion();
+		}
 		
+		System.out.println("============");
+		List<Question> quesList= questionService.getRandomQuestion(listOfSubCategory);
+		
+		//JSONObject documentObj = new JSONObject(quesList);
+		//JSONObject jsonObj = JSONObject.from
+		//String jsonString = jsonObject.toString();
+		//model.addAttribute("data",jsonString); 
+		/*Gson gson = new Gson();
+	    String jsonQuestionList = gson.toJson(quesList);*/
+	    
+	    //System.out.println(jsonQuestionList);
+		
+		//Gson gson = new Gson();
+	    //String jsonQuestionList = gson.toJson(quesList);
+		model.addAttribute("quesList", quesList);
+		model.addAttribute("category", category);
+		/*for(Question q: quesList){
+			System.out.println(q.getQuesName());
+			for(Opts o: q.getOpts()){
+				System.out.println("->"+ o.getOptions());
+			}
+		}*/
+		return "stu_take_exam";
 	}
 
 

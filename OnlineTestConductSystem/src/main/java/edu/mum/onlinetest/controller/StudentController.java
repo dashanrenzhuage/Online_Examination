@@ -41,6 +41,8 @@ public class StudentController {
 	public String studentExamLogin() {
 		return "stu_login";
 	}
+	
+	
 
 	@RequestMapping(value = "/studentExamSelection", method = RequestMethod.GET)
 	public String studentCategorySubCategorySection(/*@PathVariable("id") Long id,*/ Model model) {

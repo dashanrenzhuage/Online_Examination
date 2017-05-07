@@ -52,7 +52,7 @@ public class QuestionUploadController {
 			}
 			question.setOpts(options);
 
-			question.setSubCategory(subcategoryService.getSubCategoryByID((long) 114));
+			question.setSubCategory(subcategoryService.getSubCategoryByID((long) 3));
 
 			questionService.saveQuestion(question);
 		}

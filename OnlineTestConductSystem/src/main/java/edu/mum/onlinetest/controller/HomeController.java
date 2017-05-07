@@ -19,5 +19,9 @@ public class HomeController {
 	public String coachPage(){
 		return "list_student_detail";
 	}*/
+	
+	
+	
+	
 
 }

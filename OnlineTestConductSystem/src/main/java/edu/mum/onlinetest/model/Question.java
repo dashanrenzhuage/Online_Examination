@@ -12,14 +12,17 @@ import javax.persistence.OneToOne;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 @Entity
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Question {
+	
 	@javax.persistence.Id
 	@GeneratedValue
 	private Long id;
 	@Column(columnDefinition= "Text")
+	/*@JsonProperty("questionName")*/
 	private String quesName;
 	
 //	@OneToOne(fetch=FetchType.EAGER)
@@ -28,6 +31,7 @@ public class Question {
 	private SubCategory subCategory;
 	
 	@OneToMany(fetch=FetchType.EAGER,cascade=CascadeType.ALL)
+	@JsonIgnore
 	private List<Opts> opts;
 	
 	
@@ -61,7 +65,24 @@ public class Question {
 	public void setId(Long id) {
 		this.id = id;
 	}
+
+	/*@Override
+	public String toString() {
+		return "Question [id=" + id + ", quesName=" + quesName + "]";
+	}*/
+
+	/*@Override
+	public String toString() {
+		return "Question [id=" + id + ", quesName=" + quesName + ", subCategory=" + subCategory + ", opts=" + opts
+				+ "]";
+	}*/
 	
-	
+	/*@Override
+	public String toString() {
+		return "Question [id=" + id + ", quesName=" + quesName + ", subCategory=" + subCategory + ", opts=" + opts
+				+ ", getQuesName()=" + getQuesName() + ", getSubCategory()=" + getSubCategory() + ", getOpts()="
+				+ getOpts() + ", getId()=" + getId() + ", getClass()=" + getClass() + ", hashCode()=" + hashCode()
+				+ ", toString()=" + super.toString() + "]";
+	}*/
 
 }

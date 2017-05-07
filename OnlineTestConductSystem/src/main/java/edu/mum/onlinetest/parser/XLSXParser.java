@@ -19,7 +19,7 @@ public class XLSXParser {
 		List<List<String>> listOfQues = new ArrayList<List<String>>();
 
 		try {
-			File myFile = new File("E:\\data\\javaQuesCore.xlsx");
+			File myFile = new File("E:\\springQues.xlsx");
 			FileInputStream fis = new FileInputStream(myFile);
 
 			// Finds the workbook instance for XLSX file

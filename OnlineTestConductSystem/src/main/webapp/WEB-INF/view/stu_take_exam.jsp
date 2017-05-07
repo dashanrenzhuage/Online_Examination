@@ -24,25 +24,55 @@
 <!-- Custom Theme Style -->
 <link href="<c:url value = '/resources/css/custom.min.css'></c:url>"
 	rel="stylesheet">
+
+<link href="<c:url value = '/resources/css/exam.css'></c:url>"
+	rel="stylesheet">
 <link href="<c:url value = '/resources/css/student.css'></c:url>"
 	rel="stylesheet">
-
 <script
 	src='<spring:url value="/resources/js/jquery-3.2.1.js"></spring:url>'></script>
 
-<script
-	src='<spring:url value="/resources/js/categoryAndSubCategorySelection.js" ></spring:url>'></script>
+
 
 <title>MUM Online Test Conduct System</title>
 </head>
 <body class="nav-md">
+
+	<script type="text/javascript">
+		$(document).ready(function() {
+
+			var showVar = "${quesList}";
+			//var abc = $.toJSON(showVar);
+			console.log(showVar);
+			//alert(showVar);
+
+		});
+		
+		function submitAnswer(){
+			alert("sadfadfadf");
+/*
+			alert("sdfa");
+			var singleObj = {}
+var test = 0;
+			$("#questionForm").find(".questions").each(){
+				test++;
+				alert("test ="+test);
+			}
+			return false;
+			*/
+		}
+	</script>
+	<!-- for test -->
+
+	<div></div>
+	<!-- for test end -->
 	<div class="container body">
 		<div class="main_container">
 			<div class="col-md-3 left_col">
 				<div class="left_col scroll-view">
 					<div class="navbar nav_title" style="border: 0;">
-						<a href="stu_sel_exam.html" class="site_title"><i
-							class="fa fa-user"></i> <span>Student</span></a>
+						<a href="index.html" class="site_title"><i class="fa fa-user"></i>
+							<span>Student</span></a>
 					</div>
 
 					<div class="clearfix"></div>
@@ -51,7 +81,7 @@
 					<div class="profile clearfix">
 						<div class="profile_pic">
 							<img
-								src='<spring:url value="/resources/images/img.jpg"></spring:url>'
+								src="<spring:url value="/resources/images/img.jpg"></spring:url>"
 								alt="..." class="img-circle profile_img">
 						</div>
 						<div class="profile_info">
@@ -106,7 +136,7 @@
 						<li class=""><a href="javascript:;"
 							class="user-profile dropdown-toggle" data-toggle="dropdown"
 							aria-expanded="false"> <img
-								src='<spring:url value="/resources/images/img.jpg"></spring:url>'
+								src="<spring:url value="/resources/images/img.jpg"></spring:url>"
 								alt="">John Doe <span class=" fa fa-angle-down"></span>
 						</a>
 							<ul class="dropdown-menu dropdown-usermenu pull-right">
@@ -166,55 +196,98 @@
 
 			<!-- page content -->
 			<div class="right_col" role="main">
-				<form action="<spring:url value="/question/generate"/>" method="get">
-					<div class="form-group">
+				<!-- action="stu_take_exam.html"? -->
+				<form onsubmit="submitAnswer()" id="questionForm">
+					<div id="category" class="form-group">
 						<div class="row">
 							<div class="col-sm-1"></div>
-							<div class="col-sm-11">
-								<label for="sel1">Add Category:</label>
+							<div class="col-sm-8">
+								<h5>Category: Java</h5>
+							</div>
+							<div class="col-sm-3">
+								<h5>Time:120 minutes</h5>
 							</div>
 						</div>
 					</div>
-					<div id="sel_category" class="form-group">
-						<div class="row">
-							<div class="col-sm-1"></div>
-							<div class="col-sm-2">
-								<select id="category" name="category" style="padding: 5px 30px;">
-									<option>--Select Category--</option>
-									<c:forEach var="item" items="${listOfCategories}">
-										<option value="${item.id}">${item.name}</option>
-									</c:forEach>
-								</select>
-							</div>
-						</div>
-					</div>	
 					<div id="subcategory" class="form-group">
 						<div class="row">
 							<div class="col-sm-1"></div>
 							<div class="col-sm-11">
-								<label for="sel2">Add Subcategory:</label>
+								<h5>Subcategory: Spring</h5>
 							</div>
 						</div>
 					</div>
-					<div id="sel_subcategory" class="form-group">
+					<div id="stu_name" class="form-group">
 						<div class="row">
 							<div class="col-sm-1"></div>
-							<div class="col-sm-4">
-
-								<select id="subCategory" name="subCategory"
-									style="padding: 5px 20px;" multiple="multiple">
-									<%-- <c:forEach var="item" items="${listOfSubcategories}">
-										<option value="${item.id}">${item.subCatName}</option>
-									</c:forEach> --%>
-								</select>
+							<div class="col-sm-11">
+								<h5>Student Name: Tony</h5>
 							</div>
 						</div>
 					</div>
+					<div id="stu_id" class="form-group">
+						<div class="row">
+							<div class="col-sm-1"></div>
+							<div class="col-sm-11">
+								<h5>Student ID: 985XXX</h5>
+							</div>
+						</div>
+					</div>
+					<div id="exam_date" class="form-group">
+						<div class="row">
+							<div class="col-sm-1"></div>
+							<div class="col-sm-11">
+								<h5>Exam Date: 04/29/2017</h5>
+							</div>
+						</div>
+					</div>
+					<hr style="border: 3px solid black;" />
+					<div id="sel" class="form-group" style="padding-left: 50px;">
+						<%
+							int sn = 1;
+						%>
+						<c:forEach items="${quesList}" var="element" varStatus="i">
+
+							<div class="questions">
+								<div class="row">
+									<div class="col-sm-10">
+										<h5>
+											<strong>Question No. <%
+												out.print(sn);
+													sn++;
+											%>)
+												${element.quesName}
+											</strong>
+										</h5>
+									</div>
+								</div>
+								<%
+									int j = 1;
+								%>
+								<c:forEach items="${element.opts}" var="i">
+									<div class="row">
+										<div class="col-sm-10">
+											<h5>
+												<input type="radio" name="q1"
+													value="opt<%out.print(j);
+					j++; %>">&nbsp;
+												&nbsp;${i.options}
+											</h5>
+										</div>
+									</div>
+								</c:forEach>
+							</div>
+
+							<!--  class questions end -->
+							<hr />
+						</c:forEach>
+					</div>
+
 					<div>
 						<div class="row">
 							<div class="col-sm-10"></div>
 							<div class="col-sm-1">
-								<button type="submit" id="submit" class="btn">Submit</button>
+								<button type="submit" onclick="submitAnswer()" id="submit" class="btn">Submit</button>
 							</div>
 							<div class="col-sm-1"></div>
 						</div>
@@ -233,22 +306,17 @@
 		</div>
 	</div>
 
-
 	<!-- jQuery -->
-	<script
-		src='<spring:url value="/resources/js/jquery/dist/jquery.min.js"></spring:url>'></script>
+	<script src="js/jquery/dist/jquery.min.js"></script>
 	<!-- Bootstrap -->
-	<script
-		src='<spring:url value="/resources/css/bootstrap/dist/js/bootstrap.min.js"></spring:url>'></script>
+	<script src="css/bootstrap/dist/js/bootstrap.min.js"></script>
 	<!-- FastClick -->
-	<script
-		src='<spring:url value="/resources/js/fastclick/lib/fastclick.js"></spring:url>'></script>
+	<script src="js/fastclick/lib/fastclick.js"></script>
 	<!-- NProgress -->
-	<script
-		src='<spring:url value="/resources/js/nprogress/nprogress.js"></spring:url>'></script>
+	<script src="js/nprogress/nprogress.js"></script>
 
 	<!-- Custom Theme Scripts -->
-	<script
-		src='<spring:url value="/resources/js/custom.min.js"></spring:url>'></script>
+	<script src="js/custom.min.js"></script>
 </body>
+
 </html>
