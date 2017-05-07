@@ -29,7 +29,7 @@ public class AnswerSheetServiceImpl {
 		for (int i = 0; i < noOfQuestions; i++){
 			int noOfOptions = testService.getTestById(testId).getQuestionList().get(i).getOpts().size();
 			for(int j = 0; j < noOfOptions; j++)
-			if(testService.getTestById(testId).getQuestionList().get(i).getOpts().get(j).isCorrect()){
+			if(testService.getTestById(testId).getQuestionList().get(i).getOpts().get(j).isCorrectAns()){
 				if(answers.get(i) == j){
 					// Add marks
 					testService.getTestById(testId).setTotalmarks((testService.getTestById(testId).getTotalmarks()+1));

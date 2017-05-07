@@ -46,14 +46,12 @@ public class CoachController {
 	public String generateId(@PathVariable("id") Long id, Model model, RedirectAttributes rm) {
 		// LOG.info("deleting category with id: {}", id);
 		String accessId = coachService.generateId();
-		System.out.println(accessId);
-
 		Student student = studentService.getStudentByID(id);
 		student.setAccessCode(accessId);
-
-		System.out.println(student);
+		studentService.saveStudent(student);
+		System.out.println(studentService.getStudentByID(id));
 		String body = "Here is the information for login." + "\n" + "Link :"
-				+ "http://localhost:8080/OnlineTestConductSystem/test" + "\n" + "Accessid : " + accessId;
+				+ "http://localhost:8080/OnlineTestConductSystem/students/studentExamLogin" + "\n" + "Accessid : " + accessId;
 		String subject = "AccessID and Link for Test";
 
 		Email email = new Email(student.getName(), student.getEmail(), subject, body);

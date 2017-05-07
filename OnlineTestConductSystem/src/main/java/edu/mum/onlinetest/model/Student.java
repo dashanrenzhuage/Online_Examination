@@ -51,6 +51,11 @@ public class Student extends Person{
 		this.email = email;
 	}
 
+	@Override
+	public String toString() {
+		return "Student [email=" + email + ", accessCode=" + accessCode + ", test=" + test + ", report=" + report + "]";
+	}
+
 	
 
 	

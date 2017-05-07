@@ -32,13 +32,13 @@ public class StudentController {
 
 	@Autowired
 	StudentServiceInterface studentService;
-	
+
 	@Autowired
-    CategoryServiceInterface categoryService;
-	
+	CategoryServiceInterface categoryService;
+
 	@Autowired
-    SubCategoryInterface subCategoryService;
-	
+	SubCategoryInterface subCategoryService;
+
 	@Autowired
 	StudentServiceImpl studentServiceImpl;
 
@@ -47,16 +47,23 @@ public class StudentController {
 		return "stu_login";
 	}
 
-	
 	@RequestMapping(value = "/studentExamSelection", method = RequestMethod.POST)
 	public String studentCategorySubCategorySection(/*@PathVariable("id") Long id*/ HttpServletRequest request, Model model) {
 		List<Student> students = studentServiceImpl.getAllStudent();
+		
+		System.out.println(request.getParameter("accessCode"));
+		
+		/*if(request.getParameter("accessCode").equals(null)){
+			return "stu_login";
+
+		}*/
+		
+		
 		for(int i=0 ; i< students.size(); i++){
 			String accessID = students.get(i).getAccessCode();
+			Student student = students.get(i);
 			
-		/*String accessID = "abcdef";
-		String gotAccessID = (String) request.getParameter("accessCode");
-		System.out.println(gotAccessID);*/
+			if(accessID != null){
 			
 			if( accessID.equals((String) request.getParameter("accessCode"))){
 				List<Category> listOfCategories = categoryService.getAllCategory();
@@ -64,9 +71,24 @@ public class StudentController {
 				List<SubCategory> listOfSubCategories = subCategoryService.getAllSubCategory();
 				model.addAttribute("listOfCategories", listOfCategories);
 				model.addAttribute("listOfSubcategories", listOfSubCategories);
+				
+				
+				
+				
+				//access code delete after login
+				student.setAccessCode(null);
+				studentService.saveStudent(student);
+				
+				
+				
 				return "stu_sel_exam";
 			}
+			}
+			
+			
 		}
+		
+		System.out.println("*********************** if incorrect access id");
 		
 		return "stu_login";
 	}
@@ -78,8 +100,8 @@ public class StudentController {
 		// List<Student> students = studentService.getAllStudent();
 
 		/*
-		 * if (students == null || students.isEmpty()){
-		 * LOG.info("no student found"); return new
+		 * if (students == null || students.isEmpty()){ LOG.info(
+		 * "no student found"); return new
 		 * ResponseEntity<List<Student>>(HttpStatus.NO_CONTENT); }
 		 */
 
@@ -135,8 +157,8 @@ public class StudentController {
 		// Student student = studentService.getStudentByID(id);
 
 		/*
-		 * if (student == null){ //
-		 * LOG.info("Unable to delete. Student with id {} not found", id);
+		 * if (student == null){ // LOG.info(
+		 * "Unable to delete. Student with id {} not found", id);
 		 * 
 		 * return new ResponseEntity<Void>(HttpStatus.NOT_FOUND); }
 		 */
