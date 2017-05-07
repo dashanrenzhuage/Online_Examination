@@ -49,6 +49,7 @@ public class CoachController {
 		System.out.println(accessId);
 
 		Student student = studentService.getStudentByID(id);
+		student.setAccessCode(accessId);
 
 		System.out.println(student);
 		String body = "Here is the information for login." + "\n" + "Link :"

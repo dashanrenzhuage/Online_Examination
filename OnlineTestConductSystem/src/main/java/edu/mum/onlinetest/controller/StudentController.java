@@ -2,6 +2,8 @@ package edu.mum.onlinetest.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -22,6 +24,7 @@ import edu.mum.onlinetest.model.SubCategory;
 import edu.mum.onlinetest.service.CategoryServiceInterface;
 import edu.mum.onlinetest.service.StudentServiceInterface;
 import edu.mum.onlinetest.service.SubCategoryInterface;
+import edu.mum.onlinetest.serviceImpl.StudentServiceImpl;
 
 @Controller
 @RequestMapping("/students")
@@ -36,20 +39,36 @@ public class StudentController {
 	@Autowired
     SubCategoryInterface subCategoryService;
 	
+	@Autowired
+	StudentServiceImpl studentServiceImpl;
 
 	@RequestMapping(value = "/studentExamLogin", method = RequestMethod.GET)
 	public String studentExamLogin() {
 		return "stu_login";
 	}
 
-	@RequestMapping(value = "/studentExamSelection", method = RequestMethod.GET)
-	public String studentCategorySubCategorySection(/*@PathVariable("id") Long id,*/ Model model) {
-		List<Category> listOfCategories = categoryService.getAllCategory();
-		//List<SubCategory> listOfSubCategories = subCategoryService.getSubCategoryByID(id);
-		List<SubCategory> listOfSubCategories = subCategoryService.getAllSubCategory();
-		model.addAttribute("listOfCategories", listOfCategories);
-		model.addAttribute("listOfSubcategories", listOfSubCategories);
-		return "stu_sel_exam";
+	
+	@RequestMapping(value = "/studentExamSelection", method = RequestMethod.POST)
+	public String studentCategorySubCategorySection(/*@PathVariable("id") Long id*/ HttpServletRequest request, Model model) {
+		List<Student> students = studentServiceImpl.getAllStudent();
+		for(int i=0 ; i< students.size(); i++){
+			String accessID = students.get(i).getAccessCode();
+			
+		/*String accessID = "abcdef";
+		String gotAccessID = (String) request.getParameter("accessCode");
+		System.out.println(gotAccessID);*/
+			
+			if( accessID.equals((String) request.getParameter("accessCode"))){
+				List<Category> listOfCategories = categoryService.getAllCategory();
+				//List<SubCategory> listOfSubCategories = subCategoryService.getSubCategoryByID(id);
+				List<SubCategory> listOfSubCategories = subCategoryService.getAllSubCategory();
+				model.addAttribute("listOfCategories", listOfCategories);
+				model.addAttribute("listOfSubcategories", listOfSubCategories);
+				return "stu_sel_exam";
+			}
+		}
+		
+		return "stu_login";
 	}
 
 	@RequestMapping(method = RequestMethod.GET)

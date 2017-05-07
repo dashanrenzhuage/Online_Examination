@@ -36,15 +36,18 @@
       <div class="login_wrapper">
         <div class="animate form login_form">
           <section class="login_content">
-            <form>
-              <h1>Student Login</h1>
-              <div>
-                <input type="text" class="form-control" placeholder="Please Enter Access ID" required="" />
-              </div>
-              <div>
-                <a class="btn btn-default submit" href="<spring:url value="/students/studentExamSelection" />">Log in</a>
-              </div>
-
+            
+           <h1>Student Login</h1>
+           
+            <form action = "studentExamSelection" method = "post">
+              	<div>
+              	 	 <input type="text" name= "accessCode" class="form-control" placeholder="Please Enter Access ID" required=""  />
+              	</div>
+             	 <div>
+               	 <%-- <a class="btn btn-default submit" href="<spring:url value="/students/studentExamSelection" />">Log in</a> --%>
+					<a  class="btn btn-default submit" > <input type="submit" value="Submit"> </a>	              	
+              	</div>
+			</form>
               <div class="clearfix"></div>
 
               <div class="separator">
@@ -56,7 +59,7 @@
                   <p>&copy; 2017 Maharishi University of Management. All rights reserved.</p>
                 </div>
               </div>
-            </form>
+            
           </section>
         </div>
       </div>
