@@ -9,6 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
@@ -21,7 +22,7 @@ public class SubCategory {
 	private String subCatName;
 	
 	@ManyToOne(fetch= FetchType.LAZY)
-	@JsonIgnore
+	@JsonBackReference
 	private Category category;
 	
 //	@JsonIgnore

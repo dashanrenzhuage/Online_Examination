@@ -22,13 +22,13 @@ public class CategoryServiceImpl implements CategoryServiceInterface{
 	@Override
 	public List<Category> getAllCategory() {
 		List<Category> categories= (List<Category>) dao.findAll();
-		for(Category category: categories){
+		/*for(Category category: categories){
 			Logger.getLogger("Category contains subcategories size:"+category.getSubcategories().size());
 			for(SubCategory subCategory: category.getSubcategories()){
 //				Logger.getLogger("Category contains subcategories size:"+subCategory.getQuestions().size());
 				Logger.getLogger("Category contains subcategories:"+subCategory.getSubCatName());
         	}
-		}
+		}*/
 		
 		return categories;
 	}

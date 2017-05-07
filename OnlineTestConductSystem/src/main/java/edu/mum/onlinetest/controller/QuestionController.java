@@ -19,12 +19,13 @@ import edu.mum.onlinetest.model.Category;
 import edu.mum.onlinetest.model.Employee;
 import edu.mum.onlinetest.model.Opts;
 import edu.mum.onlinetest.model.Question;
+import edu.mum.onlinetest.model.SubCategory;
 import edu.mum.onlinetest.parser.XLSXParser;
 import edu.mum.onlinetest.service.CategoryServiceInterface;
 import edu.mum.onlinetest.service.QuestionServiceInterface;
 
 @RestController
-@RequestMapping("/question")
+@RequestMapping("question")
 public class QuestionController {
 	@Autowired
 	QuestionServiceInterface questionService;
@@ -42,12 +43,12 @@ public class QuestionController {
 	@RequestMapping(method = RequestMethod.GET)
 	public ResponseEntity<List<Question>> getAll() {
 		
-//		List<Question> questions = questionService.getAllQuestion();
-		List <Long> cp = questionService.findIdByName("spring");
-		cp.forEach(c->{
+		List<Question> questions = questionService.getAllQuestion();
+//		List <Long> cp = questionService.findIdByName("spring");
+		/*cp.forEach(c->{
 			System.out.println(c);
-		});
-		List<Question> questions = questionService.findBySubCategoryName("spring");
+		});*/
+//		List<Question> questions = questionService.findBySubCategoryName("spring");
 	
 		for(Question q: questions){
 			
@@ -63,10 +64,18 @@ public class QuestionController {
 	}
 	
 	
-	@RequestMapping(value = "/generate", method = RequestMethod.POST)
+/*	@RequestMapping(value = "/generate", method = RequestMethod.POST)
 	public ResponseEntity<List<Question>> generateQuestions(HttpServletRequest request, @RequestBody Category category) {
 		List<Question> quesList= questionService.getRandomQuestion(category);
 		return new ResponseEntity<List<Question>>(quesList, HttpStatus.OK);
+	}*/
+	
+	@RequestMapping(value = "/generate", method = RequestMethod.POST)
+	public ResponseEntity<List<Question>> generateQuestions(HttpServletRequest request, @RequestBody Category category) {
+		List<SubCategory> subCategories = category.getSubcategories();
+		List<Question> quesList= questionService.getRandomQuestion(subCategories);
+		return new ResponseEntity<List<Question>>(quesList, HttpStatus.OK);
 	}
+	
 
 }

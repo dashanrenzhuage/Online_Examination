@@ -28,13 +28,6 @@ public class CategoryController {
 	    public ResponseEntity<List<Category>> getAll() {
 	     
 	        List<Category> categories = categoryService.getAllCategory();
-	        
-
-	       /* if (categories == null || categories.isEmpty()){
-	            LOG.info("no category found");
-	            return new ResponseEntity<List<Category>>(HttpStatus.NO_CONTENT);
-	        }*/
-
 	        return new ResponseEntity<List<Category>>(categories, HttpStatus.OK);
 	    }
 

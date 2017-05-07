@@ -12,7 +12,16 @@ public class Opts {
 	@GeneratedValue
 	private Long id;
 	private String options;
-	
+	private boolean isCorrectAns = false;
+
+	public boolean isCorrectAns() {
+		return isCorrectAns;
+	}
+
+	public void setCorrectAns(boolean isCorrectAns) {
+		this.isCorrectAns = isCorrectAns;
+	}
+
 	public Long getId() {
 		return id;
 	}
@@ -28,6 +37,5 @@ public class Opts {
 	public void setOptions(String options) {
 		this.options = options;
 	}
-
 
 }
