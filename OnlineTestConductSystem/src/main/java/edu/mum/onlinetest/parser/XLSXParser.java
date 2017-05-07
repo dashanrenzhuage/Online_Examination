@@ -1,5 +1,6 @@
 package edu.mum.onlinetest.parser;
 
+import java.io.Closeable;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -64,7 +65,8 @@ public class XLSXParser {
 
 			}
 			fis.close();
-			myWorkBook.close();
+			((Closeable) myWorkBook).close();
+			
 		} catch (FileNotFoundException fe) {
 			fe.printStackTrace();
 		} catch (IOException ie) {

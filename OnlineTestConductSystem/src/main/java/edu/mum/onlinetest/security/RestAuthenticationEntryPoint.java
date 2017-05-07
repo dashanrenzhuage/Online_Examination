@@ -38,12 +38,14 @@ public class RestAuthenticationEntryPoint extends HandlerInterceptorAdapter {
 		/* /students, /home can access without credential */
 		if (uriResource.contains("students") || uriResource.contains("home") || uriResource.contains("coach")
 				|| uriResource.contains("question") || uriResource.contains("category")|| uriResource.contains("subCategories")|| uriResource.contains("question/generate")) {
+
 			System.out.println("ACCESS GRANTED >> no need credential, uri = " + request.getRequestURI());
 			return true;
 
 		}
 
 		String authParam = request.getHeader("authorization");
+		
 
 		if (null == authParam || !authParam.contains("Basic ")) {
 			System.out.println("AUTHENTICATION FAILED >> authentication parameters not found");
@@ -63,8 +65,13 @@ public class RestAuthenticationEntryPoint extends HandlerInterceptorAdapter {
 		}
 
 		// checking role wise access
+
 		if (uriResource.contains("employee")) {
 			if (uriResource.contains("admin") && credential.getRole().equals(Role.ADMIN)) {
+				System.out.println("ACCESS GRANTED >> resource = admin, Role = ADMIN");
+				return true;
+			}
+			if (uriResource.contains("category") && credential.getRole().equals(Role.ADMIN)) {
 				System.out.println("ACCESS GRANTED >> resource = admin, Role = ADMIN");
 				return true;
 			}
@@ -78,6 +85,7 @@ public class RestAuthenticationEntryPoint extends HandlerInterceptorAdapter {
 				return true;
 			}
 			return false;
+
 		} else if (uriResource.contains("mail")) {
 			if (credential.getRole().equals(Role.ADMIN) || credential.getRole().equals(Role.DATAADMIN)
 					|| credential.getRole().equals(Role.COACH)) {
@@ -85,6 +93,7 @@ public class RestAuthenticationEntryPoint extends HandlerInterceptorAdapter {
 			} else {
 				return false;
 			}
+
 		}
 		System.out.println("AUTHORIZATION FAILED >> resource =" + request.getRequestURI() + ", "
 				+ credential.getRole().toString());
@@ -110,15 +119,13 @@ public class RestAuthenticationEntryPoint extends HandlerInterceptorAdapter {
 
 	}
 
-	// dummy data
 	private void generateCredentials() {
-		credentialService.saveCredential(new Credential("santosh", "123", true, Role.ADMIN));
-		credentialService.saveCredential(new Credential("ashish", "123", true, Role.ADMIN));
-		credentialService.saveCredential(new Credential("deepak", "123", true, Role.ADMIN));
-		credentialService.saveCredential(new Credential("sushil", "123", true, Role.ADMIN));
-		credentialService.saveCredential(new Credential("rusina", "123", true, Role.ADMIN));
-		credentialService.saveCredential(new Credential("cong", "123", true, Role.ADMIN));
-		credentialService.saveCredential(new Credential("bsejawal", "123", true, Role.ADMIN));
+		Credential credential = new Credential();
+		credential.setUsername("bsejawal");
+		credential.setPassword("123");
+		credential.setRole(Role.ADMIN);
+		credential.setEnabled(true);
+		credentialService.saveCredential(credential);
 	}
 
 }

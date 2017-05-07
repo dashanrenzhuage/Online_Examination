@@ -6,6 +6,7 @@ import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
@@ -21,10 +22,19 @@ public class SubCategory {
 	private Long id;
 	private String subCatName;
 	
+
 	@ManyToOne(fetch= FetchType.LAZY)
 	@JsonBackReference
+	/*@ManyToOne
+	@JoinColumn(name = "category_id", nullable = false)*/
 	private Category category;
 	
+	private String grade;
+	
+	
+	//@OneToMany(fetch = FetchType.EAGER)
+	//private List<Question>questions;
+
 //	@JsonIgnore
 	/*@OneToMany(fetch= FetchType.LAZY, cascade = CascadeType.ALL)
 	private List<Question> questions;
@@ -54,6 +64,18 @@ public class SubCategory {
 	public void setQuestions(List<Question> questions) {
 		this.questions = questions;
 	}
+	public String getSubCategoryName() {
+		return subCategoryName;
+	}
+	public void setSubCategoryName(String subCategoryName) {
+		this.subCategoryName = subCategoryName;
+	}
+	@Override
+	public String toString() {
+		return "SubCategory [Id=" + Id + ", subCategoryName=" + subCategoryName + ", questions=" + questions + "]";
+	}
+	
+	
 */
 	
 	public Long getId() {
@@ -71,9 +93,7 @@ public class SubCategory {
 	public void setSubCatName(String subCatName) {
 		this.subCatName = subCatName;
 	}
-	
-	
-	
+
 	
 	
 }

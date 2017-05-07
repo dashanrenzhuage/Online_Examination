@@ -22,6 +22,7 @@ public class Opts {
 		this.isCorrectAns = isCorrectAns;
 	}
 
+
 	public Long getId() {
 		return id;
 	}

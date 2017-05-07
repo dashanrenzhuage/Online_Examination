@@ -10,5 +10,6 @@ public interface StudentServiceInterface {
 	public Student getStudentByID(Long id);
 	public void saveStudent(Student student);
 	public void deleteStudentByID(Long id);
+	public int countTotalStudent();
 
 }

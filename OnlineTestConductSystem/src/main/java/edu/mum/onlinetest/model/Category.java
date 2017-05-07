@@ -19,9 +19,10 @@ public class Category {
 	@GeneratedValue
 	private Long id;
 	private String name;
-	
+
 	@JsonBackReference
 	@OneToMany( cascade = CascadeType.ALL, fetch=FetchType.LAZY,mappedBy="category")
+
 	private List<SubCategory>subcategories;
 	
 	public List<SubCategory> getSubcategories() {
