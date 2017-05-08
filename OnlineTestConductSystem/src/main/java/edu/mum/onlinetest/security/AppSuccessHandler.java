@@ -48,7 +48,7 @@ public class AppSuccessHandler extends SimpleUrlAuthenticationSuccessHandler {
         }
 
         if (isAdmin(roles)) {
-            url = "/admin";
+            url = "/employee";
         } else if (isDataAdmin(roles)) {
             url = "/students";
         }
