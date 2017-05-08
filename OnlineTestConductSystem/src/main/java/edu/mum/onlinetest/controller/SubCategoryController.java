@@ -59,13 +59,32 @@ public class SubCategoryController {
 		 @RequestMapping(method = RequestMethod.POST)
 		    public ResponseEntity<Void> create(@RequestBody SubCategory subCategory, UriComponentsBuilder ucBuilder){
 
-//			 subCategory.setCategory(categoryService.getCategoryByID((long) 1));
+
+
 
 			 subCategory.setCategory(categoryService.getCategoryByID((long) 8));
+
 
 			subCategoryService.saveSubCategory(subCategory);
 		        HttpHeaders headers = new HttpHeaders();
 		        return new ResponseEntity<Void>(headers, HttpStatus.CREATED);
 	    }
+		 @RequestMapping(value = "{id}", method = RequestMethod.DELETE)
+		    public ResponseEntity<Void> delete(@PathVariable("id") Long id){
+		        //LOG.info("deleting category with id: {}", id);
+			 SubCategory subCategry = subCategoryService.getSubCategoryByID(id);
+
+		        if (subCategry == null){
+		          //  LOG.info("Unable to delete. Category with id {} not found", id);
+		        	
+		            return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
+		        }
+
+		        SubCategory subCategoryToDelete = subCategoryService.getSubCategoryByID(id);
+		        subCategoryToDelete.setFlag(false);
+		        subCategoryService.saveSubCategory(subCategoryToDelete);
+		        return new ResponseEntity<Void>(HttpStatus.OK);
+		    }
+		
 
 }

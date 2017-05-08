@@ -1,28 +1,17 @@
 package edu.mum.onlinetest.controller;
-
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.util.UriComponentsBuilder;
-
 import edu.mum.onlinetest.model.Admin;
 import edu.mum.onlinetest.model.Coach;
 import edu.mum.onlinetest.model.Credential;
@@ -33,7 +22,7 @@ import edu.mum.onlinetest.serviceImpl.CoachServiceImpl;
 import edu.mum.onlinetest.serviceImpl.StudentServiceImpl;
 
 @Controller
-@RequestMapping("/employee")
+@RequestMapping("/admin")
 public class AdminController {
 	@Autowired
 	EmployeeServiceInterface employeeService;
@@ -41,20 +30,24 @@ public class AdminController {
 	StudentServiceImpl studentService;
 
 
-	// Get all employee----
+	// Get all employee---
 	@RequestMapping(method = RequestMethod.GET)
-	public String listOfEmployee(Model model){
-		return  "adminHomePage";
+	public String getEmployees(Model model) {
+	model.addAttribute("employees",employeeService.getAllEmployee());
+	
+	return "adminHomepage";
 	}
 
 	// Get employee by ID------
-	@ResponseBody
+
 	@RequestMapping("/{id}")
-	public Employee getEmployeeById(Model model, @PathVariable("id") Long id) {
+	public String getEmployeeById(Model model, @PathVariable("id") Long id) {
 		
-		return employeeService.getEmployeeByID(id);
+		model.addAttribute("admin", employeeService.getEmployeeByID(id));
+		return "employeeHomepage";
 	}
 	
+
 	// Add Coach
 	@RequestMapping(value = "/addCoach", method = RequestMethod.GET)
 	public String showAddCoachPage() {
@@ -133,11 +126,19 @@ public class AdminController {
 				}
 		
 	
-	@RequestMapping(value = "/addUser", method = RequestMethod.POST)
-	public String addEmployee(@Valid @ModelAttribute("employee") Employee employee, BindingResult result) {
-		
+	/*@RequestMapping(value = "/addUser", method = RequestMethod.POST)
+	public String addEmployee(@Valid @ModelAttribute("employee") Employee employee, BindingResult result) {*/
+
+
+	// Add employee
+	@RequestMapping(value="/add",method=RequestMethod.GET)
+	public String signUp(@ModelAttribute("newAdmin") Employee employee){
+		return "signUp";
+	}
+	@RequestMapping(value = "/add", method = RequestMethod.POST)
+	public String addVehicle(@Valid @ModelAttribute("employee") Employee employee, BindingResult result) {		
 		if(result.hasErrors()){
-			return "employee/admin/employess";
+			return "signUp";
 		}
 		employeeService.saveEmployee(employee);
 		return "list_User_detail";
@@ -173,7 +174,53 @@ public String editEmployee(@Valid  @ModelAttribute("employee") Employee employee
 		
 		return "employeeHomepage";
 	}
+	@RequestMapping(value="/coach", method = RequestMethod.GET)
+	public String getCoach(Model model) {
+		
+		System.out.println("+++++++++++Coach List +++++++++++++++++");
+		employeeService.findCoach().forEach(c->{
+			
+			System.out.println(c.getfName());
+		});
 	
+		model.addAttribute("coachList",employeeService.findCoach( ));
+		return "coach_home_page";
+		
+		
+		
+	}
+	
+	@RequestMapping(value="/dataAdmin", method = RequestMethod.GET)
+	public String getDataAdmin(Model model) {
+		
+		System.out.println("+++++++++++Data Admin List +++++++++++++++++");
+		employeeService.findDataAdmin().forEach(da->{
+			
+			System.out.println(da.getfName());
+		});
+	
+		model.addAttribute("coachList",employeeService.findDataAdmin( ));
+		return "coach_home_page";
+		
+		
+		
+	}
+	
+	@RequestMapping(value="/admin", method = RequestMethod.GET)
+	public String getAdmin(Model model) {
+		
+		System.out.println("+++++++++++Admin  List +++++++++++++++++");
+		employeeService.findAdmin().forEach(a->{
+			
+			System.out.println(a.getfName());
+		});
+	
+		model.addAttribute("coachList",employeeService.findAdmin( ));
+		return "coach_home_page";
+		
+		
+		
+	}
 	
 	//List of Students for admin mode
 	@RequestMapping(value = "/studentList", method = RequestMethod.GET)

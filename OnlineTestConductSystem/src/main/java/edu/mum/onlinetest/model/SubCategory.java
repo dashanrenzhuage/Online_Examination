@@ -21,7 +21,16 @@ public class SubCategory {
 	@GeneratedValue
 	private Long id;
 	private String subCatName;
-	
+
+	private boolean flag =true;
+	public boolean isFlag() {
+		return flag;
+	}
+
+	public void setFlag(boolean flag) {
+		this.flag = flag;
+	}
+
 
 	@ManyToOne(fetch= FetchType.LAZY)
 	@JsonBackReference
