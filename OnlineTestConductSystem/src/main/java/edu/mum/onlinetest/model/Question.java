@@ -27,6 +27,15 @@ public class Question {
 	@JsonIgnore
 	private SubCategory subCategory;
 	
+	@OneToOne
+	Category category;
+	public Category getCategory() {
+		return category;
+	}
+
+	public void setCategory(Category category) {
+		this.category = category;
+	}
 	@OneToMany(fetch=FetchType.EAGER,cascade=CascadeType.ALL)
 	private List<Opts> opts;
 	

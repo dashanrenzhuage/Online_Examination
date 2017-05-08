@@ -10,6 +10,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
@@ -20,11 +21,21 @@ public class SubCategory {
 	@GeneratedValue
 	private Long id;
 	private String subCatName;
-	
-	//@ManyToOne(fetch= FetchType.LAZY)
-	@ManyToOne
-	@JoinColumn(name = "category_id", nullable = false)
-	@JsonIgnore
+
+	private boolean flag =true;
+	public boolean isFlag() {
+		return flag;
+	}
+
+	public void setFlag(boolean flag) {
+		this.flag = flag;
+	}
+
+
+	@ManyToOne(fetch= FetchType.LAZY)
+	@JsonBackReference
+	/*@ManyToOne
+	@JoinColumn(name = "category_id", nullable = false)*/
 	private Category category;
 	
 	private String grade;

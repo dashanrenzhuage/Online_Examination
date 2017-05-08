@@ -36,7 +36,6 @@ public class RestAuthenticationEntryPoint extends HandlerInterceptorAdapter {
 		List<String> uriResource = Arrays.asList(request.getRequestURI().split("/"));
 
 		/* /students, /home can access without credential */
-
 		if (uriResource.contains("students") || uriResource.contains("home") || uriResource.contains("OnlineTestConductSystem") ) {
 
 			System.out.println("ACCESS GRANTED >> no need credential, uri = " + request.getRequestURI());
@@ -79,11 +78,21 @@ public class RestAuthenticationEntryPoint extends HandlerInterceptorAdapter {
 				System.out.println("ACCESS GRANTED >> resource = dataadmin, Role = DATAADMIN");
 				return true;
 			}
-			if (uriResource.contains("coach") && credential.getRole().equals(Role.COACH)) {
+			if ((uriResource.contains("coach") || uriResource.contains("mail"))
+					&& credential.getRole().equals(Role.COACH)) {
 				System.out.println("ACCESS GRANTED >> resource = coach, Role = COACH");
 				return true;
 			}
 			return false;
+
+		} else if (uriResource.contains("mail")) {
+			if (credential.getRole().equals(Role.ADMIN) || credential.getRole().equals(Role.DATAADMIN)
+					|| credential.getRole().equals(Role.COACH)) {
+				return true;
+			} else {
+				return false;
+			}
+
 		}
 		System.out.println("AUTHORIZATION FAILED >> resource =" + request.getRequestURI() + ", "
 				+ credential.getRole().toString());

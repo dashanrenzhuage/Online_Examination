@@ -11,7 +11,28 @@ public class Student extends Person{
 
 	
 	private String email;
+
+	private String accessCode;
 	
+	private String phoneNo;
+	
+	public String getPhoneNo() {
+		return phoneNo;
+	}
+
+	public void setPhoneNo(String phoneNo) {
+		this.phoneNo = phoneNo;
+	}
+
+	public String getAccessCode() {
+		return accessCode;
+	}
+
+	public void setAccessCode(String accessCode) {
+		this.accessCode = accessCode;
+	}
+
+
 	@OneToOne
 	private Test test;
 	@OneToOne
@@ -42,6 +63,11 @@ public class Student extends Person{
 		this.email = email;
 	}
 
+	@Override
+	public String toString() {
+		return "Student [email=" + email + ", accessCode=" + accessCode + ", test=" + test + ", report=" + report + "]";
+	}
+
 	
 
 	
@@ -50,5 +76,5 @@ public class Student extends Person{
 		this.email = email;
 	}*/
 	
-	
+
 }

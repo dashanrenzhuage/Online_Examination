@@ -28,9 +28,6 @@
 	rel="stylesheet">
 <link href="<c:url value = '/resources/css/coach.css'></c:url>"
 	rel="stylesheet">
-
-
-
 <title>MUM Online Test Conduct System</title>
 </head>
 <body class="nav-md">
@@ -72,10 +69,7 @@
 								<li><a><i class="fa fa-home"></i> Home <span
 										class="fa fa-chevron-down"></span></a>
 									<ul class="nav child_menu">
-										<li><a href="<c:url value = '/students'></c:url>">Home
-												Page </a></li>
-										<li><a
-											href="<c:url value = '/coach/studentList'></c:url>">List
+										<li><a href="<c:url value = '/coach/studentList'></c:url>">List
 												of Student</a></li>
 									</ul></li>
 							</ul>
@@ -134,9 +128,8 @@
 							<ul id="menu1" class="dropdown-menu list-unstyled msg_list"
 								role="menu">
 								<li><a> <span class="image"><img
-											src='<spring:url value="/resources/images/img.jpg"></spring:url>'
-											alt="Profile Image" /></span> <span> <span>John Smith</span>
-											<span class="time">3 mins ago</span>
+											src='<spring:url value="/resources/images/img.jpg"></spring:url>' alt="Profile Image" /></span> <span> <span>John
+												Smith</span> <span class="time">3 mins ago</span>
 									</span> <span class="message"> Film festivals used to be
 											do-or-die moments for movie makers. They were where... </span>
 								</a></li>
@@ -175,111 +168,7 @@
 
 
 			<!-- page content -->
-			<div class="right_col" role="main">
-				<div id="left_col">
-					<h2 id="report">List Of Student</h2>
-				</div>
-
-
-
-				<c:if test="${not empty successMessage}">
-					<script>
-						setTimeout(function() {
-							$('#successMessage').fadeOut('medium');
-						}, 2000);
-					</script>
-					<div id="successMessage"
-						class="alert alert-success alert-dismissable">
-						<a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
-						<strong>Success!</strong> You have send an access code to the
-						student.
-					</div>
-				</c:if>
-				<c:if test="${not empty studentDeleteMessage}">
-					<script>
-						setTimeout(function() {
-							$('#studentDeleteMessage').fadeOut('medium');
-						}, 2000);
-					</script>
-					<div id="studentDeleteMessage"
-						class="alert alert-danger alert-dismissable">
-						<a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
-						<strong>Success!</strong> You have successfully deleted student.
-					</div>
-				</c:if>
-				<table id="example" class="table table-bordered display" cellspacing="0" width="100%">
-					<thead>
-						<tr>
-							<th>S.N</th>
-							<th>Student ID</th>
-							<th>Name</th>
-							<th>Email</th>
-							<th>Send Access ID</th>
-							<th>View Report</th>
-							<th>Delete</th>
-						</tr>
-					</thead>
-					<tbody>
-						<%
-							int i = 1;
-						%>
-						<c:forEach items="${listOfStudents}" var="std">
-
-							<tr>
-								<td>
-									<%
-										out.print(i);
-											i++;
-									%>
-								</td>
-								<td>${std.id}</td>
-								<td>${std.name}</td>
-								<td>${std.email}</td>
-								<td>
-									<a
-									href="<spring:url value="/coach/student/${std.id}" />"
-									class="btn btn-info" role="button">Send Access ID</a> 
-								</td>
-								<td><a href="<spring:url value="/coach/download/pdf/${std.id}" />" class="btn btn-info" role="button">View
-										Report</a></td>
-								<td>
-								<a data-toggle="modal" data-target="#myModal"
-														class="btn btn-info" role="button">Delete</a>
-									<!-- <button type="button" class="btn btn-info btn-lg"
-										data-toggle="modal" data-target="#myModal" style="margin:0px;">Send
-										Access ID</button> --> <!-- Modal -->
-									<div class="modal fade" id="myModal" role="dialog">
-										<div class="modal-dialog">
-
-											<!-- Modal content-->
-											<div class="modal-content">
-												<div class="modal-header">
-													<button type="button" class="close" data-dismiss="modal">&times;</button>
-													<h4 class="modal-title">
-														<b>Delete Student</b>
-													</h4>
-												</div>
-												<div class="modal-body">
-													<p>Are you sure you want to delete student?</p>
-												</div>
-												<div class="modal-footer">
-													<a href="<spring:url value="/students/delete/${std.id}" />"
-														class="btn btn-info" role="button">Delete</a>
-												</div>
-											</div>
-										</div>
-									</div> 
-								
-								<%-- <a
-									href="<spring:url value="/students/delete/${std.id}" />"
-									class="btn btn-info" role="button">Delete Student</a> --%></td>
-							</tr>
-						</c:forEach>
-
-
-					</tbody>
-				</table>
-			</div>
+			
 			<!-- /page content -->
 
 			<!-- footer content -->
@@ -307,14 +196,7 @@
 
 	<!-- Custom Theme Scripts -->
 	<script
-		src='<spring:url value="/resources/js/custom.min.js"></spring:url>'></script>
-	<script
-		src='<spring:url value="/resources/js/jquery.dataTables.min.js"></spring:url>'></script>
-	<script
-		src='<spring:url value="/resources/js/dataTables.bootstrap.min.js"></spring:url>'></script>
-	<script
-		src='<spring:url value="/resources/js/data_table.js"></spring:url>'></script>
-
+		src='<spring:url value="/resources/js/custom.js"></spring:url>'></script>
 
 </body>
 </html>

@@ -33,8 +33,8 @@ import edu.mum.onlinetest.service.CategoryServiceInterface;
 import edu.mum.onlinetest.service.QuestionServiceInterface;
 import edu.mum.onlinetest.service.SubCategoryInterface;
 
-@Controller
-@RequestMapping("/question")
+@RestController
+@RequestMapping("question")
 public class QuestionController {
 	@Autowired
 	QuestionServiceInterface questionService;
@@ -55,12 +55,12 @@ public class QuestionController {
 	@RequestMapping(method = RequestMethod.GET)
 	public ResponseEntity<List<Question>> getAll() {
 		
-//		List<Question> questions = questionService.getAllQuestion();
-		List <Long> cp = questionService.findIdByName("spring");
-		cp.forEach(c->{
+		List<Question> questions = questionService.getAllQuestion();
+//		List <Long> cp = questionService.findIdByName("spring");
+		/*cp.forEach(c->{
 			System.out.println(c);
-		});
-		List<Question> questions = questionService.findBySubCategoryName("spring");
+		});*/
+//		List<Question> questions = questionService.findBySubCategoryName("spring");
 	
 		for(Question q: questions){
 			
@@ -76,8 +76,13 @@ public class QuestionController {
 	}
 	
 	
+	@RequestMapping(value = "/generate", method = RequestMethod.POST)
+	public ResponseEntity<List<Question>> generateQuestions(HttpServletRequest request, @RequestBody Category category) {
+		List<SubCategory> subCategories = category.getSubcategories();
+		List<Question> quesList= questionService.getRandomQuestion(subCategories);
+		return new ResponseEntity<List<Question>>(quesList, HttpStatus.OK);
 
-	@RequestMapping(value = "/generate", method = RequestMethod.GET)
+	/*@RequestMapping(value = "/generate", method = RequestMethod.GET)
 	public void generateQuestions(@RequestParam("category") Long categoryid,  HttpServletRequest request) {
 		System.out.println("i m here--------------");
 		//List<Question> quesList= questionService.getRandomQuestion();
@@ -88,13 +93,14 @@ public class QuestionController {
 		for(int i=0; i<listOfString.length; i++){
 			SubCategory subCat = subCatService.getSubCategoryByID(Long.parseLong(listOfString[i]));
 			listOfSubCategory.add(subCat);
-		}
+		}*/
 		/*for(SubCategory c: listOfSubCategory){
 			System.out.println(c.getSubCatName());
 		}*/
 		//List<Question> quesList= questionService.getRandomQuestion();
 		
 	}
+	
 
 
 }

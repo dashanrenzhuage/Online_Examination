@@ -28,10 +28,15 @@ public class StudentServiceImpl implements StudentServiceInterface {
 		dao.delete(id);
 		
 	}
+	
 
 	public void saveStudent(Student student) {
 		dao.save(student);
 		
+	}
+
+	public int countTotalStudent() {
+		return (int) (dao.count());
 	}
 
 }

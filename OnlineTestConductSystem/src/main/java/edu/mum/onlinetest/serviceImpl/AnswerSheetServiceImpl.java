@@ -55,6 +55,19 @@ public class AnswerSheetServiceImpl {
 						}
 
 					}
+		
+		int number = noOfQuestions/noOfSubCategory;
+		
+		
+		for (int i = 0; i < noOfQuestions; i++){
+			int noOfOptions = testService.getTestById(testId).getQuestionList().get(i).getOpts().size();
+			for(int j = 0; j < noOfOptions; j++)
+			if(testService.getTestById(testId).getQuestionList().get(i).getOpts().get(j).isCorrectAns()){
+				if(answers.get(i) == j){
+					// Add marks
+					testService.getTestById(testId).setTotalmarks((testService.getTestById(testId).getTotalmarks()+1));
+					
+					
 				}
 		}
 		System.out.println(individualMark);
@@ -79,16 +92,16 @@ public class AnswerSheetServiceImpl {
 		return totalMarks;
 	}*/
 
-	public int getResult1(AnswerSheet answerSheet2) {
+	/*public int getResult1(AnswerSheet answerSheet2) {
 		int noOfQuestions = answerSheet2.getAnswerList().size();
 		int totalMarks = 0;
 
-		List<String> lists = new ArrayList<>();
+		List<String> lists = new ArrayList<>();*/
 		
 		//add those subcategories to list whose questions are generated
 
-		List<Integer> individualMark = new ArrayList<>();
-		/* noOfSubCategory = 4 */
+		/*List<Integer> individualMark = new ArrayList<>();
+		 noOfSubCategory = 4 
 		for (int i = 0; i < 4; i++) {
 			individualMark.add(0);
 
@@ -119,5 +132,5 @@ public class AnswerSheetServiceImpl {
 					return totalMarks;
 
 	}
-	
+	*/
 }
