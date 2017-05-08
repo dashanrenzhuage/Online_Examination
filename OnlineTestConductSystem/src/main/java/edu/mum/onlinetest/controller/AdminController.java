@@ -70,7 +70,53 @@ public class AdminController {
 		
 		return "employeeHomepage";
 	}
+	@RequestMapping(value="/coach", method = RequestMethod.GET)
+	public String getCoach(Model model) {
+		
+		System.out.println("+++++++++++Coach List +++++++++++++++++");
+		employeeService.findCoach().forEach(c->{
+			
+			System.out.println(c.getfName());
+		});
 	
+		model.addAttribute("coachList",employeeService.findCoach( ));
+		return "coach_home_page";
+		
+		
+		
+	}
+	
+	@RequestMapping(value="/dataAdmin", method = RequestMethod.GET)
+	public String getDataAdmin(Model model) {
+		
+		System.out.println("+++++++++++Data Admin List +++++++++++++++++");
+		employeeService.findDataAdmin().forEach(da->{
+			
+			System.out.println(da.getfName());
+		});
+	
+		model.addAttribute("coachList",employeeService.findDataAdmin( ));
+		return "coach_home_page";
+		
+		
+		
+	}
+	
+	@RequestMapping(value="/admin", method = RequestMethod.GET)
+	public String getAdmin(Model model) {
+		
+		System.out.println("+++++++++++Admin  List +++++++++++++++++");
+		employeeService.findAdmin().forEach(a->{
+			
+			System.out.println(a.getfName());
+		});
+	
+		model.addAttribute("coachList",employeeService.findAdmin( ));
+		return "coach_home_page";
+		
+		
+		
+	}
 	
 	
 }
