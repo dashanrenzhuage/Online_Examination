@@ -1,27 +1,37 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <!-- Meta, title, CSS, favicons, etc. -->
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<!-- Bootstrap -->
+<link
+	href="<c:url value = '/resources/css/bootstrap/dist/css/bootstrap.min.css'></c:url>"
+	rel="stylesheet">
+<!-- Font Awesome -->
+<link
+	href="<c:url value = '/resources/fonts/font-awesome/css/font-awesome.min.css'></c:url>"
+	rel="stylesheet">
 
-    <title>MUM Online Test System</title>
+<!-- NProgress -->
+<link
+	href="<c:url value = '/resources/js/nprogress/nprogress.css'></c:url>"
+	rel="stylesheet">
 
-    <!-- Bootstrap -->
-    <link href="../css/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Font Awesome -->
-    <link href="../fonts/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-    <!-- NProgress -->
-    <link href="../js/nprogress/nprogress.css" rel="stylesheet">
+<!-- Custom Theme Style -->
+<link href="<c:url value = '/resources/css/custom.min.css'></c:url>"
+	rel="stylesheet">
+<link href="<c:url value = '/resources/css/admin.css'></c:url>"
+	rel="stylesheet">
 
-    <!-- Custom Theme Style -->
-    <link href="../css/custom.min.css" rel="stylesheet">
-	<link href="../css/admin.css" rel="stylesheet">
-  </head>
 
-  <body class="nav-md">
+
+<title>MUM Online Test Conduct System</title>
+</head>
+<body class="nav-md">
     <div class="container body">
       <div class="main_container">
         <div class="col-md-3 left_col">
@@ -35,7 +45,7 @@
             <!-- menu profile quick info -->
             <div class="profile clearfix">
               <div class="profile_pic">
-                <img src="../images/img.jpg" alt="..." class="img-circle profile_img">
+                <img src="images/img.jpg" alt="..." class="img-circle profile_img">
               </div>
               <div class="profile_info">
                 <span>Welcome,</span>
@@ -46,27 +56,37 @@
 
             <br />
 
-            <!-- sidebar menu -->
+             <!-- sidebar menu -->
             <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
               <div class="menu_section">
                 <h3>General</h3>
                 <ul class="nav side-menu">
                   <li><a><i class="fa fa-home"></i> Coach <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                      <li><a href="admin_addcoach.html">Add Coach</a></li>
-					  <li><a href="admin_coachlist.html">List of Coaches</a></li>
+                      <li>
+                      <a href="<spring:url value="/employee/addCoach" />"
+							>Add Coach</a></li>
+					  <li><a href="<spring:url value="/employee/listCoach" />"
+							>List Of Coach</a></li></li>
                     </ul>
                   </li>
 				  <li><a><i class="fa fa-home"></i> Administrator <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-					  <li><a href="admin_addadmin.html">Add Administrator</a></li>
-					  <li><a href="admin_adminlist.html">List of Administrator</a></li>
+                      <li>
+                      <a href="<spring:url value="/employee/addAdmin" />"
+							>Add Admin</a></li>
+					  <li><a href="<spring:url value="/employee/listAdmin" />"
+							>List Of Admin</a></li></li>
                     </ul>
                   </li>
+                  
                   <li><a><i class="fa fa-home"></i> Student <span class="fa fa-chevron-down"></span></a>
-                    <ul class="nav child_menu">
-                      <li><a href="admin_addstudent.html">Add Student</a></li>
-                      <li><a href="admin_studentlist.html">List of Student</a></li>
+                   <ul class="nav child_menu">
+                      <li>
+                      <a href="<spring:url value="/employee/addStudent" />"
+							>Add Studnet</a></li>
+					  <li><a href="<spring:url value="/employee/listStudent" />"
+							>List Of Student</a></li></li>
                     </ul>
                   </li>
                 </ul>
@@ -74,7 +94,8 @@
 
             </div>
             <!-- /sidebar menu -->
-
+            
+            <!-- /menu footer buttons -->
             <!-- /menu footer buttons -->
             <div class="sidebar-footer hidden-small">
               <a data-toggle="tooltip" data-placement="top" title="Settings">
@@ -105,7 +126,7 @@
               <ul class="nav navbar-nav navbar-right">
                 <li class="">
                   <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                    <img src="../images/img.jpg" alt="">John Doe
+                    <img src="images/img.jpg" alt="">John Doe
                     <span class=" fa fa-angle-down"></span>
                   </a>
                   <ul class="dropdown-menu dropdown-usermenu pull-right">
@@ -129,7 +150,7 @@
                   <ul id="menu1" class="dropdown-menu list-unstyled msg_list" role="menu">
                     <li>
                       <a>
-                        <span class="image"><img src="../images/img.jpg" alt="Profile Image" /></span>
+                        <span class="image"><img src="images/img.jpg" alt="Profile Image" /></span>
                         <span>
                           <span>John Smith</span>
                           <span class="time">3 mins ago</span>
@@ -141,7 +162,7 @@
                     </li>
                     <li>
                       <a>
-                        <span class="image"><img src="../images/img.jpg" alt="Profile Image" /></span>
+                        <span class="image"><img src="images/img.jpg" alt="Profile Image" /></span>
                         <span>
                           <span>John Smith</span>
                           <span class="time">3 mins ago</span>
@@ -153,7 +174,7 @@
                     </li>
                     <li>
                       <a>
-                        <span class="image"><img src="../images/img.jpg" alt="Profile Image" /></span>
+                        <span class="image"><img src="images/img.jpg" alt="Profile Image" /></span>
                         <span>
                           <span>John Smith</span>
                           <span class="time">3 mins ago</span>
@@ -165,7 +186,7 @@
                     </li>
                     <li>
                       <a>
-                        <span class="image"><img src="../images/img.jpg" alt="Profile Image" /></span>
+                        <span class="image"><img src="images/img.jpg" alt="Profile Image" /></span>
                         <span>
                           <span>John Smith</span>
                           <span class="time">3 mins ago</span>
@@ -209,6 +230,51 @@
 									</tr>
 								</thead>
 								<tbody>
+								
+								
+								<c:forEach items="${listOfAdmin}" var="admin">
+
+										<tr>
+											<td id="hehe">${admin.name}</td>
+											<td>${admin.email}</td>
+											<td>${admin.username}</td>
+											<td>${admin.password}</td>
+											<td><a
+												href="<spring:url value="/admin/edit/${admin.id}" />">Edit</a></td>
+
+											<!--Delete Coach  -->
+											<td><a data-toggle="modal" data-target="#myModal"
+												class="btn btn-info" role="button">Delete</a> <!-- <button type="button" class="btn btn-info btn-lg"
+										data-toggle="modal" data-target="#myModal" style="margin:0px;">Send
+										Access ID</button> --> <!-- Modal -->
+												<div class="modal fade" id="myModal" role="dialog">
+													<div class="modal-dialog">
+
+														<!-- Modal content-->
+														<div class="modal-content">
+															<div class="modal-header">
+																<button type="button" class="close" data-dismiss="modal">&times;</button>
+																<h4 class="modal-title">
+																	<b>Delete Admin</b>
+																</h4>
+															</div>
+															<div class="modal-body">
+																<p>Are you sure you want to delete admin?</p>
+															</div>
+															<div class="modal-footer">
+																<a href="<spring:url value="/admin/delete/${admin.id}" />"
+																	class="btn btn-info" role="button">Delete</a>
+															</div>
+														</div>
+													</div>
+												</div>
+										</tr>
+									</c:forEach>
+								
+								
+								<!-- 
+								
+								
 									<tr>
 										<td>Tony</td>
 										<td>tony@gmail.com</td>
@@ -232,7 +298,8 @@
 												<span class="glyphicon glyphicon-remove"></span>
 											</button>
 										</td>
-									</tr>
+									</tr> -->
+									
 								</tbody>
 							</table>
 						</div>
@@ -252,19 +319,26 @@
         <!-- /footer content -->
       </div>
     </div>
+	<!-- jQuery -->
+	<script
+		src='<spring:url value="/resources/js/jquery/dist/jquery.min.js"></spring:url>'></script>
+	<!-- Bootstrap -->
+	<script
+		src='<spring:url value="/resources/css/bootstrap/dist/js/bootstrap.min.js"></spring:url>'></script>
+	<!-- FastClick -->
+	<script
+		src='<spring:url value="/resources/js/fastclick/lib/fastclick.js"></spring:url>'></script>
+	<!-- NProgress -->
+	<script
+		src='<spring:url value="/resources/js/nprogress/nprogress.js"></spring:url>'></script>
 
-    <!-- jQuery -->
-    <script src="../js/jquery/dist/jquery.min.js"></script>
-    <!-- Bootstrap -->
-    <script src="../css/bootstrap/dist/js/bootstrap.min.js"></script>
-    <!-- FastClick -->
-    <script src="../js/fastclick/lib/fastclick.js"></script>
-    <!-- NProgress -->
-    <script src="../js/nprogress/nprogress.js"></script>
+	<!-- Custom Theme Scripts -->
+	<script
+		src='<spring:url value="/resources/js/custom.min.js"></spring:url>'></script>
+	<script
+		src='<spring:url value="/resources/js/admin.js"></spring:url>'></script>
+	
 
-    <!-- Custom Theme Scripts -->
-    <script src="../js/custom.min.js"></script>
-	<script src="../js/add_question.js"></script>
-	<script src="../js/admin.js"></script>
-  </body>
+
+</body>
 </html>

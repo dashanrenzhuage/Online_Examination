@@ -10,11 +10,11 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.util.UriComponentsBuilder;
 
@@ -48,80 +48,57 @@ public class StudentController {
 	}
 
 	@RequestMapping(value = "/studentExamSelection", method = RequestMethod.POST)
-	public String studentCategorySubCategorySection(/*@PathVariable("id") Long id*/ HttpServletRequest request, Model model) {
+	public String studentCategorySubCategorySection(
+			/* @PathVariable("id") Long id */ HttpServletRequest request, Model model) {
 		List<Student> students = studentServiceImpl.getAllStudent();
-		
-		System.out.println(request.getParameter("accessCode"));
-		
-		/*if(request.getParameter("accessCode").equals(null)){
-			return "stu_login";
 
-		}*/
-		
-		
-		for(int i=0 ; i< students.size(); i++){
+		System.out.println(request.getParameter("accessCode"));
+
+		for (int i = 0; i < students.size(); i++) {
 			String accessID = students.get(i).getAccessCode();
 			Student student = students.get(i);
-			
-			if(accessID != null){
-			
-			if( accessID.equals((String) request.getParameter("accessCode"))){
-				List<Category> listOfCategories = categoryService.getAllCategory();
-				//List<SubCategory> listOfSubCategories = subCategoryService.getSubCategoryByID(id);
-				List<SubCategory> listOfSubCategories = subCategoryService.getAllSubCategory();
-				model.addAttribute("listOfCategories", listOfCategories);
-				model.addAttribute("listOfSubcategories", listOfSubCategories);
-				
-				
-				
-				
-				//access code delete after login
-				student.setAccessCode(null);
-				studentService.saveStudent(student);
-				
-				
-				
-				return "stu_sel_exam";
+
+			if (accessID != null) {
+
+				if (accessID.equals((String) request.getParameter("accessCode"))) {
+					List<Category> listOfCategories = categoryService.getAllCategory();
+					// List<SubCategory> listOfSubCategories =
+					// subCategoryService.getSubCategoryByID(id);
+					List<SubCategory> listOfSubCategories = subCategoryService.getAllSubCategory();
+					model.addAttribute("listOfCategories", listOfCategories);
+					model.addAttribute("listOfSubcategories", listOfSubCategories);
+
+					// access-code delete after login
+					student.setAccessCode(null);
+					studentService.saveStudent(student);
+
+					return "stu_sel_exam";
+				}
 			}
-			}
-			
-			
+
 		}
-		
-		System.out.println("*********************** if incorrect access id");
-		
 		return "stu_login";
+	}
+
+	@RequestMapping(value = "/addStudent", method = RequestMethod.GET)
+	public String showAddStudentPage(Model model) {
+		return "addStudent";
 	}
 
 	@RequestMapping(method = RequestMethod.GET)
 	public String getAll(Model model) {
-		/* LOG.info("getting all students"); */
 		model.addAttribute("listOfStudents", studentService.getAllStudent());
-		// List<Student> students = studentService.getAllStudent();
-
-		/*
-		 * if (students == null || students.isEmpty()){ LOG.info(
-		 * "no student found"); return new
-		 * ResponseEntity<List<Student>>(HttpStatus.NO_CONTENT); }
-		 */
-
-		// return new ResponseEntity<List<Student>>(students, HttpStatus.OK);
 		return "coach_home_page";
 	}
 
 	// Get student by ID------
 
-	@RequestMapping(value = "{id}", method = RequestMethod.GET)
-	public ResponseEntity<Student> get(@PathVariable("id") Long id) {
-
+	@RequestMapping(value = "/edit/{id}", method = RequestMethod.GET)
+	public String get(@PathVariable("id") Long id, Model model) {
+		System.out.println("----------------------************************");
 		Student student = studentService.getStudentByID(id);
-
-		/*
-		 * if (user == null){ LOG.info("student with id {} not found", id);
-		 * return new ResponseEntity<User>(HttpStatus.NOT_FOUND); }
-		 */
-
-		return new ResponseEntity<Student>(student, HttpStatus.OK);
+		model.addAttribute("student", student);
+		return "editStudent";
 	}
 
 	// Add student ------
@@ -134,41 +111,42 @@ public class StudentController {
 	}
 
 	// Update existing student-----
+	@RequestMapping(value = "/edit", method = RequestMethod.PUT)
+	public String update(@ModelAttribute Student student, RedirectAttributes rm, Model model) {
 
-	@RequestMapping(value = "{id}", method = RequestMethod.PUT)
-	public ResponseEntity<Student> update(@PathVariable Long id, @RequestBody Student student) {
-		// LOG.info("updating student: {}", employee);
-		Student currentStudent = studentService.getStudentByID(id);
+		// rm.addFlashAttribute("studentDeleteMessage", "Student has been
+		// successfully deleted!");
+		//Long id = student.getId();
 
-		/*
-		 * if (currentStudent == null){ LOG.info("Student with id {} not found",
-		 * id); return new ResponseEntity<User>(HttpStatus.NOT_FOUND); }
-		 */
+		studentService.saveStudent(student);
+		// List<Student> listOfStudents = studentService.getAllStudent();
+		List<Student> students = studentService.getAllStudent();
+		model.addAttribute("listOfStudent", students);
+		// return "listStudent";
 
-		studentService.saveStudent(currentStudent);
-		return new ResponseEntity<Student>(currentStudent, HttpStatus.OK);
+		// studentService.deleteStudentByID(id);
+		// return new ResponseEntity<Void>(HttpStatus.OK);
+		return "redirect:/employee/listStudent";
+		// return "studentList";
 	}
 
 	// Delete student -----
 
 	@RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
 	public String delete(@PathVariable("id") Long id, RedirectAttributes rm) {
-		// LOG.info("deleting student with id: {}", id);
-		// Student student = studentService.getStudentByID(id);
-
-		/*
-		 * if (student == null){ // LOG.info(
-		 * "Unable to delete. Student with id {} not found", id);
-		 * 
-		 * return new ResponseEntity<Void>(HttpStatus.NOT_FOUND); }
-		 */
 
 		System.out.println("here im");
+		System.out.println("**************************************");
+		System.out.println(id);
 
 		rm.addFlashAttribute("studentDeleteMessage", "Student has been successfully deleted!");
 		studentService.deleteStudentByID(id);
 		// return new ResponseEntity<Void>(HttpStatus.OK);
-		return "redirect:/coach/studentList";
+		return "redirect:/employee/listStudent";
+		// return "studentList";
 	}
+
+
+	
 
 }

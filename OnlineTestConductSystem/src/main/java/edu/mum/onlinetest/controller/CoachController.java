@@ -83,6 +83,6 @@ public class CoachController {
 		model.addAttribute("listOfStudents", listOfStudents);
 
 		// return new ResponseEntity<Void>(HttpStatus.OK);
-		return "list_student_detail";
+		return "coachListStudent";
 	}
 }
