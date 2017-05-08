@@ -21,7 +21,9 @@ public class CategoryServiceImpl implements CategoryServiceInterface{
 	
 	@Override
 	public List<Category> getAllCategory() {
+
 		List<Category> categories= (List<Category>) dao.getAllCategory();
+
 		/*for(Category category: categories){
 			Logger.getLogger("Category contains subcategories size:"+category.getSubcategories().size());
 			for(SubCategory subCategory: category.getSubcategories()){

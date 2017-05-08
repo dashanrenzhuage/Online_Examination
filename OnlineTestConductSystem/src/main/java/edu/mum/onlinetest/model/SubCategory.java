@@ -10,6 +10,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
@@ -20,6 +21,7 @@ public class SubCategory {
 	@GeneratedValue
 	private Long id;
 	private String subCatName;
+
 	private boolean flag =true;
 	public boolean isFlag() {
 		return flag;
@@ -29,11 +31,19 @@ public class SubCategory {
 		this.flag = flag;
 	}
 
+
 	@ManyToOne(fetch= FetchType.LAZY)
-	@JoinColumn(name = "category_id", nullable = false)
-	@JsonIgnore
+	@JsonBackReference
+	/*@ManyToOne
+	@JoinColumn(name = "category_id", nullable = false)*/
 	private Category category;
 	
+	private String grade;
+	
+	
+	//@OneToMany(fetch = FetchType.EAGER)
+	//private List<Question>questions;
+
 //	@JsonIgnore
 	/*@OneToMany(fetch= FetchType.LAZY, cascade = CascadeType.ALL)
 	private List<Question> questions;
@@ -63,6 +73,18 @@ public class SubCategory {
 	public void setQuestions(List<Question> questions) {
 		this.questions = questions;
 	}
+	public String getSubCategoryName() {
+		return subCategoryName;
+	}
+	public void setSubCategoryName(String subCategoryName) {
+		this.subCategoryName = subCategoryName;
+	}
+	@Override
+	public String toString() {
+		return "SubCategory [Id=" + Id + ", subCategoryName=" + subCategoryName + ", questions=" + questions + "]";
+	}
+	
+	
 */
 	
 	public Long getId() {
@@ -80,9 +102,7 @@ public class SubCategory {
 	public void setSubCatName(String subCatName) {
 		this.subCatName = subCatName;
 	}
-	
-	
-	
+
 	
 	
 }

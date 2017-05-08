@@ -9,6 +9,7 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
@@ -19,12 +20,18 @@ public class Category {
 	@GeneratedValue
 	private Long id;
 	private String name;
+
 	
 	private boolean flag =true;
 	
 	
 
+
+
+	@JsonBackReference
+
 	@OneToMany( cascade = CascadeType.ALL, fetch=FetchType.LAZY,mappedBy="category")
+
 	private List<SubCategory>subcategories;
 	
 	public List<SubCategory> getSubcategories() {

@@ -1,5 +1,6 @@
 package edu.mum.onlinetest.parser;
 
+import java.io.Closeable;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -14,12 +15,12 @@ import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 public class XLSXParser {
-	public List<List<String>> getQuestion(){
+	public List<List<String>> getQuestions(){
 //		List<String> singleQuesList = new ArrayList<String>();
 		List<List<String>> listOfQues = new ArrayList<List<String>>();
 
 		try {
-			File myFile = new File("E:\\data\\javaQuesCore.xlsx");
+			File myFile = new File("E:\\data\\javaQues.xlsx");
 			FileInputStream fis = new FileInputStream(myFile);
 
 			// Finds the workbook instance for XLSX file
@@ -42,8 +43,10 @@ public class XLSXParser {
 					Cell cell = cellIterator.next();
 					switch (cell.getCellType()) {
 					case Cell.CELL_TYPE_STRING:
+						if(cell.getStringCellValue() != null){
 						singleQuesList.add(cell.getStringCellValue());
 						System.out.println(cell.getStringCellValue() + "\t");
+						}
 						break;
 					case Cell.CELL_TYPE_NUMERIC:
 						singleQuesList.add(cell.getStringCellValue());
@@ -62,7 +65,8 @@ public class XLSXParser {
 
 			}
 			fis.close();
-			myWorkBook.close();
+			((Closeable) myWorkBook).close();
+			
 		} catch (FileNotFoundException fe) {
 			fe.printStackTrace();
 		} catch (IOException ie) {

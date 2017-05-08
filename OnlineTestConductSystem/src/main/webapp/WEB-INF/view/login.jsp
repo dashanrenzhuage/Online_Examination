@@ -11,6 +11,7 @@
 <title>Login Page</title>
 </head>
 <body>
+
 <h1> Login Page</h1>
 
 <form action="<spring:url value="/postLogin"></spring:url>" method="post">
@@ -22,5 +23,6 @@
 	 <input type="checkbox" name="keepMe">Remember Me?
 	<input type="submit"/>
 </form>
+
 </body>
 </html>

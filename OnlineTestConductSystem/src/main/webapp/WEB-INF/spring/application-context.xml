@@ -73,6 +73,8 @@
     </property>  
 	</bean>  
  
+	<!-- Added Jasper Report -->
+	<import resource="jasper-views.xml" />
 
 
 </beans>

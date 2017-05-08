@@ -11,9 +11,17 @@ public class Student extends Person{
 
 	
 	private String email;
-	private String accessId;
+
+	private String accessCode;
 	
-	
+	public String getAccessCode() {
+		return accessCode;
+	}
+
+	public void setAccessCode(String accessCode) {
+		this.accessCode = accessCode;
+	}
+
 
 	@OneToOne
 	private Test test;
@@ -44,11 +52,19 @@ public class Student extends Person{
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	public String getAccessId() {
-		return accessId;
+
+	@Override
+	public String toString() {
+		return "Student [email=" + email + ", accessCode=" + accessCode + ", test=" + test + ", report=" + report + "]";
 	}
 
-	public void setAccessId(String accessId) {
-		this.accessId = accessId;
-	}
+	
+
+	
+	/*Added Jasper Report*/
+	/*public Student(String email) {
+		this.email = email;
+	}*/
+	
+
 }
