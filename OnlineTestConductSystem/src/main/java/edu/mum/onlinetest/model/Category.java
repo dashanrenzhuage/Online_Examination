@@ -3,6 +3,7 @@ package edu.mum.onlinetest.model;
 import java.util.List;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -19,12 +20,21 @@ public class Category {
 	private Long id;
 	private String name;
 	
+	private boolean flag =true;
 	
+	
+
 	@OneToMany( cascade = CascadeType.ALL, fetch=FetchType.LAZY,mappedBy="category")
 	private List<SubCategory>subcategories;
 	
 	public List<SubCategory> getSubcategories() {
 		return subcategories;
+	}
+	public boolean isFlag() {
+		return flag;
+	}
+	public void setFlag(boolean flag) {
+		this.flag = flag;
 	}
 	public void setSubcategories(List<SubCategory> subcategories) {
 		this.subcategories = subcategories;

@@ -15,13 +15,13 @@
 		<property name="dataSource" ref="dataSource" />
 		<property name="packagesToScan" value="edu.mum.onlinetest.model" />
 		<property name="jpaVendorAdapter" ref="hibernateJpaVendorAdapter">
-
+		
 		</property>
 		<property name="jpaProperties">
 			<props>
 				<prop key="hibernate.hbm2ddl.auto">create</prop>
 				<prop key="hibernate.hbm2ddl.auto">update</prop>
-				
+				<prop key="hibernate.enable_lazy_load_no_trans">true</prop>
 				<prop key="hibernate.dialect">org.hibernate.dialect.MySQL5InnoDBDialect</prop>
 				<prop key="hibernate.show_sql">true</prop>
 			</props>
@@ -67,7 +67,8 @@
               <prop key="mail.smtp.auth">true</prop>  
               <prop key="mail.smtp.socketFactory.port">465</prop>  
               <prop key="mail.smtp.socketFactory.class">javax.net.ssl.SSLSocketFactory</prop>  
-              <prop key="mail.smtp.port">465</prop>  
+              <prop key="mail.smtp.port">465</prop> 
+               
         </props>  
     </property>  
 	</bean>  

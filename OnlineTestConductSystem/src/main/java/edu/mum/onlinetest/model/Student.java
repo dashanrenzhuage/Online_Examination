@@ -11,7 +11,10 @@ public class Student extends Person{
 
 	
 	private String email;
+	private String accessId;
 	
+	
+
 	@OneToOne
 	private Test test;
 	@OneToOne
@@ -40,5 +43,12 @@ public class Student extends Person{
 
 	public void setEmail(String email) {
 		this.email = email;
+	}
+	public String getAccessId() {
+		return accessId;
+	}
+
+	public void setAccessId(String accessId) {
+		this.accessId = accessId;
 	}
 }

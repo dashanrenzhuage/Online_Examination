@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,13 +15,20 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import edu.mum.onlinetest.model.Category;
+import edu.mum.onlinetest.model.SubCategory;
 import edu.mum.onlinetest.service.CategoryServiceInterface;
+import edu.mum.onlinetest.service.SubCategoryInterface;
+import edu.mum.onlinetest.serviceImpl.SubCategoryImpl;
 
 @RestController
 @RequestMapping("/category")
 public class CategoryController {
 	@Autowired
 	CategoryServiceInterface categoryService;
+	
+	@Autowired
+	
+	SubCategoryInterface subCategoryService;
 	
 	// Get all Category------
 	
@@ -93,7 +101,18 @@ public class CategoryController {
 	            return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
 	        }
 
-	        categoryService.deleteCategoryByID(id);
+	        Category categoryToDelete = categoryService.getCategoryByID(id);
+	        categoryToDelete.setFlag(false);
+	       
+	        
+	        List<SubCategory>subCategories = subCategoryService.getSubcategoryByCategory(categoryToDelete);
+	        subCategories.forEach(sc->{
+	        	SubCategory subcategory = subCategoryService.getSubCategoryByID(sc.getId());
+	        	subcategory.setFlag(false);
+	        	subCategoryService.saveSubCategory(subcategory);
+	        });
+	        categoryService.saveCategory(categoryToDelete);
+	        
 	        return new ResponseEntity<Void>(HttpStatus.OK);
 	    }
 	

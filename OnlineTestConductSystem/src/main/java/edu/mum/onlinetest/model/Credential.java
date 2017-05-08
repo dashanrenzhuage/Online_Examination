@@ -17,14 +17,9 @@ public class Credential {
 	private Long id;
 	private String username;
 	private String password;
-	private boolean enabled;
+	private boolean enabled=true;
 
-	public Credential(String username, String password, boolean enabled, Role role) {
-		this.username = username;
-		setPassword(password);
-		this.enabled = enabled;
-		this.role = role;
-	}
+	
 
 	public Credential() {
 	}
@@ -53,8 +48,6 @@ public class Credential {
 	}
 
 	public void setPassword(String password) {
-		if (!Based64Util.isValidMD5(password))
-			password = Based64Util.md5(password);
 		this.password = password;
 	}
 

@@ -23,7 +23,7 @@ import edu.mum.onlinetest.serviceImpl.MailServiceImpl;
 import edu.mum.onlinetest.serviceImpl.StudentServiceImpl;
 
 @Controller
-@RequestMapping("coach")
+@RequestMapping("/coach")
 public class CoachController {
 
 	@Autowired
@@ -33,6 +33,11 @@ public class CoachController {
 	@Autowired
 	StudentServiceImpl studentService;
 
+	@RequestMapping(method = RequestMethod.GET)
+	public String coachHome(){
+		return "coach_home_page";
+	}
+	
 	@RequestMapping(value = "/student/{id}", method = RequestMethod.GET)
 	public String generateId(@PathVariable("id") Long id, Model model, RedirectAttributes rm) {
 		// LOG.info("deleting category with id: {}", id);

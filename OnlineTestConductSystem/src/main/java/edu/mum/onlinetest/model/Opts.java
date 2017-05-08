@@ -13,6 +13,16 @@ public class Opts {
 	private Long id;
 	private String options;
 	
+	private boolean isTrue = false;
+	
+	public boolean isTrue() {
+		return isTrue;
+	}
+
+	public void setTrue(boolean isTrue) {
+		this.isTrue = isTrue;
+	}
+
 	public Long getId() {
 		return id;
 	}
