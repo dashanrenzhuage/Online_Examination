@@ -1,49 +1,134 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Created with Jaspersoft Studio version 6.3.1.final using JasperReports Library version 6.3.1  -->
-<!-- 2017-05-04T14:08:46 -->
+<!-- 2017-05-07T14:27:48 -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="check-report" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="26099c02-11f3-4c31-b39e-b1520f40ed10">
 	<queryString>
 		<![CDATA[]]>
 	</queryString>
+	<field name="name" class="java.lang.String"/>
+	<field name="address" class="java.lang.String"/>
+	<field name="email" class="java.lang.String"/>
+	<field name="category" class="java.lang.String"/>
+	<field name="overallGrade" class="java.lang.String"/>
+	<field name="totalMarksObtained" class="java.lang.Integer"/>
+	<field name="subCategoryName" class="java.lang.String"/>
+	<field name="individualMark" class="java.lang.Integer"/>
+	<field name="individualGrade" class="java.lang.String"/>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
 	<title>
-		<band height="79" splitType="Stretch">
+		<band height="36" splitType="Stretch">
 			<staticText>
-				<reportElement x="286" y="22" width="258" height="30" uuid="d6f4895c-5676-4d1c-9ee2-34c0f7c7d48c"/>
-				<text><![CDATA[Student report Using Sub Report Concept]]></text>
+				<reportElement x="283" y="2" width="270" height="30" uuid="0219255b-5cff-4da1-9e42-911c935ce9c8"/>
+				<textElement textAlignment="Center">
+					<font size="22" isBold="true" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Student Report Card]]></text>
 			</staticText>
+			<line>
+				<reportElement x="-20" y="35" width="601" height="1" uuid="5d9883e5-486e-4c9a-b74b-225ed555b7c7"/>
+			</line>
 		</band>
 	</title>
 	<pageHeader>
-		<band height="131" splitType="Stretch">
-			<subreport>
-				<reportElement x="0" y="8" width="545" height="115" uuid="ef625a46-2ecf-4d74-ace8-c45ab3546830"/>
-				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
-				<subreportExpression><![CDATA["src/main/resources/check-report-student.jasper"]]></subreportExpression>
-			</subreport>
+		<band height="72" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="3" width="70" height="20" uuid="2c5572f4-fd25-4088-ad7d-28560a71605f"/>
+				<text><![CDATA[Name]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="80" y="3" width="230" height="20" uuid="0ee773ca-e173-4e10-9e43-e763f0724ed0"/>
+				<textFieldExpression><![CDATA[$F{name}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="25" width="70" height="24" uuid="f802a0ca-0637-4fbf-aaa0-187efb4851cf"/>
+				<text><![CDATA[Address]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="80" y="25" width="230" height="24" uuid="25795b71-e903-4e2a-a334-46637d1f0a5c"/>
+				<textFieldExpression><![CDATA[$F{address}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="49" width="70" height="22" uuid="6b4329bc-0fb2-4ba3-bcda-cc355767406a"/>
+				<text><![CDATA[Email ID]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="80" y="49" width="230" height="22" uuid="2991172d-81a6-4285-88e1-db51a1ce5217"/>
+				<textFieldExpression><![CDATA[$F{email}]]></textFieldExpression>
+			</textField>
 		</band>
 	</pageHeader>
 	<columnHeader>
-		<band height="61" splitType="Stretch"/>
+		<band height="102" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="5" width="70" height="23" uuid="5dd0fc12-8e49-4d50-b1cf-3bb1e03eeee1"/>
+				<textElement>
+					<font size="16"/>
+				</textElement>
+				<text><![CDATA[Category]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="76" y="6" width="230" height="22" uuid="4c6e4b40-b441-42c5-8dd2-b5c27cb5d8da"/>
+				<textElement>
+					<font size="16"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{category}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="340" y="5" width="100" height="30" uuid="8dc0e828-7d03-4eb7-aa50-7320e624b49b"/>
+				<text><![CDATA[Overall Grade:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="449" y="5" width="100" height="30" uuid="34d7723d-b700-44d7-8589-110a3e1207f1"/>
+				<textFieldExpression><![CDATA[$F{overallGrade}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="337" y="38" width="100" height="30" uuid="f393645d-feb1-4ab0-82a4-1a5ed8aacba8"/>
+				<text><![CDATA[Total Marks Obtained]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="449" y="37" width="100" height="30" uuid="9a2a81f5-cbe2-42bf-a3f9-d7cf1604f403"/>
+				<textFieldExpression><![CDATA[$F{totalMarksObtained}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="-20" y="0" width="611" height="1" uuid="3937d062-dc1f-4700-ae86-fcf96110d5b3"/>
+			</line>
+			<line>
+				<reportElement x="-20" y="74" width="601" height="1" uuid="f35f3e83-388f-4139-afbb-804de4f34c3c"/>
+			</line>
+			<staticText>
+				<reportElement x="80" y="79" width="110" height="20" uuid="7439e1b4-2173-461c-a55e-c1287680931c"/>
+				<text><![CDATA[subCategoryName]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="200" y="79" width="100" height="20" uuid="040ef4da-9ad5-4a52-b5ee-edfd08d9e070"/>
+				<text><![CDATA[individualMark]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="306" y="79" width="100" height="20" uuid="27792579-0522-4669-8fda-1bfe8264e146"/>
+				<text><![CDATA[individualGrade]]></text>
+			</staticText>
+		</band>
 	</columnHeader>
 	<detail>
-		<band height="233" splitType="Stretch">
-			<subreport>
-				<reportElement x="0" y="10" width="544" height="180" uuid="dc7e6c7c-4f6a-4fe5-be8f-ada84df82543"/>
-				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
-				<subreportExpression><![CDATA["src/main/resources/check-report-subcategories.jasper"]]></subreportExpression>
-			</subreport>
+		<band height="23" splitType="Stretch">
+			<textField>
+				<reportElement x="80" y="4" width="110" height="16" uuid="3c52b482-7d84-464d-8cdb-ef0f54881596"/>
+				<textFieldExpression><![CDATA[$F{subCategoryName}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="200" y="4" width="100" height="16" uuid="9aa07f35-bfa8-4c24-a47e-81465d88faa6"/>
+				<textFieldExpression><![CDATA[$F{individualMark}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="306" y="4" width="100" height="16" uuid="a4a0cee3-837a-40b3-9b35-ba66808151d3"/>
+				<textFieldExpression><![CDATA[$F{individualGrade}]]></textFieldExpression>
+			</textField>
 		</band>
 	</detail>
 	<columnFooter>
-		<band height="50" splitType="Stretch">
-			<staticText>
-				<reportElement x="204" y="13" width="100" height="30" uuid="718d38a3-0121-4ff1-9b1c-03cad5bd608a"/>
-				<text><![CDATA[Overall Grade :]]></text>
-			</staticText>
-		</band>
+		<band height="50" splitType="Stretch"/>
 	</columnFooter>
 	<pageFooter>
 		<band height="54" splitType="Stretch"/>

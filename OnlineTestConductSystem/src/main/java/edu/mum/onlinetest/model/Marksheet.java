@@ -19,6 +19,10 @@ public class Marksheet {
 	
 	private String category;
 	private String subCategoryName;
+	private String individualGrade;
+	private int individualMark;
+	private String overallGrade;
+	private int totalMarksObtained;
 	
 	
 	
@@ -83,6 +87,30 @@ public class Marksheet {
 		return "Marksheet [id=" + id + ", studentId=" + studentId + ", name=" + name + ", email=" + email
 				+ ", testDate=" + testDate + ", address=" + address + ", grade=" + grade
 				+ "]";
+	}
+	public String getOverallGrade() {
+		return overallGrade;
+	}
+	public void setOverallGrade(String overallGrade) {
+		this.overallGrade = overallGrade;
+	}
+	public int getTotalMarksObtained() {
+		return totalMarksObtained;
+	}
+	public void setTotalMarksObtained(int totalMarksObtained) {
+		this.totalMarksObtained = totalMarksObtained;
+	}
+	public String getIndividualGrade() {
+		return individualGrade;
+	}
+	public void setIndividualGrade(String individualGrade) {
+		this.individualGrade = individualGrade;
+	}
+	public int getIndividualMark() {
+		return individualMark;
+	}
+	public void setIndividualMark(int individualMark) {
+		this.individualMark = individualMark;
 	}
 	
 	
