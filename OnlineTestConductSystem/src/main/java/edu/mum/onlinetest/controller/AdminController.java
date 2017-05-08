@@ -22,7 +22,7 @@ import edu.mum.onlinetest.serviceImpl.CoachServiceImpl;
 import edu.mum.onlinetest.serviceImpl.StudentServiceImpl;
 
 @Controller
-@RequestMapping("/admin")
+@RequestMapping("/employee")
 public class AdminController {
 	@Autowired
 	EmployeeServiceInterface employeeService;
@@ -35,7 +35,7 @@ public class AdminController {
 	public String getEmployees(Model model) {
 	model.addAttribute("employees",employeeService.getAllEmployee());
 	
-	return "adminHomepage";
+	return "adminHomePage";
 	}
 
 	// Get employee by ID------

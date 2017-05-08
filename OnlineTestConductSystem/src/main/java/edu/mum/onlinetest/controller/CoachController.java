@@ -42,6 +42,12 @@ public class CoachController {
 	@Autowired
 	ReportServiceImpl reportService;
 	
+	
+	@RequestMapping( method = RequestMethod.GET)
+	public String coachHomepahe(Model model){
+		return "coach_home_page";
+	}
+	
 	@RequestMapping(value = "/student/{id}", method = RequestMethod.GET)
 	public String generateId(@PathVariable("id") Long id, Model model, RedirectAttributes rm) {
 		// LOG.info("deleting category with id: {}", id);
