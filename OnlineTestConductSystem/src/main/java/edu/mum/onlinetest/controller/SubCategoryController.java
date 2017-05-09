@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.util.UriComponentsBuilder;
 
@@ -26,11 +27,63 @@ import edu.mum.onlinetest.service.SubCategoryInterface;
 @RequestMapping("/subcategories")
 public class SubCategoryController {
 
-	@Autowired
-	SubCategoryInterface subCategoryService;
+	
+		@Autowired
+		SubCategoryInterface subCategoryService;
+	
+		@Autowired
+		CategoryServiceInterface categoryService;
+		
 
-	@Autowired
-	CategoryServiceInterface categoryService;
+		 //Add category ------
+		 
+		 @RequestMapping(method = RequestMethod.POST)
+		    public ResponseEntity<Void> create(@RequestBody SubCategory subCategory, UriComponentsBuilder ucBuilder){
+
+
+
+
+			 subCategory.setCategory(categoryService.getCategoryByID((long) 8));
+
+
+			subCategoryService.saveSubCategory(subCategory);
+		        HttpHeaders headers = new HttpHeaders();
+		        return new ResponseEntity<Void>(headers, HttpStatus.CREATED);
+	    }
+		 @RequestMapping(value = "{id}", method = RequestMethod.DELETE)
+		    public ResponseEntity<Void> delete(@PathVariable("id") Long id){
+		        //LOG.info("deleting category with id: {}", id);
+			 SubCategory subCategry = subCategoryService.getSubCategoryByID(id);
+
+		        if (subCategry == null){
+		          //  LOG.info("Unable to delete. Category with id {} not found", id);
+		        	
+		            return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
+		        }
+
+		        SubCategory subCategoryToDelete = subCategoryService.getSubCategoryByID(id);
+		        subCategoryToDelete.setFlag(false);
+		        subCategoryService.saveSubCategory(subCategoryToDelete);
+		        return new ResponseEntity<Void>(HttpStatus.OK);
+		    }
+		
+		// Get all SubCategory------
+			
+			@RequestMapping(value = "/getSubCategoryFromCategory/{id}", method = RequestMethod.GET)
+			public @ResponseBody List<SubCategory> getSubCategoryByCategory(@RequestBody @PathVariable("id") Long id){
+				System.out.println("--------------category---------herhe");
+				List<SubCategory> listOfSubcategories = subCategoryService.getListOfSubCategoryFromCategoryID(id);
+				for(SubCategory l : listOfSubcategories){
+					System.out.println(l.getSubCatName());
+				}
+				
+				return listOfSubcategories;
+				
+
+}
+
+
+	
 
 	// Get all Category------
 

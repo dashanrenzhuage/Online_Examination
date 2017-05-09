@@ -27,6 +27,12 @@
 <link href="<c:url value = '/resources/css/student.css'></c:url>"
 	rel="stylesheet">
 
+<script
+	src='<spring:url value="/resources/js/jquery-3.2.1.js"></spring:url>'></script>
+
+<script
+	src='<spring:url value="/resources/js/categoryAndSubCategorySelection.js" ></spring:url>'></script>
+
 <title>MUM Online Test Conduct System</title>
 </head>
 <body class="nav-md">
@@ -161,7 +167,7 @@
 			<!-- page content -->
 			<div class="right_col" role="main">
 				<form action="<spring:url value="/question/generate"/>" method="get">
-					<div id="category" class="form-group">
+					<div class="form-group">
 						<div class="row">
 							<div class="col-sm-1"></div>
 							<div class="col-sm-11">
@@ -173,14 +179,15 @@
 						<div class="row">
 							<div class="col-sm-1"></div>
 							<div class="col-sm-2">
-								<select id="category" name="category" style="padding: 5px 30px ;">
+								<select id="category" name="category" style="padding: 5px 30px;">
+									<option>--Select Category--</option>
 									<c:forEach var="item" items="${listOfCategories}">
 										<option value="${item.id}">${item.name}</option>
 									</c:forEach>
 								</select>
 							</div>
 						</div>
-					</div>
+					</div>	
 					<div id="subcategory" class="form-group">
 						<div class="row">
 							<div class="col-sm-1"></div>
@@ -193,11 +200,12 @@
 						<div class="row">
 							<div class="col-sm-1"></div>
 							<div class="col-sm-4">
+
 								<select id="subCategory" name="subCategory"
 									style="padding: 5px 20px;" multiple="multiple">
-									<c:forEach var="item" items="${listOfSubcategories}">
+									<%-- <c:forEach var="item" items="${listOfSubcategories}">
 										<option value="${item.id}">${item.subCatName}</option>
-									</c:forEach>
+									</c:forEach> --%>
 								</select>
 							</div>
 						</div>

@@ -24,9 +24,7 @@
 <!-- Custom Theme Style -->
 <link href="<c:url value = '/resources/css/custom.min.css'></c:url>"
 	rel="stylesheet">
-<link href="<c:url value = '/resources/css/report.css'></c:url>"
-	rel="stylesheet">
-<link href="<c:url value = '/resources/css/coach.css'></c:url>"
+<link href="<c:url value = '/resources/css/admin.css'></c:url>"
 	rel="stylesheet">
 
 
@@ -34,15 +32,13 @@
 <title>MUM Online Test Conduct System</title>
 </head>
 <body class="nav-md">
-
-
 	<div class="container body">
 		<div class="main_container">
 			<div class="col-md-3 left_col">
 				<div class="left_col scroll-view">
 					<div class="navbar nav_title" style="border: 0;">
-						<a href="index.html" class="site_title"><i class="fa fa-user"></i>
-							<span>Coach</span></a>
+						<a href="admin_addcoach.html" class="site_title"><i
+							class="fa fa-user"></i> <span>Administrator</span></a>
 					</div>
 
 					<div class="clearfix"></div>
@@ -50,9 +46,8 @@
 					<!-- menu profile quick info -->
 					<div class="profile clearfix">
 						<div class="profile_pic">
-							<img
-								src='<spring:url value="/resources/images/img.jpg"></spring:url>'
-								alt="..." class="img-circle profile_img">
+							<img src="images/img.jpg" alt="..."
+								class="img-circle profile_img">
 						</div>
 						<div class="profile_info">
 							<span>Welcome,</span>
@@ -69,15 +64,34 @@
 						<div class="menu_section">
 							<h3>General</h3>
 							<ul class="nav side-menu">
-								<li><a><i class="fa fa-home"></i> Home <span
+								<li><a><i class="fa fa-home"></i> Coach <span
 										class="fa fa-chevron-down"></span></a>
 									<ul class="nav child_menu">
-										<li><a href="<c:url value = '/students'></c:url>">Home
-												Page </a></li>
-										<li><a
-											href="<c:url value = '/coach/studentList'></c:url>">List
-												of Student</a></li>
-									</ul></li>
+										<li><a href="<spring:url value="/employee/add" />">Add
+												Coach</a></li>
+										<li><a href="<spring:url value="/employee/listCoach" />">List
+												Of Coach</a></li></li>
+							</ul>
+							</li>
+							<li><a><i class="fa fa-home"></i> Administrator <span
+									class="fa fa-chevron-down"></span></a>
+								<ul class="nav child_menu">
+									<li><a href="<spring:url value="/employee/addAdmin" />">Add
+											Admin</a></li>
+									<li><a href="<spring:url value="/employee/listAdmin" />">List
+											Of Admin</a></li></li>
+							</ul>
+							</li>
+
+							<li><a><i class="fa fa-home"></i> Student <span
+									class="fa fa-chevron-down"></span></a>
+								<ul class="nav child_menu">
+									<li><a href="<spring:url value="/students/addStudent" />">Add
+											Studnet</a></li>
+									<li><a href="<spring:url value="/students/listStudent" />">List
+											Of Student</a></li></li>
+							</ul>
+							</li>
 							</ul>
 						</div>
 
@@ -112,9 +126,8 @@
 					<ul class="nav navbar-nav navbar-right">
 						<li class=""><a href="javascript:;"
 							class="user-profile dropdown-toggle" data-toggle="dropdown"
-							aria-expanded="false"> <img
-								src='<spring:url value="/resources/images/img.jpg"></spring:url>'
-								alt="">John Doe <span class=" fa fa-angle-down"></span>
+							aria-expanded="false"> <img src="images/img.jpg" alt="">John
+								Doe <span class=" fa fa-angle-down"></span>
 						</a>
 							<ul class="dropdown-menu dropdown-usermenu pull-right">
 								<li><a href="javascript:;"> Profile</a></li>
@@ -134,9 +147,8 @@
 							<ul id="menu1" class="dropdown-menu list-unstyled msg_list"
 								role="menu">
 								<li><a> <span class="image"><img
-											src='<spring:url value="/resources/images/img.jpg"></spring:url>'
-											alt="Profile Image" /></span> <span> <span>John Smith</span>
-											<span class="time">3 mins ago</span>
+											src="images/img.jpg" alt="Profile Image" /></span> <span> <span>John
+												Smith</span> <span class="time">3 mins ago</span>
 									</span> <span class="message"> Film festivals used to be
 											do-or-die moments for movie makers. They were where... </span>
 								</a></li>
@@ -172,126 +184,127 @@
 			</div>
 			<!-- /top navigation -->
 
-
-
 			<!-- page content -->
 			<div class="right_col" role="main">
-				<div id="left_col">
-					<h2 id="report">List Of Student</h2>
-				</div>
+				<div id="coachList">
+					<div class="row">
+						<div class="col-sm-1"></div>
+						<div class="col-sm-10">
+							<table id="c_table" class="table table-hover">
+								<thead>
+									<tr>
+										<th width="20%">Name</th>
+										<th width="20%">Email</th>
+										<th width="20%">Username</th>
+										<th width="20%">Password</th>
+										<th width="20%">Edit</th>
+										<th width="20%">Delete</th>
+									</tr>
+								</thead>
+								<tbody>
 
 
 
-				<c:if test="${not empty successMessage}">
-					<script>
-						setTimeout(function() {
-							$('#successMessage').fadeOut('medium');
-						}, 2000);
-					</script>
-					<div id="successMessage"
-						class="alert alert-success alert-dismissable">
-						<a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
-						<strong>Success!</strong> You have send an access code to the
-						student.
-					</div>
-				</c:if>
-				<c:if test="${not empty studentDeleteMessage}">
-					<script>
-						setTimeout(function() {
-							$('#studentDeleteMessage').fadeOut('medium');
-						}, 2000);
-					</script>
-					<div id="studentDeleteMessage"
-						class="alert alert-danger alert-dismissable">
-						<a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
-						<strong>Success!</strong> You have successfully deleted student.
-					</div>
-				</c:if>
-				<table id="example" class="table table-bordered display" cellspacing="0" width="100%">
-					<thead>
-						<tr>
-							<th>S.N</th>
-							<th>Student ID</th>
-							<th>Name</th>
-							<th>Email</th>
-							<th>Send Access ID</th>
-							<th>View Report</th>
-							<th>Delete</th>
-						</tr>
-					</thead>
-					<tbody>
-						<%
-							int i = 1;
-						%>
-						<c:forEach items="${listOfStudents}" var="std">
 
-							<tr>
-								<td>
-									<%
-										out.print(i);
-											i++;
-									%>
-								</td>
-								<td>${std.id}</td>
-								<td>${std.name}</td>
-								<td>${std.email}</td>
-								<td>
-									<a
-									href="<spring:url value="/coach/student/${std.id}" />"
-									class="btn btn-info" role="button">Send Access ID</a> 
-								</td>
-								<td><a href="<spring:url value="/coach/download/pdf/${std.id}" />" class="btn btn-info" role="button">View
-										Report</a></td>
-								<td>
-								<a data-toggle="modal" data-target="#myModal"
-														class="btn btn-info" role="button">Delete</a>
-									<!-- <button type="button" class="btn btn-info btn-lg"
+									<c:forEach items="${coachList}" var="coach">
+
+										<tr>
+											<td id="hehe">${coach.fName}</td>
+											<%-- <td>${coach.fName}</td> --%>
+											<td>${coach.lName}</td>
+											<%-- <td>${coach.email}</td> --%>
+											<td>${coach.credential.username}</td>
+											<td>${coach.credential.password}</td>
+											<td><a
+												href="<spring:url value="/employee/add/${coach.id}" />">Edit</a></td>
+												<td><a href="<spring:url value="/employee/delete/${coach.id}" />"
+																	class="btn btn-info" role="button">Delete</a></td>
+
+											<!--Delete Coach  -->
+											<%-- <td><a data-toggle="modal" data-target="#myModal"
+												class="btn btn-info" role="button">Delete</a> <!-- <button type="button" class="btn btn-info btn-lg"
 										data-toggle="modal" data-target="#myModal" style="margin:0px;">Send
 										Access ID</button> --> <!-- Modal -->
-									<div class="modal fade" id="myModal" role="dialog">
-										<div class="modal-dialog">
+												<div class="modal fade" id="myModal" role="dialog">
+													<div class="modal-dialog">
 
-											<!-- Modal content-->
-											<div class="modal-content">
-												<div class="modal-header">
-													<button type="button" class="close" data-dismiss="modal">&times;</button>
-													<h4 class="modal-title">
-														<b>Delete Student</b>
-													</h4>
-												</div>
-												<div class="modal-body">
-													<p>Are you sure you want to delete student?</p>
-												</div>
-												<div class="modal-footer">
-													<a href="<spring:url value="/students/delete/${std.id}" />"
-														class="btn btn-info" role="button">Delete</a>
-												</div>
-											</div>
-										</div>
-									</div> 
-								
-								<%-- <a
-									href="<spring:url value="/students/delete/${std.id}" />"
-									class="btn btn-info" role="button">Delete Student</a> --%></td>
-							</tr>
-						</c:forEach>
+														<!-- Modal content-->
+														<div class="modal-content">
+															<div class="modal-header">
+																<button type="button" class="close" data-dismiss="modal">&times;</button>
+																<h4 class="modal-title">
+																	<b>Delete Coach</b>
+																</h4>
+															</div>
+															<div class="modal-body">
+																<p>Are you sure you want to delete coach?</p>
+															</div>
+															<div class="modal-footer">
+																<a href="<spring:url value="/employee/delete/${coach.id}" />"
+																	class="btn btn-info" role="button">Delete</a>
+															</div>
+														</div>
+													</div>
+												</div> --%>
+										</tr>
+									</c:forEach>
 
 
-					</tbody>
-				</table>
+
+
+
+
+
+
+
+<!-- 
+
+
+
+									<tr>
+										<td id="hehe">Tony</td>
+										<td>tony@gmail.com</td>
+										<td>Tony123</td>
+										<td>tony123</td>
+										<td><a href="admin_editcoach.html">Edit</a></td>
+										<td>
+											<button type="button" id="del1" class="btn del"
+												onclick="delCategory(this)">
+												<span class="glyphicon glyphicon-remove"></span>
+											</button>
+										</td>
+									</tr>
+									<tr>
+										<td>George</td>
+										<td>george@gmail.com</td>
+										<td>George</td>
+										<td>george123</td>
+										<td><a href="admin_editcoach.html">Edit</a></td>
+										<td>
+											<button type="button" id="del2" class="btn del"
+												onclick="delCategory(this)">
+												<span class="glyphicon glyphicon-remove"></span>
+											</button>
+										</td>
+									</tr> -->
+								</tbody> 
+							</table>
+						</div>
+						<div class="col-sm-1"></div>
+					</div>
+				</div>
 			</div>
 			<!-- /page content -->
 
 			<!-- footer content -->
 			<footer>
-			<div class="pull-right">&copy; 2011 Maharishi University of
+			<div class="pull-right">&copy; 2017 Maharishi University of
 				Management. All rights reserved.</div>
 			<div class="clearfix"></div>
 			</footer>
 			<!-- /footer content -->
 		</div>
 	</div>
-
 	<!-- jQuery -->
 	<script
 		src='<spring:url value="/resources/js/jquery/dist/jquery.min.js"></spring:url>'></script>
@@ -308,12 +321,8 @@
 	<!-- Custom Theme Scripts -->
 	<script
 		src='<spring:url value="/resources/js/custom.min.js"></spring:url>'></script>
-	<script
-		src='<spring:url value="/resources/js/jquery.dataTables.min.js"></spring:url>'></script>
-	<script
-		src='<spring:url value="/resources/js/dataTables.bootstrap.min.js"></spring:url>'></script>
-	<script
-		src='<spring:url value="/resources/js/data_table.js"></spring:url>'></script>
+	<script src='<spring:url value="/resources/js/admin.js"></spring:url>'></script>
+
 
 
 </body>

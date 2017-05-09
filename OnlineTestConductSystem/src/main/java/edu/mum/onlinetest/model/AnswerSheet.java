@@ -1,6 +1,7 @@
 package edu.mum.onlinetest.model;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -15,9 +16,35 @@ public class AnswerSheet {
 	
 	@OneToMany
 	private List<Answer>answerList;
-	@OneToOne
+	/*@OneToOne
 	private Test test;
+	*/
 	
+	/*private int obtainedTotalMarks;
+	private Map<String, Integer> eachSubCategoryMarksObtained;*/
+	
+	
+	
+	/*
+	
+	public Test getTest() {
+		return test;
+	}
+	public void setTest(Test test) {
+		this.test = test;
+	}*/
+	/*public int getObtainedTotalMarks() {
+		return obtainedTotalMarks;
+	}
+	public void setObtainedTotalMarks(int obtainedTotalMarks) {
+		this.obtainedTotalMarks = obtainedTotalMarks;
+	}
+	public Map<String, Integer> getEachSubCategoryMarksObtained() {
+		return eachSubCategoryMarksObtained;
+	}
+	public void setEachSubCategoryMarksObtained(Map<String, Integer> eachSubCategoryMarksObtained) {
+		this.eachSubCategoryMarksObtained = eachSubCategoryMarksObtained;
+	}*/
 	public int getId() {
 		return id;
 	}
@@ -31,14 +58,14 @@ public class AnswerSheet {
 		this.answerList = answerList;
 	}
 	
-	int marks;
+	/*int marks;
 
 	public int getMarks() {
 		return marks;
 	}
 	public void setMarks(int marks) {
 		this.marks = marks;
-	}
+	}*/
 	
 	
 

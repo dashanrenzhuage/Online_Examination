@@ -42,6 +42,12 @@ public class CoachController {
 	@Autowired
 	ReportServiceImpl reportService;
 	
+	
+	@RequestMapping( method = RequestMethod.GET)
+	public String coachHomepahe(Model model){
+		return "coach_home_page";
+	}
+	
 	@RequestMapping(value = "/student/{id}", method = RequestMethod.GET)
 	public String generateId(@PathVariable("id") Long id, Model model, RedirectAttributes rm) {
 		// LOG.info("deleting category with id: {}", id);
@@ -83,6 +89,6 @@ public class CoachController {
 		model.addAttribute("listOfStudents", listOfStudents);
 
 		// return new ResponseEntity<Void>(HttpStatus.OK);
-		return "list_student_detail";
+		return "coachListStudent";
 	}
 }

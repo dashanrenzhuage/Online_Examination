@@ -11,5 +11,9 @@ public interface EmployeeServiceInterface {
 	public Employee getEmployeeByID(Long id);
 	public void saveEmployee(Employee employee);
 	public void deleteEmployeeByID(Long id);
+	public List<Employee> findCoach();
+	public List<Employee> findDataAdmin();
+	public List<Employee> findAdmin();
+	
 
 }

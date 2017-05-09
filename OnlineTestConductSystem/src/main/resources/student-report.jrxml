@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Created with Jaspersoft Studio version 6.3.1.final using JasperReports Library version 6.3.1  -->
-<!-- 2017-05-03T19:58:49 -->
+<!-- 2017-05-07T14:02:54 -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="student-report" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="ec5818d3-9561-4da9-9a0a-48482d2ea13d">
 	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
 	<subDataset name="subLists" uuid="cdbf4eb7-b281-4c5f-b2ae-6e567f7b6703">
@@ -15,6 +15,7 @@
 	<field name="email" class="java.lang.String"/>
 	<field name="name" class="java.lang.String"/>
 	<field name="address" class="java.lang.String"/>
+	<field name="category" class="java.lang.String"/>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
@@ -57,6 +58,14 @@
 			<textField>
 				<reportElement x="110" y="29" width="100" height="24" uuid="7ccc09b1-5e1c-41ee-a1cb-772aeb5b2ff6"/>
 				<textFieldExpression><![CDATA[$F{address}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="82" width="100" height="30" uuid="3702ea35-7240-407a-9218-dcec5ca3030c"/>
+				<text><![CDATA[category]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="110" y="85" width="100" height="30" uuid="7a217899-16cd-4479-bcdc-8e4e8b4df5c1"/>
+				<textFieldExpression><![CDATA[$F{category}]]></textFieldExpression>
 			</textField>
 		</band>
 	</columnHeader>

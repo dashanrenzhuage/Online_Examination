@@ -36,4 +36,20 @@ public class EmployeeServiceImpl implements EmployeeServiceInterface{
 		
 	}
 
+	@Override
+	public List<Employee> findCoach() {
+		return dao.findCoach();
+	}
+
+	@Override
+	public List<Employee> findDataAdmin() {
+		return dao.findDataAdmin();
+	}
+
+	@Override
+	public List<Employee> findAdmin() {
+		
+		return dao.findAdmin();
+	}
+
 }

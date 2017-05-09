@@ -3,22 +3,21 @@ package edu.mum.onlinetest.controller;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-import org.springframework.web.util.UriComponentsBuilder;
 
 import edu.mum.onlinetest.model.Category;
+import edu.mum.onlinetest.model.Employee;
 import edu.mum.onlinetest.model.Student;
 import edu.mum.onlinetest.model.SubCategory;
 import edu.mum.onlinetest.service.CategoryServiceInterface;
@@ -48,128 +47,141 @@ public class StudentController {
 	}
 
 	@RequestMapping(value = "/studentExamSelection", method = RequestMethod.POST)
-	public String studentCategorySubCategorySection(/*@PathVariable("id") Long id*/ HttpServletRequest request, Model model) {
+	public String studentCategorySubCategorySection(
+			/* @PathVariable("id") Long id */ HttpServletRequest request, Model model) {
 		List<Student> students = studentServiceImpl.getAllStudent();
-		
-		System.out.println(request.getParameter("accessCode"));
-		
-		/*if(request.getParameter("accessCode").equals(null)){
-			return "stu_login";
 
-		}*/
-		
-		
-		for(int i=0 ; i< students.size(); i++){
+		System.out.println(request.getParameter("accessCode"));
+
+		for (int i = 0; i < students.size(); i++) {
 			String accessID = students.get(i).getAccessCode();
 			Student student = students.get(i);
-			
-			if(accessID != null){
-			
-			if( accessID.equals((String) request.getParameter("accessCode"))){
-				List<Category> listOfCategories = categoryService.getAllCategory();
-				//List<SubCategory> listOfSubCategories = subCategoryService.getSubCategoryByID(id);
-				List<SubCategory> listOfSubCategories = subCategoryService.getAllSubCategory();
-				model.addAttribute("listOfCategories", listOfCategories);
-				model.addAttribute("listOfSubcategories", listOfSubCategories);
-				
-				
-				
-				
-				//access code delete after login
-				student.setAccessCode(null);
-				studentService.saveStudent(student);
-				
-				
-				
-				return "stu_sel_exam";
+
+			if (accessID != null) {
+
+				if (accessID.equals((String) request.getParameter("accessCode"))) {
+					List<Category> listOfCategories = categoryService.getAllCategory();
+					List<SubCategory> listOfSubCategories = subCategoryService.getAllSubCategory();
+					model.addAttribute("listOfCategories", listOfCategories);
+					model.addAttribute("listOfSubcategories", listOfSubCategories);
+					
+					// access-code delete after login
+					////student.setAccessCode(null);
+					
+					studentService.saveStudent(student);
+
+					return "stu_sel_exam";
+				}
 			}
-			}
-			
-			
+
 		}
-		
-		System.out.println("*********************** if incorrect access id");
-		
 		return "stu_login";
 		//return "stu_sel_exam";
 	}
 
+	// Add Student
+	@RequestMapping(value = "/addStudent", method = RequestMethod.GET)
+	public String showAddStudentPage(@ModelAttribute("newStudent") Student student, Model model) {
+		System.out.println("****************************** student add page");
+		return "addStudent";
+	}
+
+	@RequestMapping(value = "/addStudent", method = RequestMethod.POST)
+	public String addVehicle(@Valid @ModelAttribute("newStudent") Student student, BindingResult result, Model model) {
+		System.out.println("**********************8888888888888888888888888888");
+		if (result.hasErrors()) {
+			return "addStudent";
+		}
+		studentService.saveStudent(student);
+
+		List<Student> listOfStudents = studentService.getAllStudent();
+		System.out.println("******************2inside************");
+		model.addAttribute("listStudent", listOfStudents);
+		return "listStudent";
+	}
+
+	// List of Student
+	@RequestMapping(value = "/listStudent", method = RequestMethod.GET)
+	public String showStudentList(Model model) {
+		System.out.println("******************1inside************");
+		List<Student> listOfStudents = studentService.getAllStudent();
+		System.out.println("******************2inside************");
+		model.addAttribute("listStudent", listOfStudents);
+		return "listStudent";
+	}
+
+	// Coach Home Page
 	@RequestMapping(method = RequestMethod.GET)
 	public String getAll(Model model) {
-		/* LOG.info("getting all students"); */
 		model.addAttribute("listOfStudents", studentService.getAllStudent());
-		// List<Student> students = studentService.getAllStudent();
-
-		/*
-		 * if (students == null || students.isEmpty()){ LOG.info(
-		 * "no student found"); return new
-		 * ResponseEntity<List<Student>>(HttpStatus.NO_CONTENT); }
-		 */
-
-		// return new ResponseEntity<List<Student>>(students, HttpStatus.OK);
 		return "coach_home_page";
 	}
 
 	// Get student by ID------
 
-	@RequestMapping(value = "{id}", method = RequestMethod.GET)
-	public ResponseEntity<Student> get(@PathVariable("id") Long id) {
-
-		Student student = studentService.getStudentByID(id);
-
-		/*
-		 * if (user == null){ LOG.info("student with id {} not found", id);
-		 * return new ResponseEntity<User>(HttpStatus.NOT_FOUND); }
-		 */
-
-		return new ResponseEntity<Student>(student, HttpStatus.OK);
+	@RequestMapping(value = "/testEdit", method = RequestMethod.POST)
+	public String edit(@PathVariable("id") Long id, Model model) {
+		System.out.println("test edit called");
+//		Student student = studentService.getStudentByID(id);
+//		model.addAttribute("student", student);
+		return "editStudent";
 	}
+	
+	@RequestMapping(value = "/saveStudent", method = RequestMethod.POST)
+    public ModelAndView saveEmployee(@ModelAttribute Student student, Model model) {
+     
+        System.out.println("test edit called" + student.getName());
+        System.out.println("test edit called" + student.getId());
+        System.out.println("test edit called" + student.getEmail());
+        studentService.saveStudent(student);
+        List<Student> listOfStudents = studentService.getAllStudent();
+		model.addAttribute("listStudent", listOfStudents);
 
-	// Add student ------
+        return new ModelAndView("redirect:/students/listStudent");
+    }
+	
 
-	@RequestMapping(method = RequestMethod.POST)
-	public ResponseEntity<Void> create(@RequestBody Student student, UriComponentsBuilder ucBuilder) {
-		studentService.saveStudent(student);
-		HttpHeaders headers = new HttpHeaders();
-		return new ResponseEntity<Void>(headers, HttpStatus.CREATED);
+	// Get student by ID------
+
+	@RequestMapping(value = "/edit/{id}", method = RequestMethod.GET)
+	public String get(@PathVariable("id") Long id, Model model) {
+		System.out.println("----------------------************************");
+		Student student = studentService.getStudentByID(id);
+		model.addAttribute("student", student);
+		return "editStudent";
 	}
 
 	// Update existing student-----
+	@RequestMapping(value = "/edit/{id}", method = RequestMethod.POST)
+	public String update(@ModelAttribute("newStudent") Student student, RedirectAttributes rm, Model model, @PathVariable("id") Long id) {
+		System.out.println("999999999999999999999999999999999999999999999999999999999999");
 
-	@RequestMapping(value = "{id}", method = RequestMethod.PUT)
-	public ResponseEntity<Student> update(@PathVariable Long id, @RequestBody Student student) {
-		// LOG.info("updating student: {}", employee);
-		Student currentStudent = studentService.getStudentByID(id);
+		// rm.addFlashAttribute("studentDeleteMessage", "Student has been
+		// successfully deleted!");
+		// Long id = student.getId();
+		// studentService.getStudentByID(id);
 
-		/*
-		 * if (currentStudent == null){ LOG.info("Student with id {} not found",
-		 * id); return new ResponseEntity<User>(HttpStatus.NOT_FOUND); }
-		 */
+		studentService.saveStudent(student);
+		// List<Student> listOfStudents = studentService.getAllStudent();
+		List<Student> students = studentService.getAllStudent();
+		model.addAttribute("listOfStudent", students);
+		// return "listStudent";
 
-		studentService.saveStudent(currentStudent);
-		return new ResponseEntity<Student>(currentStudent, HttpStatus.OK);
+		// studentService.deleteStudentByID(id);
+		// return new ResponseEntity<Void>(HttpStatus.OK);
+		return "redirect:/employee/listStudent";
+		// return "studentList";
 	}
 
 	// Delete student -----
 
 	@RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
-	public String delete(@PathVariable("id") Long id, RedirectAttributes rm) {
-		// LOG.info("deleting student with id: {}", id);
-		// Student student = studentService.getStudentByID(id);
-
-		/*
-		 * if (student == null){ // LOG.info(
-		 * "Unable to delete. Student with id {} not found", id);
-		 * 
-		 * return new ResponseEntity<Void>(HttpStatus.NOT_FOUND); }
-		 */
-
-		System.out.println("here im");
-
+	public String delete(@PathVariable("id") Long id, RedirectAttributes rm, Model model) {
 		rm.addFlashAttribute("studentDeleteMessage", "Student has been successfully deleted!");
 		studentService.deleteStudentByID(id);
-		// return new ResponseEntity<Void>(HttpStatus.OK);
-		return "redirect:/coach/studentList";
+		List<Student> listOfStudents = studentService.getAllStudent();
+		model.addAttribute("listStudent", listOfStudents);
+		return "listStudent";
 	}
 
 }

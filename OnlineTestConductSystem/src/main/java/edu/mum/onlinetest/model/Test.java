@@ -24,25 +24,27 @@ public class Test {
 	
 	@OneToOne
 	private AnswerSheet answersheet;
+	@OneToOne
+	private Result result;
 	
-	@OneToMany
-	private List<Question>questionList;
+	/*@OneToMany
+	private List<Question>questionList;*/
 	
 	private int totalmarks;
 	
 	
-	public List<Question> getQuestionList() {
+	/*public List<Question> getQuestionList() {
 		return questionList;
 	}
 	public void setQuestionList(List<Question> questionList) {
 		this.questionList = questionList;
-	}
-	public AnswerSheet getAnswersheet() {
+	}*/
+	/*public AnswerSheet getAnswersheet() {
 		return answersheet;
 	}
 	public void setAnswersheet(AnswerSheet answersheet) {
 		this.answersheet = answersheet;
-	}
+	}*/
 	public int getId() {
 		return id;
 	}
@@ -66,6 +68,18 @@ public class Test {
 	}
 	public void setTotalmarks(int totalmarks) {
 		this.totalmarks = totalmarks;
+	}
+	public AnswerSheet getAnswersheet() {
+		return answersheet;
+	}
+	public void setAnswersheet(AnswerSheet answersheet) {
+		this.answersheet = answersheet;
+	}
+	public Result getResult() {
+		return result;
+	}
+	public void setResult(Result result) {
+		this.result = result;
 	}
 	
 	

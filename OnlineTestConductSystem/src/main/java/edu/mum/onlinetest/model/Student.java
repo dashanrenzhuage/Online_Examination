@@ -11,8 +11,19 @@ public class Student extends Person{
 
 	
 	private String email;
+
 	private String accessCode;
 	
+	private String phoneNo;
+	
+	public String getPhoneNo() {
+		return phoneNo;
+	}
+
+	public void setPhoneNo(String phoneNo) {
+		this.phoneNo = phoneNo;
+	}
+
 	public String getAccessCode() {
 		return accessCode;
 	}
@@ -20,6 +31,7 @@ public class Student extends Person{
 	public void setAccessCode(String accessCode) {
 		this.accessCode = accessCode;
 	}
+
 
 	@OneToOne
 	private Test test;
@@ -64,5 +76,5 @@ public class Student extends Person{
 		this.email = email;
 	}*/
 	
-	
+
 }

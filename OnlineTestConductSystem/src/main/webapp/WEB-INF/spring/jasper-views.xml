@@ -22,7 +22,7 @@
 	-->
 	<bean id="pdfReport"
 	   class="org.springframework.web.servlet.view.jasperreports.JasperReportsPdfView"
-		p:url="classpath:marksheet-report.jrxml"
+		p:url="classpath:check-report.jrxml"
 		p:reportDataKey="datasource" />
 		
 </beans>
