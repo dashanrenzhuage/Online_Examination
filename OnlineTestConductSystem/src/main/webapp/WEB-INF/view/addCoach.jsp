@@ -64,7 +64,7 @@
                   <li><a><i class="fa fa-home"></i> Coach <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
                       <li>
-                      <a href="<spring:url value="/employee/addCoach" />"
+                      <a href="<spring:url value="/employee/add" />"
 							>Add Coach</a></li>
 					  <li><a href="<spring:url value="/employee/listCoach" />"
 							>List Of Coach</a></li></li>
@@ -83,9 +83,9 @@
                   <li><a><i class="fa fa-home"></i> Student <span class="fa fa-chevron-down"></span></a>
                    <ul class="nav child_menu">
                       <li>
-                      <a href="<spring:url value="/employee/addStudent" />"
+                      <a href="<spring:url value="/students/addStudent" />"
 							>Add Studnet</a></li>
-					  <li><a href="<spring:url value="/employee/listStudent" />"
+					  <li><a href="<spring:url value="/students/listStudent" />"
 							>List Of Student</a></li></li>
                     </ul>
                   </li>
@@ -213,22 +213,36 @@
 
         <!-- page content -->
         <div class="right_col" role="main">
-			<form action="#" method="post">
+        <form:form modelAttribute="newAdmin" method="post" enctype="multipart/form-data">
+			<%-- <form action="add" method="post"> --%>
 			    <div id="addcoach" class="form-group">
 					<h4>Add Coach<h4>
 				</div>
-			    <div id="coachname" class="form-group">
+			    <div id="fName" class="form-group">
 					<div class="row">
 						<div class="col-sm-1"></div>
 						<div class="col-sm-1">
-							<label for="to" class="lab">Name:</label>
+							<label for="to" class="lab">First Name:</label>
 						</div>
 						<div class="col-sm-9">
-							<input type="text" class="form-control" id="cn" name="cn"/>
+							<!-- <input type="text" class="form-control" id="cn" name="cn"/> -->
+							<form:input id="fName" name="fName" path="fName" type="text" />
 						</div>
 					</div>
 				</div>
-				<div id="email_address" class="form-group">
+				<div id="lName" class="form-group">
+					<div class="row">
+						<div class="col-sm-1"></div>
+						<div class="col-sm-1">
+							<label for="to" class="lab">Last Name:</label>
+						</div>
+						<div class="col-sm-9">
+							<!-- <input type="text" class="form-control" id="cn" name="cn"/> -->
+							<form:input id="lName" name="lName" path="lName" type="text" />
+						</div>
+					</div>
+				</div>
+				<!-- <div id="email_address" class="form-group">
 					<div class="row">
 						<div class="col-sm-1"></div>
 						<div class="col-sm-1">
@@ -238,7 +252,18 @@
 							<input type="text" class="form-control" id="ea" name="ea"/>
 						</div>
 					</div>
-				</div>
+				</div> -->
+				<!-- <div id="address" class="form-group">
+					<div class="row">
+						<div class="col-sm-1"></div>
+						<div class="col-sm-1">
+							<label for="subject" class="lab">Address:</label>       what to put in for
+						</div>
+						<div class="col-sm-9">
+							<input type="text" class="form-control" id="ad" name="ad"/>
+						</div>
+					</div>
+				</div> -->
 				<div id="username" class="form-group">
 					<div class="row">
 						<div class="col-sm-1"></div>
@@ -246,7 +271,7 @@
 							<label for="message" class="lab">Username:</label>
 						</div>
 						<div class="col-sm-9">
-							<input type="text" class="form-control" id="un" name="un"/>
+							<form:input id="credential.username" name="credential.username" path="credential.username" type="text" /> 
 						</div>
 					</div>
 				</div>
@@ -257,7 +282,18 @@
 							<label for="message" class="lab">Password:</label>
 						</div>
 						<div class="col-sm-9">
-							<input type="text" class="form-control" id="pwd" name="pwd"/>
+							<form:input id="credential.password" name="credential.password" path="credential.password" type="password" />
+						</div>
+					</div>
+				</div>
+				<div id="role" class="form-group">
+					<div class="row">
+						<div class="col-sm-1"></div>
+						<div class="col-sm-1">
+							<!-- <label for="message" class="lab">Role:</label> -->
+						</div>
+						<div class="col-sm-9">
+							<form:hidden path="credential.role" value = "COACH"/>
 						</div>
 					</div>
 				</div>
@@ -270,7 +306,8 @@
 						<div class="col-sm-1"></div>
 					</div>
 				</div>
-			</form>
+			<%-- </form> --%>
+			</form:form>
 		</div>
         <!-- /page content -->
 

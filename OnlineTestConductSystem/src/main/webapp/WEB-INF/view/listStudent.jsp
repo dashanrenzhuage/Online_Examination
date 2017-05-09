@@ -69,7 +69,7 @@
                   <li><a><i class="fa fa-home"></i> Coach <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
                       <li>
-                      <a href="<spring:url value="/employee/addCoach" />"
+                      <a href="<spring:url value="/employee/add" />"
 							>Add Coach</a></li>
 					  <li><a href="<spring:url value="/employee/listCoach" />"
 							>List Of Coach</a></li></li>
@@ -88,9 +88,9 @@
                   <li><a><i class="fa fa-home"></i> Student <span class="fa fa-chevron-down"></span></a>
                    <ul class="nav child_menu">
                       <li>
-                      <a href="<spring:url value="/employee/addStudent" />"
+                      <a href="<spring:url value="/students/addStudent" />"
 							>Add Studnet</a></li>
-					  <li><a href="<spring:url value="/employee/listStudent" />"
+					  <li><a href="<spring:url value="/students/listStudent" />"
 							>List Of Student</a></li></li>
                     </ul>
                   </li>
@@ -219,7 +219,7 @@
 						</tr>
 					</thead>
 					<tbody>
-						<c:forEach items="${listOfStudent}" var="std">
+						<c:forEach items="${listStudent}" var="std">
 
 							<tr>
 								<td>${std.id}</td>
@@ -238,7 +238,7 @@
 								
 								
 								
-								  <td>
+								 <%--  <td>
 								<a data-toggle="modal" data-target="#myModal"
 														class="btn btn-info" role="button">Delete</a>
 									<!-- <button type="button" class="btn btn-info btn-lg"
@@ -264,7 +264,7 @@
 												</div>
 											</div>
 										</div>
-									</div> </td> 
+									</div> </td>  --%>
 								
 							</tr>
 						</c:forEach>

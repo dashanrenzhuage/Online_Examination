@@ -38,7 +38,7 @@ public class AnswerSheetController {
 	@RequestMapping(value = "/result", method = RequestMethod.POST)
 	public String resultTest(AnswerSheet answerSheet) {
 		System.out.println("*********inside resultTest*************");
-		answerSheetService.getResult1(answerSheet);
+		//answerSheetService.getResult1(answerSheet);
 		//forward total marks so that student can see it after completing exam on click submit
 		return "redirect:/test/answersheet";
 	}

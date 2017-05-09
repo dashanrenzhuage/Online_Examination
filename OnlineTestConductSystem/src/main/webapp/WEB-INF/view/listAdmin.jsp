@@ -64,7 +64,7 @@
                   <li><a><i class="fa fa-home"></i> Coach <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
                       <li>
-                      <a href="<spring:url value="/employee/addCoach" />"
+                      <a href="<spring:url value="/employee/add" />"
 							>Add Coach</a></li>
 					  <li><a href="<spring:url value="/employee/listCoach" />"
 							>List Of Coach</a></li></li>
@@ -83,9 +83,9 @@
                   <li><a><i class="fa fa-home"></i> Student <span class="fa fa-chevron-down"></span></a>
                    <ul class="nav child_menu">
                       <li>
-                      <a href="<spring:url value="/employee/addStudent" />"
+                      <a href="<spring:url value="/students/addStudent" />"
 							>Add Studnet</a></li>
-					  <li><a href="<spring:url value="/employee/listStudent" />"
+					  <li><a href="<spring:url value="/students/listStudent" />"
 							>List Of Student</a></li></li>
                     </ul>
                   </li>
@@ -232,18 +232,22 @@
 								<tbody>
 								
 								
-								<c:forEach items="${listOfAdmin}" var="admin">
+								<c:forEach items="${adminList}" var="admin">
 
 										<tr>
-											<td id="hehe">${admin.name}</td>
-											<td>${admin.email}</td>
-											<td>${admin.username}</td>
-											<td>${admin.password}</td>
+											<td id="hehe">${admin.fName}</td>
+											<%-- <td>${coach.fName}</td> --%>
+											<td>${admin.lName}</td>
+											<%-- <td>${coach.email}</td> --%>
+											<td>${admin.credential.username}</td>
+											<td>${admin.credential.password}</td>
 											<td><a
-												href="<spring:url value="/admin/edit/${admin.id}" />">Edit</a></td>
+												href="<spring:url value="/employee/add/${admin.id}" />">Edit</a></td>
+												<td><a href="<spring:url value="/employee/delete/${admin.id}" />"
+																	class="btn btn-info" role="button">Delete</a></td>
 
 											<!--Delete Coach  -->
-											<td><a data-toggle="modal" data-target="#myModal"
+											<%-- <td><a data-toggle="modal" data-target="#myModal"
 												class="btn btn-info" role="button">Delete</a> <!-- <button type="button" class="btn btn-info btn-lg"
 										data-toggle="modal" data-target="#myModal" style="margin:0px;">Send
 										Access ID</button> --> <!-- Modal -->
@@ -255,19 +259,19 @@
 															<div class="modal-header">
 																<button type="button" class="close" data-dismiss="modal">&times;</button>
 																<h4 class="modal-title">
-																	<b>Delete Admin</b>
+																	<b>Delete Coach</b>
 																</h4>
 															</div>
 															<div class="modal-body">
-																<p>Are you sure you want to delete admin?</p>
+																<p>Are you sure you want to delete coach?</p>
 															</div>
 															<div class="modal-footer">
-																<a href="<spring:url value="/admin/delete/${admin.id}" />"
+																<a href="<spring:url value="/employee/delete/${coach.id}" />"
 																	class="btn btn-info" role="button">Delete</a>
 															</div>
 														</div>
 													</div>
-												</div>
+												</div> --%>
 										</tr>
 									</c:forEach>
 								
