@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.util.UriComponentsBuilder;
 
@@ -86,5 +87,19 @@ public class SubCategoryController {
 		        return new ResponseEntity<Void>(HttpStatus.OK);
 		    }
 		
+		// Get all SubCategory------
+			
+			@RequestMapping(value = "/getSubCategoryFromCategory/{id}", method = RequestMethod.GET)
+			public @ResponseBody List<SubCategory> getSubCategoryByCategory(@RequestBody @PathVariable("id") Long id){
+				System.out.println("--------------category---------herhe");
+				List<SubCategory> listOfSubcategories = subCategoryService.getListOfSubCategoryFromCategoryID(id);
+				for(SubCategory l : listOfSubcategories){
+					System.out.println(l.getSubCatName());
+				}
+				
+				return listOfSubcategories;
+				
+
+}
 
 }

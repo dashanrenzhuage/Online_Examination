@@ -62,14 +62,13 @@ public class StudentController {
 
 				if (accessID.equals((String) request.getParameter("accessCode"))) {
 					List<Category> listOfCategories = categoryService.getAllCategory();
-					// List<SubCategory> listOfSubCategories =
-					// subCategoryService.getSubCategoryByID(id);
 					List<SubCategory> listOfSubCategories = subCategoryService.getAllSubCategory();
 					model.addAttribute("listOfCategories", listOfCategories);
 					model.addAttribute("listOfSubcategories", listOfSubCategories);
-
+					
 					// access-code delete after login
-					student.setAccessCode(null);
+					////student.setAccessCode(null);
+					
 					studentService.saveStudent(student);
 
 					return "stu_sel_exam";

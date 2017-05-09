@@ -22,5 +22,6 @@ public interface SubCategoryDao extends CrudRepository<SubCategory, Long>{
 	@Query("select s from SubCategory as s  where s.category = :category")
 	List<SubCategory> getSubcategoryByCategory(@Param("category") Category category);
 	
-
+	@Query("select q from SubCategory as q where q.category.id = :id ")
+    List<SubCategory> findBySubCategoryFromCategory(@Param("id") Long id);
 }
