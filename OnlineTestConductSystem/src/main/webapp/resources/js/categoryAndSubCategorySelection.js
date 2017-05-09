@@ -1,12 +1,4 @@
-/**
- * 
- */
 
-// alert("hello");
-/*
- * $( "#jjjjj" ).change(function() { alert( "Handler for .change() called." );
- * });
- */
 
 var contextRoot = "/" + window.location.pathname.split('/')[1];
 $(function() {
@@ -41,6 +33,7 @@ $(function() {
 	function displaySubCategory(categorylist) {
 		$("#subcategory").show();
 		$("#sel_subcategory").show();
+		
 		$('#subCategory').empty();
        
         $.each(categorylist, function (k, v) {

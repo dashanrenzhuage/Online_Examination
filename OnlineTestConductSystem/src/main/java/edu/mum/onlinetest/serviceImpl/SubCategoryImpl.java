@@ -54,5 +54,8 @@ public class SubCategoryImpl implements SubCategoryInterface {
 		return dao.getSubcategoryByCategory(category);
 	}
 
-	
+	@Override
+	public List<SubCategory> getListOfSubCategoryFromCategoryID(Long id) {
+		return dao.findBySubCategoryFromCategory(id);
+	}
 }
