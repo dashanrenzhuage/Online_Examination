@@ -269,7 +269,6 @@
 	
 	<!-- file upload end-->
 
-		</dependency>
 		<dependency>
 			<groupId>org.apache.tiles</groupId>
 			<artifactId>tiles-core</artifactId>

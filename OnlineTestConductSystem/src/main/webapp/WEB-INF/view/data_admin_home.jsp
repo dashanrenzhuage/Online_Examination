@@ -64,8 +64,8 @@
                   <li><a><i class="fa fa-home"></i> Home <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
                     
-                      <li><a href="<c:url value = '/category/add'></c:url>">Add Category</a></li>
-					  <li><a href="<c:url value = '/subcategories/add'></c:url>">Add Subcategory</a></li>
+                     <%--  <li><a href="<c:url value = '/category/add'></c:url>">Add Category</a></li>
+					 <%--  <li><a href="<c:url value = '/subcategories/add'></c:url>">Add Subcategory</a></li> --%> --%>
 					  <li><a href="<c:url value = '/question/add'></c:url>">Add Question</a></li>
 					  <li><a href="<c:url value = '/dataAdmin/uploadFile'></c:url>">Upload Questions </a></li>
                     </ul>

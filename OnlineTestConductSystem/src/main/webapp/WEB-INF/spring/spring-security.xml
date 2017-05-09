@@ -6,7 +6,10 @@
 	http://www.springframework.org/schema/security
 	http://www.springframework.org/schema/security/spring-security.xsd">
 <global-method-security pre-post-annotations="enabled"/>
-  <!-- <http pattern="/employee/add" security="none"/> --> 
+   <!-- <http pattern="/employee/addAdmin" security="none"/> 
+   <http pattern="/employee" security="none"/>  -->
+   
+   
 <http auto-config="true" use-expressions="true">
 		<intercept-url pattern="/login*" access="permitAll" />
         <intercept-url pattern="/**" access="isAuthenticated()" />

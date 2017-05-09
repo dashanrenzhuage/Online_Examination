@@ -72,12 +72,12 @@
 									<ul class="nav child_menu">
 										<li><a href="<c:url value = '/dataAdmin/home'></c:url>">Home
 												Page </a></li>
-										<li><a href="<c:url value = '/category/add'></c:url>">Add
+										<%-- <li><a href="<c:url value = '/category/add'></c:url>">Add
 												Category</a></li>
 										<li><a
 											href="<c:url value = '/subcategories/add'></c:url>">Add
 												Subcategory</a></li>
-									</ul></li>
+									</ul> --%></li>
 							</ul>
 						</div>
 
