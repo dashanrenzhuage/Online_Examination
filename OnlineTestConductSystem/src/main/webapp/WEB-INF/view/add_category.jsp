@@ -1,27 +1,36 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <!-- Meta, title, CSS, favicons, etc. -->
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<!-- Bootstrap -->
+<link
+	href="<c:url value = '/resources/css/bootstrap/dist/css/bootstrap.min.css'></c:url>"
+	rel="stylesheet">
+<!-- Font Awesome -->
+<link
+	href="<c:url value = '/resources/fonts/font-awesome/css/font-awesome.min.css'></c:url>"
+	rel="stylesheet">
 
-    <title>MUM Online Test System</title>
+<!-- NProgress -->
+<link
+	href="<c:url value = '/resources/js/nprogress/nprogress.css'></c:url>"
+	rel="stylesheet">
 
-    <!-- Bootstrap -->
-    <link href="../css/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Font Awesome -->
-    <link href="../fonts/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-    <!-- NProgress -->
-    <link href="../js/nprogress/nprogress.css" rel="stylesheet">
+<!-- Custom Theme Style -->
+<link href="<c:url value = '/resources/css/custom.min.css'></c:url>"
+	rel="stylesheet">
+<link href="<c:url value = '/resources/css/category.css'></c:url>"
+	rel="stylesheet">
 
-    <!-- Custom Theme Style -->
-    <link href="../css/custom.min.css" rel="stylesheet">
-	<link href="../css/category.css" rel="stylesheet">
-  </head>
 
-  <body class="nav-md">
+<title>MUM Online Test Conduct System</title>
+</head>
+<body class="nav-md">
     <div class="container body">
       <div class="main_container">
         <div class="col-md-3 left_col">
@@ -53,9 +62,10 @@
                 <ul class="nav side-menu">
                   <li><a><i class="fa fa-home"></i> Home <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                      <li><a href="da_add_question.html">Add Question</a></li>
-                      <li><a href="da_add_category.html">Add Category</a></li>
-					  <li><a href="da_add_subcategory.html">Add Subcategory</a></li>
+                    <li><a href="<c:url value = '/dataAdmin/home'></c:url>">Home Page </a></li>
+                    	<li><a href="<c:url value = '/subcategories/add'></c:url>">Add Subcategory</a></li>
+                      <li><a href="<c:url value = '/question/add'></c:url>">Add Question</a></li>
+                      <li><a href="<c:url value = '/dataAdmin/uploadFile'></c:url>">Upload Questions </a></li>
                     </ul>
                   </li>
                 </ul>
@@ -182,7 +192,7 @@
 
         <!-- page content -->
         <div class="right_col" role="main">
-			<form action="#" method="post">
+			<form:form modelAttribute="category" action="/OnlineTestConductSystem/category/add" method="post">
 				<div id="category" class="form-group">
 				    <div class="row">
 					    <div class="col-sm-1"></div>
@@ -194,7 +204,7 @@
 					<div class="row">
 					    <div class="col-sm-1"></div>
 					    <div class="col-sm-10">
-							<input type="text" class="form-control" id="cat" name="cat" placeholder="Please enter your category" />
+							<form:input type="text" class="form-control" id="cat" path = "name" name="cat" placeholder="Please enter your category" />
 					    </div>
 						<div class="col-sm-1"></div>
 					</div>
@@ -203,12 +213,12 @@
 					<div class="row">
 					    <div class="col-sm-10"></div>
 						<div class="col-sm-1">
-							<button type="button" id="add" class="btn add">Add Category</button>
+							<button type="submit" id="add" class="btn add">Add Category</button>
 						</div>
 						<div class="col-sm-1"></div>
 					</div>
 				</div>
-				<div id="categoryList">
+			<!-- 	<div id="categoryList">
 					<div class="row">
 						<div class="col-sm-1"></div>
 						<div class="col-sm-10">
@@ -253,8 +263,8 @@
 						</div>
 						<div class="col-sm-1"></div>
 					</div>
-				</div>
-			</form>
+				</div> -->
+			</form:form>
 		</div>
         <!-- /page content -->
 
@@ -269,17 +279,27 @@
       </div>
     </div>
 
-    <!-- jQuery -->
-    <script src="../js/jquery/dist/jquery.min.js"></script>
-    <!-- Bootstrap -->
-    <script src="../css/bootstrap/dist/js/bootstrap.min.js"></script>
-    <!-- FastClick -->
-    <script src="../js/fastclick/lib/fastclick.js"></script>
-    <!-- NProgress -->
-    <script src="../js/nprogress/nprogress.js"></script>
 
-    <!-- Custom Theme Scripts -->
-    <script src="../js/custom.min.js"></script>
-	<script src="../js/category.js"></script>
-  </body>
+
+	<!-- jQuery -->
+	<script
+		src='<spring:url value="/resources/js/jquery/dist/jquery.min.js"></spring:url>'></script>
+	<!-- Bootstrap -->
+	<script
+		src='<spring:url value="/resources/css/bootstrap/dist/js/bootstrap.min.js"></spring:url>'></script>
+	<!-- FastClick -->
+	<script
+		src='<spring:url value="/resources/js/fastclick/lib/fastclick.js"></spring:url>'></script>
+	<!-- NProgress -->
+	<script
+		src='<spring:url value="/resources/js/nprogress/nprogress.js"></spring:url>'></script>
+
+	<!-- Custom Theme Scripts -->
+	<script
+		src='<spring:url value="/resources/js/custom.min.js"></spring:url>'></script>
+	<script
+		src='<spring:url value="/resources/js/category.js"></spring:url>'></script>
+
+
+</body>
 </html>

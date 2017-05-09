@@ -15,12 +15,13 @@ import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 public class XLSXParser {
-	public List<List<String>> getQuestions(){
-//		List<String> singleQuesList = new ArrayList<String>();
+	public List<List<String>> getQuestions(String fileName){
 		List<List<String>> listOfQues = new ArrayList<List<String>>();
 
 		try {
-			File myFile = new File("E:\\data\\javaQues.xlsx");
+//			File myFile = new File("E:\\data\\" + fileName);
+			
+			File myFile = new File("E:\\Cubic Project\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\wtpwebapps\\OnlineTestConductSystem\\resources\\file\\" + fileName);
 			FileInputStream fis = new FileInputStream(myFile);
 
 			// Finds the workbook instance for XLSX file

@@ -11,6 +11,7 @@ public interface SubCategoryInterface {
 	public SubCategory getSubCategoryByID(Long i);
 	public void saveSubCategory(SubCategory subCategory);
 	public void deleteSubCategoryByID(Long id);
+	public List<SubCategory> getSubCategoriesByCategoryId(Long id);
 
 
 }

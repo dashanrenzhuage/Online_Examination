@@ -91,6 +91,7 @@ public class StudentController {
 		System.out.println("*********************** if incorrect access id");
 		
 		return "stu_login";
+		//return "stu_sel_exam";
 	}
 
 	@RequestMapping(method = RequestMethod.GET)

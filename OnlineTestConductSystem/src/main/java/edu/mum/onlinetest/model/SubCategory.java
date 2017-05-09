@@ -29,7 +29,7 @@ public class SubCategory {
 	@JoinColumn(name = "category_id", nullable = false)*/
 	private Category category;
 	
-	private String grade;
+
 	
 	
 	//@OneToMany(fetch = FetchType.EAGER)
@@ -93,6 +93,7 @@ public class SubCategory {
 	public void setSubCatName(String subCatName) {
 		this.subCatName = subCatName;
 	}
+
 
 	
 	

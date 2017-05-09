@@ -12,16 +12,15 @@ public class Opts {
 	@GeneratedValue
 	private Long id;
 	private String options;
-	private boolean isCorrectAns = false;
+	private Boolean isCorrectAns = false;
 
-	public boolean isCorrectAns() {
+	public Boolean getIsCorrectAns() {
 		return isCorrectAns;
 	}
 
-	public void setCorrectAns(boolean isCorrectAns) {
+	public void setIsCorrectAns(Boolean isCorrectAns) {
 		this.isCorrectAns = isCorrectAns;
 	}
-
 
 	public Long getId() {
 		return id;
