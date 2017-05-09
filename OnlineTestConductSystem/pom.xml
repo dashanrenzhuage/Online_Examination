@@ -1,95 +1,100 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-  <groupId>edu.mum.onlinetest</groupId>
-  <artifactId>OnlineTestConductSystem</artifactId>
-  <packaging>war</packaging>
-<properties>
-    <failOnMissingWebXml>false</failOnMissingWebXml>
-</properties>
-  <version>0.0.1-SNAPSHOT</version>
-  <name>OnlineTestConductSystem Maven Webapp</name>
-  <url>http://maven.apache.org</url>
-  <dependencies>
-    <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <version>3.8.1</version>
-      
-      
-      <scope>test</scope>
-    </dependency>
-    <dependency>
-    	<groupId>org.springframework</groupId>
-    	<artifactId>spring-core</artifactId>
-    	<version>4.3.7.RELEASE</version>
-    </dependency>
-    <dependency>
-    	<groupId>org.springframework</groupId>
-    	<artifactId>spring-context</artifactId>
-    	<version>4.3.7.RELEASE</version>
-    </dependency>
-    <dependency>
-    	<groupId>org.springframework</groupId>
-    	<artifactId>spring-webmvc</artifactId>
-    	<version>4.3.7.RELEASE</version>
-    </dependency>
-    <dependency>
-    	<groupId>javax.servlet</groupId>
-    	<artifactId>servlet-api</artifactId>
-    	<version>2.5</version>
-    </dependency>
-    <dependency>
-    	<groupId>mysql</groupId>
-    	<artifactId>mysql-connector-java</artifactId>
-    	<version>5.1.35</version>
-    </dependency>
-    
-   <dependency>
-	    	<groupId>org.apache.commons</groupId>
-	    	<artifactId>commons-io</artifactId>
-	    	<version>1.3.2</version>
-	    </dependency>
-   <dependency>
-   	<groupId>org.springframework</groupId>
-   	<artifactId>spring-tx</artifactId>
-   	<version>4.3.4.RELEASE</version>
-   </dependency>
-   <dependency>
-   	<groupId>org.springframework.data</groupId>
-   	<artifactId>spring-data-jpa</artifactId>
-   	<version>1.10.5.RELEASE</version>
-   </dependency>
-   
-   
-   <dependency>
-   	<groupId>javax.servlet</groupId>
-   	<artifactId>jstl</artifactId>
-   	<version>1.2</version>
-   </dependency>
-   
-   
-   
-   
-   <dependency>
-   	<groupId>org.springframework.security</groupId>
-   	<artifactId>spring-security-taglibs</artifactId>
-   	<version>4.1.0.RELEASE</version>
-   	<type>pom.lastUpdated</type>
-   </dependency>
-   <dependency>
-   	<groupId>org.springframework.security</groupId>
-   	<artifactId>spring-security-web</artifactId>
-   	<version>4.2.0.RELEASE</version>
-   </dependency>
-   <dependency>
-   	<groupId>org.springframework.security</groupId>
-   	<artifactId>spring-security-config</artifactId>
-   	<version>4.2.0.RELEASE</version>
-   </dependency>
-   
-   
-   
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 
+  						http://maven.apache.org/maven-v4_0_0.xsd ">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>edu.mum.onlinetest</groupId>
+	<artifactId>OnlineTestConductSystem</artifactId>
+	<packaging>war</packaging>
+	<properties>
+		<failOnMissingWebXml>false</failOnMissingWebXml>
+	</properties>
+	<version>0.0.1-SNAPSHOT</version>
+	<name>OnlineTestConductSystem Maven Webapp</name>
+	<url>http://maven.apache.org</url>
+	<dependencies>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>3.8.1</version>
+
+
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-core</artifactId>
+			<version>4.3.7.RELEASE</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context</artifactId>
+			<version>4.3.7.RELEASE</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-webmvc</artifactId>
+			<version>4.3.7.RELEASE</version>
+		</dependency>
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>servlet-api</artifactId>
+			<version>2.5</version>
+		</dependency>
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<version>5.1.35</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-io</artifactId>
+			<version>1.3.2</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-tx</artifactId>
+			<version>4.3.4.RELEASE</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.data</groupId>
+			<artifactId>spring-data-jpa</artifactId>
+			<version>1.10.5.RELEASE</version>
+		</dependency>
+
+
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>jstl</artifactId>
+			<version>1.2</version>
+		</dependency>
+
+
+
+
+		<!-- <dependency> <groupId>org.springframework.security</groupId> <artifactId>spring-security-taglibs</artifactId> 
+			<version>4.2.0.RELEASE</version> <type>pom.lastUpdated</type> </dependency> -->
+
+		<!-- Sushil Dependency -->
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-taglibs</artifactId>
+			<version>4.1.0.RELEASE</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-web</artifactId>
+			<version>4.2.0.RELEASE</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-config</artifactId>
+			<version>4.2.0.RELEASE</version>
+		</dependency>
+
+
+
 		<dependency>
 			<groupId>org.hibernate.javax.persistence</groupId>
 			<artifactId>hibernate-jpa-2.1-api</artifactId>
@@ -119,34 +124,49 @@
 			<groupId>com.fasterxml.jackson.core</groupId>
 			<artifactId>jackson-core</artifactId>
 			<version>2.8.7</version>
-			
+
 		</dependency>
 		<dependency>
 			<groupId>com.fasterxml.jackson.core</groupId>
 			<artifactId>jackson-annotations</artifactId>
 			<version>2.8.4</version>
-		
+
 		</dependency>
 		<dependency>
 			<groupId>com.fasterxml.jackson.core</groupId>
 			<artifactId>jackson-databind</artifactId>
 			<version>2.8.7</version>
-			
+
+		</dependency>
+		<!-- <dependency> <groupId>org.apache.poi</groupId> <artifactId>poi-ooxml</artifactId> 
+			<version>3.11-beta2</version> </dependency> -->
+		
+		<!-- Sushil Dependency -->
+		<dependency>
+			<groupId>org.apache.poi</groupId>
+			<artifactId>poi</artifactId>
+			<version>3.6</version>
+			<type>jar</type>
+			<scope>compile</scope>
 		</dependency>
 		<dependency>
-        <groupId>org.apache.poi</groupId>
-        <artifactId>poi-ooxml</artifactId>
-        <version>3.11-beta2</version>
-</dependency>
-	<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-context-support</artifactId>
 			<version>4.3.4.RELEASE</version>
 		</dependency>
+		<!-- <dependency> <groupId>com.sun.mail</groupId> <artifactId>javax.mail</artifactId> 
+			<version>1.5.6</version> </dependency> -->
+			
+			<!-- Sushil Dependency two below of it -->
 		<dependency>
-			<groupId>com.sun.mail</groupId>
-			<artifactId>javax.mail</artifactId>
-			<version>1.5.6</version>
+			<groupId>javax.mail</groupId>
+			<artifactId>mail</artifactId>
+			<version>1.4.7</version>
+		</dependency>
+		<dependency>
+			<groupId>javax.mail</groupId>
+			<artifactId>javax.mail-api</artifactId>
+			<version>1.5.5</version>
 		</dependency>
 		<dependency>
 			<groupId>org.apache.tiles</groupId>
@@ -168,62 +188,62 @@
 			<artifactId>commons-io</artifactId>
 			<version>2.4</version>
 		</dependency>
-		
-		
-		
-		
+
+
+
+
 		<dependency>
-    	<groupId>net.sf.jasperreports</groupId>
-    	<artifactId>jasperreports</artifactId>
-    	<version>5.0.0</version>
-    	<!-- <version>3.7.6</version> -->
-    	<type>jar</type>
-    	<scope>compile</scope>
-    	<exclusions>
-    		<exclusion>
-    			<artifactId>commons-collections</artifactId>
-    			<groupId>commons-collections</groupId>
-    		</exclusion>
-    		<exclusion>
-    			<artifactId>commons-beanutils</artifactId>
-    			<groupId>commons-beanutils</groupId>
-    		</exclusion>
-    		<exclusion>
-    			<artifactId>commons-digester</artifactId>
-    			<groupId>commons-digester</groupId>
-    		</exclusion>
-    		<exclusion>
-    			<artifactId>commons-logging</artifactId>
-    			<groupId>commons-logging</groupId>
-    		</exclusion>
-    	</exclusions>
-    </dependency>
+			<groupId>net.sf.jasperreports</groupId>
+			<artifactId>jasperreports</artifactId>
+			<version>5.0.0</version>
+			<!-- <version>3.7.6</version> -->
+			<type>jar</type>
+			<scope>compile</scope>
+			<exclusions>
+				<exclusion>
+					<artifactId>commons-collections</artifactId>
+					<groupId>commons-collections</groupId>
+				</exclusion>
+				<exclusion>
+					<artifactId>commons-beanutils</artifactId>
+					<groupId>commons-beanutils</groupId>
+				</exclusion>
+				<exclusion>
+					<artifactId>commons-digester</artifactId>
+					<groupId>commons-digester</groupId>
+				</exclusion>
+				<exclusion>
+					<artifactId>commons-logging</artifactId>
+					<groupId>commons-logging</groupId>
+				</exclusion>
+			</exclusions>
+		</dependency>
 		<dependency>
-    	<groupId>commons-digester</groupId>
-    	<artifactId>commons-digester</artifactId>
-    	<version>2.1</version>
-    	<type>jar</type>
-    	<scope>compile</scope>
-    </dependency>
-    <dependency>
-    	<groupId>commons-collections</groupId>
-    	<artifactId>commons-collections</artifactId>
-    	<version>3.2.1</version>
-    	<type>jar</type>
-    	<scope>compile</scope>
-    </dependency>
-  </dependencies>
-  <build>
-  <plugins>
-      <plugin>
-          <groupId>org.apache.maven.plugins</groupId>
-          <artifactId>maven-compiler-plugin</artifactId>
-          <version>3.1</version>
-          <configuration>
-              <source>1.8</source>
-              <target>1.8</target>
-          </configuration>
-      </plugin>
-  </plugins>
-</build>
+			<groupId>commons-digester</groupId>
+			<artifactId>commons-digester</artifactId>
+			<version>2.1</version>
+			<type>jar</type>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>commons-collections</groupId>
+			<artifactId>commons-collections</artifactId>
+			<version>3.2.1</version>
+			<type>jar</type>
+			<scope>compile</scope>
+		</dependency>
+	</dependencies>
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.1</version>
+				<configuration>
+					<source>1.8</source>
+					<target>1.8</target>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
 </project>

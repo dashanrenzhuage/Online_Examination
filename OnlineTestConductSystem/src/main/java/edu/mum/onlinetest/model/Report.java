@@ -1,5 +1,8 @@
 package edu.mum.onlinetest.model;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 
@@ -11,6 +14,7 @@ public class Report {
 	
 	private double score;
 	private String grade;
+	
 	public int getId() {
 		return id;
 	}

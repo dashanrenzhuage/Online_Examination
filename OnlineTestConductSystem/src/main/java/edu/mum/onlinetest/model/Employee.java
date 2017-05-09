@@ -23,9 +23,9 @@ public  class Employee {
 	@NotEmpty
 	private String lName;
 	
-	@OneToOne
+	/*@OneToOne
 	@Valid
-	private Address adress;
+	private Address adress;*/
 	 
 	
 	@OneToOne(cascade = CascadeType.ALL)
@@ -42,12 +42,12 @@ public  class Employee {
 	public void setlName(String lName) {
 		this.lName = lName;
 	}
-	public Address getAdress() {
+	/*public Address getAdress() {
 		return adress;
 	}
 	public void setAdress(Address adress) {
 		this.adress = adress;
-	}
+	}*/
 	
 	public Long getId() {
 		return id;

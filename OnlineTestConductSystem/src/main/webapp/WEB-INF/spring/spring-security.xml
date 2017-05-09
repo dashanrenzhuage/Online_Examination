@@ -6,7 +6,7 @@
 	http://www.springframework.org/schema/security
 	http://www.springframework.org/schema/security/spring-security.xsd">
 <global-method-security pre-post-annotations="enabled"/>
-<!--  <http pattern="/employee/add" security="none"/> -->
+  <!-- <http pattern="/employee/add" security="none"/> --> 
 <http auto-config="true" use-expressions="true">
 		<intercept-url pattern="/login*" access="permitAll" />
         <intercept-url pattern="/**" access="isAuthenticated()" />
@@ -16,6 +16,7 @@
 		<intercept-url pattern="/subCategory" access="hasRole('ADMIN')" />
 		<intercept-url pattern="/employee/**" access="hasRole('ADMIN')" />
 		 <intercept-url pattern="/faculty/*" access="hasRole('ADMIN')" />
+		 <intercept-url pattern="/students/*" access="hasRole('ADMIN')" />
 		
 		 <intercept-url pattern="/coach/**" access="hasRole('COACH')" />
 		<intercept-url pattern="/dataadmin**" access="hasRole('DATAADMIN')" />

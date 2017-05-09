@@ -64,7 +64,7 @@
                   <li><a><i class="fa fa-home"></i> Coach <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
                       <li>
-                      <a href="<spring:url value="/employee/addCoach" />"
+                      <a href="<spring:url value="/employee/add" />"
 							>Add Coach</a></li>
 					  <li><a href="<spring:url value="/employee/listCoach" />"
 							>List Of Coach</a></li></li>
@@ -83,9 +83,9 @@
                   <li><a><i class="fa fa-home"></i> Student <span class="fa fa-chevron-down"></span></a>
                    <ul class="nav child_menu">
                       <li>
-                      <a href="<spring:url value="/employee/addStudent" />"
+                      <a href="<spring:url value="/students/addStudent" />"
 							>Add Studnet</a></li>
-					  <li><a href="<spring:url value="/employee/listStudent" />"
+					  <li><a href="<spring:url value="/students/listStudent" />"
 							>List Of Student</a></li></li>
                     </ul>
                   </li>
@@ -213,11 +213,11 @@
 
         <!-- page content -->
         <div class="right_col" role="main">
-			<form:form modelAttribute="coach" action="#" method="post">
-			    <div id="addcoach" class="form-group">
+			<form:form modelAttribute="newStudent" action = "addStudent" method="post" enctype="multipart/form-data">
+			    <div id="addstudent" class="form-group">
 					<h4>Add Student<h4>
 				</div>
-			    <div id="student_id" class="form-group">
+			    <!-- <div id="student_id" class="form-group">
 					<div class="row">
 						<div class="col-sm-1"></div>
 						<div class="col-sm-1">
@@ -227,8 +227,32 @@
 							<input type="text" class="form-control" id="cn" name="cn"/>
 						</div>
 					</div>
+				</div> -->
+				<div id="name" class="form-group">
+					<div class="row">
+						<div class="col-sm-1"></div>
+						<div class="col-sm-1">
+							<label for="to" class="lab">Name:</label>
+						</div>
+						<div class="col-sm-9">
+							<!-- <input type="text" class="form-control" id="cn" name="cn"/> -->
+							<form:input id="name" name="name" path="name" type="text" />
+						</div>
+					</div>
 				</div>
-				<div id="student_name" class="form-group">
+				<div id="email" class="form-group">
+					<div class="row">
+						<div class="col-sm-1"></div>
+						<div class="col-sm-1">
+							<label for="to" class="lab">Email:</label>
+						</div>
+						<div class="col-sm-9">
+							<!-- <input type="text" class="form-control" id="cn" name="cn"/> -->
+							<form:input id="email" name="email" path="email" type="text" />
+						</div>
+					</div>
+				</div>
+				<!-- <div id="student_name" class="form-group">
 					<div class="row">
 						<div class="col-sm-1"></div>
 						<div class="col-sm-1">
@@ -260,7 +284,7 @@
 							<input type="text" class="form-control" id="pwd" name="pwd"/>
 						</div>
 					</div>
-				</div>
+				</div> -->
 				<div id="list_of_coach" class="form-group">
 					<div class="row">
 						<div class="col-sm-1"></div>
