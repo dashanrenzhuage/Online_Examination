@@ -56,7 +56,7 @@
 
             <br />
 
-             <!-- sidebar menu -->
+          <!-- sidebar menu -->
             <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
               <div class="menu_section">
                 <h3>General</h3>
@@ -94,8 +94,6 @@
 
             </div>
             <!-- /sidebar menu -->
-            
-            <!-- /menu footer buttons -->
             <!-- /menu footer buttons -->
             <div class="sidebar-footer hidden-small">
               <a data-toggle="tooltip" data-placement="top" title="Settings">
@@ -213,104 +211,80 @@
         <!-- /top navigation -->
 
         <!-- page content -->
-        <div class="right_col" role="main">
-			<div id="categoryList">
+        <form:form modelAttribute="employee" method="post" enctype="multipart/form-data">
+			<%-- <form action="add" method="post"> --%>
+			    <div id="addadmin" class="form-group">
+					<h4>Add Coach<h4>
+				</div>
+			    <div id="fName" class="form-group">
 					<div class="row">
 						<div class="col-sm-1"></div>
-						<div class="col-sm-10">
-							<table id="c_table" class="table table-hover">
-								<thead>
-									<tr>
-										<th width="20%">Name</th>
-										<th width="20%">Email</th>
-										<th width="20%">Username</th>
-										<th width="20%">Password</th>
-										<th width="20%">Edit</th>
-										<th width="20%">Delete</th>
-									</tr>
-								</thead>
-								<tbody>
-								
-								
-								<c:forEach items="${adminList}" var="admin">
-
-										<tr>
-											<td id="hehe">${admin.fName}</td>
-											<%-- <td>${coach.fName}</td> --%>
-											<td>${admin.lName}</td>
-											<%-- <td>${coach.email}</td> --%>
-											<td>${admin.credential.username}</td>
-											<td>${admin.credential.password}</td>
-											<td><a
-												href="<spring:url value="/employee/addAdmin/${admin.id}" />">Edit</a></td>
-												<td><a href="<spring:url value="/employee/delete/${admin.id}" />"
-																	class="btn btn-info" role="button">Delete</a></td>
-
-											<!--Delete Coach  -->
-											<%-- <td><a data-toggle="modal" data-target="#myModal"
-												class="btn btn-info" role="button">Delete</a> <!-- <button type="button" class="btn btn-info btn-lg"
-										data-toggle="modal" data-target="#myModal" style="margin:0px;">Send
-										Access ID</button> --> <!-- Modal -->
-												<div class="modal fade" id="myModal" role="dialog">
-													<div class="modal-dialog">
-
-														<!-- Modal content-->
-														<div class="modal-content">
-															<div class="modal-header">
-																<button type="button" class="close" data-dismiss="modal">&times;</button>
-																<h4 class="modal-title">
-																	<b>Delete Coach</b>
-																</h4>
-															</div>
-															<div class="modal-body">
-																<p>Are you sure you want to delete coach?</p>
-															</div>
-															<div class="modal-footer">
-																<a href="<spring:url value="/employee/delete/${coach.id}" />"
-																	class="btn btn-info" role="button">Delete</a>
-															</div>
-														</div>
-													</div>
-												</div> --%>
-										</tr>
-									</c:forEach>
-								
-								
-								<!-- 
-								
-								
-									<tr>
-										<td>Tony</td>
-										<td>tony@gmail.com</td>
-										<td>Tony123</td>
-										<td>tony123</td>
-										<td><a href= "admin_editadmin.html">Edit</a></td>
-										<td>
-											<button type="button" id="del1" class="btn del" onclick="delCategory(this)">
-												<span class="glyphicon glyphicon-remove"></span>
-											</button>
-										</td>
-									</tr>
-									<tr>
-										<td>George</td>
-										<td>george@gmail.com</td>
-										<td>George</td>
-										<td>george123</td>
-										<td><a href= "admin_editadmin.html">Edit</a></td>
-										<td>
-											<button type="button" id="del2" class="btn del" onclick="delCategory(this)">
-												<span class="glyphicon glyphicon-remove"></span>
-											</button>
-										</td>
-									</tr> -->
-									
-								</tbody>
-							</table>
+						<div class="col-sm-1">
+							<label for="to" class="lab">First Name:</label>
+						</div>
+						<div class="col-sm-9">
+							<!-- <input type="text" class="form-control" id="cn" name="cn"/> -->
+							<form:input id="fName" name="fName" path="fName" type="text" />
+						</div>
+					</div>
+				</div>
+				<div id="lName" class="form-group">
+					<div class="row">
+						<div class="col-sm-1"></div>
+						<div class="col-sm-1">
+							<label for="to" class="lab">Last Name:</label>
+						</div>
+						<div class="col-sm-9">
+							<!-- <input type="text" class="form-control" id="cn" name="cn"/> -->
+							<form:input id="lName" name="lName" path="lName" type="text" />
+						</div>
+					</div>
+				</div>
+				
+				<div id="username" class="form-group">
+					<div class="row">
+						<div class="col-sm-1"></div>
+						<div class="col-sm-1">
+							<label for="message" class="lab">Username:</label>
+						</div>
+						<div class="col-sm-9">
+							<form:input id="credential.username" name="credential.username" path="credential.username" type="text" /> 
+						</div>
+					</div>
+				</div>
+				<div id="password" class="form-group">
+					<div class="row">
+						<div class="col-sm-1"></div>
+						<div class="col-sm-1">
+							<label for="message" class="lab">Password:</label>
+						</div>
+						<div class="col-sm-9">
+							<form:input id="credential.password" name="credential.password" path="credential.password" type="password" />
+						</div>
+					</div>
+				</div>
+				<div id="role" class="form-group">
+					<div class="row">
+						<div class="col-sm-1"></div>
+						<div class="col-sm-1">
+							<!-- <label for="message" class="lab">Role:</label> -->
+						</div>
+						<div class="col-sm-9">
+						<%-- <form:input id="credential.role" name="credential.role" path="credential.role" type="role" value = "ADMIN" /> --%>
+							<form:hidden path="credential.role" value = "ADMIN"/>
+						</div>
+					</div>
+				</div>
+				<div>
+					<div class="row">
+					    <div class="col-sm-10"></div>
+						<div class="col-sm-1">
+							<button type="submit" id="submit" class="btn">Add</button>
 						</div>
 						<div class="col-sm-1"></div>
 					</div>
 				</div>
-		</div>
+				</form:form>
         <!-- /page content -->
 
         <!-- footer content -->
@@ -339,10 +313,13 @@
 	<!-- Custom Theme Scripts -->
 	<script
 		src='<spring:url value="/resources/js/custom.min.js"></spring:url>'></script>
+	<%-- <script
+		src='<spring:url value="/resources/js/jquery.dataTables.min.js"></spring:url>'></script>
 	<script
-		src='<spring:url value="/resources/js/admin.js"></spring:url>'></script>
-	
-
+		src='<spring:url value="/resources/js/dataTables.bootstrap.min.js"></spring:url>'></script>
+	<script
+		src='<spring:url value="/resources/js/data_table.js"></spring:url>'></script>
+ --%>
 
 </body>
 </html>

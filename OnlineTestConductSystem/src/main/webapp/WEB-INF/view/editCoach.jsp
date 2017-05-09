@@ -188,26 +188,11 @@
 
 			<!-- page content -->
 			<div class="right_col" role="main">
-        <form:form modelAttribute="coach" action = "../saveCoach" method="post" enctype="multipart/form-data">
+        <form:form modelAttribute="employee" method="post" enctype="multipart/form-data">
 			<%-- <form action="add" method="post"> --%>
 			    <div id="addcoach" class="form-group">
-					<h4>Edit Coach<h4>
+					<h4>Add Coach<h4>
 				</div>
-				
-				
-				<div id="id" class="form-group">
-					<div class="row">
-						<div class="col-sm-1"></div>
-						<div class="col-sm-1">
-							<label for="to" class="lab">First Name:</label>
-						</div>
-						<div class="col-sm-9">
-							<!-- <input type="text" class="form-control" id="cn" name="cn"/> -->
-							<form:input id="fName" name="id" path="id" type="text" value = ${coach.id }/>
-						</div>
-					</div>
-				</div>
-				
 			    <div id="fName" class="form-group">
 					<div class="row">
 						<div class="col-sm-1"></div>
@@ -216,7 +201,7 @@
 						</div>
 						<div class="col-sm-9">
 							<!-- <input type="text" class="form-control" id="cn" name="cn"/> -->
-							<form:input id="fName" name="fName" path="fName" type="text" value = ${coach.fName }/>
+							<form:input id="fName" name="fName" path="fName" type="text" />
 						</div>
 					</div>
 				</div>
@@ -228,7 +213,7 @@
 						</div>
 						<div class="col-sm-9">
 							<!-- <input type="text" class="form-control" id="cn" name="cn"/> -->
-							<form:input id="lName" name="lName" path="lName" type="text" value = ${coach.lName } />
+							<form:input id="lName" name="lName" path="lName" type="text" />
 						</div>
 					</div>
 				</div>
@@ -261,7 +246,7 @@
 							<label for="message" class="lab">Username:</label>
 						</div>
 						<div class="col-sm-9">
-							<form:input id="credential.username" name="credential.username" path="credential.username" type="text" value = ${coach.credential.username } /> 
+							<form:input id="credential.username" name="credential.username" path="credential.username" type="text" /> 
 						</div>
 					</div>
 				</div>
@@ -272,7 +257,7 @@
 							<label for="message" class="lab">Password:</label>
 						</div>
 						<div class="col-sm-9">
-							<form:input id="credential.password" name="credential.password" path="credential.password" type="password" value = ${coach.credential.username }/>
+							<form:input id="credential.password" name="credential.password" path="credential.password" type="password" />
 						</div>
 					</div>
 				</div>
@@ -298,17 +283,17 @@
 				</div>
 			<%-- </form> --%>
 			</form:form>
-			</div>
-			<!-- /page content -->
-
-			<!-- footer content -->
-			<footer>
-			<div class="pull-right">&copy; 2017 Maharishi University of
-				Management. All rights reserved.</div>
-			<div class="clearfix"></div>
-			</footer>
-			<!-- /footer content -->
 		</div>
+		<!-- /page content -->
+
+		<!-- footer content -->
+		<footer>
+		<div class="pull-right">&copy; 2017 Maharishi University of
+			Management. All rights reserved.</div>
+		<div class="clearfix"></div>
+		</footer>
+		<!-- /footer content -->
+	</div>
 	</div>
 
 	<!-- jQuery -->
