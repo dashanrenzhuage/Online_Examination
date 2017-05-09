@@ -16,6 +16,9 @@ public class Student extends Person{
 	
 	private String phoneNo;
 	
+	@OneToOne
+	private Admin coach;
+	
 	public String getPhoneNo() {
 		return phoneNo;
 	}

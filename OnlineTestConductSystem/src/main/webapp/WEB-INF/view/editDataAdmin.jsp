@@ -37,7 +37,7 @@
         <div class="col-md-3 left_col">
           <div class="left_col scroll-view">
             <div class="navbar nav_title" style="border: 0;">
-              <a href="admin_addcoach.html" class="site_title"><i class="fa fa-user"></i> <span>Data Administrator</span></a>
+              <a href="admin_addcoach.html" class="site_title"><i class="fa fa-user"></i> <span>Administrator</span></a>
             </div>
 
             <div class="clearfix"></div>
@@ -49,14 +49,14 @@
               </div>
               <div class="profile_info">
                 <span>Welcome,</span>
-                <h2>${pageContext.request.userPrincipal.name}</h2>
+               <h2>${pageContext.request.userPrincipal.name}</h2>
               </div>
             </div>
             <!-- /menu profile quick info -->
 
             <br />
 
-         <!-- sidebar menu -->
+          <!-- sidebar menu -->
             <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
               <div class="menu_section">
                 <h3>General</h3>
@@ -79,13 +79,12 @@
 							>List Of Admin</a></li></li>
                     </ul>
                   </li>
-                  
                   <li><a><i class="fa fa-home"></i> Data Admin <span class="fa fa-chevron-down"></span></a>
                    <ul class="nav child_menu">
                       <li>
-                      <a href="<spring:url value="/employee/addDataAdmin" />"
+                      <a href="<spring:url value="/students/addDataAdmin" />"
 							>Add Data Admin</a></li>
-					  <li><a href="<spring:url value="/employee/listDataAdmin" />"
+					  <li><a href="<spring:url value="/students/listDataAdmin" />"
 							>List Of Data Admin</a></li></li>
                     </ul>
                   </li>
@@ -99,8 +98,7 @@
 							>List Of Student</a></li></li>
                     </ul>
                   </li>
-                  
-                   <li><a><i class="fa fa-home"></i> Add Category & Sub Category <span class="fa fa-chevron-down"></span></a>
+                  <li><a><i class="fa fa-home"></i> Add Category & Sub Category <span class="fa fa-chevron-down"></span></a>
                    <ul class="nav child_menu">
                       <li>
                       <a href="<spring:url value="/students/addStudent" />"
@@ -113,6 +111,7 @@
               </div>
 
             </div>
+            <!-- /sidebar menu -->
             <!-- /menu footer buttons -->
             <div class="sidebar-footer hidden-small">
               <a data-toggle="tooltip" data-placement="top" title="Settings">
@@ -230,10 +229,10 @@
         <!-- /top navigation -->
 
         <!-- page content -->
-        <form:form modelAttribute="newAdmin" method="post" enctype="multipart/form-data">
+        <form:form modelAttribute="employee" method="post" enctype="multipart/form-data">
 			<%-- <form action="add" method="post"> --%>
 			    <div id="addadmin" class="form-group">
-					<h4>Add Coach<h4>
+					<h4>Edit Data Admin<h4>
 				</div>
 			    <div id="fName" class="form-group">
 					<div class="row">
@@ -290,7 +289,7 @@
 						</div>
 						<div class="col-sm-9">
 						<%-- <form:input id="credential.role" name="credential.role" path="credential.role" type="role" value = "ADMIN" /> --%>
-							<form:hidden path="credential.role" value = "ADMIN"/>
+							<form:hidden path="credential.role" value = "DATAADMIN"/>
 						</div>
 					</div>
 				</div>
