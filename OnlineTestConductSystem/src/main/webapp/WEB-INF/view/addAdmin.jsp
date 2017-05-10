@@ -79,15 +79,6 @@
 							>List Of Admin</a></li></li>
                     </ul>
                   </li>
-                  <li><a><i class="fa fa-home"></i> Data Admin <span class="fa fa-chevron-down"></span></a>
-                   <ul class="nav child_menu">
-                      <li>
-                      <a href="<spring:url value="/students/addStudent" />"
-							>Add Studnet</a></li>
-					  <li><a href="<spring:url value="/students/listStudent" />"
-							>List Of Student</a></li></li>
-                    </ul>
-                  </li>
                   
                   <li><a><i class="fa fa-home"></i> Data Admin <span class="fa fa-chevron-down"></span></a>
                    <ul class="nav child_menu">

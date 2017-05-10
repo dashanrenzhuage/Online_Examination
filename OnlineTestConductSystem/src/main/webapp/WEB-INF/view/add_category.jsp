@@ -232,6 +232,7 @@
         <!-- page content -->
         <div class="right_col" role="main">
 			<form:form modelAttribute="category" action="/OnlineTestConductSystem/category/add" method="post">
+			
 				<div id="category" class="form-group">
 				    <div class="row">
 					    <div class="col-sm-1"></div>

@@ -102,7 +102,7 @@
 							>List Of Student</a></li></li>
                     </ul>
                   </li>
-<<<<<<< HEAD
+
                   <%-- <li><a><i class="fa fa-home"></i> Add Category & Sub Category <span class="fa fa-chevron-down"></span></a>
                    <ul class="nav child_menu">
                       <li>
@@ -112,7 +112,7 @@
 							>Add Sub-Category</a></li></li>
                     </ul>
                   </li> --%>
-=======
+
                    <li><a><i class="fa fa-home"></i> Add Category & Sub Category <span class="fa fa-chevron-down"></span></a>
                    <ul class="nav child_menu">
                       <li>
@@ -120,7 +120,7 @@
 							>Add Category</a></li>
 					  <li><a href="<spring:url value="/subcategories/add" />"
 							>Add Sub-Category</a></li></li>
->>>>>>> cbceb33973e2742b89cbff0ddc2be24320f73473
+
                 </ul>
               </div>
 

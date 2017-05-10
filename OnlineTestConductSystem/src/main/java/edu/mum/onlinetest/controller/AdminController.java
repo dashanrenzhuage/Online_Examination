@@ -167,7 +167,7 @@ public class AdminController {
 	}
 
 	@RequestMapping(value = "/addAdmin/{id}", method = RequestMethod.GET)
-	public String getEditEmployeePage12(@PathVariable Long id, Model model) {
+	public String getEditEmployeePage1(@PathVariable Long id, Model model) {
 
 		Employee employee = employeeService.getEmployeeByID(id);
 		model.addAttribute(employee);
@@ -222,22 +222,22 @@ public class AdminController {
 		return "listDataAdmin";
 	}
 	
-	@RequestMapping(value = "/addAdmin/{id}", method = RequestMethod.GET)
+	/*@RequestMapping(value = "/addAdmin/{id}", method = RequestMethod.GET)
 	public String getEditEmployeePage1(@PathVariable Long id, Model model) {
 		
 		System.out.println("************************66666666666666666666666666");
 		Employee employee = employeeService.getEmployeeByID(id);
 		model.addAttribute(employee);
-		/*
+		
 		 * Employee newAdmin = employeeService.getEmployeeByID(id);
 		 * model.addAttribute(newAdmin);
 		 * System.out.println("************************ edit");
 		 * System.out.println(newAdmin);
-		 */
+		 
 		return "editAdmin";
-	}
+	}*/
 
-	@RequestMapping(value = "/addAdmin/{id}", method = RequestMethod.POST)
+	/*@RequestMapping(value = "/addAdmin/{id}", method = RequestMethod.POST)
 	public String editEmployee1(@Valid @ModelAttribute("employee") Employee employee, BindingResult result,
 			@PathVariable Long id) {
 
@@ -247,7 +247,7 @@ public class AdminController {
 		}
 		employeeService.saveEmployee(employee);
 		return "adminHomePage";
-	}
+	}*/
 
 	// Delete employee of particular id
 	@RequestMapping(value = "/delete/{id}", method = RequestMethod.POST)

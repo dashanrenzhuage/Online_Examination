@@ -97,16 +97,7 @@
 							>List Of Student</a></li></li>
                     </ul>
                   </li>
-<<<<<<< HEAD
-                  <%-- <li><a><i class="fa fa-home"></i> Add Category & Sub Category <span class="fa fa-chevron-down"></span></a>
-                   <ul class="nav child_menu">
-                      <li>
-                      <a href="<spring:url value="/students/addStudent" />"
-							>Add Category</a></li>
-					  <li><a href="<spring:url value="/students/listStudent" />"
-							>Add Sub-Category</a></li></li>
-                    </ul>
-                  </li> --%>
+          
 
                    <li><a><i class="fa fa-home"></i> Add Category & Sub Category <span class="fa fa-chevron-down"></span></a>
                    <ul class="nav child_menu">
@@ -270,11 +261,9 @@
 											<td>${admin.credential.password}</td>
 											<td><a
 												href="<spring:url value="/employee/addAdmin/${admin.id}" />">Edit</a></td>
-<<<<<<< HEAD
+
 												<td><a href="<spring:url value="/employee/deleteAdmin/${admin.id}" />"
-=======
-												<td><a href="<spring:url value="/employee/delete/${admin.id}" />"
->>>>>>> cbceb33973e2742b89cbff0ddc2be24320f73473
+												<%-- <td><a href="<spring:url value="/employee/delete/${admin.id}" />" --%>
 																	class="btn btn-info" role="button">Delete</a></td>
 
 											<!--Delete Coach  -->

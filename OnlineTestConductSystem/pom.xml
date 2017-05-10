@@ -12,12 +12,12 @@
 	<name>OnlineTestConductSystem Maven Webapp</name>
 	<url>http://maven.apache.org</url>
 	<dependencies>
-		<!-- File Upload -->
-		
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
 			<version>3.8.1</version>
+
+
 			<scope>test</scope>
 		</dependency>
 		<dependency>
@@ -47,6 +47,11 @@
 		</dependency>
 
 		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-io</artifactId>
+			<version>1.3.2</version>
+		</dependency>
+		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-tx</artifactId>
 			<version>4.3.4.RELEASE</version>
@@ -64,18 +69,17 @@
 			<version>1.2</version>
 		</dependency>
 
-
-
-
-		<!-- <dependency> <groupId>org.springframework.security</groupId> <artifactId>spring-security-taglibs</artifactId> 
-			<version>4.2.0.RELEASE</version> <type>pom.lastUpdated</type> </dependency> -->
+		<!-- <dependency>
+		 <groupId>org.springframework.security</groupId> <artifactId>spring-security-taglibs</artifactId> 
+			<version>4.2.0.RELEASE</version> <type>pom.lastUpdated</type>
+		 </dependency> -->
 
 		<!-- Sushil Dependency -->
-		<dependency>
+		<!-- < dependency>
 			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-taglibs</artifactId>
 			<version>4.1.0.RELEASE</version>
-		</dependency>
+		</dependency>  -->
 
 		<dependency>
 			<groupId>org.springframework.security</groupId>
@@ -133,17 +137,17 @@
 			<version>2.8.7</version>
 
 		</dependency>
-		<!-- <dependency> <groupId>org.apache.poi</groupId> <artifactId>poi-ooxml</artifactId> 
-			<version>3.11-beta2</version> </dependency> -->
+		<dependency> <groupId>org.apache.poi</groupId> <artifactId>poi-ooxml</artifactId> 
+			<version>3.11-beta2</version> </dependency>
 		
 		<!-- Sushil Dependency -->
-		<dependency>
+		<!-- <dependency>
 			<groupId>org.apache.poi</groupId>
 			<artifactId>poi</artifactId>
 			<version>3.6</version>
 			<type>jar</type>
 			<scope>compile</scope>
-		</dependency>
+		</dependency> -->
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-context-support</artifactId>
@@ -153,26 +157,7 @@
 			<version>1.5.6</version> </dependency>
 			
 			<!-- Sushil Dependency two below of it -->
-<<<<<<< HEAD
 		<!-- <dependency>
-=======
-		 <!-- <dependency>
-
-			<groupId>com.sun.mail</groupId>
-			<artifactId>javax.mail</artifactId>
-			<version>1.5.6</version>
-		</dependency>
-		
-		<dependency>
-	    	<groupId>commons-fileupload</groupId>
-	    	<artifactId>commons-fileupload</artifactId>
-	    	<version>1.3.2</version>
-	    </dependency> -->
-	    
-		<!--  -->
-		
-		<dependency>
->>>>>>> cbceb33973e2742b89cbff0ddc2be24320f73473
 			<groupId>javax.mail</groupId>
 			<artifactId>mail</artifactId>
 			<version>1.4.7</version>
@@ -181,102 +166,7 @@
 			<groupId>javax.mail</groupId>
 			<artifactId>javax.mail-api</artifactId>
 			<version>1.5.5</version>
-<<<<<<< HEAD
 		</dependency> -->
-=======
-		</dependency> 
-		
-		<!-- Jasper report -->
-		
-		
-		
-		<dependency>
-    	<groupId>net.sf.jasperreports</groupId>
-    	<artifactId>jasperreports</artifactId>
-    	<version>5.0.0</version>
-    	<!-- <version>3.7.6</version> -->
-    	<type>jar</type>
-    	<scope>compile</scope>
-    	<exclusions>
-    		<exclusion>
-    			<artifactId>commons-collections</artifactId>
-    			<groupId>commons-collections</groupId>
-    		</exclusion>
-    		<exclusion>
-    			<artifactId>commons-beanutils</artifactId>
-    			<groupId>commons-beanutils</groupId>
-    		</exclusion>
-    		<exclusion>
-    			<artifactId>commons-digester</artifactId>
-    			<groupId>commons-digester</groupId>
-    		</exclusion>
-    		<exclusion>
-    			<artifactId>commons-logging</artifactId>
-    			<groupId>commons-logging</groupId>
-    		</exclusion>
-    	</exclusions>
-    </dependency>
-
-		<dependency>
-    	<groupId>commons-digester</groupId>
-    	<artifactId>commons-digester</artifactId>
-    	<version>2.1</version>
-    	<type>jar</type>
-    	<scope>compile</scope>
-    </dependency>
-    <dependency>
-    	<groupId>commons-collections</groupId>
-    	<artifactId>commons-collections</artifactId>
-    	<version>3.2.1</version>
-    	<type>jar</type>
-    	<scope>compile</scope>
-    </dependency>
-     <!-- <dependency>
-    	<groupId>org.apache.poi</groupId>
-    	<artifactId>poi</artifactId>
-    	<version>3.6</version>
-    	<type>jar</type>
-    	<scope>compile</scope>
-    </dependency> -->
-    
-    <!-- Apache Tiles -->
-		
-	<dependency>
-        <groupId>org.apache.poi</groupId>
-        <artifactId>poi-ooxml</artifactId>
-        <version>3.11-beta2</version>
-	</dependency>
-    
-   
-    
-	<dependency>
-		<groupId>javax.servlet</groupId>
-		<artifactId>javax.servlet-api</artifactId>
-		<version>3.1.0</version>
-	</dependency>
-	<dependency>
-		<groupId>javax.servlet.jsp</groupId>
-		<artifactId>jsp-api</artifactId>
-		<version>2.2</version>
-	</dependency>
-	
-	
-	<!-- file upload -->
-	
-	<dependency>
-	    	<groupId>commons-fileupload</groupId>
-	    	<artifactId>commons-fileupload</artifactId>
-	    	<version>1.3.2</version>
-	    </dependency>
-	    <dependency>
-	    	<groupId>org.apache.commons</groupId>
-	    	<artifactId>commons-io</artifactId>
-	    	<version>1.3.2</version>
-	    </dependency>
-	
-	<!-- file upload end-->
-
->>>>>>> cbceb33973e2742b89cbff0ddc2be24320f73473
 		<dependency>
 			<groupId>org.apache.tiles</groupId>
 			<artifactId>tiles-core</artifactId>
@@ -287,11 +177,11 @@
 			<artifactId>tiles-jsp</artifactId>
 			<version>3.0.3</version>
 		</dependency>
-	<!-- 	<dependency>
+		<dependency>
 			<groupId>commons-fileupload</groupId>
 			<artifactId>commons-fileupload</artifactId>
 			<version>1.3.2</version>
-		</dependency> -->
+		</dependency>
 		<dependency>
 			<groupId>commons-io</groupId>
 			<artifactId>commons-io</artifactId>
@@ -301,11 +191,11 @@
 
 
 
-		<!-- <dependency>
+		<dependency>
 			<groupId>net.sf.jasperreports</groupId>
 			<artifactId>jasperreports</artifactId>
 			<version>5.0.0</version>
-			<version>3.7.6</version>
+			<!-- <version>3.7.6</version> -->
 			<type>jar</type>
 			<scope>compile</scope>
 			<exclusions>
@@ -340,7 +230,7 @@
 			<version>3.2.1</version>
 			<type>jar</type>
 			<scope>compile</scope>
-		</dependency> -->
+		</dependency>
 	</dependencies>
 	<build>
 		<plugins>
