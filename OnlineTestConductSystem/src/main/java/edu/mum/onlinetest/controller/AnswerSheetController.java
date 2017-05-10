@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -36,9 +37,9 @@ public class AnswerSheetController {
 	}*/
 	
 	@RequestMapping(value = "/result", method = RequestMethod.POST)
-	public String resultTest(AnswerSheet answerSheet) {
+	public String resultTest(@ModelAttribute(".......") AnswerSheet answerSheet) {
 		System.out.println("*********inside resultTest*************");
-		//answerSheetService.getResult1(answerSheet);
+		/*answerSheetService.getResult1(answerSheet);*/
 		//forward total marks so that student can see it after completing exam on click submit
 		return "redirect:/test/answersheet";
 	}

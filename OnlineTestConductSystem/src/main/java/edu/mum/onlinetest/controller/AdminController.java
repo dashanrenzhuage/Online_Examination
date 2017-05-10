@@ -3,6 +3,7 @@ package edu.mum.onlinetest.controller;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -310,6 +311,14 @@ public class AdminController {
 		});
 		model.addAttribute("coachList", employeeService.findAdmin());
 		return "coach_home_page";
+
+	}
+	
+	
+	@RequestMapping(value = "/logout", method = RequestMethod.GET)
+	public String logout(HttpServletRequest request) {
+		request.getSession().invalidate();
+		return "redirect:/login";
 
 	}
 

@@ -41,7 +41,7 @@ public class QuestionUploadController {
 	}
 	
 
-	@RequestMapping(value = "/generatesss", method= RequestMethod.POST)
+	@RequestMapping(value = "/generateTTSS", method= RequestMethod.POST)
 	public void questionGenerate(@ModelAttribute ("category") Category category,BindingResult result){
 //		List<SubCategory> subCatList = category.getSubcategories();
 //		for(SubCategory subCategory: subCatList){

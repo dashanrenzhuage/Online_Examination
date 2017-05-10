@@ -82,7 +82,7 @@ public class QuestionServiceImpl implements QuestionServiceInterface {
 	@Override
 	public List<Question> getRandomQuestion(List<SubCategory> subCatList) {
 		List<Question> questionList = new ArrayList<>();
-		// List<SubCategory> subCatList = category.getSubcategories();
+		if(!subCatList.isEmpty()){
 		for (SubCategory subCategory : subCatList) {
 			System.out.println("subCategory: " + subCategory.getSubCatName());
 			List<Long> quesIds = dao.findIdByName(subCategory.getSubCatName());
@@ -106,6 +106,7 @@ public class QuestionServiceImpl implements QuestionServiceInterface {
 				System.out.println(qL.getQuesName());
 			});
 		}
+	}
 		return questionList;
 
 	}
@@ -115,6 +116,7 @@ public class QuestionServiceImpl implements QuestionServiceInterface {
 		List<Question> allQuestList = new ArrayList<>();
 		XLSXParser parser = new XLSXParser();
 		List<List<String>> quesList = parser.getQuestions(fileName);
+		if(!quesList.isEmpty()){
 		for (List<String> singleQuesList : quesList) {
 
 			int correctIndex = getAnswerIndex(singleQuesList);
@@ -144,7 +146,7 @@ public class QuestionServiceImpl implements QuestionServiceInterface {
 			}
 
 		}
-
+	}
 		return allQuestList;
 
 	}

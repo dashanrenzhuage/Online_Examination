@@ -166,12 +166,14 @@
 
 			<!-- page content -->
 			<div class="right_col" role="main">
-				<form action="<spring:url value="/question/generate"/>" method="get">
+<%-- 				<form action="<spring:url value="/question/generate"/>" method="get">
+ --%>				<form action="<spring:url value="/question/clicktostartexam"/>" method="post">
+				
 					<div class="form-group">
 						<div class="row">
 							<div class="col-sm-1"></div>
 							<div class="col-sm-11">
-								<label for="sel1">Add Category:</label>
+								<label for="sel1">Select Category:</label>
 							</div>
 						</div>
 					</div>
@@ -192,7 +194,7 @@
 						<div class="row">
 							<div class="col-sm-1"></div>
 							<div class="col-sm-11">
-								<label for="sel2">Add Subcategory:</label>
+								<label for="sel2">Select Subcategory:</label>
 							</div>
 						</div>
 					</div>

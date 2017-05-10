@@ -91,4 +91,10 @@ public class CoachController {
 		// return new ResponseEntity<Void>(HttpStatus.OK);
 		return "coachListStudent";
 	}
+	@RequestMapping(value = "/logout", method = RequestMethod.GET)
+	public String logout(HttpServletRequest request) {
+		request.getSession().invalidate();
+		return "redirect:/login";
+
+	}
 }

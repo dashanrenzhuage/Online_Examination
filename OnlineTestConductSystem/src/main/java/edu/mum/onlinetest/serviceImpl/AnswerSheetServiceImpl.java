@@ -104,6 +104,7 @@ public class AnswerSheetServiceImpl {
 		//add those subcategories to list whose questions are generated
 
 		List<Integer> individualMark = new ArrayList<>();
+
 		 noOfSubCategory = 4 
 		for (int i = 0; i < 4; i++) {
 			individualMark.add(0);
@@ -112,7 +113,7 @@ public class AnswerSheetServiceImpl {
 
 		for (int i = 0; i < noOfQuestions; i++) {
 			for (int j = 0; j < 4; j++) {
-				if (answerSheet2.getAnswerList().get(i).getQuestion().getOpts().get(j).isCorrect() == true) {
+				if (answerSheet2.getAnswerList().get(i).getQuestion().getOpts().get(j).isCorrectAns() == true) {
 					if (answerSheet2.getAnswerList().get(i).getAnswer1() == j) {
 						totalMarks += 1;
 						for (int k = 0; k < 4; i++) {

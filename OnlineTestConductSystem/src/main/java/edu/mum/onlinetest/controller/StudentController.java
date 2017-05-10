@@ -74,6 +74,7 @@ public class StudentController {
 					studentService.saveStudent(student);
 
 					return "stu_sel_exam";
+					/*return "click_to_start_exam";*/
 				}
 			}
 
