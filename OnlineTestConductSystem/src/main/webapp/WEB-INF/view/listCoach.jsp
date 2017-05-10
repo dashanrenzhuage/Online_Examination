@@ -46,8 +46,7 @@
 					<!-- menu profile quick info -->
 					<div class="profile clearfix">
 						<div class="profile_pic">
-							<img src="images/img.jpg" alt="..."
-								class="img-circle profile_img">
+							<img src='<spring:url value="/resources/images/img.jpg"></spring:url>' alt="..." class="img-circle profile_img">
 						</div>
 						<div class="profile_info">
 							<span>Welcome,</span>
@@ -144,7 +143,9 @@
 					<ul class="nav navbar-nav navbar-right">
 						<li class=""><a href="javascript:;"
 							class="user-profile dropdown-toggle" data-toggle="dropdown"
-							aria-expanded="false"> <img src="images/img.jpg" alt="">${pageContext.request.userPrincipal.name} <span class=" fa fa-angle-down"></span>
+							aria-expanded="false"><img
+								src='<spring:url value="/resources/images/img.jpg"></spring:url>'
+								alt="...">${pageContext.request.userPrincipal.name} <span class=" fa fa-angle-down"></span>
 						</a>
 							<ul class="dropdown-menu dropdown-usermenu pull-right">
 								<li><a href="javascript:;"> Profile</a></li>
@@ -164,25 +165,29 @@
 							<ul id="menu1" class="dropdown-menu list-unstyled msg_list"
 								role="menu">
 								<li><a> <span class="image"><img
-											src="images/img.jpg" alt="Profile Image" /></span> <span> <span>John
+								src='<spring:url value="/resources/images/img.jpg"></spring:url>'
+								alt="..."></span> <span> <span>John
 												Smith</span> <span class="time">3 mins ago</span>
 									</span> <span class="message"> Film festivals used to be
 											do-or-die moments for movie makers. They were where... </span>
 								</a></li>
 								<li><a> <span class="image"><img
-											src="images/img.jpg" alt="Profile Image" /></span> <span> <span>John
+								src='<spring:url value="/resources/images/img.jpg"></spring:url>'
+								alt="..."></span> <span> <span>John
 												Smith</span> <span class="time">3 mins ago</span>
 									</span> <span class="message"> Film festivals used to be
 											do-or-die moments for movie makers. They were where... </span>
 								</a></li>
 								<li><a> <span class="image"><img
-											src="images/img.jpg" alt="Profile Image" /></span> <span> <span>John
+								src='<spring:url value="/resources/images/img.jpg"></spring:url>'
+								alt="..."></span> <span> <span>John
 												Smith</span> <span class="time">3 mins ago</span>
 									</span> <span class="message"> Film festivals used to be
 											do-or-die moments for movie makers. They were where... </span>
 								</a></li>
 								<li><a> <span class="image"><img
-											src="images/img.jpg" alt="Profile Image" /></span> <span> <span>John
+								src='<spring:url value="/resources/images/img.jpg"></spring:url>'
+								alt="..."></span> <span> <span>John
 												Smith</span> <span class="time">3 mins ago</span>
 									</span> <span class="message"> Film festivals used to be
 											do-or-die moments for movie makers. They were where... </span>
@@ -203,11 +208,14 @@
 
 			<!-- page content -->
 			<div class="right_col" role="main">
+				<div id="addadmin" class="form-group center-align">
+					<h4>List of Coaches<h4>
+				</div>
 				<div id="coachList">
 					<div class="row">
 						<div class="col-sm-1"></div>
 						<div class="col-sm-10">
-							<table id="c_table" class="table table-hover">
+							<table id="example" class="table table-hover">
 								<thead>
 									<tr>
 										<th width="20%">Name</th>
@@ -234,7 +242,7 @@
 											<td>${coach.credential.password}</td>
 											<td><a
 												href="<spring:url value="/employee/add/${coach.id}" />">Edit</a></td>
-												<td><a href="<spring:url value="/employee/delete/${coach.id}" />"
+												<td><a href="<spring:url value="/employee/deleteCoach/${coach.id}" />"
 																	class="btn btn-info" role="button">Delete</a></td>
 
 											<!--Delete Coach  -->
@@ -339,7 +347,12 @@
 	<script
 		src='<spring:url value="/resources/js/custom.min.js"></spring:url>'></script>
 	<script src='<spring:url value="/resources/js/admin.js"></spring:url>'></script>
-
+	<script
+		src='<spring:url value="/resources/js/jquery.dataTables.min.js"></spring:url>'></script>
+	<script
+		src='<spring:url value="/resources/js/dataTables.bootstrap.min.js"></spring:url>'></script>
+	<script
+		src='<spring:url value="/resources/js/data_table.js"></spring:url>'></script>
 
 
 </body>

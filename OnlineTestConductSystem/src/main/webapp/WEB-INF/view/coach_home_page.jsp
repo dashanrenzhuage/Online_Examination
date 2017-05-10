@@ -168,7 +168,9 @@
 
 
 			<!-- page content -->
-			
+			<div class="right_col" role="main">
+				Welcome to online test system, the system provide a platform for MUM students who are under job search to take exams online. Students can select their technology from the list of categories provided and choose 3 to 4 subcategories to take the exam. Once the student is done with his test, the system automatically grade his test and save the test results in an output report, where a CS coach can open it and see the test results. It's a good opportunity to test the knowledge you grasp, hope you can enjoy it!
+			</div>
 			<!-- /page content -->
 
 			<!-- footer content -->

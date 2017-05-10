@@ -45,7 +45,7 @@
             <!-- menu profile quick info -->
             <div class="profile clearfix">
               <div class="profile_pic">
-                <img src="images/img.jpg" alt="..." class="img-circle profile_img">
+                <img src='<spring:url value="/resources/images/img.jpg"></spring:url>' alt="..." class="img-circle profile_img">
               </div>
               <div class="profile_info">
                 <span>Welcome,</span>
@@ -141,7 +141,9 @@
               <ul class="nav navbar-nav navbar-right">
                 <li class="">
                   <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                    <img src="images/img.jpg" alt="">${pageContext.request.userPrincipal.name}
+                    <img
+						src='<spring:url value="/resources/images/img.jpg"></spring:url>'
+						alt="...">${pageContext.request.userPrincipal.name}
                     <span class=" fa fa-angle-down"></span>
                   </a>
                   <ul class="dropdown-menu dropdown-usermenu pull-right">
@@ -165,7 +167,9 @@
                   <ul id="menu1" class="dropdown-menu list-unstyled msg_list" role="menu">
                     <li>
                       <a>
-                        <span class="image"><img src="images/img.jpg" alt="Profile Image" /></span>
+                        <span class="image"><img
+								src='<spring:url value="/resources/images/img.jpg"></spring:url>'
+								alt="..."></span>
                         <span>
                           <span>John Smith</span>
                           <span class="time">3 mins ago</span>
@@ -177,7 +181,9 @@
                     </li>
                     <li>
                       <a>
-                        <span class="image"><img src="images/img.jpg" alt="Profile Image" /></span>
+                        <span class="image"><img
+								src='<spring:url value="/resources/images/img.jpg"></spring:url>'
+								alt="..."></span>
                         <span>
                           <span>John Smith</span>
                           <span class="time">3 mins ago</span>
@@ -189,7 +195,9 @@
                     </li>
                     <li>
                       <a>
-                        <span class="image"><img src="images/img.jpg" alt="Profile Image" /></span>
+                        <span class="image"><img
+								src='<spring:url value="/resources/images/img.jpg"></spring:url>'
+								alt="..."></span>
                         <span>
                           <span>John Smith</span>
                           <span class="time">3 mins ago</span>
@@ -201,7 +209,9 @@
                     </li>
                     <li>
                       <a>
-                        <span class="image"><img src="images/img.jpg" alt="Profile Image" /></span>
+                        <span class="image"><img
+								src='<spring:url value="/resources/images/img.jpg"></spring:url>'
+								alt="..."></span>
                         <span>
                           <span>John Smith</span>
                           <span class="time">3 mins ago</span>
@@ -252,7 +262,7 @@
 						</div>
 						<div class="col-sm-9">
 							<!-- <input type="text" class="form-control" id="cn" name="cn"/> -->
-							<form:input id="name" name="name" path="name" type="text" />
+							<form:input id="name" class="form-control" name="name" path="name" type="text" />
 						</div>
 					</div>
 				</div>
@@ -264,7 +274,7 @@
 						</div>
 						<div class="col-sm-9">
 							<!-- <input type="text" class="form-control" id="cn" name="cn"/> -->
-							<form:input id="email" name="email" path="email" type="text" />
+							<form:input id="email" class="form-control" name="email" path="email" type="text" />
 						</div>
 					</div>
 				</div>

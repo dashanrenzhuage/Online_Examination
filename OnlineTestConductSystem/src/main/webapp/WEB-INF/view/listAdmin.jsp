@@ -45,7 +45,7 @@
             <!-- menu profile quick info -->
             <div class="profile clearfix">
               <div class="profile_pic">
-                <img src="images/img.jpg" alt="..." class="img-circle profile_img">
+                <img src='<spring:url value="/resources/images/img.jpg"></spring:url>' alt="..." class="img-circle profile_img">
               </div>
               <div class="profile_info">
                 <span>Welcome,</span>
@@ -144,7 +144,9 @@
               <ul class="nav navbar-nav navbar-right">
                 <li class="">
                   <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                    <img src="images/img.jpg" alt="">${pageContext.request.userPrincipal.name}
+                    <img
+						src='<spring:url value="/resources/images/img.jpg"></spring:url>'
+						alt="...">${pageContext.request.userPrincipal.name}
                     <span class=" fa fa-angle-down"></span>
                   </a>
                   <ul class="dropdown-menu dropdown-usermenu pull-right">
@@ -168,7 +170,9 @@
                   <ul id="menu1" class="dropdown-menu list-unstyled msg_list" role="menu">
                     <li>
                       <a>
-                        <span class="image"><img src="images/img.jpg" alt="Profile Image" /></span>
+                        <span class="image"><img
+								src='<spring:url value="/resources/images/img.jpg"></spring:url>'
+								alt="..."></span>
                         <span>
                           <span>John Smith</span>
                           <span class="time">3 mins ago</span>
@@ -180,7 +184,9 @@
                     </li>
                     <li>
                       <a>
-                        <span class="image"><img src="images/img.jpg" alt="Profile Image" /></span>
+                        <span class="image"><img
+								src='<spring:url value="/resources/images/img.jpg"></spring:url>'
+								alt="..."></span>
                         <span>
                           <span>John Smith</span>
                           <span class="time">3 mins ago</span>
@@ -192,7 +198,9 @@
                     </li>
                     <li>
                       <a>
-                        <span class="image"><img src="images/img.jpg" alt="Profile Image" /></span>
+                        <span class="image"><img
+								src='<spring:url value="/resources/images/img.jpg"></spring:url>'
+								alt="..."></span>
                         <span>
                           <span>John Smith</span>
                           <span class="time">3 mins ago</span>
@@ -204,7 +212,9 @@
                     </li>
                     <li>
                       <a>
-                        <span class="image"><img src="images/img.jpg" alt="Profile Image" /></span>
+                        <span class="image"><img
+								src='<spring:url value="/resources/images/img.jpg"></spring:url>'
+								alt="..."></span>
                         <span>
                           <span>John Smith</span>
                           <span class="time">3 mins ago</span>
@@ -232,11 +242,26 @@
 
         <!-- page content -->
         <div class="right_col" role="main">
+        	<div id="addadmin" class="form-group center-align">
+				<h4>List of Administrators<h4>
+			</div>
+			<c:if test="${not empty adminDeleteMessage}">
+				<script>
+					setTimeout(function() {
+						$('#adminDeleteMessage').fadeOut('medium');
+					}, 2000);
+				</script>
+				<div id="adminDeleteMessage"
+					class="alert alert-danger alert-dismissable">
+					<a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
+					<strong>Success!</strong> You have successfully deleted administrator.
+				</div>
+			</c:if>
 			<div id="categoryList">
 					<div class="row">
 						<div class="col-sm-1"></div>
 						<div class="col-sm-10">
-							<table id="c_table" class="table table-hover">
+							<table id="example" class="table table-hover">
 								<thead>
 									<tr>
 										<th width="20%">Name</th>
@@ -262,9 +287,36 @@
 											<td><a
 												href="<spring:url value="/employee/addAdmin/${admin.id}" />">Edit</a></td>
 
-												<td><a href="<spring:url value="/employee/deleteAdmin/${admin.id}" />"
+												<!-- <td><a href="<spring:url value="/employee/deleteAdmin/${admin.id}" />"
 												<%-- <td><a href="<spring:url value="/employee/delete/${admin.id}" />" --%>
-																	class="btn btn-info" role="button">Delete</a></td>
+																	class="btn btn-info" role="button">Delete</a></td>  -->
+												<td>
+													<a data-toggle="modal" data-target="#myModal"
+																			class="btn btn-info" role="button">Delete</a></td>
+														<!-- <button type="button" class="btn btn-info btn-lg"
+															data-toggle="modal" data-target="#myModal" style="margin:0px;">Send
+															Access ID</button> --> <!-- Modal -->
+														<div class="modal fade" id="myModal" role="dialog">
+															<div class="modal-dialog">
+					
+																<!-- Modal content-->
+																<div class="modal-content">
+																	<div class="modal-header">
+																		<button type="button" class="close" data-dismiss="modal">&times;</button>
+																		<h4 class="modal-title">
+																			<b>Delete Administrator</b>
+																		</h4>
+																	</div>
+																	<div class="modal-body">
+																		<p>Are you sure you want to delete administrator?</p>
+																	</div>
+																	<div class="modal-footer">
+																		<a href="<spring:url value="deleteAdmin/${admin.id}" />"
+																			class="btn btn-info" role="button">Delete</a>
+																	</div>
+																</div>
+															</div>
+														</div>
 
 											<!--Delete Coach  -->
 											<%-- <td><a data-toggle="modal" data-target="#myModal"
@@ -361,7 +413,12 @@
 		src='<spring:url value="/resources/js/custom.min.js"></spring:url>'></script>
 	<script
 		src='<spring:url value="/resources/js/admin.js"></spring:url>'></script>
-	
+	<script
+		src='<spring:url value="/resources/js/jquery.dataTables.min.js"></spring:url>'></script>
+	<script
+		src='<spring:url value="/resources/js/dataTables.bootstrap.min.js"></spring:url>'></script>
+	<script
+		src='<spring:url value="/resources/js/data_table.js"></spring:url>'></script>
 
 
 </body>

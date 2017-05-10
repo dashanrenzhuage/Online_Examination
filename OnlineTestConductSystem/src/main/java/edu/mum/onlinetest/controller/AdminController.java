@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
 import edu.mum.onlinetest.model.Admin;
 import edu.mum.onlinetest.model.Coach;
 import edu.mum.onlinetest.model.Credential;
@@ -250,20 +252,23 @@ public class AdminController {
 	}*/
 
 	// Delete employee of particular id
-	@RequestMapping(value = "/delete/{id}", method = RequestMethod.POST)
-	public String removePerson(@PathVariable("id") Long id, Model model) {
+	@RequestMapping(value = "/deleteCoach/{id}")
+	public String removePerson(@PathVariable("id") Long id, RedirectAttributes rm, Model model) {
+		rm.addFlashAttribute("coachDeleteMessage", "Coach has been successfully deleted!");
 		employeeService.deleteEmployeeByID(id);
 		model.addAttribute("coachList", employeeService.findCoach());
 		return "listCoach";
 	}
 	@RequestMapping("/deleteAdmin/{id}")
-	public String removePerson1(@PathVariable("id") Long id, Model model) {
+	public String removePerson1(@PathVariable("id") Long id, RedirectAttributes rm, Model model) {
+		rm.addFlashAttribute("adminDeleteMessage", "Administrator has been successfully deleted!");
 		employeeService.deleteEmployeeByID(id);
 		model.addAttribute("adminList", employeeService.findAdmin());
 		return "listAdmin";
 	}
 	@RequestMapping("/deleteDataAdmin/{id}")
-	public String removePerson2(@PathVariable("id") Long id, Model model) {
+	public String removePerson2(@PathVariable("id") Long id, RedirectAttributes rm, Model model) {
+		rm.addFlashAttribute("dataAdminDeleteMessage", "Data admin has been successfully deleted!");
 		employeeService.deleteEmployeeByID(id);
 		model.addAttribute("dataAdminList", employeeService.findDataAdmin());
 		return "listDataAdmin";

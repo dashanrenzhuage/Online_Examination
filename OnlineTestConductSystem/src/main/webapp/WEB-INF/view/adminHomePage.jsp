@@ -182,7 +182,7 @@
                   <ul id="menu1" class="dropdown-menu list-unstyled msg_list" role="menu">
                     <li>
                       <a>
-                        <span class="image"><img src="../images/img.jpg" alt="Profile Image" /></span>
+                        <span class="image"><img src='<spring:url value="/resources/images/img.jpg"></spring:url>' alt=""></span>
                         <span>
                           <span>John Smith</span>
                           <span class="time">3 mins ago</span>
@@ -194,7 +194,7 @@
                     </li>
                     <li>
                       <a>
-                        <span class="image"><img src="../images/img.jpg" alt="Profile Image" /></span>
+                        <span class="image"><img src='<spring:url value="/resources/images/img.jpg"></spring:url>' alt=""></span>
                         <span>
                           <span>John Smith</span>
                           <span class="time">3 mins ago</span>
@@ -206,7 +206,7 @@
                     </li>
                     <li>
                       <a>
-                        <span class="image"><img src="../images/img.jpg" alt="Profile Image" /></span>
+                        <span class="image"><img src='<spring:url value="/resources/images/img.jpg"></spring:url>' alt=""></span>
                         <span>
                           <span>John Smith</span>
                           <span class="time">3 mins ago</span>
@@ -218,7 +218,7 @@
                     </li>
                     <li>
                       <a>
-                        <span class="image"><img src="../images/img.jpg" alt="Profile Image" /></span>
+                        <span class="image"><img src='<spring:url value="/resources/images/img.jpg"></spring:url>' alt=""></span>
                         <span>
                           <span>John Smith</span>
                           <span class="time">3 mins ago</span>
@@ -245,54 +245,9 @@
         <!-- /top navigation -->
 
         <!-- page content -->
-        <!-- <div class="right_col" role="main">
-			<div id="categoryList">
-					<div class="row">
-						<div class="col-sm-1"></div>
-						<div class="col-sm-10">
-							<table id="c_table" class="table table-hover">
-								<thead>
-									<tr>
-										<th width="20%">Name</th>
-										<th width="20%">Email</th>
-										<th width="20%">Username</th>
-										<th width="20%">Password</th>
-										<th width="20%">Edit</th>
-										<th width="20%">Delete</th>
-									</tr>
-								</thead>
-								<tbody>
-									<tr>
-										<td>Tony</td>
-										<td>tony@gmail.com</td>
-										<td>Tony123</td>
-										<td>tony123</td>
-										<td><a href= "admin_editadmin.html">Edit</a></td>
-										<td>
-											<button type="button" id="del1" class="btn del" onclick="delCategory(this)">
-												<span class="glyphicon glyphicon-remove"></span>
-											</button>
-										</td>
-									</tr>
-									<tr>
-										<td>George</td>
-										<td>george@gmail.com</td>
-										<td>George</td>
-										<td>george123</td>
-										<td><a href= "admin_editadmin.html">Edit</a></td>
-										<td>
-											<button type="button" id="del2" class="btn del" onclick="delCategory(this)">
-												<span class="glyphicon glyphicon-remove"></span>
-											</button>
-										</td>
-									</tr>
-								</tbody>
-							</table>
-						</div>
-						<div class="col-sm-1"></div>
-					</div>
-				</div>
-		</div> -->
+        <div class="right_col" role="main">
+			Welcome to online test system, the system provide a platform for MUM students who are under job search to take exams online. Students can select their technology from the list of categories provided and choose 3 to 4 subcategories to take the exam. Once the student is done with his test, the system automatically grade his test and save the test results in an output report, where a CS coach can open it and see the test results. It's a good opportunity to test the knowledge you grasp, hope you can enjoy it!
+		</div>
         <!-- /page content -->
 
         <!-- footer content -->

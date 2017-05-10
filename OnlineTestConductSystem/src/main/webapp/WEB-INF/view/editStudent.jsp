@@ -46,9 +46,7 @@
 					<!-- menu profile quick info -->
 					<div class="profile clearfix">
 						<div class="profile_pic">
-							<img
-								src='<spring:url value="/resources/images/img.jpg"></spring:url>'
-								alt="..." class="img-circle profile_img">
+							<img src='<spring:url value="/resources/images/img.jpg"></spring:url>' alt="..." class="img-circle profile_img">
 						</div>
 						<div class="profile_info">
 							<span>Welcome,</span>
@@ -149,7 +147,7 @@
 							class="user-profile dropdown-toggle" data-toggle="dropdown"
 							aria-expanded="false"> <img
 								src='<spring:url value="/resources/images/img.jpg"></spring:url>'
-								alt="">${pageContext.request.userPrincipal.name} <span class=" fa fa-angle-down"></span>
+								alt="...">${pageContext.request.userPrincipal.name} <span class=" fa fa-angle-down"></span>
 						</a>
 							<ul class="dropdown-menu dropdown-usermenu pull-right">
 								<li><a href="javascript:;"> Profile</a></li>
@@ -169,25 +167,29 @@
 							<ul id="menu1" class="dropdown-menu list-unstyled msg_list"
 								role="menu">
 								<li><a> <span class="image"><img
-											src="images/img.jpg" alt="Profile Image" /></span> <span> <span>John
+								src='<spring:url value="/resources/images/img.jpg"></spring:url>'
+								alt="..."></span> <span> <span>John
 												Smith</span> <span class="time">3 mins ago</span>
 									</span> <span class="message"> Film festivals used to be
 											do-or-die moments for movie makers. They were where... </span>
 								</a></li>
 								<li><a> <span class="image"><img
-											src="images/img.jpg" alt="Profile Image" /></span> <span> <span>John
+								src='<spring:url value="/resources/images/img.jpg"></spring:url>'
+								alt="..."></span> <span> <span>John
 												Smith</span> <span class="time">3 mins ago</span>
 									</span> <span class="message"> Film festivals used to be
 											do-or-die moments for movie makers. They were where... </span>
 								</a></li>
 								<li><a> <span class="image"><img
-											src="images/img.jpg" alt="Profile Image" /></span> <span> <span>John
+								src='<spring:url value="/resources/images/img.jpg"></spring:url>'
+								alt="..."></span> <span> <span>John
 												Smith</span> <span class="time">3 mins ago</span>
 									</span> <span class="message"> Film festivals used to be
 											do-or-die moments for movie makers. They were where... </span>
 								</a></li>
 								<li><a> <span class="image"><img
-											src="images/img.jpg" alt="Profile Image" /></span> <span> <span>John
+								src='<spring:url value="/resources/images/img.jpg"></spring:url>'
+								alt="..."></span> <span> <span>John
 												Smith</span> <span class="time">3 mins ago</span>
 									</span> <span class="message"> Film festivals used to be
 											do-or-die moments for movie makers. They were where... </span>
@@ -212,7 +214,7 @@
 				<form:form modelAttribute="student"
 					action="../saveStudent"
 					method="post" enctype="multipart/form-data">
-					<div id="edit" class="form-group">
+					<div id="edit" class="form-group center-align">
 						<h4>
 							Edit Student
 							<h4>
@@ -221,7 +223,7 @@
 					<div class="row">
 						<div class="col-sm-1"></div>
 						<div class="col-sm-1">
-							<!-- <label for="to" class="lab">Student ID:</label> -->
+							<label for="to" class="lab">Student ID:</label>
 						</div>
 						<div class="col-sm-9">
 							<input type="text" class="form-control" id="ea" name="id" path="id"
