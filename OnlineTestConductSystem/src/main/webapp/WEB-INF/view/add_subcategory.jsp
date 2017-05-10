@@ -45,18 +45,18 @@
             <!-- menu profile quick info -->
             <div class="profile clearfix">
               <div class="profile_pic">
-                <img src="images/img.jpg" alt="..." class="img-circle profile_img">
+                <img src='<spring:url value="/resources/images/img.jpg"></spring:url>' alt="..." class="img-circle profile_img">
               </div>
               <div class="profile_info">
                 <span>Welcome,</span>
-                <h2>${pageContext.request.userPrincipal.name}</h2>
+                <h2>John Doe</h2>
               </div>
             </div>
             <!-- /menu profile quick info -->
 
             <br />
 
-             <!-- sidebar menu -->
+            <!-- sidebar menu -->
             <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
               <div class="menu_section">
                 <h3>General</h3>
@@ -73,21 +73,23 @@
 				  <li><a><i class="fa fa-home"></i> Administrator <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
                       <li>
-                      <a href="<spring:url value="/employee/addAdmin" />"
+                      <a href="<spring:url value="/employee/add" />"
 							>Add Admin</a></li>
 					  <li><a href="<spring:url value="/employee/listAdmin" />"
 							>List Of Admin</a></li></li>
                     </ul>
                   </li>
+                   
                   <li><a><i class="fa fa-home"></i> Data Admin <span class="fa fa-chevron-down"></span></a>
                    <ul class="nav child_menu">
                       <li>
-                      <a href="<spring:url value="/employee/addDataAdmin" />"
-							>Add Data Admin</a></li>
-					  <li><a href="<spring:url value="/employee/listDataAdmin" />"
-							>List Of Data Admin</a></li></li>
+                      <a href="<spring:url value="/students/addStudent" />"
+							>Add Studnet</a></li>
+					  <li><a href="<spring:url value="/students/listStudent" />"
+							>List Of Student</a></li></li>
                     </ul>
                   </li>
+                  
                   <li><a><i class="fa fa-home"></i> Student <span class="fa fa-chevron-down"></span></a>
                    <ul class="nav child_menu">
                       <li>
@@ -97,8 +99,7 @@
 							>List Of Student</a></li></li>
                     </ul>
                   </li>
-          
-
+                 
                    <li><a><i class="fa fa-home"></i> Add Category & Sub Category <span class="fa fa-chevron-down"></span></a>
                    <ul class="nav child_menu">
                       <li>
@@ -106,14 +107,12 @@
 							>Add Category</a></li>
 					  <li><a href="<spring:url value="/subcategories/add" />"
 							>Add Sub-Category</a></li></li>
-
                 </ul>
               </div>
 
             </div>
             <!-- /sidebar menu -->
-            
-            <!-- /menu footer buttons -->
+
             <!-- /menu footer buttons -->
             <div class="sidebar-footer hidden-small">
               <a data-toggle="tooltip" data-placement="top" title="Settings">
@@ -144,7 +143,7 @@
               <ul class="nav navbar-nav navbar-right">
                 <li class="">
                   <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                    <img src="images/img.jpg" alt="">${pageContext.request.userPrincipal.name}
+                    <img src='<spring:url value="/resources/images/img.jpg"></spring:url>' alt="">John Doe
                     <span class=" fa fa-angle-down"></span>
                   </a>
                   <ul class="dropdown-menu dropdown-usermenu pull-right">
@@ -168,7 +167,7 @@
                   <ul id="menu1" class="dropdown-menu list-unstyled msg_list" role="menu">
                     <li>
                       <a>
-                        <span class="image"><img src="images/img.jpg" alt="Profile Image" /></span>
+                        <span class="image"><img src="../images/img.jpg" alt="Profile Image" /></span>
                         <span>
                           <span>John Smith</span>
                           <span class="time">3 mins ago</span>
@@ -180,7 +179,7 @@
                     </li>
                     <li>
                       <a>
-                        <span class="image"><img src="images/img.jpg" alt="Profile Image" /></span>
+                        <span class="image"><img src="../images/img.jpg" alt="Profile Image" /></span>
                         <span>
                           <span>John Smith</span>
                           <span class="time">3 mins ago</span>
@@ -192,7 +191,7 @@
                     </li>
                     <li>
                       <a>
-                        <span class="image"><img src="images/img.jpg" alt="Profile Image" /></span>
+                        <span class="image"><img src="../images/img.jpg" alt="Profile Image" /></span>
                         <span>
                           <span>John Smith</span>
                           <span class="time">3 mins ago</span>
@@ -204,7 +203,7 @@
                     </li>
                     <li>
                       <a>
-                        <span class="image"><img src="images/img.jpg" alt="Profile Image" /></span>
+                        <span class="image"><img src="../images/img.jpg" alt="Profile Image" /></span>
                         <span>
                           <span>John Smith</span>
                           <span class="time">3 mins ago</span>
@@ -230,108 +229,54 @@
         </div>
         <!-- /top navigation -->
 
-        <!-- page content -->
-        <div class="right_col" role="main">
-			<div id="categoryList">
-					<div class="row">
-						<div class="col-sm-1"></div>
-						<div class="col-sm-10">
-							<table id="c_table" class="table table-hover">
-								<thead>
-									<tr>
-										<th width="20%">Name</th>
-										<th width="20%">Email</th>
-										<th width="20%">Username</th>
-										<th width="20%">Password</th>
-										<th width="20%">Edit</th>
-										<th width="20%">Delete</th>
-									</tr>
-								</thead>
-								<tbody>
-								
-								
-								<c:forEach items="${adminList}" var="admin">
-
-										<tr>
-											<td id="hehe">${admin.fName}</td>
-											<%-- <td>${coach.fName}</td> --%>
-											<td>${admin.lName}</td>
-											<%-- <td>${coach.email}</td> --%>
-											<td>${admin.credential.username}</td>
-											<td>${admin.credential.password}</td>
-											<td><a
-												href="<spring:url value="/employee/addAdmin/${admin.id}" />">Edit</a></td>
-
-												<td><a href="<spring:url value="/employee/deleteAdmin/${admin.id}" />"
-												<%-- <td><a href="<spring:url value="/employee/delete/${admin.id}" />" --%>
-																	class="btn btn-info" role="button">Delete</a></td>
-
-											<!--Delete Coach  -->
-											<%-- <td><a data-toggle="modal" data-target="#myModal"
-												class="btn btn-info" role="button">Delete</a> <!-- <button type="button" class="btn btn-info btn-lg"
-										data-toggle="modal" data-target="#myModal" style="margin:0px;">Send
-										Access ID</button> --> <!-- Modal -->
-												<div class="modal fade" id="myModal" role="dialog">
-													<div class="modal-dialog">
-
-														<!-- Modal content-->
-														<div class="modal-content">
-															<div class="modal-header">
-																<button type="button" class="close" data-dismiss="modal">&times;</button>
-																<h4 class="modal-title">
-																	<b>Delete Coach</b>
-																</h4>
-															</div>
-															<div class="modal-body">
-																<p>Are you sure you want to delete coach?</p>
-															</div>
-															<div class="modal-footer">
-																<a href="<spring:url value="/employee/delete/${coach.id}" />"
-																	class="btn btn-info" role="button">Delete</a>
-															</div>
-														</div>
-													</div>
-												</div> --%>
-										</tr>
-									</c:forEach>
-								
-								
-								<!-- 
-								
-								
-									<tr>
-										<td>Tony</td>
-										<td>tony@gmail.com</td>
-										<td>Tony123</td>
-										<td>tony123</td>
-										<td><a href= "admin_editadmin.html">Edit</a></td>
-										<td>
-											<button type="button" id="del1" class="btn del" onclick="delCategory(this)">
-												<span class="glyphicon glyphicon-remove"></span>
-											</button>
-										</td>
-									</tr>
-									<tr>
-										<td>George</td>
-										<td>george@gmail.com</td>
-										<td>George</td>
-										<td>george123</td>
-										<td><a href= "admin_editadmin.html">Edit</a></td>
-										<td>
-											<button type="button" id="del2" class="btn del" onclick="delCategory(this)">
-												<span class="glyphicon glyphicon-remove"></span>
-											</button>
-										</td>
-									</tr> -->
-									
-								</tbody>
-							</table>
+       <!-- page content -->
+			<div class="right_col" role="main">
+				<form:form modelAttribute="subCategory"
+					action="/OnlineTestConductSystem/subcategories/add" method="post">
+					<div id="category" class="form-group">
+						<div class="row">
+							<div class="col-sm-1"></div>
+							<div class="col-sm-11">
+								<label for="sel1">Add Subcategory:</label>
+							</div>
 						</div>
-						<div class="col-sm-1"></div>
 					</div>
-				</div>
-		</div>
-        <!-- /page content -->
+					<div id="sel" class="form-group">
+						<div class="row">
+							<div class="col-sm-1"></div>
+							<div class="col-sm-2">
+								<form:select path="category.id" id="category" name="category"
+									style="padding: 5px 30px;">
+									<form:option value="" label="--Select Category--" />
+									<form:options items="${listOfCategory}" itemLabel="name"
+										itemValue="id" />
+								</form:select>
+							</div>
+						</div>
+					</div>
+					<div id="category" class="form-group">
+						<div class="row">
+							<div class="col-sm-1"></div>
+							<div class="col-sm-10">
+								<form:input type="text" class="form-control" id="subCatName"
+									path="subCatName" name="subCatName"
+									placeholder="Please enter your subcategory" />
+							</div>
+							<div class="col-sm-1"></div>
+						</div>
+					</div>
+					<div>
+						<div class="row">
+							<div class="col-sm-10"></div>
+							<div class="col-sm-1">
+								<button type="submit" id="add" class="btn add">Add
+									Category</button>
+							</div>
+							<div class="col-sm-1"></div>
+						</div>
+					</div>
+					</form:form>
+					</div>
 
         <!-- footer content -->
         <footer>
@@ -343,6 +288,8 @@
         <!-- /footer content -->
       </div>
     </div>
+
+
 	<!-- jQuery -->
 	<script
 		src='<spring:url value="/resources/js/jquery/dist/jquery.min.js"></spring:url>'></script>
@@ -360,8 +307,9 @@
 	<script
 		src='<spring:url value="/resources/js/custom.min.js"></spring:url>'></script>
 	<script
+		src='<spring:url value="/resources/js/add_question.js"></spring:url>'></script>
+	<script
 		src='<spring:url value="/resources/js/admin.js"></spring:url>'></script>
-	
 
 
 </body>

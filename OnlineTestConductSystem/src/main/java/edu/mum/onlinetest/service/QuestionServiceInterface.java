@@ -18,5 +18,5 @@ public interface QuestionServiceInterface {
 	public List<Question> findBySubCategoryName(String subCatName);
 	public List<Long> findIdByName(@Param("name") String name);
 	public List<Question> getRandomQuestion(List<SubCategory> subCategories);
-	public List<Question> uploadQuestion();
+	public List<Question> uploadQuestion(Long subCatId, String fileName);
 }

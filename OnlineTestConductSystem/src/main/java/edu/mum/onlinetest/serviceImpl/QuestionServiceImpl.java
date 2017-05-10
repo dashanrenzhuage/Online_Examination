@@ -82,7 +82,7 @@ public class QuestionServiceImpl implements QuestionServiceInterface {
 	@Override
 	public List<Question> getRandomQuestion(List<SubCategory> subCatList) {
 		List<Question> questionList = new ArrayList<>();
-		// List<SubCategory> subCatList = category.getSubcategories();
+		if(!subCatList.isEmpty()){
 		for (SubCategory subCategory : subCatList) {
 			System.out.println("subCategory: " + subCategory.getSubCatName());
 			List<Long> quesIds = dao.findIdByName(subCategory.getSubCatName());
@@ -106,15 +106,17 @@ public class QuestionServiceImpl implements QuestionServiceInterface {
 				System.out.println(qL.getQuesName());
 			});
 		}
+	}
 		return questionList;
 
 	}
 
 	@Override
-	public List<Question> uploadQuestion() {
+	public List<Question> uploadQuestion(Long subCatId, String fileName) {
 		List<Question> allQuestList = new ArrayList<>();
 		XLSXParser parser = new XLSXParser();
-		List<List<String>> quesList = parser.getQuestions();
+		List<List<String>> quesList = parser.getQuestions(fileName);
+		if(!quesList.isEmpty()){
 		for (List<String> singleQuesList : quesList) {
 
 			int correctIndex = getAnswerIndex(singleQuesList);
@@ -132,19 +134,19 @@ public class QuestionServiceImpl implements QuestionServiceInterface {
 					option.setOptions(singleQuesList.get(i));
 
 					if (correctIndex == i) {
-						option.setCorrectAns(true);
+						option.setIsCorrectAns(true);
 					}
 					options.add(option);
 				}
 			}
 			question.setOpts(options);
-			question.setSubCategory(subcategoryService.getSubCategoryByID((long) 80));
+			question.setSubCategory(subcategoryService.getSubCategoryByID(subCatId));
 			if (question.getQuesName() != null) {
 				allQuestList.add(question);
 			}
 
 		}
-
+	}
 		return allQuestList;
 
 	}

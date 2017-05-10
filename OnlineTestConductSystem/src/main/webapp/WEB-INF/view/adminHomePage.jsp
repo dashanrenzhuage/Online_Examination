@@ -37,6 +37,7 @@
         <div class="col-md-3 left_col">
           <div class="left_col scroll-view">
             <div class="navbar nav_title" style="border: 0;">
+              <!-- <a href="admin_addcoach.html" class="site_title"><i class="fa fa-user"></i> <span>Administrator</span></a> -->
               <a href="admin_addcoach.html" class="site_title"><i class="fa fa-user"></i> <span>Administrator</span></a>
             </div>
 
@@ -49,7 +50,8 @@
               </div>
               <div class="profile_info">
                 <span>Welcome,</span>
-                <h2>John Doe</h2>
+                <!-- <h2>John Doe</h2> -->
+                <h2>${pageContext.request.userPrincipal.name}</h2>
               </div>
             </div>
             <!-- /menu profile quick info -->
@@ -73,10 +75,30 @@
 				  <li><a><i class="fa fa-home"></i> Administrator <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
                       <li>
-                      <a href="<spring:url value="/employee/add" />"
+                      <a href="<spring:url value="/employee/addAdmin" />"
 							>Add Admin</a></li>
 					  <li><a href="<spring:url value="/employee/listAdmin" />"
 							>List Of Admin</a></li></li>
+                    </ul>
+                  </li>
+                   
+                 <%--  <li><a><i class="fa fa-home"></i> Data Admin <span class="fa fa-chevron-down"></span></a>
+                   <ul class="nav child_menu">
+                      <li>
+                      <a href="<spring:url value="/employee/adddataAdmin" />"
+							>Add Studnet</a></li>
+					  <li><a href="<spring:url value="/employee/listStudent" />"
+							>List Of Student</a></li></li>
+                    </ul>
+                  </li> --%>
+                  
+                  <li><a><i class="fa fa-home"></i> Data Admin <span class="fa fa-chevron-down"></span></a>
+                   <ul class="nav child_menu">
+                      <li>
+                      <a href="<spring:url value="/employee/addDataAdmin" />"
+							>Add Data Admin</a></li>
+					  <li><a href="<spring:url value="/employee/listDataAdmin" />"
+							>List Of Data Admin</a></li></li>
                     </ul>
                   </li>
                   
@@ -89,6 +111,17 @@
 							>List Of Student</a></li></li>
                     </ul>
                   </li>
+
+
+                 
+                   <li><a><i class="fa fa-home"></i> Add Category & Sub Category <span class="fa fa-chevron-down"></span></a>
+                   <ul class="nav child_menu">
+                      <li>
+                      <a href="<spring:url value="/category/add" />"
+							>Add Category</a></li>
+					  <li><a href="<spring:url value="/subcategories/add" />"
+							>Add Sub-Category</a></li></li>
+
                 </ul>
               </div>
 
@@ -125,7 +158,7 @@
               <ul class="nav navbar-nav navbar-right">
                 <li class="">
                   <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                    <img src='<spring:url value="/resources/images/img.jpg"></spring:url>' alt="">John Doe
+                    <img src='<spring:url value="/resources/images/img.jpg"></spring:url>' alt="">${pageContext.request.userPrincipal.name}
                     <span class=" fa fa-angle-down"></span>
                   </a>
                   <ul class="dropdown-menu dropdown-usermenu pull-right">

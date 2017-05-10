@@ -83,6 +83,16 @@
 											Of Admin</a></li></li>
 							</ul>
 							</li>
+							
+							 <li><a><i class="fa fa-home"></i> Data Admin <span class="fa fa-chevron-down"></span></a>
+                   <ul class="nav child_menu">
+                      <li>
+                      <a href="<spring:url value="/employee/addDataAdmin" />"
+							>Add Data Admin</a></li>
+					  <li><a href="<spring:url value="/employee/listDataAdmin" />"
+							>List Of Data Admin</a></li></li>
+                    </ul>
+                  </li>
 
 							<li><a><i class="fa fa-home"></i> Student <span
 									class="fa fa-chevron-down"></span></a>
@@ -93,6 +103,16 @@
 											Of Student</a></li></li>
 							</ul>
 							</li>
+
+							 <li><a><i class="fa fa-home"></i> Add Category & Sub Category <span class="fa fa-chevron-down"></span></a>
+                   <ul class="nav child_menu">
+                      <li>
+                      <a href="<spring:url value="/category/add" />"
+							>Add Category</a></li>
+					  <li><a href="<spring:url value="/subcategories/add" />"
+							>Add Sub-Category</a></li></li>
+							
+							
 							</ul>
 						</div>
 

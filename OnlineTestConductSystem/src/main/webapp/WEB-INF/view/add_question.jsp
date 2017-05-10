@@ -24,22 +24,23 @@
 <!-- Custom Theme Style -->
 <link href="<c:url value = '/resources/css/custom.min.css'></c:url>"
 	rel="stylesheet">
-<link href="<c:url value = '/resources/css/report.css'></c:url>"
+<link href="<c:url value = '/resources/css/add_question.css'></c:url>"
 	rel="stylesheet">
-<link href="<c:url value = '/resources/css/coach.css'></c:url>"
-	rel="stylesheet">
+
+
+
 <title>MUM Online Test Conduct System</title>
+
+
 </head>
 <body class="nav-md">
-
-
 	<div class="container body">
 		<div class="main_container">
 			<div class="col-md-3 left_col">
 				<div class="left_col scroll-view">
 					<div class="navbar nav_title" style="border: 0;">
-						<a href="index.html" class="site_title"><i class="fa fa-user"></i>
-							<span>Coach</span></a>
+						<a href="da_add_question.html" class="site_title"><i
+							class="fa fa-user"></i> <span>Data Admin</span></a>
 					</div>
 
 					<div class="clearfix"></div>
@@ -53,13 +54,14 @@
 						</div>
 						<div class="profile_info">
 							<span>Welcome,</span>
-							<h2>${pageContext.request.userPrincipal.name}</h2>
+							<h2>John Doe</h2>
 						</div>
 					</div>
 					<!-- /menu profile quick info -->
 
 					<br />
 
+					<!-- sidebar menu -->
 					<!-- sidebar menu -->
 					<div id="sidebar-menu"
 						class="main_menu_side hidden-print main_menu">
@@ -69,14 +71,23 @@
 								<li><a><i class="fa fa-home"></i> Home <span
 										class="fa fa-chevron-down"></span></a>
 									<ul class="nav child_menu">
-										<li><a href="<c:url value = '/coach/studentList'></c:url>">List
-												of Student</a></li>
+										<%-- <li><a href="<c:url value = '/dataAdmin/home'></c:url>">Home
+												Page </a></li>
+										<li><a
+											href="<c:url value = '/subcategories/add'></c:url>">Add
+												Subcategory</a></li> --%>
+										<li><a href="<c:url value = '/question/add'></c:url>">Add
+												Question</a></li>
+										<li><a
+											href="<c:url value = '/dataAdmin/uploadFile'></c:url>">Upload
+												Questions </a></li>
+												<li><a href="<c:url value = '#'></c:url>">List of Questions </a></li>
 									</ul></li>
 							</ul>
 						</div>
 
 					</div>
-					<!-- /sidebar menu -->
+					
 
 					<!-- /menu footer buttons -->
 					<div class="sidebar-footer hidden-small">
@@ -108,7 +119,7 @@
 							class="user-profile dropdown-toggle" data-toggle="dropdown"
 							aria-expanded="false"> <img
 								src='<spring:url value="/resources/images/img.jpg"></spring:url>'
-								alt="">${pageContext.request.userPrincipal.name} <span class=" fa fa-angle-down"></span>
+								alt="">John Doe <span class=" fa fa-angle-down"></span>
 						</a>
 							<ul class="dropdown-menu dropdown-usermenu pull-right">
 								<li><a href="javascript:;"> Profile</a></li>
@@ -128,26 +139,26 @@
 							<ul id="menu1" class="dropdown-menu list-unstyled msg_list"
 								role="menu">
 								<li><a> <span class="image"><img
-											src='<spring:url value="/resources/images/img.jpg"></spring:url>' alt="Profile Image" /></span> <span> <span>John
-												Smith</span> <span class="time">3 mins ago</span>
+											src="../images/img.jpg" alt="Profile Image" /></span> <span>
+											<span>John Smith</span> <span class="time">3 mins ago</span>
 									</span> <span class="message"> Film festivals used to be
 											do-or-die moments for movie makers. They were where... </span>
 								</a></li>
 								<li><a> <span class="image"><img
-											src="images/img.jpg" alt="Profile Image" /></span> <span> <span>John
-												Smith</span> <span class="time">3 mins ago</span>
+											src="../images/img.jpg" alt="Profile Image" /></span> <span>
+											<span>John Smith</span> <span class="time">3 mins ago</span>
 									</span> <span class="message"> Film festivals used to be
 											do-or-die moments for movie makers. They were where... </span>
 								</a></li>
 								<li><a> <span class="image"><img
-											src="images/img.jpg" alt="Profile Image" /></span> <span> <span>John
-												Smith</span> <span class="time">3 mins ago</span>
+											src="../images/img.jpg" alt="Profile Image" /></span> <span>
+											<span>John Smith</span> <span class="time">3 mins ago</span>
 									</span> <span class="message"> Film festivals used to be
 											do-or-die moments for movie makers. They were where... </span>
 								</a></li>
 								<li><a> <span class="image"><img
-											src="images/img.jpg" alt="Profile Image" /></span> <span> <span>John
-												Smith</span> <span class="time">3 mins ago</span>
+											src="../images/img.jpg" alt="Profile Image" /></span> <span>
+											<span>John Smith</span> <span class="time">3 mins ago</span>
 									</span> <span class="message"> Film festivals used to be
 											do-or-die moments for movie makers. They were where... </span>
 								</a></li>
@@ -165,21 +176,131 @@
 			</div>
 			<!-- /top navigation -->
 
-
-
 			<!-- page content -->
-			
-			<!-- /page content -->
+			<div class="right_col" role="main">
+				<div id="cat" class="form-group">
+					<div class="row">
+						<div class="col-sm-1"></div>
+						<div class="col-sm-11">
+							<label for="sel1">Select Category:</label><br> <select
+								id="category" name="category" style="padding: 5px 30px;">
+								<option value="">--Select Category--</option>
+								<c:forEach var="item" items="${listOfCategory}">
+									<option value="${item.id}">${item.name}</option>
+								</c:forEach>
+							</select>
+						</div>
+					</div>
+				</div>
 
-			<!-- footer content -->
-			<footer>
-			<div class="pull-right">&copy; 2011 Maharishi University of
-				Management. All rights reserved.</div>
-			<div class="clearfix"></div>
-			</footer>
-			<!-- /footer content -->
+
+
+				<form:form modelAttribute="question"
+					action="/OnlineTestConductSystem/question/add" method="post">
+
+					<div id="subcategorydd" class="form-group">
+						<div class="row">
+							<div class="col-sm-1"></div>
+							<div class="col-sm-11">
+								<label for="sel2">Select Subcategory:</label>
+							</div>
+						</div>
+					</div>
+					<div id="sel_subcategory" class="form-group">
+						<div class="row">
+							<div class="col-sm-1"></div>
+							<div class="col-sm-4">
+								<div id="sel2">
+									<form:select path="subCategory.id" id="subCategory"
+										name="subCategory" style="padding: 5px 30px;">
+
+									</form:select>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div id="Qdiv" class="form-group">
+						<div class="row">
+							<div class="col-sm-1"></div>
+							<div class="col-sm-9">
+								<label for="question">Question:</label>
+							</div>
+							<div class="col-sm-2"></div>
+						</div>
+						<div class="row">
+							<div class="col-sm-1"></div>
+							<div class="col-sm-9">
+								<form:textarea path="quesName" class="form-control"
+									id="question" name="question"
+									placeholder="Please enter your question" />
+							</div>
+							<div class="col-sm-2"></div>
+						</div>
+					</div>
+					<div id="Odiv1" class="form-group">
+						<div class="row">
+							<div class="col-sm-1"></div>
+							<div class="col-sm-9">
+								<label>Options:</label>
+							</div>
+							<div class="col-sm-2"></div>
+						</div>
+
+
+						<!-- Option size passing in model -->
+						<c:forEach items="${question.opts}" varStatus="vs">
+							<div class="row">
+								<div class="col-sm-1"></div>
+								<div class="col-sm-9">
+									<form:input type="text" path="opts[${vs.index}].options"
+										class="form-control" id="option" name="question"
+										placeholder="Enter option here" />
+										<form:radiobutton path="opts[${vs.index}].isCorrectAns"
+										id="checkbox_ans" name="checkbox_ans" class="checkbox_ans"></form:radiobutton>
+										
+								</div>
+							</div>
+							<br />
+						</c:forEach>
+
+
+<%-- <c:forEach items="${questions.opts}" varStatus="quest">
+
+					<td><form:radiobutton path="selectedOpt.id"
+							value="${questions.opts[quest.index]}" label="opt" /> <c:out
+							value="${questions.opts[quest.index].options}" ></c:out>
+				</c:forEach>
+
+			</tr> --%>
+
+
+
+
+					</div>
+					<div class="row">
+						<div class="col-sm-10"></div>
+						<div class="col-sm-1">
+							<button type="submit" id="submit" class="btn">Submit</button>
+						</div>
+						<div class="col-sm-1"></div>
+					</div>
+
+				</form:form>
+			</div>
+
 		</div>
+		<!-- /page content -->
+
+		<!-- footer content -->
+		<footer>
+		<div class="pull-right">&copy; 2017 Maharishi University of
+			Management. All rights reserved.</div>
+		<div class="clearfix"></div>
+		</footer>
+		<!-- /footer content -->
 	</div>
+	</div>
+
 
 	<!-- jQuery -->
 	<script
@@ -196,7 +317,14 @@
 
 	<!-- Custom Theme Scripts -->
 	<script
-		src='<spring:url value="/resources/js/custom.js"></spring:url>'></script>
+		src='<spring:url value="/resources/js/custom.min.js"></spring:url>'></script>
+	<script
+		src='<spring:url value="/resources/js/add_question.js"></spring:url>'></script>
+	<script
+		src='<spring:url value="/resources/js/categorySubcategorySelect.js"></spring:url>'></script>
+
+
+
 
 </body>
 </html>

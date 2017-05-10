@@ -14,7 +14,10 @@ import edu.mum.onlinetest.model.SubCategory;
 
 @Repository
 public interface SubCategoryDao extends CrudRepository<SubCategory, Long>{
-	
+
+	@Query("select s from SubCategory as s where s.category.id= :id")
+	List<SubCategory> getSubCategoriesByCategoryId(@Param("id") Long id);
+
 	
 	@Query("select s from SubCategory as s  where s.flag = true and s.category.flag = true")
 	 List<SubCategory> getAllSubCategory();
@@ -24,4 +27,5 @@ public interface SubCategoryDao extends CrudRepository<SubCategory, Long>{
 	
 	@Query("select q from SubCategory as q where q.category.id = :id ")
     List<SubCategory> findBySubCategoryFromCategory(@Param("id") Long id);
+
 }

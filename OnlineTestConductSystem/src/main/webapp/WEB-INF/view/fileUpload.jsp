@@ -24,9 +24,7 @@
 <!-- Custom Theme Style -->
 <link href="<c:url value = '/resources/css/custom.min.css'></c:url>"
 	rel="stylesheet">
-<link href="<c:url value = '/resources/css/report.css'></c:url>"
-	rel="stylesheet">
-<link href="<c:url value = '/resources/css/coach.css'></c:url>"
+<link href="<c:url value = '/resources/css/subcategory.css'></c:url>"
 	rel="stylesheet">
 
 
@@ -42,7 +40,7 @@
 				<div class="left_col scroll-view">
 					<div class="navbar nav_title" style="border: 0;">
 						<a href="index.html" class="site_title"><i class="fa fa-user"></i>
-							<span>Coach</span></a>
+							<span>Data Admin</span></a>
 					</div>
 
 					<div class="clearfix"></div>
@@ -56,7 +54,7 @@
 						</div>
 						<div class="profile_info">
 							<span>Welcome,</span>
-							<h2>${pageContext.request.userPrincipal.name}</h2>
+							<h2>John Doe</h2>
 						</div>
 					</div>
 					<!-- /menu profile quick info -->
@@ -72,16 +70,23 @@
 								<li><a><i class="fa fa-home"></i> Home <span
 										class="fa fa-chevron-down"></span></a>
 									<ul class="nav child_menu">
-										<li><a href="<c:url value = '/students'></c:url>">Home
+
+										<%-- <li><a href="<c:url value = '/dataAdmin/home'></c:url>">Home
 												Page </a></li>
+										<li><a href="<c:url value = '/category/add'></c:url>">Add
+												Category</a></li> --%>
+										<li><a href="<c:url value = '/question/add'></c:url>">Add
+												Question</a></li>
 										<li><a
-											href="<c:url value = '/coach/studentList'></c:url>">List
-												of Student</a></li>
+											href="<c:url value = '/dataAdmin/uploadFile'></c:url>">Upload
+												Questions </a></li>
+												<li><a href="<c:url value = '#'></c:url>">List of Questions </a></li>
 									</ul></li>
 							</ul>
 						</div>
 
 					</div>
+					
 					<!-- /sidebar menu -->
 
 					<!-- /menu footer buttons -->
@@ -114,7 +119,7 @@
 							class="user-profile dropdown-toggle" data-toggle="dropdown"
 							aria-expanded="false"> <img
 								src='<spring:url value="/resources/images/img.jpg"></spring:url>'
-								alt="">${pageContext.request.userPrincipal.name} <span class=" fa fa-angle-down"></span>
+								alt="">John Doe <span class=" fa fa-angle-down"></span>
 						</a>
 							<ul class="dropdown-menu dropdown-usermenu pull-right">
 								<li><a href="javascript:;"> Profile</a></li>
@@ -176,160 +181,95 @@
 
 			<!-- page content -->
 			<div class="right_col" role="main">
-				<div id="left_col">
-					<h2 id="report">List Of Student</h2>
+				<form:form modelAttribute="newProduct"
+					action="/OnlineTestConductSystem/dataAdmin/uploadFile"
+					class="form-horizontal" enctype="multipart/form-data">
+					Select File to upload(.xlsx format):
+				    <form:input path="uploadFile" type="file" name="fileToUpload"
+						id="fileToUpload" />
+					<button type="submit" id="submit" class="btn">Submit</button>
+				</form:form>
+
+
+
+				<div class="right_col" role="main">
+					<div id="cat" class="form-group">
+						<div class="row">
+							<div class="col-sm-1"></div>
+							<div class="col-sm-11">
+								<label for="sel1">Select Category:</label><br> <select
+									id="category" name="category" style="padding: 5px 30px;">
+									<option value="">--Select Category--</option>
+									<c:forEach var="item" items="${listOfCategory}">
+										<option value="${item.id}">${item.name}</option>
+									</c:forEach>
+								</select>
+							</div>
+						</div>
+
+					</div>
+
+
+					<form:form modelAttribute="subcategory"
+						action="/OnlineTestConductSystem/question/upload" method="post">
+
+						<div id="subcategorydd" class="form-group">
+							<div class="row">
+								<div class="col-sm-1"></div>
+								<div class="col-sm-11">
+									<label for="sel2">Select Subcategory:</label>
+								</div>
+							</div>
+						</div>
+						<div id="sel_subcategory" class="form-group">
+							<div class="row">
+								<div class="col-sm-1"></div>
+								<div class="col-sm-4">
+									<div id="sel2">
+										<form:select path="id" id="subCategory" name="subCategory"
+											style="padding: 5px 30px;">
+
+										</form:select>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div id="category" class="form-group">
+							<div class="row">
+								<div class="col-sm-1"></div>
+								<div class="col-sm-10">
+									<input type="text" class="form-control" id="fileName"
+										name="fileName" placeholder="Please enter your file Name" />
+								</div>
+								<div class="col-sm-1"></div>
+							</div>
+						</div>
+
+
+						<div class="row">
+							<div class="col-sm-10"></div>
+							<div class="col-sm-1">
+								<button type="submit" id="submit" class="btn">Submit</button>
+							</div>
+							<div class="col-sm-1"></div>
+						</div>
+
+					</form:form>
 				</div>
 
-
-
-				<c:if test="${not empty successMessage}">
-					<script>
-						setTimeout(function() {
-							$('#successMessage').fadeOut('medium');
-						}, 2000);
-					</script>
-					<div id="successMessage"
-						class="alert alert-success alert-dismissable">
-						<a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
-						<strong>Success!</strong> You have send an access code to the
-						student.
-					</div>
-				</c:if>
-				<c:if test="${not empty studentDeleteMessage}">
-					<script>
-						setTimeout(function() {
-							$('#studentDeleteMessage').fadeOut('medium');
-						}, 2000);
-					</script>
-					<div id="studentDeleteMessage"
-						class="alert alert-danger alert-dismissable">
-						<a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
-						<strong>Success!</strong> You have successfully deleted student.
-					</div>
-				</c:if>
-				<table id="example" class="table table-bordered display" cellspacing="0" width="100%">
-					<thead>
-						<tr>
-							<th>S.N</th>
-							<th>Student ID</th>
-							<th>Name</th>
-							<th>Email</th>
-							<th>Send Access ID</th>
-							<th>View Report</th>
-							<!-- <th>Edit</th>
-							<th>Delete</th> -->
-						</tr>
-					</thead>
-					<tbody>
-						<%
-							int i = 1;
-						%>
-						<c:forEach items="${listOfStudents}" var="std">
-
-							<tr>
-								<td>
-									<%
-										out.print(i);
-											i++;
-									%>
-								</td>
-								<td>${std.id}</td>
-								<td>${std.name}</td>
-								<td>${std.email}</td>
-								<td>
-									<a
-									href="<spring:url value="/coach/student/${std.id}" />"
-									class="btn btn-info" role="button">Send Access ID</a> 
-								</td>
-								<td><a href="<spring:url value="/coach/download/pdf/${std.id}" />" class="btn btn-info" role="button">View
-										Report</a></td>
-									
-								<!--Edit student added  -->	
-								<%-- <td>
-								<a data-toggle="modal" data-target="#myModal"
-														class="btn btn-info" role="button">Edit</a>
-									<!-- <button type="button" class="btn btn-info btn-lg"
-										data-toggle="modal" data-target="#myModal" style="margin:0px;">Send
-										Access ID</button> --> <!-- Modal -->
-									<div class="modal fade" id="myModal" role="dialog">
-										<div class="modal-dialog">
-
-											<!-- Modal content-->
-											<div class="modal-content">
-												<div class="modal-header">
-													<button type="button" class="close" data-dismiss="modal">&times;</button>
-													<h4 class="modal-title">
-														<b>Edit Student</b>
-													</h4>
-												</div>
-												<div class="modal-body">
-													<p>Are you sure you want to Edit student?</p>
-												</div>
-												<div class="modal-footer">
-													<a href="<spring:url value="/students/${std.id}" />"
-														class="btn btn-info" role="button">Edit</a>
-												</div>
-											</div>
-										</div>
-									</div> 
-								
-								</td> --%>
-										
-									
-									
-								<!--Delete Student  -->	
-								<%-- <td>
-								<a data-toggle="modal" data-target="#myModal"
-														class="btn btn-info" role="button">Delete</a>
-									<!-- <button type="button" class="btn btn-info btn-lg"
-										data-toggle="modal" data-target="#myModal" style="margin:0px;">Send
-										Access ID</button> --> <!-- Modal -->
-									<div class="modal fade" id="myModal" role="dialog">
-										<div class="modal-dialog">
-
-											<!-- Modal content-->
-											<div class="modal-content">
-												<div class="modal-header">
-													<button type="button" class="close" data-dismiss="modal">&times;</button>
-													<h4 class="modal-title">
-														<b>Delete Student</b>
-													</h4>
-												</div>
-												<div class="modal-body">
-													<p>Are you sure you want to delete student?</p>
-												</div>
-												<div class="modal-footer">
-													<a href="<spring:url value="/students/delete/${std.id}" />"
-														class="btn btn-info" role="button">Delete</a>
-												</div>
-											</div>
-										</div>
-									</div> 
-								
-								<a
-									href="<spring:url value="/students/delete/${std.id}" />"
-									class="btn btn-info" role="button">Delete Student</a></td> --%>
-							</tr>
-						</c:forEach>
-
-
-					</tbody>
-				</table>
-				
-				
-				
-				
 			</div>
-			<!-- /page content -->
-
-			<!-- footer content -->
-			<footer>
-			<div class="pull-right">&copy; 2011 Maharishi University of
-				Management. All rights reserved.</div>
-			<div class="clearfix"></div>
-			</footer>
-			<!-- /footer content -->
 		</div>
+		<!-- /page content -->
+
+		<!-- footer content -->
+		<footer>
+		<div class="pull-right">&copy; 2011 Maharishi University of
+			Management. All rights reserved.</div>
+		<div class="clearfix"></div>
+		</footer>
+		<!-- /footer content -->
+	</div>
 	</div>
 
 	<!-- jQuery -->
@@ -349,11 +289,8 @@
 	<script
 		src='<spring:url value="/resources/js/custom.min.js"></spring:url>'></script>
 	<script
-		src='<spring:url value="/resources/js/jquery.dataTables.min.js"></spring:url>'></script>
-	<script
-		src='<spring:url value="/resources/js/dataTables.bootstrap.min.js"></spring:url>'></script>
-	<script
-		src='<spring:url value="/resources/js/data_table.js"></spring:url>'></script>
+		src='<spring:url value="/resources/js/categorySubcategorySelect2.js"></spring:url>'></script>
+
 
 
 </body>

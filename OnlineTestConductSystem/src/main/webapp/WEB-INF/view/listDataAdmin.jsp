@@ -88,6 +88,7 @@
 							>List Of Data Admin</a></li></li>
                     </ul>
                   </li>
+                  
                   <li><a><i class="fa fa-home"></i> Student <span class="fa fa-chevron-down"></span></a>
                    <ul class="nav child_menu">
                       <li>
@@ -97,16 +98,13 @@
 							>List Of Student</a></li></li>
                     </ul>
                   </li>
-          
-
-                   <li><a><i class="fa fa-home"></i> Add Category & Sub Category <span class="fa fa-chevron-down"></span></a>
+                  <li><a><i class="fa fa-home"></i> Add Category & Sub Category <span class="fa fa-chevron-down"></span></a>
                    <ul class="nav child_menu">
                       <li>
                       <a href="<spring:url value="/category/add" />"
 							>Add Category</a></li>
 					  <li><a href="<spring:url value="/subcategories/add" />"
 							>Add Sub-Category</a></li></li>
-
                 </ul>
               </div>
 
@@ -250,20 +248,18 @@
 								<tbody>
 								
 								
-								<c:forEach items="${adminList}" var="admin">
+								<c:forEach items="${dataAdminList}" var="dataAdmin">
 
 										<tr>
-											<td id="hehe">${admin.fName}</td>
+											<td id="hehe">${dataAdmin.fName}</td>
 											<%-- <td>${coach.fName}</td> --%>
-											<td>${admin.lName}</td>
+											<td>${dataAdmin.lName}</td>
 											<%-- <td>${coach.email}</td> --%>
-											<td>${admin.credential.username}</td>
-											<td>${admin.credential.password}</td>
+											<td>${dataAdmin.credential.username}</td>
+											<td>${dataAdmin.credential.password}</td>
 											<td><a
-												href="<spring:url value="/employee/addAdmin/${admin.id}" />">Edit</a></td>
-
-												<td><a href="<spring:url value="/employee/deleteAdmin/${admin.id}" />"
-												<%-- <td><a href="<spring:url value="/employee/delete/${admin.id}" />" --%>
+												href="<spring:url value="/employee/addDataAdmin/${dataAdmin.id}" />">Edit</a></td>
+												<td><a href="<spring:url value="/employee/deleteDataAdmin/${dataAdmin.id}" />"
 																	class="btn btn-info" role="button">Delete</a></td>
 
 											<!--Delete Coach  -->

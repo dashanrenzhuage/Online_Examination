@@ -1,4 +1,4 @@
-package edu.mum.onlinetest.serviceImpl;
+/*package edu.mum.onlinetest.serviceImpl;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -15,12 +15,12 @@ import edu.mum.onlinetest.model.SubCategory;
 @Service
 public class AnswerSheetServiceImpl {
 
-	/*@Autowired
-	TestServiceImpl testService;*/
-	/*@Autowired
-	AnswerSheet answerSheet;*/
+	@Autowired
+	TestServiceImpl testService;
+	@Autowired
+	AnswerSheet answerSheet;
 
-	/*public Integer getResult(List<Integer> answers, Long testId) {
+	public Integer getResult(List<Integer> answers, Long testId) {
 
 		int noOfQuestions = testService.getTestById(testId).getQuestionList().size();
 		int noOfSubCategory = testService.getTestById(testId).getSubCategories().size();
@@ -61,7 +61,7 @@ public class AnswerSheetServiceImpl {
 		
 		for (int i = 0; i < noOfQuestions; i++){
 			int noOfOptions = testService.getTestById(testId).getQuestionList().get(i).getOpts().size();
-			for(int j = 0; j < noOfOptions; j++)
+			/*for(int j = 0; j < noOfOptions; j++)
 			if(testService.getTestById(testId).getQuestionList().get(i).getOpts().get(j).isCorrectAns()){
 				if(answers.get(i) == j){
 					// Add marks
@@ -69,6 +69,9 @@ public class AnswerSheetServiceImpl {
 					
 					
 				}
+
+			}
+
 		}
 		System.out.println(individualMark);
 		testService.getTestById(testId).setTotalmarks(totalMarks);
@@ -80,7 +83,7 @@ public class AnswerSheetServiceImpl {
 				System.out.println("***************Success");
 			} else {
 				System.out.println("****************logic error in marks calculation");
-			}
+
 		}
 
 		// Saving subcategory with their marks in map
@@ -90,7 +93,7 @@ public class AnswerSheetServiceImpl {
 		}
 
 		return totalMarks;
-	}*/
+	}
 
 	public int getResult1(AnswerSheet answerSheet2) {
 		int noOfQuestions = answerSheet2.getAnswerList().size();
@@ -101,7 +104,8 @@ public class AnswerSheetServiceImpl {
 		//add those subcategories to list whose questions are generated
 
 		List<Integer> individualMark = new ArrayList<>();
-		// noOfSubCategory = 4 
+
+		 noOfSubCategory = 4 
 		for (int i = 0; i < 4; i++) {
 			individualMark.add(0);
 
@@ -134,3 +138,4 @@ public class AnswerSheetServiceImpl {
 	}
 	
 }
+*/
