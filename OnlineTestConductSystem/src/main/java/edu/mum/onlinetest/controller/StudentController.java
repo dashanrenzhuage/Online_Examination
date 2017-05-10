@@ -79,6 +79,7 @@ public class StudentController {
 
 		}
 		return "stu_login";
+		//return "stu_sel_exam";
 	}
 
 	// Add Student

@@ -106,6 +106,13 @@
 							>Add Sub-Category</a></li></li>
                     </ul>
                   </li> --%>
+                   <li><a><i class="fa fa-home"></i> Add Category & Sub Category <span class="fa fa-chevron-down"></span></a>
+                   <ul class="nav child_menu">
+                      <li>
+                      <a href="<spring:url value="/category/add" />"
+							>Add Category</a></li>
+					  <li><a href="<spring:url value="/subcategories/add" />"
+							>Add Sub-Category</a></li></li>
                 </ul>
               </div>
 

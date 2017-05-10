@@ -32,7 +32,7 @@ public class TestQuestionController {
 		List<Opts> optsList = new ArrayList<Opts>();
 		Opts opt = new Opts();
 		opt.setOptions("1");
-		opt.setCorrectAns(true);
+		opt.setIsCorrectAns(true);
 		optsList.add(opt);
 		Opts opt1 = new Opts();
 		opt.setOptions("2");

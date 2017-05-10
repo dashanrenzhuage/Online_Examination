@@ -111,10 +111,10 @@ public class QuestionServiceImpl implements QuestionServiceInterface {
 	}
 
 	@Override
-	public List<Question> uploadQuestion() {
+	public List<Question> uploadQuestion(Long subCatId, String fileName) {
 		List<Question> allQuestList = new ArrayList<>();
 		XLSXParser parser = new XLSXParser();
-		List<List<String>> quesList = parser.getQuestions();
+		List<List<String>> quesList = parser.getQuestions(fileName);
 		for (List<String> singleQuesList : quesList) {
 
 			int correctIndex = getAnswerIndex(singleQuesList);
@@ -132,13 +132,13 @@ public class QuestionServiceImpl implements QuestionServiceInterface {
 					option.setOptions(singleQuesList.get(i));
 
 					if (correctIndex == i) {
-						option.setCorrectAns(true);
+						option.setIsCorrectAns(true);
 					}
 					options.add(option);
 				}
 			}
 			question.setOpts(options);
-			question.setSubCategory(subcategoryService.getSubCategoryByID((long) 80));
+			question.setSubCategory(subcategoryService.getSubCategoryByID(subCatId));
 			if (question.getQuesName() != null) {
 				allQuestList.add(question);
 			}

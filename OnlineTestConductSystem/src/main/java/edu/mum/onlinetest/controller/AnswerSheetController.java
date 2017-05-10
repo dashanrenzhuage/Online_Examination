@@ -10,14 +10,14 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import edu.mum.onlinetest.model.Answer;
 import edu.mum.onlinetest.model.AnswerSheet;
-import edu.mum.onlinetest.serviceImpl.AnswerSheetServiceImpl;
+
 
 @Controller
 @RequestMapping(value = "answer")
 public class AnswerSheetController {
 	
-	@Autowired
-	AnswerSheetServiceImpl answerSheetService;
+	/*@Autowired
+	AnswerSheetServiceImpl answerSheetService;*/
 	
 	
 	

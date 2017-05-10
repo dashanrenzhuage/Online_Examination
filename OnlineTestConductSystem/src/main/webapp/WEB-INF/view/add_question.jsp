@@ -24,12 +24,14 @@
 <!-- Custom Theme Style -->
 <link href="<c:url value = '/resources/css/custom.min.css'></c:url>"
 	rel="stylesheet">
-<link href="<c:url value = '/resources/css/admin.css'></c:url>"
+<link href="<c:url value = '/resources/css/add_question.css'></c:url>"
 	rel="stylesheet">
 
 
 
 <title>MUM Online Test Conduct System</title>
+
+
 </head>
 <body class="nav-md">
 	<div class="container body">
@@ -37,8 +39,8 @@
 			<div class="col-md-3 left_col">
 				<div class="left_col scroll-view">
 					<div class="navbar nav_title" style="border: 0;">
-						<a href="admin_addcoach.html" class="site_title"><i
-							class="fa fa-user"></i> <span>Administrator</span></a>
+						<a href="da_add_question.html" class="site_title"><i
+							class="fa fa-user"></i> <span>Data Admin</span></a>
 					</div>
 
 					<div class="clearfix"></div>
@@ -60,59 +62,32 @@
 					<br />
 
 					<!-- sidebar menu -->
+					<!-- sidebar menu -->
 					<div id="sidebar-menu"
 						class="main_menu_side hidden-print main_menu">
 						<div class="menu_section">
 							<h3>General</h3>
 							<ul class="nav side-menu">
-								<li><a><i class="fa fa-home"></i> Coach <span
+								<li><a><i class="fa fa-home"></i> Home <span
 										class="fa fa-chevron-down"></span></a>
 									<ul class="nav child_menu">
-										<li><a href="<spring:url value="/employee/add" />">Add
-												Coach</a></li>
-										<li><a href="<spring:url value="/employee/listCoach" />">List
-												Of Coach</a></li></li>
-							</ul>
-							</li>
-							<li><a><i class="fa fa-home"></i> Administrator <span
-									class="fa fa-chevron-down"></span></a>
-								<ul class="nav child_menu">
-									<li><a href="<spring:url value="/employee/addAdmin" />">Add
-											Admin</a></li>
-									<li><a href="<spring:url value="/employee/listAdmin" />">List
-											Of Admin</a></li></li>
-							</ul>
-							</li>
-
-							<li><a><i class="fa fa-home"></i> Student <span
-									class="fa fa-chevron-down"></span></a>
-								<ul class="nav child_menu">
-									<li><a href="<spring:url value="/students/addStudent" />">Add
-											Studnet</a></li>
-									<li><a href="<spring:url value="/students/listStudent" />">List
-											Of Student</a></li></li>
-							</ul>
-							</li>
-
-							 <%-- <li><a><i class="fa fa-home"></i> Add Category & Sub Category <span class="fa fa-chevron-down"></span></a>
-
-							 <li><a><i class="fa fa-home"></i> Add Category & Sub Category <span class="fa fa-chevron-down"></span></a>
-
-                   <ul class="nav child_menu">
-                      <li>
-                      <a href="<spring:url value="/category/add" />"
-							>Add Category</a></li>
-					  <li><a href="<spring:url value="/subcategories/add" />"
-
-							>Add Sub-Category</a></li></li> --%>
-							
-
-							>Add Sub-Category</a></li></li>
+										<%-- <li><a href="<c:url value = '/dataAdmin/home'></c:url>">Home
+												Page </a></li>
+										<li><a
+											href="<c:url value = '/subcategories/add'></c:url>">Add
+												Subcategory</a></li> --%>
+										<li><a href="<c:url value = '/question/add'></c:url>">Add
+												Question</a></li>
+										<li><a
+											href="<c:url value = '/dataAdmin/uploadFile'></c:url>">Upload
+												Questions </a></li>
+												<li><a href="<c:url value = '#'></c:url>">List of Questions </a></li>
+									</ul></li>
 							</ul>
 						</div>
 
 					</div>
-					<!-- /sidebar menu -->
+					
 
 					<!-- /menu footer buttons -->
 					<div class="sidebar-footer hidden-small">
@@ -164,26 +139,26 @@
 							<ul id="menu1" class="dropdown-menu list-unstyled msg_list"
 								role="menu">
 								<li><a> <span class="image"><img
-											src="images/img.jpg" alt="Profile Image" /></span> <span> <span>John
-												Smith</span> <span class="time">3 mins ago</span>
+											src="../images/img.jpg" alt="Profile Image" /></span> <span>
+											<span>John Smith</span> <span class="time">3 mins ago</span>
 									</span> <span class="message"> Film festivals used to be
 											do-or-die moments for movie makers. They were where... </span>
 								</a></li>
 								<li><a> <span class="image"><img
-											src="images/img.jpg" alt="Profile Image" /></span> <span> <span>John
-												Smith</span> <span class="time">3 mins ago</span>
+											src="../images/img.jpg" alt="Profile Image" /></span> <span>
+											<span>John Smith</span> <span class="time">3 mins ago</span>
 									</span> <span class="message"> Film festivals used to be
 											do-or-die moments for movie makers. They were where... </span>
 								</a></li>
 								<li><a> <span class="image"><img
-											src="images/img.jpg" alt="Profile Image" /></span> <span> <span>John
-												Smith</span> <span class="time">3 mins ago</span>
+											src="../images/img.jpg" alt="Profile Image" /></span> <span>
+											<span>John Smith</span> <span class="time">3 mins ago</span>
 									</span> <span class="message"> Film festivals used to be
 											do-or-die moments for movie makers. They were where... </span>
 								</a></li>
 								<li><a> <span class="image"><img
-											src="images/img.jpg" alt="Profile Image" /></span> <span> <span>John
-												Smith</span> <span class="time">3 mins ago</span>
+											src="../images/img.jpg" alt="Profile Image" /></span> <span>
+											<span>John Smith</span> <span class="time">3 mins ago</span>
 									</span> <span class="message"> Film festivals used to be
 											do-or-die moments for movie makers. They were where... </span>
 								</a></li>
@@ -203,101 +178,103 @@
 
 			<!-- page content -->
 			<div class="right_col" role="main">
-        <form:form modelAttribute="employee" method="post" enctype="multipart/form-data">
-			<%-- <form action="add" method="post"> --%>
-			    <div id="addcoach" class="form-group">
-					<h4>Add Coach<h4>
-				</div>
-			    <div id="fName" class="form-group">
+				<div id="cat" class="form-group">
 					<div class="row">
 						<div class="col-sm-1"></div>
-						<div class="col-sm-1">
-							<label for="to" class="lab">First Name:</label>
-						</div>
-						<div class="col-sm-9">
-							<!-- <input type="text" class="form-control" id="cn" name="cn"/> -->
-							<form:input id="fName" name="fName" path="fName" type="text" />
+						<div class="col-sm-11">
+							<label for="sel1">Select Category:</label><br> <select
+								id="category" name="category" style="padding: 5px 30px;">
+								<option value="">--Select Category--</option>
+								<c:forEach var="item" items="${listOfCategory}">
+									<option value="${item.id}">${item.name}</option>
+								</c:forEach>
+							</select>
 						</div>
 					</div>
 				</div>
-				<div id="lName" class="form-group">
-					<div class="row">
-						<div class="col-sm-1"></div>
-						<div class="col-sm-1">
-							<label for="to" class="lab">Last Name:</label>
-						</div>
-						<div class="col-sm-9">
-							<!-- <input type="text" class="form-control" id="cn" name="cn"/> -->
-							<form:input id="lName" name="lName" path="lName" type="text" />
-						</div>
-					</div>
-				</div>
-				<!-- <div id="email_address" class="form-group">
-					<div class="row">
-						<div class="col-sm-1"></div>
-						<div class="col-sm-1">
-							<label for="subject" class="lab">Email Address:</label>
-						</div>
-						<div class="col-sm-9">
-							<input type="text" class="form-control" id="ea" name="ea"/>
+
+
+
+				<form:form modelAttribute="question"
+					action="/OnlineTestConductSystem/question/add" method="post">
+
+					<div id="subcategorydd" class="form-group">
+						<div class="row">
+							<div class="col-sm-1"></div>
+							<div class="col-sm-11">
+								<label for="sel2">Select Subcategory:</label>
+							</div>
 						</div>
 					</div>
-				</div> -->
-				<!-- <div id="address" class="form-group">
-					<div class="row">
-						<div class="col-sm-1"></div>
-						<div class="col-sm-1">
-							<label for="subject" class="lab">Address:</label>       what to put in for
-						</div>
-						<div class="col-sm-9">
-							<input type="text" class="form-control" id="ad" name="ad"/>
-						</div>
-					</div>
-				</div> -->
-				<div id="username" class="form-group">
-					<div class="row">
-						<div class="col-sm-1"></div>
-						<div class="col-sm-1">
-							<label for="message" class="lab">Username:</label>
-						</div>
-						<div class="col-sm-9">
-							<form:input id="credential.username" name="credential.username" path="credential.username" type="text" /> 
+					<div id="sel_subcategory" class="form-group">
+						<div class="row">
+							<div class="col-sm-1"></div>
+							<div class="col-sm-4">
+								<div id="sel2">
+									<form:select path="subCategory.id" id="subCategory"
+										name="subCategory" style="padding: 5px 30px;">
+
+									</form:select>
+								</div>
+							</div>
 						</div>
 					</div>
-				</div>
-				<div id="password" class="form-group">
-					<div class="row">
-						<div class="col-sm-1"></div>
-						<div class="col-sm-1">
-							<label for="message" class="lab">Password:</label>
+					<div id="Qdiv" class="form-group">
+						<div class="row">
+							<div class="col-sm-1"></div>
+							<div class="col-sm-9">
+								<label for="question">Question:</label>
+							</div>
+							<div class="col-sm-2"></div>
 						</div>
-						<div class="col-sm-9">
-							<form:input id="credential.password" name="credential.password" path="credential.password" type="password" />
-						</div>
-					</div>
-				</div>
-				<div id="role" class="form-group">
-					<div class="row">
-						<div class="col-sm-1"></div>
-						<div class="col-sm-1">
-							<!-- <label for="message" class="lab">Role:</label> -->
-						</div>
-						<div class="col-sm-9">
-							<form:hidden path="credential.role" value = "COACH"/>
+						<div class="row">
+							<div class="col-sm-1"></div>
+							<div class="col-sm-9">
+								<form:textarea path="quesName" class="form-control"
+									id="question" name="question"
+									placeholder="Please enter your question" />
+							</div>
+							<div class="col-sm-2"></div>
 						</div>
 					</div>
-				</div>
-				<div>
+					<div id="Odiv1" class="form-group">
+						<div class="row">
+							<div class="col-sm-1"></div>
+							<div class="col-sm-9">
+								<label>Options:</label>
+							</div>
+							<div class="col-sm-2"></div>
+						</div>
+
+
+						<!-- Option size passing in model -->
+						<c:forEach items="${question.opts}" varStatus="vs">
+							<div class="row">
+								<div class="col-sm-1"></div>
+								<div class="col-sm-9">
+									<form:input type="text" path="opts[${vs.index}].options"
+										class="form-control" id="option" name="question"
+										placeholder="Enter option here" />
+										<form:radiobutton path="opts[${vs.index}].isCorrectAns"
+										id="checkbox_ans" name="checkbox_ans" class="checkbox_ans"></form:radiobutton>
+										
+								</div>
+							</div>
+							<br />
+						</c:forEach>
+
+					</div>
 					<div class="row">
-					    <div class="col-sm-10"></div>
+						<div class="col-sm-10"></div>
 						<div class="col-sm-1">
-							<button type="submit" id="submit" class="btn">Add</button>
+							<button type="submit" id="submit" class="btn">Submit</button>
 						</div>
 						<div class="col-sm-1"></div>
 					</div>
-				</div>
-			<%-- </form> --%>
-			</form:form>
+
+				</form:form>
+			</div>
+
 		</div>
 		<!-- /page content -->
 
@@ -310,6 +287,7 @@
 		<!-- /footer content -->
 	</div>
 	</div>
+
 
 	<!-- jQuery -->
 	<script
@@ -327,6 +305,12 @@
 	<!-- Custom Theme Scripts -->
 	<script
 		src='<spring:url value="/resources/js/custom.min.js"></spring:url>'></script>
+	<script
+		src='<spring:url value="/resources/js/add_question.js"></spring:url>'></script>
+	<script
+		src='<spring:url value="/resources/js/categorySubcategorySelect.js"></spring:url>'></script>
+
+
 
 
 </body>

@@ -24,7 +24,7 @@
 <!-- Custom Theme Style -->
 <link href="<c:url value = '/resources/css/custom.min.css'></c:url>"
 	rel="stylesheet">
-<link href="<c:url value = '/resources/css/admin.css'></c:url>"
+<link href="<c:url value = '/resources/css/subcategory.css'></c:url>"
 	rel="stylesheet">
 
 
@@ -40,7 +40,7 @@
 				<div class="left_col scroll-view">
 					<div class="navbar nav_title" style="border: 0;">
 						<a href="index.html" class="site_title"><i class="fa fa-user"></i>
-							<span>Administrator</span></a>
+							<span>Data Admin</span></a>
 					</div>
 
 					<div class="clearfix"></div>
@@ -54,78 +54,40 @@
 						</div>
 						<div class="profile_info">
 							<span>Welcome,</span>
-							<h2>${pageContext.request.userPrincipal.name}</h2>
+							<h2>John Doe</h2>
 						</div>
 					</div>
 					<!-- /menu profile quick info -->
 
 					<br />
 
-				<!-- sidebar menu -->
-            <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
-              <div class="menu_section">
-                <h3>General</h3>
-                <ul class="nav side-menu">
-                  <li><a><i class="fa fa-home"></i> Coach <span class="fa fa-chevron-down"></span></a>
-                    <ul class="nav child_menu">
-                      <li>
-                      <a href="<spring:url value="/employee/add" />"
-							>Add Coach</a></li>
-					  <li><a href="<spring:url value="/employee/listCoach" />"
-							>List Of Coach</a></li></li>
-                    </ul>
-                  </li>
-				  <li><a><i class="fa fa-home"></i> Administrator <span class="fa fa-chevron-down"></span></a>
-                    <ul class="nav child_menu">
-                      <li>
-                      <a href="<spring:url value="/employee/addAdmin" />"
-							>Add Admin</a></li>
-					  <li><a href="<spring:url value="/employee/listAdmin" />"
-							>List Of Admin</a></li></li>
-                    </ul>
-                  </li>
-                  <li><a><i class="fa fa-home"></i> Data Admin <span class="fa fa-chevron-down"></span></a>
-                   <ul class="nav child_menu">
-                      <li>
-                      <a href="<spring:url value="/employee/addDataAdmin" />"
-							>Add Data Admin</a></li>
-					  <li><a href="<spring:url value="/employee/listDataAdmin" />"
-							>List Of Data Admin</a></li></li>
-                    </ul>
-                  </li>
-                  <li><a><i class="fa fa-home"></i> Student <span class="fa fa-chevron-down"></span></a>
-                   <ul class="nav child_menu">
-                      <li>
-                      <a href="<spring:url value="/students/addStudent" />"
-							>Add Studnet</a></li>
-					  <li><a href="<spring:url value="/students/listStudent" />"
-							>List Of Student</a></li></li>
-                    </ul>
-                  </li>
+					<!-- sidebar menu -->
+					<div id="sidebar-menu"
+						class="main_menu_side hidden-print main_menu">
+						<div class="menu_section">
+							<h3>General</h3>
+							<ul class="nav side-menu">
+								<li><a><i class="fa fa-home"></i> Home <span
+										class="fa fa-chevron-down"></span></a>
+									<ul class="nav child_menu">
 
-                  <%-- <li><a><i class="fa fa-home"></i> Add Category & Sub Category <span class="fa fa-chevron-down"></span></a>
-                   <ul class="nav child_menu">
-                      <li>
-                      <a href="<spring:url value="/students/addStudent" />"
-							>Add Category</a></li>
-					  <li><a href="<spring:url value="/students/listStudent" />"
-							>Add Sub-Category</a></li></li>
-                    </ul>
-                  </li> --%>
+										<%-- <li><a href="<c:url value = '/dataAdmin/home'></c:url>">Home
+												Page </a></li>
+										<li><a href="<c:url value = '/category/add'></c:url>">Add
+												Category</a></li> --%>
+										<li><a href="<c:url value = '/question/add'></c:url>">Add
+												Question</a></li>
+										<li><a
+											href="<c:url value = '/dataAdmin/uploadFile'></c:url>">Upload
+												Questions </a></li>
+												<li><a href="<c:url value = '#'></c:url>">List of Questions </a></li>
+									</ul></li>
+							</ul>
+						</div>
 
-                   <li><a><i class="fa fa-home"></i> Add Category & Sub Category <span class="fa fa-chevron-down"></span></a>
-                   <ul class="nav child_menu">
-                      <li>
-                      <a href="<spring:url value="/category/add" />"
-							>Add Category</a></li>
-					  <li><a href="<spring:url value="/subcategories/add" />"
-							>Add Sub-Category</a></li></li>
-
-                </ul>
-              </div>
-
-            </div>
-            <!-- /sidebar menu -->
+					</div>
+					
+					<!-- /sidebar menu -->
 
 					<!-- /menu footer buttons -->
 					<div class="sidebar-footer hidden-small">
@@ -157,7 +119,7 @@
 							class="user-profile dropdown-toggle" data-toggle="dropdown"
 							aria-expanded="false"> <img
 								src='<spring:url value="/resources/images/img.jpg"></spring:url>'
-								alt="">${pageContext.request.userPrincipal.name} <span class=" fa fa-angle-down"></span>
+								alt="">John Doe <span class=" fa fa-angle-down"></span>
 						</a>
 							<ul class="dropdown-menu dropdown-usermenu pull-right">
 								<li><a href="javascript:;"> Profile</a></li>
@@ -219,105 +181,100 @@
 
 			<!-- page content -->
 			<div class="right_col" role="main">
-				<div id="left_col">
-					<h2 id="report">List Of Student</h2>
+				<form:form modelAttribute="newProduct"
+					action="/OnlineTestConductSystem/dataAdmin/uploadFile"
+					class="form-horizontal" enctype="multipart/form-data">
+					Select File to upload(.xlsx format):
+				    <form:input path="uploadFile" type="file" name="fileToUpload"
+						id="fileToUpload" />
+					<button type="submit" id="submit" class="btn">Submit</button>
+				</form:form>
+
+
+
+				<div class="right_col" role="main">
+					<div id="cat" class="form-group">
+						<div class="row">
+							<div class="col-sm-1"></div>
+							<div class="col-sm-11">
+								<label for="sel1">Select Category:</label><br> <select
+									id="category" name="category" style="padding: 5px 30px;">
+									<option value="">--Select Category--</option>
+									<c:forEach var="item" items="${listOfCategory}">
+										<option value="${item.id}">${item.name}</option>
+									</c:forEach>
+								</select>
+							</div>
+						</div>
+
+					</div>
+
+
+					<form:form modelAttribute="subcategory"
+						action="/OnlineTestConductSystem/question/upload" method="post">
+
+						<div id="subcategorydd" class="form-group">
+							<div class="row">
+								<div class="col-sm-1"></div>
+								<div class="col-sm-11">
+									<label for="sel2">Select Subcategory:</label>
+								</div>
+							</div>
+						</div>
+						<div id="sel_subcategory" class="form-group">
+							<div class="row">
+								<div class="col-sm-1"></div>
+								<div class="col-sm-4">
+									<div id="sel2">
+										<form:select path="id" id="subCategory" name="subCategory"
+											style="padding: 5px 30px;">
+
+										</form:select>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div id="category" class="form-group">
+							<div class="row">
+								<div class="col-sm-1"></div>
+								<div class="col-sm-10">
+									<input type="text" class="form-control" id="fileName"
+										name="fileName" placeholder="Please enter your file Name" />
+								</div>
+								<div class="col-sm-1"></div>
+							</div>
+						</div>
+
+
+						<div class="row">
+							<div class="col-sm-10"></div>
+							<div class="col-sm-1">
+								<button type="submit" id="submit" class="btn">Submit</button>
+							</div>
+							<div class="col-sm-1"></div>
+						</div>
+
+					</form:form>
 				</div>
 
-				<c:if test="${not empty studentDeleteMessage}">
-					<script>
-						setTimeout(function() {
-							$('#studentDeleteMessage').fadeOut('medium');
-						}, 2000);
-					</script>
-					<div id="studentDeleteMessage"
-						class="alert alert-danger alert-dismissable">
-						<a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
-						<strong>Success!</strong> You have successfully deleted student.
-					</div>
-				</c:if>
-				<table id="example" class="table table-bordered display" cellspacing="0" width="100%">
-					<thead>
-						<tr>
-							<th>Student ID</th>
-							<th>Name</th>
-							<th>Email</th>
-							<th>Edit</th>
-							<th>Delete</th>
-						</tr>
-					</thead>
-					<tbody>
-						<c:forEach items="${listStudent}" var="std">
-
-							<tr>
-								<td>${std.id}</td>
-								<td>${std.name}</td>
-								<td>${std.email}</td>
-								
-								<td><a href="<spring:url value="/students/edit/${std.id}" />">Edit</a></td>	
-								
-								
-								<td><a href="<spring:url value="/students/delete/${std.id}" />"
-														class="btn btn-info" role="button">Delete</a>	</td>				
-									
-									
-								<!--Delete Student  -->	
-								<!-- Delete Student not working when showing pop up -->
-								
-								
-								
-								 <%--  <td>
-								<a data-toggle="modal" data-target="#myModal"
-														class="btn btn-info" role="button">Delete</a>
-									<!-- <button type="button" class="btn btn-info btn-lg"
-										data-toggle="modal" data-target="#myModal" style="margin:0px;">Send
-										Access ID</button> --> <!-- Modal -->
-									<div class="modal fade" id="myModal" role="dialog">
-										<div class="modal-dialog">
-
-											<!-- Modal content-->
-											<div class="modal-content">
-												 <div class="modal-header">
-													<button type="button" class="close" data-dismiss="modal">&times;</button>
-													<h4 class="modal-title">
-														<b>Delete Student</b>
-													</h4>
-												</div>
-												<div class="modal-body">
-													<p>Are you sure you want to delete student?</p>
-												</div>
-												<div class="modal-footer">
-													<a href="<spring:url value="/students/delete/${std.id}" />"
-														class="btn btn-info" role="button">Delete</a>	
-												</div>
-											</div>
-										</div>
-									</div> </td>  --%>
-								
-							</tr>
-						</c:forEach>
-
-
-					</tbody>
-				</table>
-				
-				
-				
-				
 			</div>
-			<!-- /page content -->
-
-			<!-- footer content -->
-			<footer>
-			<div class="pull-right">&copy; 2011 Maharishi University of
-				Management. All rights reserved.</div>
-			<div class="clearfix"></div>
-			</footer>
-			<!-- /footer content -->
 		</div>
+		<!-- /page content -->
+
+		<!-- footer content -->
+		<footer>
+		<div class="pull-right">&copy; 2011 Maharishi University of
+			Management. All rights reserved.</div>
+		<div class="clearfix"></div>
+		</footer>
+		<!-- /footer content -->
 	</div>
+	</div>
+
 	<!-- jQuery -->
 	<script
-	src='<spring:url value="/resources/js/jquery/dist/jquery.min.js"></spring:url>'></script>
+		src='<spring:url value="/resources/js/jquery/dist/jquery.min.js"></spring:url>'></script>
 	<!-- Bootstrap -->
 	<script
 		src='<spring:url value="/resources/css/bootstrap/dist/js/bootstrap.min.js"></spring:url>'></script>
@@ -332,8 +289,8 @@
 	<script
 		src='<spring:url value="/resources/js/custom.min.js"></spring:url>'></script>
 	<script
-		src='<spring:url value="/resources/js/admin.js"></spring:url>'></script>
-	
+		src='<spring:url value="/resources/js/categorySubcategorySelect2.js"></spring:url>'></script>
+
 
 
 </body>

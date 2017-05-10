@@ -37,8 +37,5 @@ public class GradingServiceImpl implements GradingServiceInterface {
 	
 	//Calculate Grade from marks obtained
 	
-	@Autowired
-	AnswerSheetServiceImpl answerSheetService;
-	
 
 }

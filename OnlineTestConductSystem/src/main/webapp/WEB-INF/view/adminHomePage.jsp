@@ -75,12 +75,22 @@
 				  <li><a><i class="fa fa-home"></i> Administrator <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
                       <li>
-                      <a href="<spring:url value="/employee/add" />"
+                      <a href="<spring:url value="/employee/addAdmin" />"
 							>Add Admin</a></li>
 					  <li><a href="<spring:url value="/employee/listAdmin" />"
 							>List Of Admin</a></li></li>
                     </ul>
                   </li>
+                   
+                 <%--  <li><a><i class="fa fa-home"></i> Data Admin <span class="fa fa-chevron-down"></span></a>
+                   <ul class="nav child_menu">
+                      <li>
+                      <a href="<spring:url value="/employee/adddataAdmin" />"
+							>Add Studnet</a></li>
+					  <li><a href="<spring:url value="/employee/listStudent" />"
+							>List Of Student</a></li></li>
+                    </ul>
+                  </li> --%>
                   
                   <li><a><i class="fa fa-home"></i> Data Admin <span class="fa fa-chevron-down"></span></a>
                    <ul class="nav child_menu">
@@ -101,6 +111,7 @@
 							>List Of Student</a></li></li>
                     </ul>
                   </li>
+
                   
                    <li><a><i class="fa fa-home"></i> Add Category & Sub Category <span class="fa fa-chevron-down"></span></a>
                    <ul class="nav child_menu">
@@ -111,6 +122,16 @@
 							>Add Sub-Category</a></li></li>
                     </ul>
                   </li>
+
+                 
+                   <li><a><i class="fa fa-home"></i> Add Category & Sub Category <span class="fa fa-chevron-down"></span></a>
+                   <ul class="nav child_menu">
+                      <li>
+                      <a href="<spring:url value="/category/add" />"
+							>Add Category</a></li>
+					  <li><a href="<spring:url value="/subcategories/add" />"
+							>Add Sub-Category</a></li></li>
+
                 </ul>
               </div>
 
