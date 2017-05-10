@@ -71,15 +71,16 @@
 										class="fa fa-chevron-down"></span></a>
 									<ul class="nav child_menu">
 
-										<li><a href="<c:url value = '/dataAdmin/home'></c:url>">Home
+										<%-- <li><a href="<c:url value = '/dataAdmin/home'></c:url>">Home
 												Page </a></li>
 										<li><a href="<c:url value = '/category/add'></c:url>">Add
-												Category</a></li>
+												Category</a></li> --%>
 										<li><a href="<c:url value = '/question/add'></c:url>">Add
 												Question</a></li>
 										<li><a
 											href="<c:url value = '/dataAdmin/uploadFile'></c:url>">Upload
 												Questions </a></li>
+												<li><a href="<c:url value = '#'></c:url>">List of Questions </a></li>
 									</ul></li>
 							</ul>
 						</div>

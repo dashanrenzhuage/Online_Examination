@@ -28,7 +28,7 @@ public class DataAdminController {
 	@Autowired
 	CategoryServiceInterface categoryService;
 	
-	@RequestMapping("/home")
+	@RequestMapping( method = RequestMethod.GET)
 	public String dataAdminHome(){
 		return "data_admin_home";
 	}

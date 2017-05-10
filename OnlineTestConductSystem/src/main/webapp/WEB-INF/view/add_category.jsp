@@ -24,8 +24,9 @@
 <!-- Custom Theme Style -->
 <link href="<c:url value = '/resources/css/custom.min.css'></c:url>"
 	rel="stylesheet">
-<link href="<c:url value = '/resources/css/category.css'></c:url>"
+<link href="<c:url value = '/resources/css/admin.css'></c:url>"
 	rel="stylesheet">
+
 
 
 <title>MUM Online Test Conduct System</title>
@@ -36,7 +37,7 @@
         <div class="col-md-3 left_col">
           <div class="left_col scroll-view">
             <div class="navbar nav_title" style="border: 0;">
-              <a href="da_add_question.html" class="site_title"><i class="fa fa-user"></i> <span>Data Admin</span></a>
+              <a href="admin_addcoach.html" class="site_title"><i class="fa fa-user"></i> <span>Administrator</span></a>
             </div>
 
             <div class="clearfix"></div>
@@ -60,14 +61,52 @@
               <div class="menu_section">
                 <h3>General</h3>
                 <ul class="nav side-menu">
-                  <li><a><i class="fa fa-home"></i> Home <span class="fa fa-chevron-down"></span></a>
+                  <li><a><i class="fa fa-home"></i> Coach <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                    <li><a href="<c:url value = '/dataAdmin/home'></c:url>">Home Page </a></li>
-                    	<li><a href="<c:url value = '/subcategories/add'></c:url>">Add Subcategory</a></li>
-                      <li><a href="<c:url value = '/question/add'></c:url>">Add Question</a></li>
-                      <li><a href="<c:url value = '/dataAdmin/uploadFile'></c:url>">Upload Questions </a></li>
+                      <li>
+                      <a href="<spring:url value="/employee/add" />"
+							>Add Coach</a></li>
+					  <li><a href="<spring:url value="/employee/listCoach" />"
+							>List Of Coach</a></li></li>
                     </ul>
                   </li>
+				  <li><a><i class="fa fa-home"></i> Administrator <span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                      <li>
+                      <a href="<spring:url value="/employee/add" />"
+							>Add Admin</a></li>
+					  <li><a href="<spring:url value="/employee/listAdmin" />"
+							>List Of Admin</a></li></li>
+                    </ul>
+                  </li>
+                   
+                  <li><a><i class="fa fa-home"></i> Data Admin <span class="fa fa-chevron-down"></span></a>
+                   <ul class="nav child_menu">
+                      <li>
+                      <a href="<spring:url value="/students/addStudent" />"
+							>Add Studnet</a></li>
+					  <li><a href="<spring:url value="/students/listStudent" />"
+							>List Of Student</a></li></li>
+                    </ul>
+                  </li>
+                  
+                  <li><a><i class="fa fa-home"></i> Student <span class="fa fa-chevron-down"></span></a>
+                   <ul class="nav child_menu">
+                      <li>
+                      <a href="<spring:url value="/students/addStudent" />"
+							>Add Studnet</a></li>
+					  <li><a href="<spring:url value="/students/listStudent" />"
+							>List Of Student</a></li></li>
+                    </ul>
+                  </li>
+                 
+                   <li><a><i class="fa fa-home"></i> Add Category & Sub Category <span class="fa fa-chevron-down"></span></a>
+                   <ul class="nav child_menu">
+                      <li>
+                      <a href="<spring:url value="/category/add" />"
+							>Add Category</a></li>
+					  <li><a href="<spring:url value="/subcategories/add" />"
+							>Add Sub-Category</a></li></li>
                 </ul>
               </div>
 
@@ -218,55 +257,8 @@
 						<div class="col-sm-1"></div>
 					</div>
 				</div>
-			<!-- 	<div id="categoryList">
-					<div class="row">
-						<div class="col-sm-1"></div>
-						<div class="col-sm-10">
-							<table id="c_table" class="table table-hover">
-								<thead>
-									<tr>
-										<th width="20%">SN</th>
-										<th width="60%">Category</th>
-										<th width="20%">Delete</th>
-									</tr>
-								</thead>
-								<tbody>
-									<tr>
-										<td>1</td>
-										<td>Java</td>
-										<td>
-											<button type="button" id="del1" class="btn del" onclick="delCategory(this)">
-												<span class="glyphicon glyphicon-remove"></span>
-											</button>
-										</td>
-									</tr>
-									<tr>
-										<td>2</td>
-										<td>C#</td>
-										<td>
-											<button type="button" id="del2" class="btn del" onclick="delCategory(this)">
-												<span class="glyphicon glyphicon-remove"></span>
-											</button>
-										</td>
-									</tr>
-								</tbody>
-							</table>
-						</div>
-						<div class="col-sm-1"></div>
-					</div>
+				</form:form>
 				</div>
-				<div>
-					<div class="row">
-					    <div class="col-sm-10"></div>
-						<div class="col-sm-1">
-							<button type="submit" id="submit" class="btn">Submit</button>
-						</div>
-						<div class="col-sm-1"></div>
-					</div>
-				</div> -->
-			</form:form>
-		</div>
-        <!-- /page content -->
 
         <!-- footer content -->
         <footer>
@@ -278,7 +270,6 @@
         <!-- /footer content -->
       </div>
     </div>
-
 
 
 	<!-- jQuery -->
@@ -298,7 +289,9 @@
 	<script
 		src='<spring:url value="/resources/js/custom.min.js"></spring:url>'></script>
 	<script
-		src='<spring:url value="/resources/js/category.js"></spring:url>'></script>
+		src='<spring:url value="/resources/js/add_question.js"></spring:url>'></script>
+	<script
+		src='<spring:url value="/resources/js/admin.js"></spring:url>'></script>
 
 
 </body>

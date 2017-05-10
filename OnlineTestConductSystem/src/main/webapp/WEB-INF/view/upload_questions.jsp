@@ -70,8 +70,8 @@
 								<li><a><i class="fa fa-home"></i> Home <span
 										class="fa fa-chevron-down"></span></a>
 									<ul class="nav child_menu">
-										<li><a href="<c:url value = '/dataAdmin/home'></c:url>">Home
-												Page </a></li>
+										<%-- <li><a href="<c:url value = '/dataAdmin/home'></c:url>">Home
+												Page </a></li> --%>
 										<%-- <li><a href="<c:url value = '/category/add'></c:url>">Add
 												Category</a></li>
 										<li><a

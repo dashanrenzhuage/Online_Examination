@@ -279,11 +279,11 @@
 			<artifactId>tiles-jsp</artifactId>
 			<version>3.0.3</version>
 		</dependency>
-		<dependency>
+	<!-- 	<dependency>
 			<groupId>commons-fileupload</groupId>
 			<artifactId>commons-fileupload</artifactId>
 			<version>1.3.2</version>
-		</dependency>
+		</dependency> -->
 		<dependency>
 			<groupId>commons-io</groupId>
 			<artifactId>commons-io</artifactId>
@@ -293,11 +293,11 @@
 
 
 
-		<dependency>
+		<!-- <dependency>
 			<groupId>net.sf.jasperreports</groupId>
 			<artifactId>jasperreports</artifactId>
 			<version>5.0.0</version>
-			<!-- <version>3.7.6</version> -->
+			<version>3.7.6</version>
 			<type>jar</type>
 			<scope>compile</scope>
 			<exclusions>
@@ -332,7 +332,7 @@
 			<version>3.2.1</version>
 			<type>jar</type>
 			<scope>compile</scope>
-		</dependency>
+		</dependency> -->
 	</dependencies>
 	<build>
 		<plugins>
