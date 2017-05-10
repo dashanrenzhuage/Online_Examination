@@ -49,7 +49,7 @@
               </div>
               <div class="profile_info">
                 <span>Welcome,</span>
-                <h2>John Doe</h2>
+                <h2>${pageContext.request.userPrincipal.name}</h2>
               </div>
             </div>
             <!-- /menu profile quick info -->
@@ -82,6 +82,10 @@
                   <li><a><i class="fa fa-home"></i> Data Admin <span class="fa fa-chevron-down"></span></a>
                    <ul class="nav child_menu">
                       <li>
+                      <a href="<spring:url value="/employee/addDataAdmin" />"
+							>Add Data Admin</a></li>
+					  <li><a href="<spring:url value="/employee/listDataAdmin" />"
+							>List Of Data Admin</a></li></li>
                       <a href="<spring:url value="/students/addStudent" />"
 							>Add Studnet</a></li>
 					  <li><a href="<spring:url value="/students/listStudent" />"
@@ -98,6 +102,17 @@
 							>List Of Student</a></li></li>
                     </ul>
                   </li>
+
+                  <%-- <li><a><i class="fa fa-home"></i> Add Category & Sub Category <span class="fa fa-chevron-down"></span></a>
+                   <ul class="nav child_menu">
+                      <li>
+                      <a href="<spring:url value="/students/addStudent" />"
+							>Add Category</a></li>
+					  <li><a href="<spring:url value="/students/listStudent" />"
+							>Add Sub-Category</a></li></li>
+                    </ul>
+                  </li> --%>
+
                    <li><a><i class="fa fa-home"></i> Add Category & Sub Category <span class="fa fa-chevron-down"></span></a>
                    <ul class="nav child_menu">
                       <li>
@@ -105,6 +120,7 @@
 							>Add Category</a></li>
 					  <li><a href="<spring:url value="/subcategories/add" />"
 							>Add Sub-Category</a></li></li>
+
                 </ul>
               </div>
 
@@ -141,7 +157,7 @@
               <ul class="nav navbar-nav navbar-right">
                 <li class="">
                   <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                    <img src="images/img.jpg" alt="">John Doe
+                    <img src="images/img.jpg" alt="">${pageContext.request.userPrincipal.name}
                     <span class=" fa fa-angle-down"></span>
                   </a>
                   <ul class="dropdown-menu dropdown-usermenu pull-right">

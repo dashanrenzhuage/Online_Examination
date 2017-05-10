@@ -21,6 +21,7 @@ import edu.mum.onlinetest.model.Employee;
 import edu.mum.onlinetest.model.Student;
 import edu.mum.onlinetest.model.SubCategory;
 import edu.mum.onlinetest.service.CategoryServiceInterface;
+import edu.mum.onlinetest.service.EmployeeServiceInterface;
 import edu.mum.onlinetest.service.StudentServiceInterface;
 import edu.mum.onlinetest.service.SubCategoryInterface;
 import edu.mum.onlinetest.serviceImpl.StudentServiceImpl;
@@ -40,6 +41,8 @@ public class StudentController {
 
 	@Autowired
 	StudentServiceImpl studentServiceImpl;
+	@Autowired
+	EmployeeServiceInterface employeeService;
 
 	@RequestMapping(value = "/studentExamLogin", method = RequestMethod.GET)
 	public String studentExamLogin() {
@@ -82,14 +85,15 @@ public class StudentController {
 	// Add Student
 	@RequestMapping(value = "/addStudent", method = RequestMethod.GET)
 	public String showAddStudentPage(@ModelAttribute("newStudent") Student student, Model model) {
-		System.out.println("****************************** student add page");
+		model.addAttribute("coachList", employeeService.findCoach());
+		System.out.println(employeeService.findCoach());
 		return "addStudent";
 	}
 
 	@RequestMapping(value = "/addStudent", method = RequestMethod.POST)
 	public String addVehicle(@Valid @ModelAttribute("newStudent") Student student, BindingResult result, Model model) {
-		System.out.println("**********************8888888888888888888888888888");
 		if (result.hasErrors()) {
+			model.addAttribute("coachList", employeeService.findCoach());
 			return "addStudent";
 		}
 		studentService.saveStudent(student);
@@ -119,21 +123,27 @@ public class StudentController {
 
 	// Get student by ID------
 
-	@RequestMapping(value = "/testEdit", method = RequestMethod.POST)
+	/*@RequestMapping(value = "/testEdit", method = RequestMethod.POST)
 	public String edit(@PathVariable("id") Long id, Model model) {
 		System.out.println("test edit called");
 //		Student student = studentService.getStudentByID(id);
 //		model.addAttribute("student", student);
 		return "editStudent";
-	}
-	
+	}*/
+	/*@Valid @ModelAttribute("newStudent") Student student, BindingResult result*/
 	@RequestMapping(value = "/saveStudent", method = RequestMethod.POST)
-    public ModelAndView saveEmployee(@ModelAttribute Student student, Model model) {
-     
+    public ModelAndView saveEmployee(@Valid @ModelAttribute Student student1, BindingResult result, Model model) {
+     /*
         System.out.println("test edit called" + student.getName());
         System.out.println("test edit called" + student.getId());
-        System.out.println("test edit called" + student.getEmail());
-        studentService.saveStudent(student);
+        System.out.println("test edit called" + student.getEmail());*/
+		if(result.hasErrors()){
+			Student student = studentService.getStudentByID(student1.getId());
+			model.addAttribute("student", student);
+			//return "editStudent";
+			new ModelAndView("redirect:/students/editStudent");
+		}
+        studentService.saveStudent(student1);
         List<Student> listOfStudents = studentService.getAllStudent();
 		model.addAttribute("listStudent", listOfStudents);
 
@@ -152,7 +162,7 @@ public class StudentController {
 	}
 
 	// Update existing student-----
-	@RequestMapping(value = "/edit/{id}", method = RequestMethod.POST)
+	/*@RequestMapping(value = "/edit/{id}", method = RequestMethod.POST)
 	public String update(@ModelAttribute("newStudent") Student student, RedirectAttributes rm, Model model, @PathVariable("id") Long id) {
 		System.out.println("999999999999999999999999999999999999999999999999999999999999");
 
@@ -171,7 +181,7 @@ public class StudentController {
 		// return new ResponseEntity<Void>(HttpStatus.OK);
 		return "redirect:/employee/listStudent";
 		// return "studentList";
-	}
+	}*/
 
 	// Delete student -----
 

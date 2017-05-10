@@ -20,6 +20,7 @@
 		<intercept-url pattern="/employee/**" access="hasRole('ADMIN')" />
 		 <intercept-url pattern="/faculty/*" access="hasRole('ADMIN')" />
 		 <intercept-url pattern="/students/*" access="hasRole('ADMIN')" />
+		 <intercept-url pattern="/category/*" access="hasRole('ADMIN')" />
 		
 		 <intercept-url pattern="/coach/**" access="hasRole('COACH')" />
 		<intercept-url pattern="/dataadmin**" access="hasRole('DATAADMIN')" />

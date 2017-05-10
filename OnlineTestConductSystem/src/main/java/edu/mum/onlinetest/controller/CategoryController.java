@@ -69,8 +69,8 @@ public class CategoryController {
 	}*/
 	
 	@RequestMapping(value="/add", method=RequestMethod.GET)
-	public String addCategory(@ModelAttribute Category category){
-		System.out.println("here");
+	public String addCategory(@ModelAttribute("category") Category category){
+		System.out.println("*****************here");
 		return "add_category";
 	}
 	
