@@ -141,7 +141,7 @@ public class AdminController {
 	@RequestMapping(value = "/add/{id}", method = RequestMethod.GET)
 	public String getEditEmployeePage(@PathVariable Long id, Model model) {
 
-		System.out.println("************************66666666666666666666666666");
+		System.out.println("************************ edit coach page");
 		Employee employee = employeeService.getEmployeeByID(id);
 		model.addAttribute(employee);
 		/*
@@ -164,13 +164,12 @@ public class AdminController {
 		Employee currentEmployee = employeeService.getEmployeeByID(id);
 		
 		employeeService.saveEmployee(employee1);
-		return "adminHomePage";
+		return "listCoach";
 	}
 
 	@RequestMapping(value = "/addAdmin/{id}", method = RequestMethod.GET)
 	public String getEditEmployeePage1(@PathVariable Long id, Model model) {
 
-		System.out.println("************************66666666666666666666666666");
 		Employee employee = employeeService.getEmployeeByID(id);
 		model.addAttribute(employee);
 		/*
@@ -192,7 +191,7 @@ public class AdminController {
 		}
 		//Employee currentEmployee = employeeService.getEmployeeByID(id);
 		employeeService.saveEmployee(employee1);
-		return "adminHomePage";
+		return "listAdmin";
 	}
 
 	@RequestMapping(value = "/addDataAdmin/{id}", method = RequestMethod.GET)
@@ -221,14 +220,27 @@ public class AdminController {
 		//Employee currentEmployee = employeeService.getEmployeeByID(id);
 		
 		employeeService.saveEmployee(employee1);
-		return "adminHomePage";
+		return "listDataAdmin";
 	}
 
 	// Delete employee of particular id
-	@RequestMapping("/delete/{id}")
-	public String removePerson(@PathVariable("id") Long id) {
+	@RequestMapping(value = "/delete/{id}", method = RequestMethod.POST)
+	public String removePerson(@PathVariable("id") Long id, Model model) {
 		employeeService.deleteEmployeeByID(id);
-		return "adminHomePage";
+		model.addAttribute("coachList", employeeService.findCoach());
+		return "listCoach";
+	}
+	@RequestMapping("/deleteAdmin/{id}")
+	public String removePerson1(@PathVariable("id") Long id, Model model) {
+		employeeService.deleteEmployeeByID(id);
+		model.addAttribute("adminList", employeeService.findAdmin());
+		return "listAdmin";
+	}
+	@RequestMapping("/deleteDataAdmin/{id}")
+	public String removePerson2(@PathVariable("id") Long id, Model model) {
+		employeeService.deleteEmployeeByID(id);
+		model.addAttribute("dataAdminList", employeeService.findDataAdmin());
+		return "listDataAdmin";
 	}
 
 	// users with role coach

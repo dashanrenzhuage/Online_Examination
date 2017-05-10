@@ -52,7 +52,7 @@
 						</div>
 						<div class="profile_info">
 							<span>Welcome,</span>
-							<h2>${pageContext.request.userPrincipal.name}</h2>
+							<h2>John Doe</h2>
 						</div>
 					</div>
 					<!-- /menu profile quick info -->
@@ -83,15 +83,6 @@
 											Of Admin</a></li></li>
 							</ul>
 							</li>
-							<li><a><i class="fa fa-home"></i> Data Admin <span class="fa fa-chevron-down"></span></a>
-                   <ul class="nav child_menu">
-                      <li>
-                      <a href="<spring:url value="/students/addDataAdmin" />"
-							>Add Data Admin</a></li>
-					  <li><a href="<spring:url value="/students/listDataAdmin" />"
-							>List Of Data Admin</a></li></li>
-                    </ul>
-                  </li>
 
 							<li><a><i class="fa fa-home"></i> Student <span
 									class="fa fa-chevron-down"></span></a>
@@ -102,15 +93,14 @@
 											Of Student</a></li></li>
 							</ul>
 							</li>
-							<li><a><i class="fa fa-home"></i> Add Category & Sub Category <span class="fa fa-chevron-down"></span></a>
+							 <%-- <li><a><i class="fa fa-home"></i> Add Category & Sub Category <span class="fa fa-chevron-down"></span></a>
                    <ul class="nav child_menu">
                       <li>
-                      <a href="<spring:url value="/students/addStudent" />"
+                      <a href="<spring:url value="/category/add" />"
 							>Add Category</a></li>
-					  <li><a href="<spring:url value="/students/listStudent" />"
-							>Add Sub-Category</a></li></li>
-                    </ul>
-                  </li>
+					  <li><a href="<spring:url value="/subcategories/add" />"
+							>Add Sub-Category</a></li></li> --%>
+							
 							</ul>
 						</div>
 
@@ -147,7 +137,7 @@
 							class="user-profile dropdown-toggle" data-toggle="dropdown"
 							aria-expanded="false"> <img
 								src='<spring:url value="/resources/images/img.jpg"></spring:url>'
-								alt="">${pageContext.request.userPrincipal.name} <span class=" fa fa-angle-down"></span>
+								alt="">John Doe <span class=" fa fa-angle-down"></span>
 						</a>
 							<ul class="dropdown-menu dropdown-usermenu pull-right">
 								<li><a href="javascript:;"> Profile</a></li>
@@ -206,26 +196,11 @@
 
 			<!-- page content -->
 			<div class="right_col" role="main">
-        <form:form modelAttribute="coach" action = "../saveCoach" method="post" enctype="multipart/form-data">
+        <form:form modelAttribute="employee" method="post" enctype="multipart/form-data">
 			<%-- <form action="add" method="post"> --%>
 			    <div id="addcoach" class="form-group">
-					<h4>Edit Coach<h4>
+					<h4>Add Coach<h4>
 				</div>
-				
-				
-				<div id="id" class="form-group">
-					<div class="row">
-						<div class="col-sm-1"></div>
-						<div class="col-sm-1">
-							<label for="to" class="lab">First Name:</label>
-						</div>
-						<div class="col-sm-9">
-							<!-- <input type="text" class="form-control" id="cn" name="cn"/> -->
-							<form:input id="fName" name="id" path="id" type="text" value = ${coach.id }/>
-						</div>
-					</div>
-				</div>
-				
 			    <div id="fName" class="form-group">
 					<div class="row">
 						<div class="col-sm-1"></div>
@@ -234,7 +209,7 @@
 						</div>
 						<div class="col-sm-9">
 							<!-- <input type="text" class="form-control" id="cn" name="cn"/> -->
-							<form:input id="fName" name="fName" path="fName" type="text" value = ${coach.fName }/>
+							<form:input id="fName" name="fName" path="fName" type="text" />
 						</div>
 					</div>
 				</div>
@@ -246,7 +221,7 @@
 						</div>
 						<div class="col-sm-9">
 							<!-- <input type="text" class="form-control" id="cn" name="cn"/> -->
-							<form:input id="lName" name="lName" path="lName" type="text" value = ${coach.lName } />
+							<form:input id="lName" name="lName" path="lName" type="text" />
 						</div>
 					</div>
 				</div>
@@ -279,7 +254,7 @@
 							<label for="message" class="lab">Username:</label>
 						</div>
 						<div class="col-sm-9">
-							<form:input id="credential.username" name="credential.username" path="credential.username" type="text" value = ${coach.credential.username } /> 
+							<form:input id="credential.username" name="credential.username" path="credential.username" type="text" /> 
 						</div>
 					</div>
 				</div>
@@ -290,7 +265,7 @@
 							<label for="message" class="lab">Password:</label>
 						</div>
 						<div class="col-sm-9">
-							<form:input id="credential.password" name="credential.password" path="credential.password" type="password" value = ${coach.credential.username }/>
+							<form:input id="credential.password" name="credential.password" path="credential.password" type="password" />
 						</div>
 					</div>
 				</div>
@@ -316,17 +291,17 @@
 				</div>
 			<%-- </form> --%>
 			</form:form>
-			</div>
-			<!-- /page content -->
-
-			<!-- footer content -->
-			<footer>
-			<div class="pull-right">&copy; 2017 Maharishi University of
-				Management. All rights reserved.</div>
-			<div class="clearfix"></div>
-			</footer>
-			<!-- /footer content -->
 		</div>
+		<!-- /page content -->
+
+		<!-- footer content -->
+		<footer>
+		<div class="pull-right">&copy; 2017 Maharishi University of
+			Management. All rights reserved.</div>
+		<div class="clearfix"></div>
+		</footer>
+		<!-- /footer content -->
+	</div>
 	</div>
 
 	<!-- jQuery -->

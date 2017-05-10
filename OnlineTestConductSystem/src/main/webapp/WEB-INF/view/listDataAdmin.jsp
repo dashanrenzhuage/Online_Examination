@@ -98,7 +98,7 @@
 							>List Of Student</a></li></li>
                     </ul>
                   </li>
-                  <li><a><i class="fa fa-home"></i> Add Category & Sub Category <span class="fa fa-chevron-down"></span></a>
+                  <%-- <li><a><i class="fa fa-home"></i> Add Category & Sub Category <span class="fa fa-chevron-down"></span></a>
                    <ul class="nav child_menu">
                       <li>
                       <a href="<spring:url value="/students/addStudent" />"
@@ -106,7 +106,7 @@
 					  <li><a href="<spring:url value="/students/listStudent" />"
 							>Add Sub-Category</a></li></li>
                     </ul>
-                  </li>
+                  </li> --%>
                 </ul>
               </div>
 
@@ -261,7 +261,7 @@
 											<td>${dataAdmin.credential.password}</td>
 											<td><a
 												href="<spring:url value="/employee/addDataAdmin/${dataAdmin.id}" />">Edit</a></td>
-												<td><a href="<spring:url value="/employee/delete/${dataAdmin.id}" />"
+												<td><a href="<spring:url value="/employee/deleteDataAdmin/${dataAdmin.id}" />"
 																	class="btn btn-info" role="button">Delete</a></td>
 
 											<!--Delete Coach  -->
