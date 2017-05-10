@@ -30,8 +30,51 @@
 <script
 	src='<spring:url value="/resources/js/jquery-3.2.1.js"></spring:url>'></script>
 
-<script
-	src='<spring:url value="/resources/js/categoryAndSubCategorySelection.js" ></spring:url>'></script>
+<%-- <script
+	src='<spring:url value="/resources/js/categoryAndSubCategorySelection.js" ></spring:url>'></script> --%> 
+	
+	<script>
+	var contextRoot = "/" + window.location.pathname.split('/')[1];
+	$(function() {
+		$("#subcategory").hide();
+		$("#sel_subcategory").hide();
+
+		$("#category")
+				.change(
+						function() {
+							var id = $("#category").val();
+							//alert(id);
+							$.ajax({
+
+										type : 'GET',
+										url : contextRoot
+												+ "/question/get/subcategories/"
+												+ id,
+										data : {},
+										datatype : "json",
+										contentType : 'application/json',
+										success : function(response) {
+											displaySubCategory(response);
+										},
+										error : function() {
+											alert('Error while request...');
+										}
+
+									});
+						});
+
+		function displaySubCategory(categorylist) {
+			$("#subcategory").show();
+			$("#sel_subcategory").show();
+			
+			$('#subCategory').empty();
+	       
+	        $.each(categorylist, function (k, v) {
+	            $('#subCategory').append('<option value="' + v.id + '">' + v.subCatName + '</option>')
+	        })
+		}
+	})
+	</script> 
 
 <title>MUM Online Test Conduct System</title>
 </head>
@@ -166,14 +209,12 @@
 
 			<!-- page content -->
 			<div class="right_col" role="main">
-<%-- 				<form action="<spring:url value="/question/generate"/>" method="get">
- --%>				<form action="<spring:url value="/question/clicktostartexam"/>" method="post">
-				
+				<form action="<spring:url value="/question/generate"/>" method="get">
 					<div class="form-group">
 						<div class="row">
 							<div class="col-sm-1"></div>
 							<div class="col-sm-11">
-								<label for="sel1">Select Category:</label>
+								<label for="sel1">Add Category:</label>
 							</div>
 						</div>
 					</div>
@@ -194,7 +235,7 @@
 						<div class="row">
 							<div class="col-sm-1"></div>
 							<div class="col-sm-11">
-								<label for="sel2">Select Subcategory:</label>
+								<label for="sel2">Add Subcategory:</label>
 							</div>
 						</div>
 					</div>
@@ -254,3 +295,6 @@
 		src='<spring:url value="/resources/js/custom.min.js"></spring:url>'></script>
 </body>
 </html>
+
+
+

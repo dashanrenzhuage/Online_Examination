@@ -70,7 +70,8 @@ public class SubCategoryController {
 		// Get all SubCategory------
 			
 			@RequestMapping(value = "/getSubCategoryFromCategory/{id}", method = RequestMethod.GET)
-			public @ResponseBody List<SubCategory> getSubCategoryByCategory(@RequestBody @PathVariable("id") Long id){
+			public @ResponseBody List<SubCategory> getSubCategoryByCategory(@PathVariable("id") Long id){
+				System.out.println(id);
 				System.out.println("--------------category---------herhe");
 				List<SubCategory> listOfSubcategories = subCategoryService.getListOfSubCategoryFromCategoryID(id);
 				for(SubCategory l : listOfSubcategories){
