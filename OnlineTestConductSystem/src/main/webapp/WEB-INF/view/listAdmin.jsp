@@ -265,8 +265,8 @@
 							<table id="example" class="table table-hover">
 								<thead>
 									<tr>
-										<th width="20%">Name</th>
-										<th width="20%">Email</th>
+										<th width="20%">First Name</th>
+										<th width="20%">Last Name</th>
 										<th width="20%">Username</th>
 										<th width="20%">Password</th>
 										<th width="20%">Edit</th>
