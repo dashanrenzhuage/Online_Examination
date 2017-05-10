@@ -11,6 +11,7 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -76,8 +77,19 @@ public class QuestionController {
 	}
 	
 	
+	@RequestMapping(value = "/clicktostartexam", method = RequestMethod.POST)
+	public String showStartExam() {
+		
+		System.out.println("****************************** inside question/clicktoshowstartexam POST");
+		
+		return "click_to_start_exam";
+	}
+	
 	@RequestMapping(value = "/generate", method = RequestMethod.POST)
 	public ResponseEntity<List<Question>> generateQuestions(HttpServletRequest request, @RequestBody Category category) {
+		
+		System.out.println("****************************** inside question/generate post");
+		
 		List<SubCategory> subCategories = category.getSubcategories();
 		List<Question> quesList= questionService.getRandomQuestion(subCategories);
 		return new ResponseEntity<List<Question>>(quesList, HttpStatus.OK);
