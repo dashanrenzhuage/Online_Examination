@@ -76,5 +76,12 @@ public class DataAdminController {
 		return "redirect:/dataAdmin/uploadFile";
 	}
 	
+	@RequestMapping(value = "/logout", method = RequestMethod.GET)
+	public String logout(HttpServletRequest request) {
+		request.getSession().invalidate();
+		return "redirect:/login";
+
+	}
+	
 	
 }

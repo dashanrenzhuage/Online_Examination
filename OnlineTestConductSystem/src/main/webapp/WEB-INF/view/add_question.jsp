@@ -127,8 +127,8 @@
 										class="badge bg-red pull-right">50%</span> <span>Settings</span>
 								</a></li>
 								<li><a href="javascript:;">Help</a></li>
-								<li><a href="login.html"><i
-										class="fa fa-sign-out pull-right"></i> Log Out</a></li>
+								<li> <a href="<spring:url value="/dataAdmin/logout" />"
+							><i class="fa fa-sign-out pull-right"></i>Log Out </a></li>
 							</ul></li>
 
 						<li role="presentation" class="dropdown"><a
@@ -255,8 +255,8 @@
 									<form:input type="text" path="opts[${vs.index}].options"
 										class="form-control" id="option" name="question"
 										placeholder="Enter option here" />
-										<form:radiobutton path="opts[${vs.index}].isCorrectAns"
-										id="checkbox_ans" name="checkbox_ans" class="checkbox_ans"></form:radiobutton>
+										<form:checkbox path="opts[${vs.index}].isCorrectAns"
+										id="checkbox_ans" name="checkbox_ans" class="checkbox_ans"></form:checkbox>
 										
 								</div>
 							</div>
