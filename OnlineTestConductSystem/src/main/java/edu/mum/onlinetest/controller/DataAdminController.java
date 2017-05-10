@@ -1,6 +1,7 @@
 package edu.mum.onlinetest.controller;
 
 import java.io.File;
+import java.net.URL;
 import java.util.List;
 
 import javax.servlet.ServletContext;
@@ -41,24 +42,36 @@ public class DataAdminController {
 	}
 	
 	@RequestMapping(value = "/uploadFile", method = RequestMethod.POST)
-	public String processAddNewProductForm(@ModelAttribute("newProduct") FileUpload newProduct, HttpServletRequest request) {
-		System.out.println(" im here");
-		//start here
-		MultipartFile productImage = newProduct.getUploadFile();
-		
-		String path = context.getRealPath("/resources/file/");
+	public String processAddNewProductForm(@ModelAttribute("newProduct") FileUpload questionFile,
+			HttpServletRequest request) {
+		System.out.println("Uploading file...");
+		String uploadPath = System.getProperty("catalina.home") + File.separator + "onlinetestconductsystem"
+				+ File.separator + "questions" + File.separator;
+		File uploadDir = new File(uploadPath);
+		if (!uploadDir.exists()) {
+			uploadDir.mkdirs();
+		}
+		// start here
+		MultipartFile file = questionFile.getUploadFile();
 
-		String fileName = newProduct.getUploadFile().getOriginalFilename();
-		
-		//isEmpty means file exists BUT NO Content
-			if (productImage!=null && !productImage.isEmpty()) {
-		       try {
-		    	   
-		      	productImage.transferTo(new File(path+ fileName));
-		       } catch (Exception e) {
+		/*
+		 * String path = context.getRealPath("/resources/file/"); URL url =
+		 * this.getClass().getClassLoader().getResource("/file");
+		 * System.out.println(url.toString());
+		 */
+
+		// isEmpty means file exists BUT NO Content
+		if (file != null && !file.isEmpty()) {
+			try {
+				String fileName = questionFile.getUploadFile().getOriginalFilename();
+				String filePath = uploadPath + File.separator + fileName;
+				System.out.println("Path of file:"+filePath);
+				File storeFile = new File(filePath);
+				file.transferTo(storeFile);
+			} catch (Exception e) {
 				throw new RuntimeException("Product Image saving failed", e);
-		   }
-		   }
+			}
+		}
 
 		return "redirect:/dataAdmin/uploadFile";
 	}

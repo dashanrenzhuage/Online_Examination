@@ -263,6 +263,19 @@
 							<br />
 						</c:forEach>
 
+
+<%-- <c:forEach items="${questions.opts}" varStatus="quest">
+
+					<td><form:radiobutton path="selectedOpt.id"
+							value="${questions.opts[quest.index]}" label="opt" /> <c:out
+							value="${questions.opts[quest.index].options}" ></c:out>
+				</c:forEach>
+
+			</tr> --%>
+
+
+
+
 					</div>
 					<div class="row">
 						<div class="col-sm-10"></div>
