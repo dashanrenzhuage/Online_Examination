@@ -29,19 +29,20 @@ public class CategoryController {
 	// Get all Category------
 
 	@RequestMapping(method = RequestMethod.GET)
-//	public ResponseEntity<List<Category>> getAll(Model model) {
-		public String getAll(Model model) {
+	// public ResponseEntity<List<Category>> getAll(Model model) {
+	public String getAll(Model model) {
 
 		List<Category> categories = categoryService.getAllCategory();
 
-	/*	if (categories == null || categories.isEmpty()) {
-			return new ResponseEntity<List<Category>>(HttpStatus.NO_CONTENT);
-		}
-		return new ResponseEntity<List<Category>>(categories, HttpStatus.OK)*/
+		/*
+		 * if (categories == null || categories.isEmpty()) { return new
+		 * ResponseEntity<List<Category>>(HttpStatus.NO_CONTENT); } return new
+		 * ResponseEntity<List<Category>>(categories, HttpStatus.OK)
+		 */
 
-		model.addAttribute("listOfCategory" , categories);
+		model.addAttribute("listOfCategory", categories);
 		return "coach_home_page";
-		
+
 	}
 
 	// Get category by ID------
@@ -61,25 +62,26 @@ public class CategoryController {
 
 	// Add category ------
 
-	/*@RequestMapping(value="/add",method = RequestMethod.POST)
-	public ResponseEntity<Void> create(@ModelAttribute Category category,BindingResult result, UriComponentsBuilder ucBuilder) {
-		categoryService.saveCategory(category);
-		HttpHeaders headers = new HttpHeaders();
-		return new ResponseEntity<Void>(headers, HttpStatus.CREATED);
-	}*/
-	
-	@RequestMapping(value="/add", method=RequestMethod.GET)
-	public String addCategory(@ModelAttribute("category") Category category){
+	/*
+	 * @RequestMapping(value="/add",method = RequestMethod.POST) public
+	 * ResponseEntity<Void> create(@ModelAttribute Category
+	 * category,BindingResult result, UriComponentsBuilder ucBuilder) {
+	 * categoryService.saveCategory(category); HttpHeaders headers = new
+	 * HttpHeaders(); return new ResponseEntity<Void>(headers,
+	 * HttpStatus.CREATED); }
+	 */
+
+	@RequestMapping(value = "/add", method = RequestMethod.GET)
+	public String addCategory(@ModelAttribute("category") Category category) {
 		System.out.println("*****************here");
 		return "add_category";
 	}
-	
-	
-	@RequestMapping(value = "/add",method = RequestMethod.POST)
-	public String create(@ModelAttribute Category category,BindingResult result) {
+
+	@RequestMapping(value = "/add", method = RequestMethod.POST)
+	public String create(@ModelAttribute Category category, BindingResult result) {
 		System.out.println("category controller");
 		categoryService.saveCategory(category);
-//		HttpHeaders headers = new HttpHeaders();
+		// HttpHeaders headers = new HttpHeaders();
 		return "redirect:/category/add";
 	}
 

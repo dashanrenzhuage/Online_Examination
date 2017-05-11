@@ -12,25 +12,25 @@ import edu.mum.onlinetest.service.TestQuestionServiceInterface;
 @Service
 public class TestQuestionServiceImpl implements TestQuestionServiceInterface {
 
-	
 	@Autowired
 	TestQuestionDao dao;
+
 	@Override
 	public List<TestQuestion> getAllTestQuestion() {
-		
+
 		return (List<TestQuestion>) dao.findAll();
 	}
 
 	@Override
 	public TestQuestion getTestQuestionByID(Long id) {
-		
+
 		return dao.findOne(id);
 	}
 
 	@Override
 	public void saveTestQuestion(TestQuestion testQuestion) {
 		dao.save(testQuestion);
-		
+
 	}
 
 	@Override

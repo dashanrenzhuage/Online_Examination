@@ -19,16 +19,15 @@ import edu.mum.onlinetest.service.TestQuestionServiceInterface;
 @Controller
 @RequestMapping("question/testQuestion")
 public class TestQuestionController {
-	
+
 	@Autowired
 	TestQuestionServiceInterface testService;
 
-	
 	@Autowired
 	QuestionServiceInterface questionService;
-	
-	@RequestMapping(method= RequestMethod.GET)
-	public String addTest(@ModelAttribute("newTestQuestion") TestQuestion testQuestion, Model model){
+
+	@RequestMapping(method = RequestMethod.GET)
+	public String addTest(@ModelAttribute("newTestQuestion") TestQuestion testQuestion, Model model) {
 		List<Opts> optsList = new ArrayList<Opts>();
 		Opts opt = new Opts();
 		opt.setOptions("1");
@@ -40,24 +39,24 @@ public class TestQuestionController {
 		Opts opt2 = new Opts();
 		opt.setOptions("3");
 		optsList.add(opt2);
-		optsList.forEach(op->{
+		optsList.forEach(op -> {
 			System.out.println(op);
 		});
 		Question qs = new Question();
 		qs.setQuesName("How many iteration in JAVA?");
 		qs.setOpts(optsList);
 		questionService.saveQuestion(qs);
-		model.addAttribute("question" , qs);
+		model.addAttribute("question", qs);
 		model.addAttribute("optsList", optsList);
 		return "examPaper";
 	}
-	
-	@RequestMapping(method= RequestMethod.POST)
-	public void addedTest(@ModelAttribute("newTestQuestion") TestQuestion testQuestion, Model model){
-		System.out.println(testQuestion.getId()+"............"+testQuestion.getQuestion());
+
+	@RequestMapping(method = RequestMethod.POST)
+	public void addedTest(@ModelAttribute("newTestQuestion") TestQuestion testQuestion, Model model) {
+		System.out.println(testQuestion.getId() + "............" + testQuestion.getQuestion());
 		System.out.println(testQuestion.getSlectedOption());
-		
+
 		testService.saveTestQuestion(testQuestion);
-}
+	}
 
 }

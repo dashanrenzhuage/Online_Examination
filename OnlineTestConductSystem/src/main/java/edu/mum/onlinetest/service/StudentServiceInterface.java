@@ -11,5 +11,5 @@ public interface StudentServiceInterface {
 	public void saveStudent(Student student);
 	public void deleteStudentByID(Long id);
 	public int countTotalStudent();
-
+	public List<Student> findStudentByCoachId(Long id);
 }

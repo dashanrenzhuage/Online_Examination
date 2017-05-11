@@ -67,20 +67,19 @@ public class StudentController {
 					List<SubCategory> listOfSubCategories = subCategoryService.getAllSubCategory();
 					model.addAttribute("listOfCategories", listOfCategories);
 					model.addAttribute("listOfSubcategories", listOfSubCategories);
-					
+
 					// access-code delete after login
-					////student.setAccessCode(null);
-					
+					//// student.setAccessCode(null);
+
 					studentService.saveStudent(student);
 
 					return "stu_sel_exam";
-					/*return "click_to_start_exam";*/
 				}
 			}
 
 		}
 		return "stu_login";
-		//return "stu_sel_exam";
+		// return "stu_sel_exam";
 	}
 
 	// Add Student
@@ -124,33 +123,36 @@ public class StudentController {
 
 	// Get student by ID------
 
-	/*@RequestMapping(value = "/testEdit", method = RequestMethod.POST)
-	public String edit(@PathVariable("id") Long id, Model model) {
-		System.out.println("test edit called");
-//		Student student = studentService.getStudentByID(id);
-//		model.addAttribute("student", student);
-		return "editStudent";
-	}*/
-	/*@Valid @ModelAttribute("newStudent") Student student, BindingResult result*/
+	/*
+	 * @RequestMapping(value = "/testEdit", method = RequestMethod.POST) public
+	 * String edit(@PathVariable("id") Long id, Model model) {
+	 * System.out.println("test edit called"); // Student student =
+	 * studentService.getStudentByID(id); // model.addAttribute("student",
+	 * student); return "editStudent"; }
+	 */
+	/*
+	 * @Valid @ModelAttribute("newStudent") Student student, BindingResult
+	 * result
+	 */
 	@RequestMapping(value = "/saveStudent", method = RequestMethod.POST)
-    public ModelAndView saveEmployee(@Valid @ModelAttribute Student student1, BindingResult result, Model model) {
-     /*
-        System.out.println("test edit called" + student.getName());
-        System.out.println("test edit called" + student.getId());
-        System.out.println("test edit called" + student.getEmail());*/
-		if(result.hasErrors()){
+	public ModelAndView saveEmployee(@Valid @ModelAttribute Student student1, BindingResult result, Model model) {
+		/*
+		 * System.out.println("test edit called" + student.getName());
+		 * System.out.println("test edit called" + student.getId());
+		 * System.out.println("test edit called" + student.getEmail());
+		 */
+		if (result.hasErrors()) {
 			Student student = studentService.getStudentByID(student1.getId());
 			model.addAttribute("student", student);
-			//return "editStudent";
+			// return "editStudent";
 			new ModelAndView("redirect:/students/editStudent");
 		}
-        studentService.saveStudent(student1);
-        List<Student> listOfStudents = studentService.getAllStudent();
+		studentService.saveStudent(student1);
+		List<Student> listOfStudents = studentService.getAllStudent();
 		model.addAttribute("listStudent", listOfStudents);
 
-        return new ModelAndView("redirect:/students/listStudent");
-    }
-	
+		return new ModelAndView("redirect:/students/listStudent");
+	}
 
 	// Get student by ID------
 
@@ -163,26 +165,26 @@ public class StudentController {
 	}
 
 	// Update existing student-----
-	/*@RequestMapping(value = "/edit/{id}", method = RequestMethod.POST)
-	public String update(@ModelAttribute("newStudent") Student student, RedirectAttributes rm, Model model, @PathVariable("id") Long id) {
-		System.out.println("999999999999999999999999999999999999999999999999999999999999");
-
-		// rm.addFlashAttribute("studentDeleteMessage", "Student has been
-		// successfully deleted!");
-		// Long id = student.getId();
-		// studentService.getStudentByID(id);
-
-		studentService.saveStudent(student);
-		// List<Student> listOfStudents = studentService.getAllStudent();
-		List<Student> students = studentService.getAllStudent();
-		model.addAttribute("listOfStudent", students);
-		// return "listStudent";
-
-		// studentService.deleteStudentByID(id);
-		// return new ResponseEntity<Void>(HttpStatus.OK);
-		return "redirect:/employee/listStudent";
-		// return "studentList";
-	}*/
+	/*
+	 * @RequestMapping(value = "/edit/{id}", method = RequestMethod.POST) public
+	 * String update(@ModelAttribute("newStudent") Student student,
+	 * RedirectAttributes rm, Model model, @PathVariable("id") Long id) {
+	 * System.out.println(
+	 * "999999999999999999999999999999999999999999999999999999999999");
+	 * 
+	 * // rm.addFlashAttribute("studentDeleteMessage", "Student has been //
+	 * successfully deleted!"); // Long id = student.getId(); //
+	 * studentService.getStudentByID(id);
+	 * 
+	 * studentService.saveStudent(student); // List<Student> listOfStudents =
+	 * studentService.getAllStudent(); List<Student> students =
+	 * studentService.getAllStudent(); model.addAttribute("listOfStudent",
+	 * students); // return "listStudent";
+	 * 
+	 * // studentService.deleteStudentByID(id); // return new
+	 * ResponseEntity<Void>(HttpStatus.OK); return
+	 * "redirect:/employee/listStudent"; // return "studentList"; }
+	 */
 
 	// Delete student -----
 

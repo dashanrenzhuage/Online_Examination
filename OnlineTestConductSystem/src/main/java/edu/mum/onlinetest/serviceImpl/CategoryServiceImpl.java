@@ -14,24 +14,27 @@ import edu.mum.onlinetest.service.CategoryServiceInterface;
 
 @Service
 @Transactional
-public class CategoryServiceImpl implements CategoryServiceInterface{
-	
+public class CategoryServiceImpl implements CategoryServiceInterface {
+
 	@Autowired
 	CategoryDao dao;
-	
+
 	@Override
 	public List<Category> getAllCategory() {
 
-		List<Category> categories= (List<Category>) dao.getAllCategory();
+		List<Category> categories = (List<Category>) dao.getAllCategory();
 
-		/*for(Category category: categories){
-			Logger.getLogger("Category contains subcategories size:"+category.getSubcategories().size());
-			for(SubCategory subCategory: category.getSubcategories()){
-//				Logger.getLogger("Category contains subcategories size:"+subCategory.getQuestions().size());
-				Logger.getLogger("Category contains subcategories:"+subCategory.getSubCatName());
-        	}
-		}*/
-		
+		/*
+		 * for(Category category: categories){
+		 * Logger.getLogger("Category contains subcategories size:"+category.
+		 * getSubcategories().size()); for(SubCategory subCategory:
+		 * category.getSubcategories()){ //
+		 * Logger.getLogger("Category contains subcategories size:"+subCategory.
+		 * getQuestions().size());
+		 * Logger.getLogger("Category contains subcategories:"+subCategory.
+		 * getSubCatName()); } }
+		 */
+
 		return categories;
 	}
 
@@ -40,18 +43,16 @@ public class CategoryServiceImpl implements CategoryServiceInterface{
 		return dao.findOne(id);
 	}
 
-	
 	@Override
 	public void deleteCategoryByID(Long id) {
 		dao.delete(id);
-		
+
 	}
+
 	@Override
 	public void saveCategory(Category category) {
 		dao.save(category);
-		
-	}
 
-	
+	}
 
 }

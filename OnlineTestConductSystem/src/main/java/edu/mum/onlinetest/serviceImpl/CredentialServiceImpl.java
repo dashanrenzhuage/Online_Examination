@@ -14,7 +14,7 @@ public class CredentialServiceImpl implements CredentialServiceInteface {
 
 	@Autowired
 	CredentialDao credentialDao;
-	
+
 	@Override
 	public List<Credential> getAllCredentials() {
 		return credentialDao.findAll();
@@ -33,11 +33,11 @@ public class CredentialServiceImpl implements CredentialServiceInteface {
 	@Override
 	public void deleteByID(Integer id) {
 		credentialDao.delete(id);
-		
+
 	}
 
 	@Override
-	public Credential findByUsername(String username) {		
+	public Credential findByUsername(String username) {
 		return credentialDao.findByUsername(username);
 	}
 

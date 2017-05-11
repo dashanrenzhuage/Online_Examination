@@ -11,9 +11,10 @@ import edu.mum.onlinetest.service.StudentServiceInterface;
 
 @Service
 public class StudentServiceImpl implements StudentServiceInterface {
-	
+
 	@Autowired
 	StudentDao dao;
+
 	public List<Student> getAllStudent() {
 		return (List<Student>) dao.findAll();
 	}
@@ -22,21 +23,24 @@ public class StudentServiceImpl implements StudentServiceInterface {
 		return dao.findOne(id);
 	}
 
-	
-
 	public void deleteStudentByID(Long id) {
 		dao.delete(id);
-		
+
 	}
-	
 
 	public void saveStudent(Student student) {
 		dao.save(student);
-		
+
 	}
 
 	public int countTotalStudent() {
 		return (int) (dao.count());
+	}
+
+	@Override
+	public List<Student> findStudentByCoachId(Long id) {
+		// TODO Auto-generated method stub
+		return dao.findStudentByCoachId(id);
 	}
 
 }

@@ -11,6 +11,7 @@ import java.util.List;
 
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.ss.util.NumberToTextConverter;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
@@ -21,6 +22,7 @@ public class XLSXParser {
 		try {
 			String filePath = System.getProperty("catalina.home") + File.separator + "onlinetestconductsystem"
 					+ File.separator + "questions" + File.separator;
+			System.out.println("=====================" + filePath);
 			File myFile = new File(filePath + fileName);
 			if(myFile.exists()){
 				fis = new FileInputStream(myFile);
@@ -51,11 +53,14 @@ public class XLSXParser {
 							}
 							break;
 						case Cell.CELL_TYPE_NUMERIC:
-							singleQuesList.add(cell.getStringCellValue());
-							System.out.println(cell.getNumericCellValue() + "\t");
+							String str = NumberToTextConverter.toText(cell.getNumericCellValue());
+							singleQuesList.add(str);
+							System.out.println(str + "\t");
 							break;
 						case Cell.CELL_TYPE_BOOLEAN:
-							singleQuesList.add(cell.getStringCellValue());
+//							
+							String str1 = Boolean.toString(cell.getBooleanCellValue());
+							singleQuesList.add(str1);
 							System.out.println(cell.getBooleanCellValue() + "\t");
 							break;
 						default:
