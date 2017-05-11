@@ -24,23 +24,24 @@ import edu.mum.onlinetest.service.CategoryServiceInterface;
 @RequestMapping("/dataAdmin")
 public class DataAdminController {
 	@Autowired
-    ServletContext context;
-	
+	ServletContext context;
+
 	@Autowired
 	CategoryServiceInterface categoryService;
-	
-	@RequestMapping( method = RequestMethod.GET)
-	public String dataAdminHome(){
+
+	@RequestMapping(method = RequestMethod.GET)
+	public String dataAdminHome() {
 		return "data_admin_home";
 	}
-	
-	@RequestMapping(value="/uploadFile", method=RequestMethod.GET)
-	public String uploadFilePage(@ModelAttribute("subcategory") SubCategory subcategory, @ModelAttribute("newProduct") FileUpload newProduct, Model model){
+
+	@RequestMapping(value = "/uploadFile", method = RequestMethod.GET)
+	public String uploadFilePage(@ModelAttribute("subcategory") SubCategory subcategory,
+			@ModelAttribute("newProduct") FileUpload newProduct, Model model) {
 		List<Category> categories = categoryService.getAllCategory();
 		model.addAttribute("listOfCategory", categories);
 		return "fileUpload";
 	}
-	
+
 	@RequestMapping(value = "/uploadFile", method = RequestMethod.POST)
 	public String processAddNewProductForm(@ModelAttribute("newProduct") FileUpload questionFile,
 			HttpServletRequest request) {
@@ -65,7 +66,7 @@ public class DataAdminController {
 			try {
 				String fileName = questionFile.getUploadFile().getOriginalFilename();
 				String filePath = uploadPath + File.separator + fileName;
-				System.out.println("Path of file:"+filePath);
+				System.out.println("Path of file:" + filePath);
 				File storeFile = new File(filePath);
 				file.transferTo(storeFile);
 			} catch (Exception e) {
@@ -75,13 +76,12 @@ public class DataAdminController {
 
 		return "redirect:/dataAdmin/uploadFile";
 	}
-	
+
 	@RequestMapping(value = "/logout", method = RequestMethod.GET)
 	public String logout(HttpServletRequest request) {
 		request.getSession().invalidate();
 		return "redirect:/login";
 
 	}
-	
-	
+
 }

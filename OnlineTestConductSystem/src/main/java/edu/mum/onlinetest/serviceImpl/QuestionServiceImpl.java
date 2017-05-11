@@ -82,31 +82,31 @@ public class QuestionServiceImpl implements QuestionServiceInterface {
 	@Override
 	public List<Question> getRandomQuestion(List<SubCategory> subCatList) {
 		List<Question> questionList = new ArrayList<>();
-		if(!subCatList.isEmpty()){
-		for (SubCategory subCategory : subCatList) {
-			System.out.println("subCategory: " + subCategory.getSubCatName());
-			List<Long> quesIds = dao.findIdByName(subCategory.getSubCatName());
+		if (!subCatList.isEmpty()) {
+			for (SubCategory subCategory : subCatList) {
+				System.out.println("subCategory: " + subCategory.getSubCatName());
+				List<Long> quesIds = dao.findIdByName(subCategory.getSubCatName());
 
-			for (Long id : quesIds) {
-				System.out.println("questionId: " + id);
+				for (Long id : quesIds) {
+					System.out.println("questionId: " + id);
 
-			}
-			Collections.shuffle(quesIds);
-			List<Long> newIds = new ArrayList<>();
-			if (quesIds.size() >= 3) {
-				for (int i = 0; i < 3; i++) {
-					newIds.add(quesIds.get(i));
 				}
-				quesIds.clear();
-				quesIds.addAll(newIds);
-			}
+				Collections.shuffle(quesIds);
+				List<Long> newIds = new ArrayList<>();
+				if (quesIds.size() >= 3) {
+					for (int i = 0; i < 3; i++) {
+						newIds.add(quesIds.get(i));
+					}
+					quesIds.clear();
+					quesIds.addAll(newIds);
+				}
 
-			questionList.addAll((List<Question>) dao.findAll(quesIds));
-			questionList.forEach(qL -> {
-				System.out.println(qL.getQuesName());
-			});
+				questionList.addAll((List<Question>) dao.findAll(quesIds));
+				questionList.forEach(qL -> {
+					System.out.println(qL.getQuesName());
+				});
+			}
 		}
-	}
 		return questionList;
 
 	}
@@ -116,37 +116,37 @@ public class QuestionServiceImpl implements QuestionServiceInterface {
 		List<Question> allQuestList = new ArrayList<>();
 		XLSXParser parser = new XLSXParser();
 		List<List<String>> quesList = parser.getQuestions(fileName);
-		if(!quesList.isEmpty()){
-		for (List<String> singleQuesList : quesList) {
+		if (!quesList.isEmpty()) {
+			for (List<String> singleQuesList : quesList) {
 
-			int correctIndex = getAnswerIndex(singleQuesList);
+				int correctIndex = getAnswerIndex(singleQuesList);
 
-			Question question = new Question();
-			List<Opts> options = new ArrayList<>();
+				Question question = new Question();
+				List<Opts> options = new ArrayList<>();
 
-			for (int i = 0; i < singleQuesList.size() - 1; i++) {
-				Opts option = new Opts();
+				for (int i = 0; i < singleQuesList.size() - 1; i++) {
+					Opts option = new Opts();
 
-				if (i == 0) {
-					question.setQuesName(singleQuesList.get(i));
-				} else {
+					if (i == 0) {
+						question.setQuesName(singleQuesList.get(i));
+					} else {
 
-					option.setOptions(singleQuesList.get(i));
+						option.setOptions(singleQuesList.get(i));
 
-					if (correctIndex == i) {
-						option.setIsCorrectAns(true);
+						if (correctIndex == i) {
+							option.setIsCorrectAns(true);
+						}
+						options.add(option);
 					}
-					options.add(option);
 				}
-			}
-			question.setOpts(options);
-			question.setSubCategory(subcategoryService.getSubCategoryByID(subCatId));
-			if (question.getQuesName() != null) {
-				allQuestList.add(question);
-			}
+				question.setOpts(options);
+				question.setSubCategory(subcategoryService.getSubCategoryByID(subCatId));
+				if (question.getQuesName() != null) {
+					allQuestList.add(question);
+				}
 
+			}
 		}
-	}
 		return allQuestList;
 
 	}

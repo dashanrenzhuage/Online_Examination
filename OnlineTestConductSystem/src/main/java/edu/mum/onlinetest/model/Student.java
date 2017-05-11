@@ -19,6 +19,14 @@ public class Student extends Person{
 	@OneToOne
 	private Coach coach;
 	
+	/*public Admin getCoach() {
+		return coach;
+	}
+
+	public void setCoach(Admin coach) {
+		this.coach = coach;
+	}*/
+
 	public String getPhoneNo() {
 		return phoneNo;
 	}

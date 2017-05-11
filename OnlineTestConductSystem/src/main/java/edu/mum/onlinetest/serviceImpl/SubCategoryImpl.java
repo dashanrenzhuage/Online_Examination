@@ -23,9 +23,9 @@ public class SubCategoryImpl implements SubCategoryInterface {
 	@Override
 	public List<SubCategory> getAllSubCategory() {
 		List<SubCategory> subCategories = (List<SubCategory>) dao.getAllSubCategory();
-		for(SubCategory subCategory: subCategories){
-			Logger.getLogger("Category contains subcategories size:"+subCategory.getSubCatName());
-    	}
+		for (SubCategory subCategory : subCategories) {
+			Logger.getLogger("Category contains subcategories size:" + subCategory.getSubCatName());
+		}
 		return subCategories;
 	}
 
@@ -34,31 +34,26 @@ public class SubCategoryImpl implements SubCategoryInterface {
 		return dao.findOne(id);
 	}
 
-	
-
-	
 	@Override
 	public void saveSubCategory(SubCategory subCategory) {
 		dao.save(subCategory);
-		
+
 	}
 
 	@Override
 	public void deleteSubCategoryByID(Long id) {
 		dao.delete(id);
-		
+
 	}
 
 	@Override
 
 	public List<SubCategory> getSubCategoriesByCategoryId(Long id) {
 		return dao.getSubCategoriesByCategoryId(id);
-		
+
 	}
 
-	
-
-	public List<SubCategory> getSubcategoryByCategory(Category  category) {
+	public List<SubCategory> getSubcategoryByCategory(Category category) {
 		return dao.getSubcategoryByCategory(category);
 	}
 

@@ -24,6 +24,8 @@
 <!-- Custom Theme Style -->
 <link href="<c:url value = '/resources/css/custom.min.css'></c:url>"
 	rel="stylesheet">
+<link href="<c:url value = '/resources/css/login.css'></c:url>" rel="stylesheet" type="text/css">
+
 
 
 <title>MUM Online Test Conduct System</title>
@@ -32,7 +34,9 @@
     <div>
       <a class="hiddenanchor" id="signup"></a>
       <a class="hiddenanchor" id="signin"></a>
-
+	  <div align="center" id="imgDiv">
+        <img src="/OnlineTestConductSystem/resources/images/Maharishi.png" alt="..." style="height:100px;width:100px;line-height: 100px;">
+      </div>
       <div class="login_wrapper">
         <div class="animate form login_form">
           <section class="login_content">
@@ -45,7 +49,7 @@
               	</div>
              	 <div>
                	 <%-- <a class="btn btn-default submit" href="<spring:url value="/students/studentExamSelection" />">Log in</a> --%>
-					<a  class="btn btn-default submit" > <input type="submit" value="Submit"> </a>	              	
+					<input style="margin-left:0px;text-align:center;" class="btn btn-default submit" type="submit" value="Log in">	              	
               	</div>
 			</form>
               <div class="clearfix"></div>

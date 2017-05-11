@@ -41,13 +41,12 @@ public class CoachController {
 	StudentServiceImpl studentService;
 	@Autowired
 	ReportServiceImpl reportService;
-	
-	
-	@RequestMapping( method = RequestMethod.GET)
-	public String coachHomepahe(Model model){
+
+	@RequestMapping(method = RequestMethod.GET)
+	public String coachHomepahe(Model model) {
 		return "coach_home_page";
 	}
-	
+
 	@RequestMapping(value = "/student/{id}", method = RequestMethod.GET)
 	public String generateId(@PathVariable("id") Long id, Model model, RedirectAttributes rm) {
 		// LOG.info("deleting category with id: {}", id);
@@ -57,40 +56,44 @@ public class CoachController {
 		studentService.saveStudent(student);
 		System.out.println(studentService.getStudentByID(id));
 		String body = "Here is the information for login." + "\n" + "Link :"
-				+ "http://localhost:8080/OnlineTestConductSystem/students/studentExamLogin" + "\n" + "Accessid : " + accessId;
+				+ "http://localhost:8080/OnlineTestConductSystem/students/studentExamLogin" + "\n" + "Accessid : "
+				+ accessId;
 		String subject = "AccessID and Link for Test";
 
 		Email email = new Email(student.getName(), student.getEmail(), subject, body);
 		mailService.sendMail(email);
-		//model.addAttribute("successMessage", "");
+		// model.addAttribute("successMessage", "");
 		rm.addFlashAttribute("successMessage", "Email Successfully sent!");
 		// return new ResponseEntity<Void>(HttpStatus.OK);
 		return "redirect:/coach/studentList";
 	}
-	
-	
+
 	@RequestMapping(value = "/download/pdf/{id}", method = RequestMethod.GET)
-    public ModelAndView viewPDF(ModelAndView modelAndView, @PathVariable("id") Long id ) 
-    {
+	public ModelAndView viewPDF(ModelAndView modelAndView, @PathVariable("id") Long id) {
 		System.out.println("************************* controller1");
 		JRDataSource datasource = reportService.getDataSourceStudent(id);
 		System.out.println("************************* controller2");
-		Map<String,Object> parameterMap = new HashMap<String,Object>();
+		Map<String, Object> parameterMap = new HashMap<String, Object>();
 		parameterMap.put("datasource", datasource);
 		modelAndView = new ModelAndView("pdfReport", parameterMap);
 		return modelAndView;
-		
+
 	}
 
 	@RequestMapping(value = "/studentList", method = RequestMethod.GET)
 	public String showStudentList(Model model) {
 		// LOG.info("deleting category with id: {}", id);
+		/*
+		 * List<Student> listOfStudents =
+		 * studentService.findStudentByCoachId((Long) 10);
+		 */
 		List<Student> listOfStudents = studentService.getAllStudent();
 		model.addAttribute("listOfStudents", listOfStudents);
 
 		// return new ResponseEntity<Void>(HttpStatus.OK);
 		return "coachListStudent";
 	}
+
 	@RequestMapping(value = "/logout", method = RequestMethod.GET)
 	public String logout(HttpServletRequest request) {
 		request.getSession().invalidate();

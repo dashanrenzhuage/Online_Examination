@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
 import edu.mum.onlinetest.model.Admin;
 import edu.mum.onlinetest.model.Coach;
 import edu.mum.onlinetest.model.Credential;
@@ -55,11 +57,11 @@ public class AdminController {
 	@RequestMapping(value = "/add", method = RequestMethod.POST)
 	public String addVehicle(@Valid @ModelAttribute("employee") Employee employee, BindingResult result, Model model) {
 		if (result.hasErrors()) {
-			/*return "signUp";*/
+			/* return "signUp"; */
 			return "addCoach";
 		}
 		employeeService.saveEmployee(employee);
-		/*return "adminHomePage";*/
+		/* return "adminHomePage"; */
 		model.addAttribute("coachList", employeeService.findCoach());
 		return "listCoach";
 	}
@@ -71,13 +73,14 @@ public class AdminController {
 	}
 
 	@RequestMapping(value = "/addAdmin", method = RequestMethod.POST)
-	public String addVehicle12(@Valid @ModelAttribute("employee") Employee employee, BindingResult result, Model model) {
+	public String addVehicle12(@Valid @ModelAttribute("employee") Employee employee, BindingResult result,
+			Model model) {
 		if (result.hasErrors()) {
-			/*return "signUp";*/
+			/* return "signUp"; */
 			return "addAdmin";
 		}
 		employeeService.saveEmployee(employee);
-		/*return "adminHomePage";*/
+		/* return "adminHomePage"; */
 		model.addAttribute("adminList", employeeService.findAdmin());
 		return "listAdmin";
 	}
@@ -89,13 +92,14 @@ public class AdminController {
 	}
 
 	@RequestMapping(value = "/addDataAdmin", method = RequestMethod.POST)
-	public String addVehicle13(@Valid @ModelAttribute("employee") Employee employee, BindingResult result, Model model) {
+	public String addVehicle13(@Valid @ModelAttribute("employee") Employee employee, BindingResult result,
+			Model model) {
 		if (result.hasErrors()) {
-			/*return "signUp";*/
+			/* return "signUp"; */
 			return "addDataAdmin";
 		}
 		employeeService.saveEmployee(employee);
-		/*return "adminHomePage";*/
+		/* return "adminHomePage"; */
 		model.addAttribute("dataAdminList", employeeService.findDataAdmin());
 		return "listDataAdmin";
 
@@ -162,7 +166,7 @@ public class AdminController {
 			return "editCoach";
 		}
 		Employee currentEmployee = employeeService.getEmployeeByID(id);
-		
+
 		employeeService.saveEmployee(employee1);
 		return "listCoach";
 	}
@@ -189,7 +193,7 @@ public class AdminController {
 			model.addAttribute(employee);
 			return "editAdmin";
 		}
-		//Employee currentEmployee = employeeService.getEmployeeByID(id);
+		// Employee currentEmployee = employeeService.getEmployeeByID(id);
 		employeeService.saveEmployee(employee1);
 		return "listAdmin";
 	}
@@ -217,54 +221,60 @@ public class AdminController {
 			model.addAttribute(employee);
 			return "editDataAdmin";
 		}
-		//Employee currentEmployee = employeeService.getEmployeeByID(id);
-		
+		// Employee currentEmployee = employeeService.getEmployeeByID(id);
+
 		employeeService.saveEmployee(employee1);
 		return "listDataAdmin";
 	}
-	
-	/*@RequestMapping(value = "/addAdmin/{id}", method = RequestMethod.GET)
-	public String getEditEmployeePage1(@PathVariable Long id, Model model) {
-		
-		System.out.println("************************66666666666666666666666666");
-		Employee employee = employeeService.getEmployeeByID(id);
-		model.addAttribute(employee);
-		
-		 * Employee newAdmin = employeeService.getEmployeeByID(id);
-		 * model.addAttribute(newAdmin);
-		 * System.out.println("************************ edit");
-		 * System.out.println(newAdmin);
-		 
-		return "editAdmin";
-	}*/
 
-	/*@RequestMapping(value = "/addAdmin/{id}", method = RequestMethod.POST)
-	public String editEmployee1(@Valid @ModelAttribute("employee") Employee employee, BindingResult result,
-			@PathVariable Long id) {
+	/*
+	 * @RequestMapping(value = "/addAdmin/{id}", method = RequestMethod.GET)
+	 * public String getEditEmployeePage1(@PathVariable Long id, Model model) {
+	 * 
+	 * System.out.println("************************66666666666666666666666666");
+	 * Employee employee = employeeService.getEmployeeByID(id);
+	 * model.addAttribute(employee);
+	 * 
+	 * Employee newAdmin = employeeService.getEmployeeByID(id);
+	 * model.addAttribute(newAdmin);
+	 * System.out.println("************************ edit");
+	 * System.out.println(newAdmin);
+	 * 
+	 * return "editAdmin"; }
+	 */
 
-		Employee currentEmployee = employeeService.getEmployeeByID(id);
-		if (result.hasErrors()) {
-			return "employee/admin/employess";
-		}
-		employeeService.saveEmployee(employee);
-		return "adminHomePage";
-	}*/
+	/*
+	 * @RequestMapping(value = "/addAdmin/{id}", method = RequestMethod.POST)
+	 * public String editEmployee1(@Valid @ModelAttribute("employee") Employee
+	 * employee, BindingResult result,
+	 * 
+	 * @PathVariable Long id) {
+	 * 
+	 * Employee currentEmployee = employeeService.getEmployeeByID(id); if
+	 * (result.hasErrors()) { return "employee/admin/employess"; }
+	 * employeeService.saveEmployee(employee); return "adminHomePage"; }
+	 */
 
 	// Delete employee of particular id
-	@RequestMapping(value = "/delete/{id}", method = RequestMethod.POST)
-	public String removePerson(@PathVariable("id") Long id, Model model) {
+	@RequestMapping(value = "/deleteCoach/{id}")
+	public String removePerson(@PathVariable("id") Long id, RedirectAttributes rm, Model model) {
+		rm.addFlashAttribute("coachDeleteMessage", "Coach has been successfully deleted!");
 		employeeService.deleteEmployeeByID(id);
 		model.addAttribute("coachList", employeeService.findCoach());
 		return "listCoach";
 	}
+
 	@RequestMapping("/deleteAdmin/{id}")
-	public String removePerson1(@PathVariable("id") Long id, Model model) {
+	public String removePerson1(@PathVariable("id") Long id, RedirectAttributes rm, Model model) {
+		rm.addFlashAttribute("adminDeleteMessage", "Administrator has been successfully deleted!");
 		employeeService.deleteEmployeeByID(id);
 		model.addAttribute("adminList", employeeService.findAdmin());
 		return "listAdmin";
 	}
+
 	@RequestMapping("/deleteDataAdmin/{id}")
-	public String removePerson2(@PathVariable("id") Long id, Model model) {
+	public String removePerson2(@PathVariable("id") Long id, RedirectAttributes rm, Model model) {
+		rm.addFlashAttribute("dataAdminDeleteMessage", "Data admin has been successfully deleted!");
 		employeeService.deleteEmployeeByID(id);
 		model.addAttribute("dataAdminList", employeeService.findDataAdmin());
 		return "listDataAdmin";
@@ -308,8 +318,7 @@ public class AdminController {
 		return "coach_home_page";
 
 	}
-	
-	
+
 	@RequestMapping(value = "/logout", method = RequestMethod.GET)
 	public String logout(HttpServletRequest request) {
 		request.getSession().invalidate();

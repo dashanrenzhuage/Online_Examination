@@ -10,22 +10,24 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 public class LoginController {
 	@RequestMapping("/login")
-	public String login(Model model){
-		 Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-	      String name = auth.getName(); //get logged in username
+	public String login(Model model) {
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		String name = auth.getName(); // get logged in username
 
-	      model.addAttribute("username", name);
-	    
-	      System.out.println("Helooooo"+ name);
+		model.addAttribute("username", name);
+
+		System.out.println("Helooooo" + name);
 		return "login";
 	}
-	@RequestMapping(value="/loginfailed", method =RequestMethod.GET)
+
+	@RequestMapping(value = "/loginfailed", method = RequestMethod.GET)
 	public String loginerror(Model model) {
-	model.addAttribute("error", "true");
-	return "login";
+		model.addAttribute("error", "true");
+		return "login";
 	}
-	@RequestMapping(value="/logout", method = RequestMethod.GET)
+
+	@RequestMapping(value = "/logout", method = RequestMethod.GET)
 	public String logout(Model model) {
-	return "login";
+		return "login";
 	}
 }

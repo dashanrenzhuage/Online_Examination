@@ -45,7 +45,7 @@
             <!-- menu profile quick info -->
             <div class="profile clearfix">
               <div class="profile_pic">
-                <img src="images/img.jpg" alt="..." class="img-circle profile_img">
+                <img src='<spring:url value="/resources/images/img.jpg"></spring:url>' alt="..." class="img-circle profile_img">
               </div>
               <div class="profile_info">
                 <span>Welcome,</span>
@@ -157,7 +157,9 @@
               <ul class="nav navbar-nav navbar-right">
                 <li class="">
                   <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                    <img src="images/img.jpg" alt="">${pageContext.request.userPrincipal.name}
+                    <img
+						src='<spring:url value="/resources/images/img.jpg"></spring:url>'
+						alt="...">${pageContext.request.userPrincipal.name}
                     <span class=" fa fa-angle-down"></span>
                   </a>
                   <ul class="dropdown-menu dropdown-usermenu pull-right">
@@ -182,7 +184,9 @@
                   <ul id="menu1" class="dropdown-menu list-unstyled msg_list" role="menu">
                     <li>
                       <a>
-                        <span class="image"><img src="images/img.jpg" alt="Profile Image" /></span>
+                        <span class="image"><img
+								src='<spring:url value="/resources/images/img.jpg"></spring:url>'
+								alt="..."></span>
                         <span>
                           <span>John Smith</span>
                           <span class="time">3 mins ago</span>
@@ -194,7 +198,9 @@
                     </li>
                     <li>
                       <a>
-                        <span class="image"><img src="images/img.jpg" alt="Profile Image" /></span>
+                        <span class="image"><img
+								src='<spring:url value="/resources/images/img.jpg"></spring:url>'
+								alt="..."></span>
                         <span>
                           <span>John Smith</span>
                           <span class="time">3 mins ago</span>
@@ -206,7 +212,9 @@
                     </li>
                     <li>
                       <a>
-                        <span class="image"><img src="images/img.jpg" alt="Profile Image" /></span>
+                        <span class="image"><img
+								src='<spring:url value="/resources/images/img.jpg"></spring:url>'
+								alt="..."></span>
                         <span>
                           <span>John Smith</span>
                           <span class="time">3 mins ago</span>
@@ -218,7 +226,9 @@
                     </li>
                     <li>
                       <a>
-                        <span class="image"><img src="images/img.jpg" alt="Profile Image" /></span>
+                        <span class="image"><img
+								src='<spring:url value="/resources/images/img.jpg"></spring:url>'
+								alt="..."></span>
                         <span>
                           <span>John Smith</span>
                           <span class="time">3 mins ago</span>
@@ -248,7 +258,7 @@
         <div class="right_col" role="main">
         <form:form modelAttribute="newAdmin" method="post" enctype="multipart/form-data">
 			<%-- <form action="add" method="post"> --%>
-			    <div id="addcoach" class="form-group">
+			    <div id="addcoach" class="form-group center-align">
 					<h4>Add Coach<h4>
 				</div>
 			    <div id="fName" class="form-group">
@@ -259,7 +269,7 @@
 						</div>
 						<div class="col-sm-9">
 							<!-- <input type="text" class="form-control" id="cn" name="cn"/> -->
-							<form:input id="fName" name="fName" path="fName" type="text" />
+							<form:input id="fName" class="form-control" name="fName" path="fName" type="text" />
 						</div>
 					</div>
 				</div>
@@ -271,7 +281,7 @@
 						</div>
 						<div class="col-sm-9">
 							<!-- <input type="text" class="form-control" id="cn" name="cn"/> -->
-							<form:input id="lName" name="lName" path="lName" type="text" />
+							<form:input id="lName" class="form-control" name="lName" path="lName" type="text" />
 						</div>
 					</div>
 				</div>
@@ -304,7 +314,7 @@
 							<label for="message" class="lab">Username:</label>
 						</div>
 						<div class="col-sm-9">
-							<form:input id="credential.username" name="credential.username" path="credential.username" type="text" /> 
+							<form:input id="credential.username" class="form-control" name="credential.username" path="credential.username" type="text" /> 
 						</div>
 					</div>
 				</div>
@@ -315,7 +325,7 @@
 							<label for="message" class="lab">Password:</label>
 						</div>
 						<div class="col-sm-9">
-							<form:input id="credential.password" name="credential.password" path="credential.password" type="password" />
+							<form:input id="credential.password" class="form-control" name="credential.password" path="credential.password" type="password" />
 						</div>
 					</div>
 				</div>

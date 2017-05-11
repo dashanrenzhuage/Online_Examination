@@ -27,63 +27,55 @@ import edu.mum.onlinetest.service.SubCategoryInterface;
 @RequestMapping("/subcategories")
 public class SubCategoryController {
 
-	
-		@Autowired
-		SubCategoryInterface subCategoryService;
-	
-		@Autowired
-		CategoryServiceInterface categoryService;
-		
+	@Autowired
+	SubCategoryInterface subCategoryService;
 
-		 //Add category ------
-		 
-		 @RequestMapping(method = RequestMethod.POST)
-		    public ResponseEntity<Void> create(@RequestBody SubCategory subCategory, UriComponentsBuilder ucBuilder){
+	@Autowired
+	CategoryServiceInterface categoryService;
 
+	// Add category ------
 
+	@RequestMapping(method = RequestMethod.POST)
+	public ResponseEntity<Void> create(@RequestBody SubCategory subCategory, UriComponentsBuilder ucBuilder) {
 
+		subCategory.setCategory(categoryService.getCategoryByID((long) 8));
 
-			 subCategory.setCategory(categoryService.getCategoryByID((long) 8));
+		subCategoryService.saveSubCategory(subCategory);
+		HttpHeaders headers = new HttpHeaders();
+		return new ResponseEntity<Void>(headers, HttpStatus.CREATED);
+	}
 
+	@RequestMapping(value = "{id}", method = RequestMethod.DELETE)
+	public ResponseEntity<Void> delete(@PathVariable("id") Long id) {
+		// LOG.info("deleting category with id: {}", id);
+		SubCategory subCategry = subCategoryService.getSubCategoryByID(id);
 
-			subCategoryService.saveSubCategory(subCategory);
-		        HttpHeaders headers = new HttpHeaders();
-		        return new ResponseEntity<Void>(headers, HttpStatus.CREATED);
-	    }
-		 @RequestMapping(value = "{id}", method = RequestMethod.DELETE)
-		    public ResponseEntity<Void> delete(@PathVariable("id") Long id){
-		        //LOG.info("deleting category with id: {}", id);
-			 SubCategory subCategry = subCategoryService.getSubCategoryByID(id);
+		if (subCategry == null) {
+			// LOG.info("Unable to delete. Category with id {} not found", id);
 
-		        if (subCategry == null){
-		          //  LOG.info("Unable to delete. Category with id {} not found", id);
-		        	
-		            return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
-		        }
+			return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
+		}
 
-		        SubCategory subCategoryToDelete = subCategoryService.getSubCategoryByID(id);
-		        subCategoryToDelete.setFlag(false);
-		        subCategoryService.saveSubCategory(subCategoryToDelete);
-		        return new ResponseEntity<Void>(HttpStatus.OK);
-		    }
-		
-		// Get all SubCategory------
-			
-			@RequestMapping(value = "/getSubCategoryFromCategory/{id}", method = RequestMethod.GET)
-			public @ResponseBody List<SubCategory> getSubCategoryByCategory(@RequestBody @PathVariable("id") Long id){
-				System.out.println("--------------category---------herhe");
-				List<SubCategory> listOfSubcategories = subCategoryService.getListOfSubCategoryFromCategoryID(id);
-				for(SubCategory l : listOfSubcategories){
-					System.out.println(l.getSubCatName());
-				}
-				
-				return listOfSubcategories;
-				
+		SubCategory subCategoryToDelete = subCategoryService.getSubCategoryByID(id);
+		subCategoryToDelete.setFlag(false);
+		subCategoryService.saveSubCategory(subCategoryToDelete);
+		return new ResponseEntity<Void>(HttpStatus.OK);
+	}
 
-}
+	// Get all SubCategory------
 
+	@RequestMapping(value = "/getSubCategoryFromCategory/{id}", method = RequestMethod.GET)
+	public @ResponseBody List<SubCategory> getSubCategoryByCategory(@PathVariable("id") Long id) {
+		System.out.println(id);
+		System.out.println("--------------category---------herhe");
+		List<SubCategory> listOfSubcategories = subCategoryService.getListOfSubCategoryFromCategoryID(id);
+		for (SubCategory l : listOfSubcategories) {
+			System.out.println(l.getSubCatName());
+		}
 
-	
+		return listOfSubcategories;
+
+	}
 
 	// Get all Category------
 
@@ -127,7 +119,7 @@ public class SubCategoryController {
 	public String addSubcategory(@ModelAttribute("subCategory") SubCategory subCategory, Model model) {
 		List<Category> listOfCategory = categoryService.getAllCategory();
 		model.addAttribute("listOfCategory", listOfCategory);
-		//model.addAttribute("subCategory", new SubCategory());
+		// model.addAttribute("subCategory", new SubCategory());
 		return "add_subcategory";
 	}
 
@@ -135,7 +127,7 @@ public class SubCategoryController {
 	public String create(@ModelAttribute("subCategory") SubCategory subCategory, BindingResult result) {
 
 		subCategory.setCategory(categoryService.getCategoryByID(subCategory.getCategory().getId()));
-System.out.println("=============================SubCategoryController====================");
+		System.out.println("=============================SubCategoryController====================");
 		subCategoryService.saveSubCategory(subCategory);
 		return "redirect:/subcategories/add";
 	}

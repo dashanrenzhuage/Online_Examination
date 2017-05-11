@@ -12,14 +12,15 @@ import edu.mum.onlinetest.serviceImpl.TestServiceImpl;
 @Controller
 @RequestMapping("test")
 public class TestController {
-	
+
 	@Autowired
 	TestServiceImpl testService;
-	
+
 	@RequestMapping(value = "/result/{testId}", method = RequestMethod.POST)
 	public String resultTest(AnswerSheet answerSheet, @PathVariable("testId") Long testId) {
 		testService.getResult(answerSheet, testId);
-		//forward total marks so that student can see it after completing exam on click submit
+		// forward total marks so that student can see it after completing exam
+		// on click submit
 		return "redirect:/test/answersheet";
 	}
 }

@@ -29,28 +29,24 @@ public class QuestionUploadController {
 	@Autowired
 	SubCategoryInterface subcategoryService;
 
-	
-
-
 	@RequestMapping(value = "/upload", method = RequestMethod.POST)
-	public String upload(@ModelAttribute("subcategory") SubCategory subcategory, HttpServletRequest request ) {
+	public String upload(@ModelAttribute("subcategory") SubCategory subcategory, HttpServletRequest request) {
 		String fileName = request.getParameter("fileName");
 		System.out.println(fileName);
-		questionService.saveALLQuestion(questionService.uploadQuestion(subcategory.getId(),fileName));
+		questionService.saveALLQuestion(questionService.uploadQuestion(subcategory.getId(), fileName));
 		return "redirect:/dataAdmin/uploadFile";
 	}
-	
 
-	@RequestMapping(value = "/generateTTSS", method= RequestMethod.POST)
-	public void questionGenerate(@ModelAttribute ("category") Category category,BindingResult result){
-//		List<SubCategory> subCatList = category.getSubcategories();
-//		for(SubCategory subCategory: subCatList){
-			
-			List<Long> quesId = questionService.findIdByName("spring");
-			for(Long id: quesId){
-				System.out.println("questionId: "+ id);
-//			}
+	@RequestMapping(value = "/generateTTSS", method = RequestMethod.POST)
+	public void questionGenerate(@ModelAttribute("category") Category category, BindingResult result) {
+		// List<SubCategory> subCatList = category.getSubcategories();
+		// for(SubCategory subCategory: subCatList){
+
+		List<Long> quesId = questionService.findIdByName("spring");
+		for (Long id : quesId) {
+			System.out.println("questionId: " + id);
+			// }
 		}
-		
+
 	}
 }
