@@ -46,17 +46,46 @@ public class AnswerSheetServiceImpln implements AnswerSheetInterface {
 
 	public int getResult(AnswerSheet answerSheet2) {
 		
-		System.out.println("******************************** inside service 1");
+		//System.out.println("******************************** inside service 1");
 		
 		int noOfQuestions = answerSheet2.getAnswerList().size();
 		int totalMarks = 0;
-		System.out.println("******************************** inside service 2");
-
+		//System.out.println("******************************** inside service 2");
+		
 		List<String> lists = new ArrayList<>();
+		for(int i = 0; i < noOfQuestions; i++){
+			//System.out.println("******************************** inside service 3");
+			Long subcatid = answerSheet2.getAnswerList().get(i).getQuestion().getId();
+			Question question = questionService.getQuestionByID(subcatid);
+			String subcat = question.getSubCategory().getSubCatName();
+			if(lists.isEmpty()){
+			//	System.out.println("******************************** inside service 4");
+				lists.add(subcat);
+			}
+			else{
+				boolean a = true;
+			//	System.out.println("******************************** inside service 5");
+					
+			for(int j = 0; j < lists.size(); j++){
+			//	System.out.println("******************************** inside service 6");
+				if( lists.get(j).equals(subcat)){
+				//	System.out.println("******************************** inside service 7");
+					a = false;
+					break;
+				}
+			//	System.out.println("******************************** inside service 8");
+			}
+			if(a == true){
+				lists.add(subcat);
+			}
+			
+			}
+		}
+		System.out.println("---------------------"+lists.size());
 		List<Integer> individualMark = new ArrayList<>();
 
 		// noOfSubCategory = 4 ;
-		for (int i = 0; i < 4; i++) {
+		for (int i = 0; i < lists.size(); i++) {
 			individualMark.add(0);
 
 		}
@@ -66,7 +95,7 @@ public class AnswerSheetServiceImpln implements AnswerSheetInterface {
 		for (int i = 0; i < noOfQuestions; i++) {
 			System.out.println("******************************** inside service 4");
 
-			for (int j = 0; j < 4; j++) {
+			for (int j = 0; j < lists.size(); j++) {
 				Long id = answerSheet2.getAnswerList().get(i).getQuestion().getId();
 				System.out.println(id);
 				Question question = questionService.getQuestionByID(id);
@@ -84,24 +113,28 @@ public class AnswerSheetServiceImpln implements AnswerSheetInterface {
 						System.out.println("******************************** inside service 7");
 
 						totalMarks += 1;
-						/*for (int k = 0; k < 4; i++) {
+						for (int k = 0; k < lists.size(); i++) {
 							if (answerSheet2.getAnswerList().get(i).getQuestion().getSubCategory()
 									.getSubCatName() == lists.get(k)) {
 								individualMark.set(k, individualMark.get(k) + 1);
 							}
-						}*/
+						}
 					}
 				}
 			}
 
 		}
 		// Saving subcategory with their marks in map
-					/*Map<String, Integer> eachCategoryMarks = new HashMap<>();
+					Map<String, Integer> eachCategoryMarks = new HashMap<>();
 					for (int i = 0; i < individualMark.size(); i++) {
 						eachCategoryMarks.put(lists.get(i), individualMark.get(i));
-					}*/
+						System.out.println(lists.get(i)+"sub category"+individualMark.get(i));
+					}
+					
+					
 
 					return totalMarks;
+					
 
 	}
 	

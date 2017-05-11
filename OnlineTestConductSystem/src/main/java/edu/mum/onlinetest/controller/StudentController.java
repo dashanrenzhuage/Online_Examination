@@ -70,8 +70,11 @@ public class StudentController {
 
 					// access-code delete after login
 					//// student.setAccessCode(null);
+					
 
 					studentService.saveStudent(student);
+					
+					model.addAttribute("studentId", student.getId().toString());
 
 					return "stu_sel_exam";
 				}
