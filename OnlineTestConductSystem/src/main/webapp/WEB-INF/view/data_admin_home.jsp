@@ -68,7 +68,7 @@
 					 <%--  <li><a href="<c:url value = '/subcategories/add'></c:url>">Add Subcategory</a></li> --%>
 					  <li><a href="<c:url value = '/question/add'></c:url>">Add Question</a></li>
 					  <li><a href="<c:url value = '/dataAdmin/uploadFile'></c:url>">Upload Questions </a></li>
-					  <li><a href="<c:url value = '#'></c:url>">List of Questions </a></li>
+					  <%-- <li><a href="<c:url value = '#'></c:url>">List of Questions </a></li> --%>
                     </ul>
                   </li>
                 </ul>

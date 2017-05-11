@@ -101,19 +101,6 @@ public class SubCategoryController {
 		return new ResponseEntity<SubCategory>(subCategory, HttpStatus.OK);
 	}
 
-	// Add category ------
-
-	/*
-	 * @RequestMapping(method = RequestMethod.POST) public ResponseEntity<Void>
-	 * create(@RequestBody SubCategory subCategory, UriComponentsBuilder
-	 * ucBuilder){
-	 * 
-	 * subCategory.setCategory(categoryService.getCategoryByID((long) 8));
-	 * 
-	 * subCategoryService.saveSubCategory(subCategory); HttpHeaders headers =
-	 * new HttpHeaders(); return new ResponseEntity<Void>(headers,
-	 * HttpStatus.CREATED); }
-	 */
 
 	@RequestMapping(value = "/add", method = RequestMethod.GET)
 	public String addSubcategory(@ModelAttribute("subCategory") SubCategory subCategory, Model model) {
@@ -127,7 +114,12 @@ public class SubCategoryController {
 	public String create(@ModelAttribute("subCategory") SubCategory subCategory, BindingResult result) {
 
 		subCategory.setCategory(categoryService.getCategoryByID(subCategory.getCategory().getId()));
-		System.out.println("=============================SubCategoryController====================");
+		List<SubCategory> subCategories = subCategoryService.getAllSubCategory();
+		for(int i=0; i<subCategories.size(); i++){
+			if(subCategory.getSubCatName().equals(subCategories.get(i).getSubCatName())){
+				return "redirect:/subcategories/add";
+			}
+		}
 		subCategoryService.saveSubCategory(subCategory);
 		return "redirect:/subcategories/add";
 	}

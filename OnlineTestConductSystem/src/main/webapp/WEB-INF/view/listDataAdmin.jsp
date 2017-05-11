@@ -266,7 +266,6 @@
 										<th width="20%">First Name</th>
 										<th width="20%">Last Name</th>
 										<th width="20%">Username</th>
-										<th width="20%">Password</th>
 										<th width="20%">Edit</th>
 										<th width="20%">Delete</th>
 									</tr>
@@ -282,7 +281,7 @@
 											<td>${dataAdmin.lName}</td>
 											<%-- <td>${coach.email}</td> --%>
 											<td>${dataAdmin.credential.username}</td>
-											<td>${dataAdmin.credential.password}</td>
+											<%-- <td>${dataAdmin.credential.password}</td> --%>
 											<td><a
 												href="<spring:url value="/employee/addDataAdmin/${dataAdmin.id}" />">Edit</a></td>
 												<%-- <td><a href="<spring:url value="/employee/deleteDataAdmin/${dataAdmin.id}" />"
