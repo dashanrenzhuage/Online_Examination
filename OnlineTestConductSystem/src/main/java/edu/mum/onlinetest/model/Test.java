@@ -22,6 +22,11 @@ public class Test {
 	private Category category;*/
 	
 	
+	//added
+	
+	
+	
+	
 	@OneToOne
 	private AnswerSheet answersheet;
 	@OneToOne

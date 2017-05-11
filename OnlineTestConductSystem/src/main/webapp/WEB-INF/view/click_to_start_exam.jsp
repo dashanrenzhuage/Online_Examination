@@ -166,7 +166,7 @@
 
 			<!-- page content -->
 			<div class="right_col" role="main">
-				<form action="<spring:url value="/question/generate"/>" method="GET">
+				<form action="<spring:url value="/question/generateTest"/>" method="GET">
 						
 					<p>Hello Hello</p>	
 					<div>

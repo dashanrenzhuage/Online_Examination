@@ -17,7 +17,7 @@ import edu.mum.onlinetest.service.QuestionServiceInterface;
 import edu.mum.onlinetest.service.TestQuestionServiceInterface;
 
 @Controller
-@RequestMapping("question/testQuestion")
+@RequestMapping("question/testQuestion1")
 public class TestQuestionController {
 	
 	@Autowired

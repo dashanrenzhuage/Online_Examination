@@ -16,15 +16,28 @@ public class AnswerSheet {
 	
 	@OneToMany
 	private List<Answer>answerList;
+	private int marks;
+	
+	/*@OneToOne
+	private List<Question> questions;
+	*/
 	/*@OneToOne
 	private Test test;
 	*/
+	
 	
 	/*private int obtainedTotalMarks;
 	private Map<String, Integer> eachSubCategoryMarksObtained;*/
 	
 	
 	
+	public int getMarks() {
+		return marks;
+	}
+	
+	public void setMarks(int marks) {
+		this.marks = marks;
+	}
 	/*
 	
 	public Test getTest() {

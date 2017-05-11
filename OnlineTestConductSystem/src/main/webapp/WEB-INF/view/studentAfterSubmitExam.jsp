@@ -209,55 +209,14 @@
 
 			<!-- page content -->
 			<div class="right_col" role="main">
-				<form action="<spring:url value="/question/generate"/>" method="get">
-					<div class="form-group">
-						<div class="row">
-							<div class="col-sm-1"></div>
-							<div class="col-sm-11">
-								<label for="sel1">Add Category:</label>
-							</div>
-						</div>
-					</div>
-					<div id="sel_category" class="form-group">
-						<div class="row">
-							<div class="col-sm-1"></div>
-							<div class="col-sm-2">
-								<select id="category" name="category" style="padding: 5px 30px;">
-									<option>--Select Category--</option>
-									<c:forEach var="item" items="${listOfCategories}">
-										<option value="${item.id}">${item.name}</option>
-									</c:forEach>
-								</select>
-							</div>
-						</div>
-					</div>	
-					<div id="subcategory" class="form-group">
-						<div class="row">
-							<div class="col-sm-1"></div>
-							<div class="col-sm-11">
-								<label for="sel2">Add Subcategory:</label>
-							</div>
-						</div>
-					</div>
-					<div id="sel_subcategory" class="form-group">
-						<div class="row">
-							<div class="col-sm-1"></div>
-							<div class="col-sm-4">
-
-								<select id="subCategory" name="subCategory"
-									style="padding: 5px 20px;" multiple="multiple">
-									<%-- <c:forEach var="item" items="${listOfSubcategories}">
-										<option value="${item.id}">${item.subCatName}</option>
-									</c:forEach> --%>
-								</select>
-							</div>
-						</div>
-					</div>
+				<form action="<spring:url value="/students/logout"/>" method="get">
+					
+					<p>You scored ${newAnswer.marks} Marks.</p>
 					<div>
 						<div class="row">
 							<div class="col-sm-10"></div>
 							<div class="col-sm-1">
-								<button type="submit" id="submit" class="btn">Submit</button>
+								<button type="submit" id="submit" class="btn">Close window</button>
 							</div>
 							<div class="col-sm-1"></div>
 						</div>

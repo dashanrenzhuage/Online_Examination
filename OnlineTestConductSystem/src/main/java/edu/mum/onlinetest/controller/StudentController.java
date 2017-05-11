@@ -194,5 +194,13 @@ public class StudentController {
 		model.addAttribute("listStudent", listOfStudents);
 		return "listStudent";
 	}
+	
+	@RequestMapping(value = "/logout", method = RequestMethod.GET)
+	public String logout(HttpServletRequest request) {
+		System.out.println("******************* came here");
+		request.getSession().invalidate();
+		return "redirect:/stu_login";
+
+	}
 
 }

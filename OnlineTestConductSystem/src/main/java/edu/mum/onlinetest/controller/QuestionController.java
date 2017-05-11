@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -18,12 +19,16 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import edu.mum.onlinetest.model.Answer;
+import edu.mum.onlinetest.model.AnswerSheet;
 import edu.mum.onlinetest.model.Category;
 import edu.mum.onlinetest.model.Opts;
 import edu.mum.onlinetest.model.Question;
-
+import edu.mum.onlinetest.service.AnswerServiceInterface;
+import edu.mum.onlinetest.service.AnswerSheetInterface;
 /*import edu.mum.onlinetest.parser.XLSXParser;
 */import edu.mum.onlinetest.service.CategoryServiceInterface;
 
@@ -42,6 +47,10 @@ public class QuestionController {
 	
 	@Autowired
 	CategoryServiceInterface categoryService;
+	@Autowired
+	AnswerServiceInterface answerService;
+	@Autowired
+	AnswerSheetInterface answerSheetService;
 
 /*	@RequestMapping(method = RequestMethod.POST)
 	public ResponseEntity<Void> create(@RequestBody Question question, UriComponentsBuilder ucBuilder) {
@@ -106,7 +115,121 @@ public class QuestionController {
 	
 	
 	
+	@RequestMapping(value = "/generate", method = RequestMethod.GET)
+	public String generateQuestions(@RequestParam("category") Long categoryid,  HttpServletRequest request,@ModelAttribute("newAnswer") AnswerSheet newAnswer, Model model, HttpSession session) {
+		System.out.println("i m here--------------");
+		
+		Category category = categoryService.getCategoryByID(categoryid);
+		String[] listOfString = request.getParameterValues("subCategory");
+		
+		List<SubCategory> listOfSubCategory = new ArrayList<>();
+		for(int i=0; i<listOfString.length; i++){
+			SubCategory subCat = subCatService.getSubCategoryByID(Long.parseLong(listOfString[i]));
+			listOfSubCategory.add(subCat);
+		}
+		for(SubCategory c: listOfSubCategory){
+			System.out.println(c.getSubCatName());
+		}
+		
+		System.out.println("============");
+		Answer answer= new Answer();
+		List<Question> questionList= questionService.getRandomQuestion(listOfSubCategory);
+		
+		List<Answer> answers = new ArrayList<>();
+		for(int i=0; i<questionList.size(); i++){
+			answer.setQuestion(questionList.get(i));
+			answers.add(answer);
+		}
+		model.addAttribute("questionsList", questionList);
+		model.addAttribute("answers", answers);
+		
+		questionList.forEach(ql->{
+			ql.getOpts().forEach(op->{
+				System.out.println(op.getOptions());
+			});
+		});	
+		request.setAttribute("genarateQuestionList", questionList);
+		/*session.setAttribute("genarateQuestionList", questionList);*/
+		
+		return "questionpaper";
+		/*return "click_to_start_exam";*/
+	}
 	
+	/*@RequestMapping(value = "/generateTest", method = RequestMethod.GET)
+	public String generateQuestionsTest(HttpServletRequest request,@ModelAttribute("newAnswer") AnswerSheet newAnswer, Model model, HttpSession session) {
+		System.out.println("i m here--------------");
+		
+		Category category = categoryService.getCategoryByID(categoryid);
+		String[] listOfString = request.getParameterValues("subCategory");
+		
+		List<SubCategory> listOfSubCategory = new ArrayList<>();
+		for(int i=0; i<listOfString.length; i++){
+			SubCategory subCat = subCatService.getSubCategoryByID(Long.parseLong(listOfString[i]));
+			listOfSubCategory.add(subCat);
+		}
+		for(SubCategory c: listOfSubCategory){
+			System.out.println(c.getSubCatName());
+		}
+		
+		System.out.println("============");
+		Answer answer= new Answer();
+		List<Question> questionList= questionService.getRandomQuestion(listOfSubCategory);
+		
+		List<Answer> answers = new ArrayList<>();
+		for(int i=0; i<questionList.size(); i++){
+			answer.setQuestion(questionList.get(i));
+			answers.add(answer);
+		}
+		model.addAttribute("questionsList", questionList);
+		model.addAttribute("answers", answers);
+		
+		questionList.forEach(ql->{
+			ql.getOpts().forEach(op->{
+				System.out.println(op.getOptions());
+			});
+		});	
+		request.setAttribute("genarateQuestionList", questionList);
+		session.setAttribute("genarateQuestionList", questionList);
+		
+		return "questionpaper";
+	}
+	*/
+	
+	
+	
+	@RequestMapping(value = "/generate", method = RequestMethod.POST)
+	public String addAnswer(@ModelAttribute("newAnswer") AnswerSheet newAnswer, Model model, HttpServletRequest request, HttpSession session) {
+
+		/*List<Question> questionList = (List<Question>) request.getAttribute("qenarateQuestionList");
+		System.out.println("*********************************************************************************************");
+		System.out.println(questionList.size());*/
+		/*session.getAttribute(qenarateQuestionList);*/
+		List<Question> questionList = new ArrayList<>();
+		//String questionList  =  (String) session.getAttribute("questionList");
+		System.out.println("*********************************************** 1234556");
+		
+		
+		List<Answer> answerList = newAnswer.getAnswerList();
+		for(int i =0; i<answerList.size(); i++){
+			//answerList.get(i).setQuestion(questionList.get(i));
+			answerService.saveAnswer(answerList.get(i));
+		}
+		int marks = answerSheetService.getResult(newAnswer);
+		newAnswer.setMarks(marks);
+		answerSheetService.saveAnswerSheet(newAnswer);
+		System.out.println("*******************Result*******************");
+		System.out.println("*******************Result*******************");
+		
+		System.out.println(answerSheetService.getResult(newAnswer));
+		
+		
+		System.out.println("*******************Result*******************");
+		System.out.println("*******************Result*******************");
+		//request.setAttribute("marks", marks);
+		model.addAttribute(newAnswer);
+		return "studentAfterSubmitExam";
+
+	}
 	
 	
 	
@@ -115,11 +238,10 @@ public class QuestionController {
 	public String showStartExam() {
 		
 		System.out.println("****************************** inside question/clicktoshowstartexam POST");
-		
 		return "click_to_start_exam";
 	}
 	
-	@RequestMapping(value = "/generate", method = RequestMethod.POST)
+	@RequestMapping(value = "/generate1", method = RequestMethod.POST)
 	public ResponseEntity<List<Question>> generateQuestions(HttpServletRequest request, @RequestBody Category category) {
 		
 		System.out.println("****************************** inside question/generate post");

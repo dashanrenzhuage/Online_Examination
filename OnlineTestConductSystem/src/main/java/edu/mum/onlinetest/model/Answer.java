@@ -12,8 +12,8 @@ public class Answer {
 	
 	@OneToOne
 	private Question question;
-	/*@OneToOne
-	private Opts answer;*/
+	@OneToOne
+	private Opts selectedOpt;
 	private int answer1;
 	
 	public int getId() {
@@ -39,6 +39,12 @@ public class Answer {
 	}
 	public void setAnswer1(int answer1) {
 		this.answer1 = answer1;
+	}
+	public Opts getSelectedOpt() {
+		return selectedOpt;
+	}
+	public void setSelectedOpt(Opts selectedOpt) {
+		this.selectedOpt = selectedOpt;
 	}
 	
 	

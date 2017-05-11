@@ -17,7 +17,7 @@ public class Student extends Person{
 	private String phoneNo;
 	
 	@OneToOne
-	private Admin coach;
+	private Coach coach;
 	
 	public String getPhoneNo() {
 		return phoneNo;
