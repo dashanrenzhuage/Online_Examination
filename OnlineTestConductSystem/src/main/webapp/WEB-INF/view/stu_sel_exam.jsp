@@ -210,6 +210,10 @@
 			<!-- page content -->
 			<div class="right_col" role="main">
 				<form action="<spring:url value="/question/generate"/>" method="get">
+					
+					<c:out value="${studentId }"></c:out>
+					<c:set var = "studentId" value = "${studentId }" scope = "session"></c:set>
+					
 					<div class="form-group">
 						<div class="row">
 							<div class="col-sm-1"></div>

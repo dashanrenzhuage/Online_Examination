@@ -45,18 +45,9 @@ public class Student extends Person{
 
 
 	@OneToOne
-	private Test test;
-	@OneToOne
 	private Report report;
 	
 	
-	public Test getTest() {
-		return test;
-	}
-
-	public void setTest(Test test) {
-		this.test = test;
-	}
 
 	public Report getReport() {
 		return report;
@@ -76,7 +67,7 @@ public class Student extends Person{
 
 	@Override
 	public String toString() {
-		return "Student [email=" + email + ", accessCode=" + accessCode + ", test=" + test + ", report=" + report + "]";
+		return "Student [email=" + email + ", accessCode=" + accessCode + ", report=" + report + "]";
 	}
 
 	

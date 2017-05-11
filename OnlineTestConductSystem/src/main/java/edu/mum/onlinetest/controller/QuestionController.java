@@ -27,14 +27,18 @@ import edu.mum.onlinetest.model.AnswerSheet;
 import edu.mum.onlinetest.model.Category;
 import edu.mum.onlinetest.model.Opts;
 import edu.mum.onlinetest.model.Question;
+import edu.mum.onlinetest.model.Student;
 import edu.mum.onlinetest.service.AnswerServiceInterface;
 import edu.mum.onlinetest.service.AnswerSheetInterface;
 /*import edu.mum.onlinetest.parser.XLSXParser;
 */import edu.mum.onlinetest.service.CategoryServiceInterface;
 
 import edu.mum.onlinetest.model.SubCategory;
+import edu.mum.onlinetest.model.Test;
 import edu.mum.onlinetest.service.QuestionServiceInterface;
 import edu.mum.onlinetest.service.SubCategoryInterface;
+import edu.mum.onlinetest.serviceImpl.StudentServiceImpl;
+import edu.mum.onlinetest.serviceImpl.TestServiceImpl;
 
 @Controller
 @RequestMapping("question")
@@ -51,6 +55,10 @@ public class QuestionController {
 	AnswerServiceInterface answerService;
 	@Autowired
 	AnswerSheetInterface answerSheetService;
+	@Autowired
+	StudentServiceImpl studentService;
+	@Autowired
+	TestServiceImpl testService;
 
 /*	@RequestMapping(method = RequestMethod.POST)
 	public ResponseEntity<Void> create(@RequestBody Question question, UriComponentsBuilder ucBuilder) {
@@ -131,9 +139,26 @@ public class QuestionController {
 			System.out.println(c.getSubCatName());
 		}
 		
+		
+		
+		System.out.println("***************************************" + request.getSession().getAttribute("studentId"));
+		
+		
 		System.out.println("============");
 		Answer answer= new Answer();
 		List<Question> questionList= questionService.getRandomQuestion(listOfSubCategory);
+		
+		Test test = new Test();
+		Long id =  Long.parseLong((String) request.getSession().getAttribute("studentId")); 
+		
+		Student student = studentService.getStudentByID( id);
+		test.setStudent(student);
+		
+		//test.setQuestions(questionList);
+		
+		testService.saveTest(test);
+		
+		
 		
 		List<Answer> answers = new ArrayList<>();
 		for(int i=0; i<questionList.size(); i++){
@@ -150,6 +175,7 @@ public class QuestionController {
 		});	
 		request.setAttribute("genarateQuestionList", questionList);
 		/*session.setAttribute("genarateQuestionList", questionList);*/
+		System.out.println("################################################................"+questionList.size());
 		
 		return "questionpaper";
 		/*return "click_to_start_exam";*/

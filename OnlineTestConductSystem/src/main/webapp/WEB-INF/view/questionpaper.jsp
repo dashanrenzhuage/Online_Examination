@@ -11,25 +11,17 @@
 	href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 <title>Insert title here</title>
 <style>
-tr:not(:first-child) {
-    display: none;
+
+tr {
+
+display: none
 }
 
-.fullscreen {
-	display: none;
-	position: fixed;
-	top: 0;
-	left: 0;
-	bottom: 200;
-	right: 0;
-	overflow: auto;
-	background: lime; /* Just to visualize the extent */
-}
 
-tr:nth-child(1) {
-	color: red;
-}
-}
+
+
+
+
 </style>
 
 </head>
@@ -39,10 +31,24 @@ tr:nth-child(1) {
 <script
 	src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 <script type="text/javascript">
-	function myFunction(elmnt) {
+
+/* window.onload = function() {
+	$(' tr').fadeOut();
+}  */
+
+
+var i = 1;
+var j = 2;
+	function myFunction() {
+	
+		$("#start").hide();
+		 $("table tr:nth-child( "+i+")").fadeOut();
+		 
+		$("table tr:nth-child("+j+ ")").fadeIn(); 
+		i++;
+		j++;
+		/* alert(i); */
 		
-		$("table tr:nth-child(" + elmnt +1+ ")").fadeOut();
-		$("table tr:nth-child(" + elmnt +2+ ")").fadeIn();
 	 
 	}
 	</script>
@@ -51,27 +57,30 @@ tr:nth-child(1) {
 	<form:form modelAttribute="newAnswer" method="post"
 		enctype="multipart/form-data">
 
-		<input id="next" type="button" onclick="myFunction(0)" value="Start">
-		<table class="allTable">
-			<c:forEach items="${questionsList}" varStatus="ans">
-				<tr>
 
-				
-				<form:hidden path="answerList[${ans.index}].question.id" value="${questionsList[ans.index].id}" />
-				
+		<input id="start" type="button" onclick="myFunction(0)" value="Start">
+		<table class="allTable">
+		<tr>
+		
+		</tr>
+		
+			<c:forEach items="${questionsList}" varStatus="ans">
+		
+	<tr>
+			<form:hidden path="answerList[${ans.index}].question.id" value="${questionsList[ans.index].id}" />
+			
 					<td><c:out value="${questionsList[ans.index].quesName}"></c:out>
-					
+						
 						
 						<form:select path="answerList[${ans.index}].selectedOpt.id"
 							items="${questionsList[ans.index].opts}" itemValue="id"
 							itemLabel="options"></form:select>
 			
-							<input id="next" type="button" onclick="myFunction(${ans.index})" value="next"></td>
-		
+							<input id="next" type="button" onclick="myFunction()" value="next"></td>
+	
 				</tr>
 			</c:forEach>
 		</table>
-		<c:set var = "questions" scope = "session" value = "${questionsList}"></c:set>
 
 		<%-- <tr>
 				<c
@@ -121,7 +130,7 @@ tr:nth-child(1) {
 			</c:forEach></td>
 			</tr> --%>
 		<tr>
-			<td><input type="submit" value="Add" /></td>
+			<td><input type="submit" value="Submit" /></td>
 		</tr>
 		<tr>
 

@@ -13,24 +13,29 @@ import javax.persistence.OneToOne;
 public class Test {
 	@javax.persistence.Id
 	@GeneratedValue
-	private int id;
-	
-	//@OneToMany(fetch = FetchType.EAGER, mappedBy = "topic", cascade = CascadeType.ALL)
-	@OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-	List<SubCategory> subCategories;
-	/*@OneToOne
-	private Category category;*/
-	
-	
-	//added
-	
+	private Long id;
 	
 	
 	
 	@OneToOne
-	private AnswerSheet answersheet;
-	@OneToOne
-	private Result result;
+	private Student student;
+	
+	
+	
+	
+	@OneToMany(cascade= CascadeType.ALL)
+	
+	List<TestBySubCategory> testSubcat;
+	
+	public Student getStudent() {
+		return student;
+	}
+	public void setStudent(Student student) {
+		this.student = student;
+	}
+	
+	
+	
 	
 	/*@OneToMany
 	private List<Question>questionList;*/
@@ -50,18 +55,13 @@ public class Test {
 	public void setAnswersheet(AnswerSheet answersheet) {
 		this.answersheet = answersheet;
 	}*/
-	public int getId() {
+	public Long getId() {
 		return id;
 	}
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
-	public List<SubCategory> getSubCategories() {
-		return subCategories;
-	}
-	public void setSubCategories(List<SubCategory> subCategories) {
-		this.subCategories = subCategories;
-	}
+	
 	/*public Category getCategory() {
 		return category;
 	}
@@ -74,18 +74,8 @@ public class Test {
 	public void setTotalmarks(int totalmarks) {
 		this.totalmarks = totalmarks;
 	}
-	public AnswerSheet getAnswersheet() {
-		return answersheet;
-	}
-	public void setAnswersheet(AnswerSheet answersheet) {
-		this.answersheet = answersheet;
-	}
-	public Result getResult() {
-		return result;
-	}
-	public void setResult(Result result) {
-		this.result = result;
-	}
+	
+	
 	
 	
 
