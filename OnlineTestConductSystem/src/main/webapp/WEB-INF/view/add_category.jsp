@@ -84,9 +84,9 @@
                    <ul class="nav child_menu">
                       <li>
                       <a href="<spring:url value="/students/addStudent" />"
-							>Add Studnet</a></li>
+							>Add Data Admin</a></li>
 					  <li><a href="<spring:url value="/students/listStudent" />"
-							>List Of Student</a></li></li>
+							>List Of Data Admin</a></li></li>
                     </ul>
                   </li>
                   
@@ -94,7 +94,7 @@
                    <ul class="nav child_menu">
                       <li>
                       <a href="<spring:url value="/students/addStudent" />"
-							>Add Studnet</a></li>
+							>Add Student</a></li>
 					  <li><a href="<spring:url value="/students/listStudent" />"
 							>List Of Student</a></li></li>
                     </ul>
@@ -235,17 +235,13 @@
 			<form:form modelAttribute="category" action="/OnlineTestConductSystem/category/add" method="post">
 			
 				<div id="category" class="form-group">
-				    <div class="row">
-					    <div class="col-sm-1"></div>
-						<div class="col-sm-10">
-						    <label for="cat">Add Category:</label>
-						</div>
-						<div class="col-sm-1"></div>
+				    <div id="addcategory" class="form-group center-align">
+						<h4>Add Category<h4>
 					</div>
 					<div class="row">
 					    <div class="col-sm-1"></div>
 					    <div class="col-sm-10">
-							<form:input type="text" class="form-control" id="cat" path = "name" name="cat" placeholder="Please enter your category" />
+							<form:input type="text" class="form-control" id="cat" path = "name" name="cat" placeholder="Please enter your category" required="true"/>
 					    </div>
 						<div class="col-sm-1"></div>
 					</div>

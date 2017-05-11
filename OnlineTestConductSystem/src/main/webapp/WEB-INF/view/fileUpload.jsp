@@ -186,7 +186,7 @@
 					class="form-horizontal" enctype="multipart/form-data">
 					Select File to upload(.xlsx format):
 				    <form:input path="uploadFile" type="file" name="fileToUpload"
-						id="fileToUpload" />
+						id="fileToUpload" required="true"/>
 					<button type="submit" id="submit" class="btn">Submit</button>
 				</form:form>
 
@@ -227,7 +227,7 @@
 								<div class="col-sm-4">
 									<div id="sel2">
 										<form:select path="id" id="subCategory" name="subCategory"
-											style="padding: 5px 30px;">
+											style="padding: 5px 30px;" required="true">
 
 										</form:select>
 									</div>
@@ -240,7 +240,7 @@
 								<div class="col-sm-1"></div>
 								<div class="col-sm-10">
 									<input type="text" class="form-control" id="fileName"
-										name="fileName" placeholder="Please enter your file Name" />
+										name="fileName" placeholder="Please enter your file Name" required="true"/>
 								</div>
 								<div class="col-sm-1"></div>
 							</div>

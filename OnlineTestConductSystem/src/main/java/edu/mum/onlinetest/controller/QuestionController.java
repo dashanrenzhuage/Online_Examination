@@ -2,10 +2,12 @@ package edu.mum.onlinetest.controller;
 
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -21,6 +23,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import edu.mum.onlinetest.model.Answer;
 import edu.mum.onlinetest.model.AnswerSheet;
@@ -51,6 +54,8 @@ public class QuestionController {
 	AnswerServiceInterface answerService;
 	@Autowired
 	AnswerSheetInterface answerSheetService;
+	@Autowired
+	SubCategoryInterface subCategoryService;
 
 /*	@RequestMapping(method = RequestMethod.POST)
 	public ResponseEntity<Void> create(@RequestBody Question question, UriComponentsBuilder ucBuilder) {
@@ -105,13 +110,39 @@ public class QuestionController {
 	
 	
 	@RequestMapping(value = "/add", method = RequestMethod.POST)
-	public String addQuestion( @ModelAttribute("question") Question question, Model model) {
-		System.out.println("===================="+question.getSubCategory().getId());
-		System.out.println("====================="+question.getOpts().get(0).getOptions());
-		questionService.saveQuestion(question);
+	public String addQuestion(@Valid @ModelAttribute("question") Question question, BindingResult result, Model model,
+			RedirectAttributes rm) {
+		if (result.hasErrors()) {
+			return "add_question";
+		} else {
+			if (!question.getOpts().isEmpty()) {
+				// List<Opts> optsList = question.getOpts();
+				Iterator<Opts> itr = question.getOpts().iterator();
+				while (itr.hasNext()) {
+					if (itr.next().getOptions().isEmpty()) {
+						itr.remove();
+					}
+
+				}
+
+				if (questionService.checkDuplicateOpts(question.getOpts())) {
+					rm.addFlashAttribute("message",
+							"You have entered duplicate options. Please provide unique options.");
+					return "redirect:/question/add";
+				}
+				if (question.getOpts().size() <= 1) {
+					rm.addFlashAttribute("message", "Enter more than one option.");
+					return "redirect:/question/add";
+				}
+			}
+
+			questionService.saveQuestion(question);
+
+		}
 		return "redirect:/question/add";
 
 	}
+
 	
 	
 	
@@ -121,12 +152,14 @@ public class QuestionController {
 		
 		Category category = categoryService.getCategoryByID(categoryid);
 		String[] listOfString = request.getParameterValues("subCategory");
-		
+		if(listOfString.length==3 || listOfString.length==4)
+		{
 		List<SubCategory> listOfSubCategory = new ArrayList<>();
 		for(int i=0; i<listOfString.length; i++){
 			SubCategory subCat = subCatService.getSubCategoryByID(Long.parseLong(listOfString[i]));
 			listOfSubCategory.add(subCat);
 		}
+		
 		for(SubCategory c: listOfSubCategory){
 			System.out.println(c.getSubCatName());
 		}
@@ -152,6 +185,20 @@ public class QuestionController {
 		/*session.setAttribute("genarateQuestionList", questionList);*/
 		
 		return "questionpaper";
+		
+		}
+		
+		else
+		{
+			List<Category> listOfCategories = categoryService.getAllCategory();
+					List<SubCategory> listOfSubCategories = subCategoryService.getAllSubCategory();
+					model.addAttribute("listOfCategories", listOfCategories);
+					model.addAttribute("listOfSubcategories", listOfSubCategories);
+					model.addAttribute("message","Please choose sub-category number between 3 or 4" );
+			return "stu_sel_exam";
+			}
+	
+		/*return "giveExam";*/
 		/*return "click_to_start_exam";*/
 	}
 	

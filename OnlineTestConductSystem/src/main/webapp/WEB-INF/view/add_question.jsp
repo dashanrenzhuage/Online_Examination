@@ -81,13 +81,14 @@
 										<li><a
 											href="<c:url value = '/dataAdmin/uploadFile'></c:url>">Upload
 												Questions </a></li>
-												<li><a href="<c:url value = '#'></c:url>">List of Questions </a></li>
+										<li><a href="<c:url value = '#'></c:url>">List of
+												Questions </a></li>
 									</ul></li>
 							</ul>
 						</div>
 
 					</div>
-					
+
 
 					<!-- /menu footer buttons -->
 					<div class="sidebar-footer hidden-small">
@@ -119,7 +120,8 @@
 							class="user-profile dropdown-toggle" data-toggle="dropdown"
 							aria-expanded="false"> <img
 								src='<spring:url value="/resources/images/img.jpg"></spring:url>'
-								alt="">${pageContext.request.userPrincipal.name} <span class=" fa fa-angle-down"></span>
+								alt="">${pageContext.request.userPrincipal.name} <span
+								class=" fa fa-angle-down"></span>
 						</a>
 							<ul class="dropdown-menu dropdown-usermenu pull-right">
 								<li><a href="javascript:;"> Profile</a></li>
@@ -127,8 +129,8 @@
 										class="badge bg-red pull-right">50%</span> <span>Settings</span>
 								</a></li>
 								<li><a href="javascript:;">Help</a></li>
-								<li> <a href="<spring:url value="/dataAdmin/logout" />"
-							><i class="fa fa-sign-out pull-right"></i>Log Out </a></li>
+								<li><a href="<spring:url value="/dataAdmin/logout" />"><i
+										class="fa fa-sign-out pull-right"></i>Log Out </a></li>
 							</ul></li>
 
 						<li role="presentation" class="dropdown"><a
@@ -177,11 +179,44 @@
 			<!-- /top navigation -->
 
 			<!-- page content -->
+
+
 			<div class="right_col" role="main">
 				<div id="cat" class="form-group">
 					<div class="row">
 						<div class="col-sm-1"></div>
 						<div class="col-sm-11">
+							<c:if test="${not empty questionAddMessage}">
+								<script>
+									setTimeout(function() {
+										$('#successMessage').fadeOut('medium');
+									}, 10000);
+								</script>
+								<div id="successMessage"
+									class="alert alert-success alert-dismissable">
+									<a href="#" class="close" data-dismiss="alert"
+										aria-label="close">×</a> <strong>Success!</strong> You have
+									successfully added a question.
+								</div>
+							</c:if>
+							
+							
+							<c:if test="${not empty message}">
+
+								<script>
+									setTimeout(function() {
+										$('#message').fadeOut(
+												'medium');
+									}, 10000);
+								</script>
+								<div id="message" class="alert alert-success alert-dismissable">
+									<a href="#" class="close" data-dismiss="alert"
+										aria-label="close">×</a> <strong>${message }</strong>
+								</div>
+							</c:if>
+							
+							
+
 							<label for="sel1">Select Category:</label><br> <select
 								id="category" name="category" style="padding: 5px 30px;">
 								<option value="">--Select Category--</option>
@@ -212,7 +247,7 @@
 							<div class="col-sm-4">
 								<div id="sel2">
 									<form:select path="subCategory.id" id="subCategory"
-										name="subCategory" style="padding: 5px 30px;">
+										name="subCategory" style="padding: 5px 30px;" required="true">
 
 									</form:select>
 								</div>
@@ -232,7 +267,7 @@
 							<div class="col-sm-9">
 								<form:textarea path="quesName" class="form-control"
 									id="question" name="question"
-									placeholder="Please enter your question" />
+									placeholder="Please enter your question" required="true" />
 							</div>
 							<div class="col-sm-2"></div>
 						</div>
@@ -255,16 +290,16 @@
 									<form:input type="text" path="opts[${vs.index}].options"
 										class="form-control" id="option" name="question"
 										placeholder="Enter option here" />
-										<form:checkbox path="opts[${vs.index}].isCorrectAns"
-										id="checkbox_ans" name="checkbox_ans" class="checkbox_ans"></form:checkbox>
-										
+									<form:checkbox path="opts[${vs.index}].isCorrectAns"
+										id="checkbox_ans" name="checkbox_ans" class="checkbox_ans" required="true"></form:checkbox>
+
 								</div>
 							</div>
 							<br />
 						</c:forEach>
 
 
-<%-- <c:forEach items="${questions.opts}" varStatus="quest">
+						<%-- <c:forEach items="${questions.opts}" varStatus="quest">
 
 					<td><form:radiobutton path="selectedOpt.id"
 							value="${questions.opts[quest.index]}" label="opt" /> <c:out

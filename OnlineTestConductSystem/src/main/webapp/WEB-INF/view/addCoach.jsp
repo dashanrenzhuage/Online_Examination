@@ -86,10 +86,6 @@
 							>Add Data Admin</a></li>
 					  <li><a href="<spring:url value="/employee/listDataAdmin" />"
 							>List Of Data Admin</a></li></li>
-                      <a href="<spring:url value="/students/addStudent" />"
-							>Add Studnet</a></li>
-					  <li><a href="<spring:url value="/students/listStudent" />"
-							>List Of Student</a></li></li>
                     </ul>
                   </li>
                   
@@ -97,7 +93,7 @@
                    <ul class="nav child_menu">
                       <li>
                       <a href="<spring:url value="/students/addStudent" />"
-							>Add Studnet</a></li>
+							>Add Student</a></li>
 					  <li><a href="<spring:url value="/students/listStudent" />"
 							>List Of Student</a></li></li>
                     </ul>
@@ -269,7 +265,7 @@
 						</div>
 						<div class="col-sm-9">
 							<!-- <input type="text" class="form-control" id="cn" name="cn"/> -->
-							<form:input id="fName" class="form-control" name="fName" path="fName" type="text" />
+							<form:input id="fName" class="form-control" name="fName" path="fName" type="text" required="true"/>
 						</div>
 					</div>
 				</div>
@@ -281,7 +277,7 @@
 						</div>
 						<div class="col-sm-9">
 							<!-- <input type="text" class="form-control" id="cn" name="cn"/> -->
-							<form:input id="lName" class="form-control" name="lName" path="lName" type="text" />
+							<form:input id="lName" class="form-control" name="lName" path="lName" type="text" required="true"/>
 						</div>
 					</div>
 				</div>
@@ -314,7 +310,7 @@
 							<label for="message" class="lab">Username:</label>
 						</div>
 						<div class="col-sm-9">
-							<form:input id="credential.username" class="form-control" name="credential.username" path="credential.username" type="text" /> 
+							<form:input id="credential.username" class="form-control" name="credential.username" path="credential.username" type="text" required="true"/> 
 						</div>
 					</div>
 				</div>
@@ -325,7 +321,7 @@
 							<label for="message" class="lab">Password:</label>
 						</div>
 						<div class="col-sm-9">
-							<form:input id="credential.password" class="form-control" name="credential.password" path="credential.password" type="password" />
+							<form:input id="credential.password" class="form-control" name="credential.password" path="credential.password" type="password" required="true"/>
 						</div>
 					</div>
 				</div>

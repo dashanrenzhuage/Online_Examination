@@ -93,7 +93,7 @@
                    <ul class="nav child_menu">
                       <li>
                       <a href="<spring:url value="/students/addStudent" />"
-							>Add Studnet</a></li>
+							>Add Student</a></li>
 					  <li><a href="<spring:url value="/students/listStudent" />"
 							>List Of Student</a></li></li>
                     </ul>

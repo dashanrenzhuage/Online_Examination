@@ -27,3 +27,19 @@ function delOption(){
 	    $('#del4').show();
     }
 }
+
+$(".checkbox_ans").click(function(){
+	if($(this). prop("checked") == true){
+		$(".checkbox_ans").not(this).attr('checked', false);
+		$(".checkbox_ans").not(this).removeAttr( "required");
+	}else{
+		$(".checkbox_ans").attr( "required",true);
+	}
+})
+
+//$("#addCategory").click(function(){alert($("#category1").val());
+//	if($("#category1").val() == "--Select Category--"){
+//		alert(1);
+//		return false;
+//	}
+//})

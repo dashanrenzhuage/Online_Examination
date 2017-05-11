@@ -196,7 +196,10 @@
 
         <!-- page content -->
         <div class="right_col" role="main">
-			Welcome to online test system, the system provide a platform for MUM students who are under job search to take exams online. Students can select their technology from the list of categories provided and choose 3 to 4 subcategories to take the exam. Once the student is done with his test, the system automatically grade his test and save the test results in an output report, where a CS coach can open it and see the test results. It's a good opportunity to test the knowledge you grasp, hope you can enjoy it!
+        	<div><img src='<spring:url value="/resources/images/animation.gif"></spring:url>' alt="Profile Image" style="width: 100%; height: 420px;text-align: center; "/></div>	
+			<h2 style="text-align:center; font-weight: bold; padding-top: 20px; font-size: 20px;" >About Online Test Conduct System</h2>
+			<h3 style="line-height: 30px; text-align:center; font-size: 18px;">Welcome to online test system, the system provide a platform for MUM students who are under job search to take exams online. Students can select their technology from the list of categories provided and choose 3 to 4 subcategories to take the exam. Once the student is done with his test, the system automatically grade his test and save the test results in an output report, where a CS coach can open it and see the test results. It's a good opportunity to test the knowledge you grasp, hope you can enjoy it!
+				
 		</div>
         <!-- /page content -->
 

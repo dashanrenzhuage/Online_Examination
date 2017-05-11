@@ -179,4 +179,20 @@ public class QuestionServiceImpl implements QuestionServiceInterface {
 		return 0;
 	}
 
+	@Override
+	public boolean checkDuplicateOpts(List<Opts> listOpts) {
+		for (int i = 0; i < listOpts.size(); i++) {
+
+			for (int j = 0; j < listOpts.size(); j++) {
+				if (i != j) {
+					if (listOpts.get(i).getOptions().equalsIgnoreCase((listOpts.get(j).getOptions()))) {
+						return true;
+					}
+				}
+			}
+		}
+		return false;
+	
+	}
+
 }
