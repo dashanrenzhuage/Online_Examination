@@ -221,7 +221,6 @@
 										<th width="20%">First Name</th>
 										<th width="20%">Last Name</th>
 										<th width="20%">Username</th>
-										<th width="20%">Password</th>
 										<th width="20%">Edit</th>
 										<th width="20%">Delete</th>
 									</tr>
@@ -239,7 +238,7 @@
 											<td>${coach.lName}</td>
 											<%-- <td>${coach.email}</td> --%>
 											<td>${coach.credential.username}</td>
-											<td>${coach.credential.password}</td>
+											<%-- <td>${coach.credential.password}</td> --%>
 											<td><a
 												href="<spring:url value="/employee/add/${coach.id}" />">Edit</a></td>
 												<td><a href="<spring:url value="/employee/deleteCoach/${coach.id}" />"
