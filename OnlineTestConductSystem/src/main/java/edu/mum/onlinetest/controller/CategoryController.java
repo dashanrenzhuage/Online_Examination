@@ -33,13 +33,6 @@ public class CategoryController {
 	public String getAll(Model model) {
 
 		List<Category> categories = categoryService.getAllCategory();
-
-		/*
-		 * if (categories == null || categories.isEmpty()) { return new
-		 * ResponseEntity<List<Category>>(HttpStatus.NO_CONTENT); } return new
-		 * ResponseEntity<List<Category>>(categories, HttpStatus.OK)
-		 */
-
 		model.addAttribute("listOfCategory", categories);
 		return "coach_home_page";
 
@@ -51,25 +44,10 @@ public class CategoryController {
 	public ResponseEntity<Category> get(@PathVariable("id") Long id) {
 
 		Category category = categoryService.getCategoryByID(id);
-
-		/*
-		 * if (user == null){ LOG.info("Category with id {} not found", id);
-		 * return new ResponseEntity<Category>(HttpStatus.NOT_FOUND); }
-		 */
-
 		return new ResponseEntity<Category>(category, HttpStatus.OK);
 	}
 
-	// Add category ------
-
-	/*
-	 * @RequestMapping(value="/add",method = RequestMethod.POST) public
-	 * ResponseEntity<Void> create(@ModelAttribute Category
-	 * category,BindingResult result, UriComponentsBuilder ucBuilder) {
-	 * categoryService.saveCategory(category); HttpHeaders headers = new
-	 * HttpHeaders(); return new ResponseEntity<Void>(headers,
-	 * HttpStatus.CREATED); }
-	 */
+	
 
 	@RequestMapping(value = "/add", method = RequestMethod.GET)
 	public String addCategory(@ModelAttribute("category") Category category) {
@@ -80,6 +58,12 @@ public class CategoryController {
 	@RequestMapping(value = "/add", method = RequestMethod.POST)
 	public String create(@ModelAttribute Category category, BindingResult result) {
 		System.out.println("category controller");
+		List<Category> categories = categoryService.getAllCategory();
+		for(int i=0; i<categories.size(); i++){
+			if(category.getName().equals(categories.get(i).getName())){
+				return "redirect:/category/add";
+			}
+		}
 		categoryService.saveCategory(category);
 		// HttpHeaders headers = new HttpHeaders();
 		return "redirect:/category/add";
@@ -89,15 +73,7 @@ public class CategoryController {
 
 	@RequestMapping(value = "{id}", method = RequestMethod.PUT)
 	public ResponseEntity<Category> update(@PathVariable Long id, @RequestBody Category category) {
-		// LOG.info("updating category: {}", category);
 		Category currentCategory = categoryService.getCategoryByID(id);
-
-		/*
-		 * if (currentCategory == null){ LOG.info(
-		 * "Category with id {} not found", id); return new
-		 * ResponseEntity<Category>(HttpStatus.NOT_FOUND); }
-		 */
-
 		categoryService.saveCategory(currentCategory);
 		return new ResponseEntity<Category>(currentCategory, HttpStatus.OK);
 	}
