@@ -11,7 +11,7 @@ public interface AnswerSheetInterface {
 	public AnswerSheet getAnswerSheetByID(Long id);
 	public void saveAnswerSheet(AnswerSheet answerSheet);
 	public void deleteAnswerSheetByID(Long id);
-	public int getResult(AnswerSheet answerSheet2);
+	public int getResult(AnswerSheet answerSheet2, Long id);
 	
 
 }

@@ -44,18 +44,10 @@ public class Student extends Person{
 	}
 
 
-	@OneToOne
-	private Report report;
+	
 	
 	
 
-	public Report getReport() {
-		return report;
-	}
-
-	public void setReport(Report report) {
-		this.report = report;
-	}
 
 	public String getEmail() {
 		return email;
@@ -65,18 +57,5 @@ public class Student extends Person{
 		this.email = email;
 	}
 
-	@Override
-	public String toString() {
-		return "Student [email=" + email + ", accessCode=" + accessCode + ", report=" + report + "]";
-	}
-
-	
-
-	
-	/*Added Jasper Report*/
-	/*public Student(String email) {
-		this.email = email;
-	}*/
-	
 
 }

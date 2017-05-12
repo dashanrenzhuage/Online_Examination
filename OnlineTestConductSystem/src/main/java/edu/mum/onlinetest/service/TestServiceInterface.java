@@ -9,4 +9,5 @@ public interface TestServiceInterface {
 	public Test getTestById(Long i);
 	public void saveTest(Test test);
 	public void deleteTestById(Long id);
+	public List<Test> getALlbyStudentId(Long id);
 }

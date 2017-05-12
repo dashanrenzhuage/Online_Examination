@@ -1,6 +1,7 @@
 package edu.mum.onlinetest.serviceImpl;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -13,6 +14,7 @@ import org.springframework.web.servlet.ModelAndView;
 import edu.mum.onlinetest.model.Marksheet;
 import edu.mum.onlinetest.model.Student;
 import edu.mum.onlinetest.model.SubCategory;
+import edu.mum.onlinetest.model.Test;
 import edu.mum.onlinetest.service.ReportServiceInterface;
 import net.sf.jasperreports.engine.JRDataSource;
 import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
@@ -23,12 +25,16 @@ public class ReportServiceImpl implements ReportServiceInterface{
 	
 	@Autowired
 	StudentServiceImpl studentService;
+	@Autowired
+	TestServiceImpl testService;
+	@Autowired
+	GradingServiceImpl gradingService;
 
 	@Override
 	public JRDataSource getDataSourceStudent(Long id) {
 		System.out.println("************************* service1");
 		List<Marksheet> items = new ArrayList<>();
-		//Student student = studentService.getStudentByID(id);
+		Student student = studentService.getStudentByID(id);
 		//List<SubCategory> subCategoryList = student.getTest().getSubCategories();
 		
 		//added for dummydata
@@ -39,16 +45,55 @@ public class ReportServiceImpl implements ReportServiceInterface{
 		sub.setSubCatName("Spring");
 		subcat.add(sub1);
 		subcat.add(sub);*/
+		int a = testService.getALlbyStudentId(id).size();
+
+		Map<String, Integer> abc = testService.getALlbyStudentId(id).get(a-1).getIndividualMark();
 		
-		for(int i = 0; i < 3/*subCategoryList.size()*/; i++){
+		Iterator it = abc.entrySet().iterator();
+		while(it.hasNext()){
+			Map.Entry pair = (Map.Entry)it.next();
+			String subcatname = (String) pair.getKey();
+			
+			
+			
+			Integer individualMark = (Integer) pair.getValue();
+			
 			Marksheet marksheet = new Marksheet();
-			/*marksheet.setStudentId(student.getId());
+			marksheet.setStudentId(student.getId());
 			marksheet.setName(student.getName());
 			marksheet.setEmail(student.getEmail());
 			marksheet.setAddress(student.getAddress());
-			marksheet.setCategory(student.getTest().getSubCategories().get(0).getCategory().getName().toString());
-			marksheet.setSubCategoryName(student.getTest().getSubCategories().get(i).getSubCatName().toString());*/
-			marksheet.setStudentId((long) 22);
+			//marksheet.setCategory("Java");
+			marksheet.setCategory(testService.getALlbyStudentId(id).get(a-1).getCategory());
+			marksheet.setSubCategoryName(subcatname);
+			marksheet.setIndividualMark(individualMark);
+			String individualGrade = gradingService.calculateGrade(individualMark, 10);
+			marksheet.setIndividualGrade(individualGrade);
+			//marksheet.setIndividualGrade("A-");
+			
+			int totalMark = testService.getALlbyStudentId(id).get(a-1).getTotalmarks();
+			
+			String totalGrade = gradingService.calculateGrade(totalMark, 30);
+			marksheet.setOverallGrade(totalGrade);
+			marksheet.setTotalMarksObtained(testService.getALlbyStudentId(id).get(a-1).getTotalmarks());
+			items.add(marksheet);
+
+			
+		}
+		
+		
+		/*
+		for(int i = 0; i < abc.size()subCategoryList.size(); i++){
+			Marksheet marksheet = new Marksheet();
+			marksheet.setStudentId(student.getId());
+			marksheet.setName(student.getName());
+			marksheet.setEmail(student.getEmail());
+			marksheet.setAddress(student.getAddress());
+			
+			
+			//marksheet.setCategory(student.getTest().getSubCategories().get(0).getCategory().getName().toString());
+			//marksheet.setSubCategoryName(student.getTest().getSubCategories().get(i).getSubCatName().toString());*/
+		/*	marksheet.setStudentId((long) 22);
 			marksheet.setName("Sushil Pokhrel");
 			marksheet.setEmail("sp@gmail.com");
 			marksheet.setAddress("1000 N 4th ST");
@@ -57,10 +102,18 @@ public class ReportServiceImpl implements ReportServiceInterface{
 			marksheet.setIndividualMark(16);
 			marksheet.setIndividualGrade("A-");
 			marksheet.setOverallGrade("A-");
-			marksheet.setTotalMarksObtained(35);
-			System.out.println(marksheet.getSubCategoryName());
+			//marksheet.setTotalMarksObtained(35);
+			
+			int a = testService.getALlbyStudentId(id).size();
+			
+			Test test2 = testService.getALlbyStudentId(id).get(a-1);
+			
+			Test test = testService.getALlbyStudentId(id).get(a-1);
+			String subcatname = abc.get
+			marksheet.setSubCategory(testService.getALlbyStudentId(id).get(a-1).getIndividualMark().get(name));
+			marksheet.setTotalMarksObtained(testService.getALlbyStudentId(id).get(a-1).getTotalmarks());
 			items.add(marksheet);
-		}
+		}*/
 		System.out.println("************************* service2");
 		
 		JRDataSource ds = new JRBeanCollectionDataSource(items);

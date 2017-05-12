@@ -211,7 +211,7 @@
 			<div class="right_col" role="main">
 				<form action="<spring:url value="/students/logout"/>" method="get">
 					
-					<p>You scored ${newAnswer.marks} Marks.</p>
+					<p>You scored ${marks} Marks.</p>
 					<div>
 						<div class="row">
 							<div class="col-sm-10"></div>

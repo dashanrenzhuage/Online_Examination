@@ -3,8 +3,10 @@ package edu.mum.onlinetest.model;
 import java.util.List;
 import java.util.Map;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.MapKey;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
@@ -12,25 +14,27 @@ import javax.persistence.OneToOne;
 public class AnswerSheet {
 	@javax.persistence.Id
 	@GeneratedValue
-	private int id;
+	private Long id;
 	
 	@OneToMany
 	private List<Answer>answerList;
 	private int marks;
 	
-	/*@OneToOne
-	private List<Question> questions;
-	*/
-	/*@OneToOne
-	private Test test;
-	*/
-	
-	
-	/*private int obtainedTotalMarks;
-	private Map<String, Integer> eachSubCategoryMarksObtained;*/
+	@OneToMany(cascade=CascadeType.ALL)
+	@MapKey(name="subCatName")
+	private Map<Integer, SubCategory> marksBySubcategory;
 	
 	
 	
+	
+	public Map<Integer, SubCategory> getMarksBySubcategory() {
+		return marksBySubcategory;
+	}
+
+	public void setMarksBySubcategory(Map<Integer, SubCategory> marksBySubcategory) {
+		this.marksBySubcategory = marksBySubcategory;
+	}
+
 	public int getMarks() {
 		return marks;
 	}
@@ -58,10 +62,10 @@ public class AnswerSheet {
 	public void setEachSubCategoryMarksObtained(Map<String, Integer> eachSubCategoryMarksObtained) {
 		this.eachSubCategoryMarksObtained = eachSubCategoryMarksObtained;
 	}*/
-	public int getId() {
+	public Long getId() {
 		return id;
 	}
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 	public List<Answer> getAnswerList() {

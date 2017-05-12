@@ -93,8 +93,8 @@ public class QuestionServiceImpl implements QuestionServiceInterface {
 				}
 				Collections.shuffle(quesIds);
 				List<Long> newIds = new ArrayList<>();
-				if (quesIds.size() >= 4) {
-					for (int i = 0; i < 4; i++) {
+				if (quesIds.size() >= 10) {
+					for (int i = 0; i < 10; i++) {
 						newIds.add(quesIds.get(i));
 					}
 					quesIds.clear();

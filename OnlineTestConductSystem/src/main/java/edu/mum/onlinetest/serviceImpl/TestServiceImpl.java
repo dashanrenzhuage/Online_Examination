@@ -87,6 +87,12 @@ public class TestServiceImpl implements TestServiceInterface {
 		 * result.setSubCategoryGrades(listSubCategoryGrade);
 		 */
 	}
+
+	@Override
+	public List<Test> getALlbyStudentId(Long id) {
+		
+		return (List<Test>)dao.findByStudentId(id);
+	}
 	
 	
 	

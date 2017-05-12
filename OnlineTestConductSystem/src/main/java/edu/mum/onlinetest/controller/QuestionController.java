@@ -137,6 +137,7 @@ public class QuestionController {
 		}
 		for(SubCategory c: listOfSubCategory){
 			System.out.println(c.getSubCatName());
+			System.out.println(c.getId());
 		}
 		
 		
@@ -153,6 +154,13 @@ public class QuestionController {
 		
 		Student student = studentService.getStudentByID( id);
 		test.setStudent(student);
+		System.out.println("-------------------------------------------");
+		System.out.println("-------------------------------------------");
+		System.out.println(category.getName());
+		System.out.println("-------------------------------------------");
+		System.out.println("-------------------------------------------");
+		test.setCategory(category.getName());
+		
 		
 		//test.setQuestions(questionList);
 		
@@ -167,6 +175,7 @@ public class QuestionController {
 		}
 		model.addAttribute("questionsList", questionList);
 		model.addAttribute("answers", answers);
+		model.addAttribute("testId", test.getId().toString());
 		
 		questionList.forEach(ql->{
 			ql.getOpts().forEach(op->{
@@ -230,9 +239,9 @@ public class QuestionController {
 		System.out.println("*********************************************************************************************");
 		System.out.println(questionList.size());*/
 		/*session.getAttribute(qenarateQuestionList);*/
-		List<Question> questionList = new ArrayList<>();
+		//List<Question> questionList = new ArrayList<>();
 		//String questionList  =  (String) session.getAttribute("questionList");
-		System.out.println("*********************************************** 1234556");
+		//System.out.println("*********************************************** 1234556");
 		
 		
 		List<Answer> answerList = newAnswer.getAnswerList();
@@ -240,19 +249,34 @@ public class QuestionController {
 			//answerList.get(i).setQuestion(questionList.get(i));
 			answerService.saveAnswer(answerList.get(i));
 		}
-		int marks = answerSheetService.getResult(newAnswer);
-		newAnswer.setMarks(marks);
 		answerSheetService.saveAnswerSheet(newAnswer);
-		System.out.println("*******************Result*******************");
+		String s = (String) session.getAttribute("testId");
+		Long id = Long.parseLong(s);
+		
+		int marks = answerSheetService.getResult(newAnswer, id);
+		
+		AnswerSheet newAnswerSheet = answerSheetService.getAnswerSheetByID(newAnswer.getId());
+		 Test test1 = testService.getTestById(id);
+		 test1.setAnswerSheet(newAnswerSheet);
+		 test1.setTotalmarks(marks);
+		 testService.saveTest(test1);
+		
+		
+		
+		
+		/*newAnswer.setMarks(marks);
+		answerSheetService.saveAnswerSheet(newAnswer);*/
+		/*System.out.println("*******************Result*******************");
 		System.out.println("*******************Result*******************");
 		
 		System.out.println(answerSheetService.getResult(newAnswer));
 		
 		
 		System.out.println("*******************Result*******************");
-		System.out.println("*******************Result*******************");
+		System.out.println("*******************Result*******************");*/
 		//request.setAttribute("marks", marks);
 		model.addAttribute(newAnswer);
+		model.addAttribute("marks", test1.getTotalmarks());
 		return "studentAfterSubmitExam";
 
 	}
