@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import edu.mum.onlinetest.model.Category;
@@ -50,22 +51,26 @@ public class CategoryController {
 	
 
 	@RequestMapping(value = "/add", method = RequestMethod.GET)
-	public String addCategory(@ModelAttribute("category") Category category) {
+	public String addCategory(@ModelAttribute("category") Category category, Model model) {
 		System.out.println("*****************here");
+		List<Category> categories = categoryService.getAllCategory();
+		model.addAttribute("listOfCategory", categories);
 		return "add_category";
 	}
 
 	@RequestMapping(value = "/add", method = RequestMethod.POST)
-	public String create(@ModelAttribute Category category, BindingResult result) {
+	public String create(@ModelAttribute Category category, BindingResult result, RedirectAttributes rd) {
 		System.out.println("category controller");
 		List<Category> categories = categoryService.getAllCategory();
 		for(int i=0; i<categories.size(); i++){
 			if(category.getName().equals(categories.get(i).getName())){
+				rd.addFlashAttribute("message", "Already exist category");
 				return "redirect:/category/add";
 			}
 		}
 		categoryService.saveCategory(category);
 		// HttpHeaders headers = new HttpHeaders();
+		rd.addFlashAttribute("message", "category successfully added!");
 		return "redirect:/category/add";
 	}
 

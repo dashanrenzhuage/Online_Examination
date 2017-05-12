@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import edu.mum.onlinetest.model.Category;
@@ -105,22 +106,26 @@ public class SubCategoryController {
 	@RequestMapping(value = "/add", method = RequestMethod.GET)
 	public String addSubcategory(@ModelAttribute("subCategory") SubCategory subCategory, Model model) {
 		List<Category> listOfCategory = categoryService.getAllCategory();
+		List<SubCategory> subCategories = subCategoryService.getAllSubCategory();
 		model.addAttribute("listOfCategory", listOfCategory);
-		// model.addAttribute("subCategory", new SubCategory());
+		 model.addAttribute("listOfSubCategories", subCategories);
 		return "add_subcategory";
 	}
 
 	@RequestMapping(value = "/add", method = RequestMethod.POST)
-	public String create(@ModelAttribute("subCategory") SubCategory subCategory, BindingResult result) {
+	public String create(@ModelAttribute("subCategory") SubCategory subCategory, BindingResult result, RedirectAttributes rd) {
 
 		subCategory.setCategory(categoryService.getCategoryByID(subCategory.getCategory().getId()));
 		List<SubCategory> subCategories = subCategoryService.getAllSubCategory();
 		for(int i=0; i<subCategories.size(); i++){
 			if(subCategory.getSubCatName().equals(subCategories.get(i).getSubCatName())){
+				rd.addFlashAttribute("message", "Already exist Sub-category");
+				rd.addFlashAttribute("listOfCategory", subCategories);
 				return "redirect:/subcategories/add";
 			}
 		}
 		subCategoryService.saveSubCategory(subCategory);
+		rd.addFlashAttribute("message", "category successfully added!");
 		return "redirect:/subcategories/add";
 	}
 }

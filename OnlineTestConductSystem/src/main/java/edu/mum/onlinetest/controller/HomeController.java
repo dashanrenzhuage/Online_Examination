@@ -22,9 +22,11 @@ public class HomeController {
 
 		return "login";
 	}
-	/*
-	 * @RequestMapping(value="/page/coach", method= RequestMethod.GET) public
-	 * String coachPage(){ return "list_student_detail"; }
-	 */
+	
+	@RequestMapping("/exam/finish")
+	public String examFinishPage() {
+
+		return "exam_finish_page";
+	}
 
 }

@@ -6,13 +6,13 @@
 	http://www.springframework.org/schema/security
 	http://www.springframework.org/schema/security/spring-security.xsd">
 <global-method-security pre-post-annotations="enabled"/>
-   <!-- <http pattern="/employee/addAdmin" security="none"/> 
-   <http pattern="/employee" security="none"/>  -->
+   <http pattern="/employee/addAdmin" security="none"/>  
    <http pattern="/students/studentExamLogin" security="none"/>
    
    
-<http auto-config="true" use-expressions="true">
+	<http auto-config="true" use-expressions="true">
 		<intercept-url pattern="/login*" access="permitAll" />
+		<intercept-url pattern="/resources/**" access="permitAll" />
         <intercept-url pattern="/**" access="isAuthenticated()" />
 		<intercept-url pattern="/category" access="hasRole('ADMIN')" />
 		<intercept-url pattern="/category/*" access="hasRole('ADMIN')" />
@@ -38,18 +38,25 @@
 			delete-cookies="JSESSIONID" invalidate-session="true" />
 		<remember-me data-source-ref="dataSource"
 			token-validity-seconds="86400" remember-me-parameter="keepMe" /> 
-	 <csrf  disabled="true"/>
-	</http>
+		 <csrf  disabled="true"/>
+		</http>
+	
+	
 	<beans:bean id="successHandler" class="edu.mum.onlinetest.security.AppSuccessHandler"></beans:bean>
- <beans:bean id="encoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder"> 
- <beans:constructor-arg name="strength" value="10" />
- </beans:bean> 
+ 	<beans:bean id="encoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder"> 
+ 	<beans:constructor-arg name="strength" value="10" />
+ 		</beans:bean> 
+ 	<beans:bean id="passwordEncoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder" >
+            <beans:constructor-arg name="strength" value="12" />
+    </beans:bean>
+ 
 	<authentication-manager>
 		<authentication-provider>
 			<jdbc-user-service
 				data-source-ref="dataSource"
 				users-by-username-query="select username,password,enabled from credential where username=?"
 				authorities-by-username-query="select  username, role authorities from credential where username =?" />
+			<password-encoder ref="passwordEncoder" />
 		</authentication-provider>
 	</authentication-manager>
 

@@ -69,7 +69,7 @@ public class StudentController {
 					model.addAttribute("listOfSubcategories", listOfSubCategories);
 
 					// access-code delete after login
-					//// student.setAccessCode(null);
+					student.setAccessCode(null);
 					
 
 					studentService.saveStudent(student);

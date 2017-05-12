@@ -186,7 +186,7 @@
 					<script>
 						setTimeout(function() {
 							$('#successMessage').fadeOut('medium');
-						}, 2000);
+						}, 10000);
 					</script>
 					<div id="successMessage"
 						class="alert alert-success alert-dismissable">
@@ -199,7 +199,7 @@
 					<script>
 						setTimeout(function() {
 							$('#studentDeleteMessage').fadeOut('medium');
-						}, 2000);
+						}, 10000);
 					</script>
 					<div id="studentDeleteMessage"
 						class="alert alert-danger alert-dismissable">

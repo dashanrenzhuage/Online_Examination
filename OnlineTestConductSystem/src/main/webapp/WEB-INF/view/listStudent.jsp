@@ -95,7 +95,7 @@
                    <ul class="nav child_menu">
                       <li>
                       <a href="<spring:url value="/students/addStudent" />"
-							>Add Studnet</a></li>
+							>Add Student</a></li>
 					  <li><a href="<spring:url value="/students/listStudent" />"
 							>List Of Student</a></li></li>
                     </ul>
@@ -223,7 +223,7 @@
 					<script>
 						setTimeout(function() {
 							$('#studentDeleteMessage').fadeOut('medium');
-						}, 2000);
+						}, 10000);
 					</script>
 					<div id="studentDeleteMessage"
 						class="alert alert-danger alert-dismissable">

@@ -7,6 +7,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
+
 import edu.mum.onlinetest.utils.Based64Util;
 
 @Entity
@@ -48,7 +51,9 @@ public class Credential {
 	}
 
 	public void setPassword(String password) {
-		this.password = password;
+		PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+				String hashedPassword = passwordEncoder.encode(password);
+				this.password = hashedPassword;
 	}
 
 	public Role getRole() {

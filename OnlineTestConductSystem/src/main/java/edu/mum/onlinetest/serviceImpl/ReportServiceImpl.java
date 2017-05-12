@@ -82,40 +82,6 @@ public class ReportServiceImpl implements ReportServiceInterface{
 		}
 		
 		
-		/*
-		for(int i = 0; i < abc.size()subCategoryList.size(); i++){
-			Marksheet marksheet = new Marksheet();
-			marksheet.setStudentId(student.getId());
-			marksheet.setName(student.getName());
-			marksheet.setEmail(student.getEmail());
-			marksheet.setAddress(student.getAddress());
-			
-			
-			//marksheet.setCategory(student.getTest().getSubCategories().get(0).getCategory().getName().toString());
-			//marksheet.setSubCategoryName(student.getTest().getSubCategories().get(i).getSubCatName().toString());*/
-		/*	marksheet.setStudentId((long) 22);
-			marksheet.setName("Sushil Pokhrel");
-			marksheet.setEmail("sp@gmail.com");
-			marksheet.setAddress("1000 N 4th ST");
-			marksheet.setCategory("Java");
-			marksheet.setSubCategoryName("Core Java");
-			marksheet.setIndividualMark(16);
-			marksheet.setIndividualGrade("A-");
-			marksheet.setOverallGrade("A-");
-			//marksheet.setTotalMarksObtained(35);
-			
-			int a = testService.getALlbyStudentId(id).size();
-			
-			Test test2 = testService.getALlbyStudentId(id).get(a-1);
-			
-			Test test = testService.getALlbyStudentId(id).get(a-1);
-			String subcatname = abc.get
-			marksheet.setSubCategory(testService.getALlbyStudentId(id).get(a-1).getIndividualMark().get(name));
-			marksheet.setTotalMarksObtained(testService.getALlbyStudentId(id).get(a-1).getTotalmarks());
-			items.add(marksheet);
-		}*/
-		System.out.println("************************* service2");
-		
 		JRDataSource ds = new JRBeanCollectionDataSource(items);
 		return ds;
 	}

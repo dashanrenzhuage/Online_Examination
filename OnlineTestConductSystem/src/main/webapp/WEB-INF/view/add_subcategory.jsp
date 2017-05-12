@@ -84,9 +84,9 @@
                    <ul class="nav child_menu">
                       <li>
                       <a href="<spring:url value="/students/addStudent" />"
-							>Add Studnet</a></li>
+							>Add Data Admin</a></li>
 					  <li><a href="<spring:url value="/students/listStudent" />"
-							>List Of Student</a></li></li>
+							>List Of Data Admin</a></li></li>
                     </ul>
                   </li>
                   
@@ -94,7 +94,7 @@
                    <ul class="nav child_menu">
                       <li>
                       <a href="<spring:url value="/students/addStudent" />"
-							>Add Studnet</a></li>
+							>Add Student</a></li>
 					  <li><a href="<spring:url value="/students/listStudent" />"
 							>List Of Student</a></li></li>
                     </ul>
@@ -235,19 +235,28 @@
 				<form:form modelAttribute="subCategory"
 					action="/OnlineTestConductSystem/subcategories/add" method="post">
 					<div id="category" class="form-group">
-						<div class="row">
-							<div class="col-sm-1"></div>
-							<div class="col-sm-11">
-								<label for="sel1">Add Subcategory:</label>
-							</div>
+						<div id="addcategory" class="form-group center-align">
+							<c:if test="${not empty message}">
+						<script>
+							setTimeout(function() {
+								$('#successMessage').fadeOut('medium');
+							}, 2000);
+						</script>
+						<div id="successMessage"
+							class="alert alert-success alert-dismissable">
+							<a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
+							<strong>${message}</strong>
+						</div>
+					</c:if>
+							<h4>Add Subcategory<h4>
 						</div>
 					</div>
 					<div id="sel" class="form-group">
 						<div class="row">
 							<div class="col-sm-1"></div>
 							<div class="col-sm-2">
-								<form:select path="category.id" id="category" name="category"
-									style="padding: 5px 30px;">
+								<form:select path="category.id" id="category1" name="category"
+									style="padding: 5px 30px;" required="true">
 									<form:option value="" label="--Select Category--" />
 									<form:options items="${listOfCategory}" itemLabel="name"
 										itemValue="id" />
@@ -261,7 +270,7 @@
 							<div class="col-sm-10">
 								<form:input type="text" class="form-control" id="subCatName"
 									path="subCatName" name="subCatName"
-									placeholder="Please enter your subcategory" />
+									placeholder="Please enter your subcategory" required="true"/> 
 							</div>
 							<div class="col-sm-1"></div>
 						</div>
@@ -270,13 +279,30 @@
 						<div class="row">
 							<div class="col-sm-10"></div>
 							<div class="col-sm-1">
-								<button type="submit" id="add" class="btn add">Add
+								<button type="submit" id="addCategory" class="btn add">Add Sub
 									Category</button>
 							</div>
 							<div class="col-sm-1"></div>
 						</div>
 					</div>
 					</form:form>
+					
+					<br/>
+					<hr style="border-top:1px solid black;">
+					<table id="example" class="table table-bordered display" cellspacing="0" width="100%">
+						<thead>
+							<tr>
+								<td style="font-size:20px;line-height:40px;">List Of Sub Category</td>
+							</tr>
+						</thead>
+						<tbody>
+							<c:forEach items="${listOfSubCategories}" var="index">	
+								<tr>
+									<td>${index.subCatName}</td>
+								</tr>					
+							</c:forEach> 
+						<tbody>
+					</table>	
 					</div>
 
         <!-- footer content -->
@@ -311,7 +337,12 @@
 		src='<spring:url value="/resources/js/add_question.js"></spring:url>'></script>
 	<script
 		src='<spring:url value="/resources/js/admin.js"></spring:url>'></script>
-
+		<script
+		src='<spring:url value="/resources/js/jquery.dataTables.min.js"></spring:url>'></script>
+	<script
+		src='<spring:url value="/resources/js/dataTables.bootstrap.min.js"></spring:url>'></script>
+	<script
+		src='<spring:url value="/resources/js/data_table.js"></spring:url>'></script>
 
 </body>
 </html>

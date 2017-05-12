@@ -31,50 +31,48 @@
 	src='<spring:url value="/resources/js/jquery-3.2.1.js"></spring:url>'></script>
 
 <%-- <script
-	src='<spring:url value="/resources/js/categoryAndSubCategorySelection.js" ></spring:url>'></script> --%> 
-	
-	<script>
+	src='<spring:url value="/resources/js/categoryAndSubCategorySelection.js" ></spring:url>'></script> --%>
+
+<script>
 	var contextRoot = "/" + window.location.pathname.split('/')[1];
 	$(function() {
 		$("#subcategory").hide();
 		$("#sel_subcategory").hide();
 
-		$("#category")
-				.change(
-						function() {
-							var id = $("#category").val();
-							//alert(id);
-							$.ajax({
+		$("#category").change(function() {
+			var id = $("#category").val();
+			//alert(id);
+			$.ajax({
 
-										type : 'GET',
-										url : contextRoot
-												+ "/question/get/subcategories/"
-												+ id,
-										data : {},
-										datatype : "json",
-										contentType : 'application/json',
-										success : function(response) {
-											displaySubCategory(response);
-										},
-										error : function() {
-											alert('Error while request...');
-										}
+				type : 'GET',
+				url : contextRoot + "/question/get/subcategories/" + id,
+				data : {},
+				datatype : "json",
+				contentType : 'application/json',
+				success : function(response) {
+					displaySubCategory(response);
+				},
+				error : function() {
+					alert('Error while request...');
+				}
 
-									});
-						});
+			});
+		});
 
 		function displaySubCategory(categorylist) {
 			$("#subcategory").show();
 			$("#sel_subcategory").show();
-			
+
 			$('#subCategory').empty();
-	       
-	        $.each(categorylist, function (k, v) {
-	            $('#subCategory').append('<option value="' + v.id + '">' + v.subCatName + '</option>')
-	        })
+
+			$.each(categorylist, function(k, v) {
+				$('#subCategory').append(
+						'<option value="' + v.id + '">' + v.subCatName
+								+ '</option>')
+			})
 		}
 	})
-	</script> 
+</script>
 
 <title>MUM Online Test Conduct System</title>
 </head>
@@ -210,14 +208,27 @@
 			<!-- page content -->
 			<div class="right_col" role="main">
 				<form action="<spring:url value="/question/generate"/>" method="get">
-					
-					<c:out value="${studentId }"></c:out>
-					<c:set var = "studentId" value = "${studentId }" scope = "session"></c:set>
-					
+
+				
+					<c:set var="studentId" value="${studentId }" scope="session"></c:set>
+
 					<div class="form-group">
 						<div class="row">
 							<div class="col-sm-1"></div>
 							<div class="col-sm-11">
+								<c:if test="${not empty message}">
+									<script>
+										setTimeout(function() {
+											$('#studentDeleteMessage').fadeOut(
+													'medium');
+										}, 2000);
+									</script>
+									<div id="studentDeleteMessage"
+										class="alert alert-danger alert-dismissable">
+										<a href="#" class="close" data-dismiss="alert"
+											aria-label="close">×</a> <strong>${message}</strong>
+									</div>
+								</c:if>
 								<label for="sel1">Add Category:</label>
 							</div>
 						</div>
@@ -234,7 +245,7 @@
 								</select>
 							</div>
 						</div>
-					</div>	
+					</div>
 					<div id="subcategory" class="form-group">
 						<div class="row">
 							<div class="col-sm-1"></div>

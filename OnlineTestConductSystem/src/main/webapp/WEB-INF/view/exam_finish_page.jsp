@@ -6,11 +6,35 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <!-- Bootstrap -->
 <link
 	href="<c:url value = '/resources/css/bootstrap/dist/css/bootstrap.min.css'></c:url>"
 	rel="stylesheet">
+<style>
+tr {
+	display: none
+}
+
+.right_col {
+	min-height: 800px;
+}
+
+span{
+	display:block;
+}
+
+label{
+	font-size: 18px;
+	line-height:40px;
+	font-weight:normal;
+}
+</style>
+
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+<!-- <script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script> -->
+
 <!-- Font Awesome -->
 <link
 	href="<c:url value = '/resources/fonts/font-awesome/css/font-awesome.min.css'></c:url>"
@@ -24,22 +48,29 @@
 <!-- Custom Theme Style -->
 <link href="<c:url value = '/resources/css/custom.min.css'></c:url>"
 	rel="stylesheet">
-<link href="<c:url value = '/resources/css/report.css'></c:url>"
+<link href="<c:url value = '/resources/css/exam.css'></c:url>"
 	rel="stylesheet">
-<link href="<c:url value = '/resources/css/coach.css'></c:url>"
+<link href="<c:url value = '/resources/css/student.css'></c:url>"
 	rel="stylesheet">
+	
+<script>
+$(document).ready(function(){
+    $("#input_finish").click(function(){
+    	window.location.href = "/OnlineTestConductSystem/students/studentExamLogin";
+    });
+});
+</script>
 <title>MUM Online Test Conduct System</title>
+    
 </head>
 <body class="nav-md">
-
-
 	<div class="container body">
 		<div class="main_container">
 			<div class="col-md-3 left_col">
 				<div class="left_col scroll-view">
 					<div class="navbar nav_title" style="border: 0;">
 						<a href="index.html" class="site_title"><i class="fa fa-user"></i>
-							<span>Coach</span></a>
+							Student</a>
 					</div>
 
 					<div class="clearfix"></div>
@@ -67,11 +98,7 @@
 							<h3>General</h3>
 							<ul class="nav side-menu">
 								<li><a><i class="fa fa-home"></i> Home <span
-										class="fa fa-chevron-down"></span></a>
-									<ul class="nav child_menu">
-										<li><a href="<c:url value = '/coach/studentList'></c:url>">List
-												of Student</a></li>
-									</ul></li>
+										class="fa fa-chevron-down"></span></a></li>
 							</ul>
 						</div>
 
@@ -108,7 +135,7 @@
 							class="user-profile dropdown-toggle" data-toggle="dropdown"
 							aria-expanded="false"> <img
 								src='<spring:url value="/resources/images/img.jpg"></spring:url>'
-								alt="">${pageContext.request.userPrincipal.name} <span class=" fa fa-angle-down"></span>
+								alt="">John Doe <span class=" fa fa-angle-down"></span>
 						</a>
 							<ul class="dropdown-menu dropdown-usermenu pull-right">
 								<li><a href="javascript:;"> Profile</a></li>
@@ -116,8 +143,8 @@
 										class="badge bg-red pull-right">50%</span> <span>Settings</span>
 								</a></li>
 								<li><a href="javascript:;">Help</a></li>
-								<li> <a href="<spring:url value="/coach/logout" />"
-							><i class="fa fa-sign-out pull-right"></i>Log Out </a></li>
+								<li><a href="login.html"><i
+										class="fa fa-sign-out pull-right"></i> Log Out</a></li>
 							</ul></li>
 
 						<li role="presentation" class="dropdown"><a
@@ -128,26 +155,30 @@
 							<ul id="menu1" class="dropdown-menu list-unstyled msg_list"
 								role="menu">
 								<li><a> <span class="image"><img
-											src='<spring:url value="/resources/images/img.jpg"></spring:url>' alt="Profile Image" /></span> <span> <span>John
-												Smith</span> <span class="time">3 mins ago</span>
+											src='<spring:url value="/resources/images/img.jpg"></spring:url>'
+											alt="Profile Image" /></span> <span> <span>John Smith</span>
+											<span class="time">3 mins ago</span>
 									</span> <span class="message"> Film festivals used to be
 											do-or-die moments for movie makers. They were where... </span>
 								</a></li>
 								<li><a> <span class="image"><img
-											src="images/img.jpg" alt="Profile Image" /></span> <span> <span>John
-												Smith</span> <span class="time">3 mins ago</span>
+											src='<spring:url value="/resources/images/img.jpg"></spring:url>'
+											alt="Profile Image" /></span> <span> <span>John Smith</span>
+											<span class="time">3 mins ago</span>
 									</span> <span class="message"> Film festivals used to be
 											do-or-die moments for movie makers. They were where... </span>
 								</a></li>
 								<li><a> <span class="image"><img
-											src="images/img.jpg" alt="Profile Image" /></span> <span> <span>John
-												Smith</span> <span class="time">3 mins ago</span>
+											src='<spring:url value="/resources/images/img.jpg"></spring:url>'
+											alt="Profile Image" /></span> <span> <span>John Smith</span>
+											<span class="time">3 mins ago</span>
 									</span> <span class="message"> Film festivals used to be
 											do-or-die moments for movie makers. They were where... </span>
 								</a></li>
 								<li><a> <span class="image"><img
-											src="images/img.jpg" alt="Profile Image" /></span> <span> <span>John
-												Smith</span> <span class="time">3 mins ago</span>
+											src='<spring:url value="/resources/images/img.jpg"></spring:url>'
+											alt="Profile Image" /></span> <span> <span>John Smith</span>
+											<span class="time">3 mins ago</span>
 									</span> <span class="message"> Film festivals used to be
 											do-or-die moments for movie makers. They were where... </span>
 								</a></li>
@@ -168,22 +199,32 @@
 
 
 			<!-- page content -->
-        <div class="right_col" role="main">
-        	<div><img src='<spring:url value="/resources/images/animation.gif"></spring:url>' alt="Profile Image" style="width: 100%; height: 420px;text-align: center; "/></div>	
-			<h2 style="text-align:center; font-weight: bold; padding-top: 20px; font-size: 20px;" >About Online Test Conduct System</h2>
-			<h3 style="line-height: 30px; text-align:center; font-size: 18px;">Welcome to online test system, the system provide a platform for MUM students who are under job search to take exams online. Students can select their technology from the list of categories provided and choose 3 to 4 subcategories to take the exam. Once the student is done with his test, the system automatically grade his test and save the test results in an output report, where a CS coach can open it and see the test results. It's a good opportunity to test the knowledge you grasp, hope you can enjoy it!
-				
-		</div>
-        <!-- /page content -->
+			<div class="right_col" role="main">
+				<div id="congra" style="font-size:25px;margin-top:80px;text-align:center"> 
+				    Congratulation!
+				</div>
+				<div style="font-size:20px;text-align:center">
+				    You have successfully complete the test, please click finish to go to OTCS login page.
+				</div>
+				<div id="finish" class="form-group" style="margin-top:100px;">
+					<div class="row">
+						<div class="col-sm-10"></div>
+						<div class="col-sm-2">
+							<input id="input_finish" class="btn btn-primary" type="button" value="finish"/>
+						</div>
+					</div>
+				</div>
+			</div>
+		<!-- /page content -->
 
-			<!-- footer content -->
-			<footer>
-			<div class="pull-right">&copy; 2011 Maharishi University of
-				Management. All rights reserved.</div>
-			<div class="clearfix"></div>
-			</footer>
-			<!-- /footer content -->
-		</div>
+		<!-- footer content -->
+		<footer>
+		<div class="pull-right">&copy; 2011 Maharishi University of
+			Management. All rights reserved.</div>
+		<div class="clearfix"></div>
+		</footer>
+		<!-- /footer content -->
+	</div>
 	</div>
 
 	<!-- jQuery -->
@@ -201,7 +242,9 @@
 
 	<!-- Custom Theme Scripts -->
 	<script
-		src='<spring:url value="/resources/js/custom.js"></spring:url>'></script>
+		src='<spring:url value="/resources/js/custom.min.js"></spring:url>'></script>
+
 
 </body>
 </html>
+

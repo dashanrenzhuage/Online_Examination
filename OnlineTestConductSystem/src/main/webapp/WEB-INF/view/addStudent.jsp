@@ -92,7 +92,7 @@
                    <ul class="nav child_menu">
                       <li>
                       <a href="<spring:url value="/students/addStudent" />"
-							>Add Studnet</a></li>
+							>Add Student</a></li>
 					  <li><a href="<spring:url value="/students/listStudent" />"
 							>List Of Student</a></li></li>
                     </ul>
@@ -241,7 +241,7 @@
         <!-- page content -->
         <div class="right_col" role="main">
 			<form:form modelAttribute="newStudent" action = "addStudent" method="post" enctype="multipart/form-data">
-			    <div id="addstudent" class="form-group">
+			    <div id="addstudent" class="form-group center-align">
 					<h4>Add Student<h4>
 				</div>
 			    <!-- <div id="student_id" class="form-group">
@@ -263,7 +263,7 @@
 						</div>
 						<div class="col-sm-9">
 							<!-- <input type="text" class="form-control" id="cn" name="cn"/> -->
-							<form:input id="name" class="form-control" name="name" path="name" type="text" />
+							<form:input id="name" class="form-control" name="name" path="name" type="text" required="true"/>
 						</div>
 					</div>
 				</div>
@@ -275,7 +275,7 @@
 						</div>
 						<div class="col-sm-9">
 							<!-- <input type="text" class="form-control" id="cn" name="cn"/> -->
-							<form:input id="email" class="form-control" name="email" path="email" type="text" />
+							<form:input id="email" class="form-control" name="email" path="email" type="email" required="true"/>
 						</div>
 					</div>
 				</div>
