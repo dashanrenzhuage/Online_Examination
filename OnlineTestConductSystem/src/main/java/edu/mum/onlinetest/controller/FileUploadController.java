@@ -1,4 +1,4 @@
-package edu.mum.onlinetest.controller;
+/*package edu.mum.onlinetest.controller;
 
 import java.io.BufferedOutputStream;
 import java.io.File;
@@ -56,4 +56,4 @@ public class FileUploadController {
 		}
 	}
 
-}
+}*/

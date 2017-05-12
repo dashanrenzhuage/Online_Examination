@@ -32,6 +32,7 @@ $(function() {
 	function displaySubCategory(categorylist) {
 		$('#subCategory').empty();
 		
+		$('#subCategory').append('<option value="" >--Select Subcategory--</option>');
         $.each(categorylist, function (k, v) {
             $('#subCategory').append('<option value="' + v.id + '">' + v.subCatName + '</option>');
         })

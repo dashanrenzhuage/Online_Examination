@@ -79,10 +79,10 @@
 										<li><a href="<c:url value = '/question/add'></c:url>">Add
 												Question</a></li>
 										<li><a
-											href="<c:url value = '/dataAdmin/uploadFile'></c:url>">Upload
+											href="<c:url value = '/question/uploadFile'></c:url>">Upload
 												Questions </a></li>
-										<li><a href="<c:url value = '#'></c:url>">List of
-												Questions </a></li>
+										<%-- <li><a href="<c:url value = '#'></c:url>">List of
+												Questions </a></li> --%>
 									</ul></li>
 							</ul>
 						</div>
@@ -247,7 +247,7 @@
 							<div class="col-sm-4">
 								<div id="sel2">
 									<form:select path="subCategory.id" id="subCategory"
-										name="subCategory" style="padding: 5px 30px;" required="true">
+										name="subCategory" style="padding: 5px 30px;" required="required">
 
 									</form:select>
 								</div>

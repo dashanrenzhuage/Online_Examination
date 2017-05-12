@@ -1,16 +1,20 @@
 package edu.mum.onlinetest.serviceImpl;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.Iterator;
 import java.util.List;
 import java.util.logging.Logger;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import edu.mum.onlinetest.dao.QuestionDao;
 import edu.mum.onlinetest.model.Category;
+import edu.mum.onlinetest.model.FileUpload;
 import edu.mum.onlinetest.model.Opts;
 import edu.mum.onlinetest.model.Question;
 import edu.mum.onlinetest.model.SubCategory;
@@ -59,6 +63,14 @@ public class QuestionServiceImpl implements QuestionServiceInterface {
 
 	@Override
 	public void saveQuestion(Question question) {
+		if (!question.getOpts().isEmpty()) {
+			Iterator<Opts> itr = question.getOpts().iterator();
+			while (itr.hasNext()) {
+				if (itr.next().getOptions().isEmpty()) {
+					itr.remove();
+				}
+
+			}}
 		dao.save(question);
 
 	}
@@ -193,6 +205,34 @@ public class QuestionServiceImpl implements QuestionServiceInterface {
 		}
 		return false;
 	
+	}
+
+	@Override
+	public String getUploadedFileName(FileUpload questionFile) {
+
+		String uploadPath = System.getProperty("catalina.home") + File.separator + "onlinetestconductsystem"
+				+ File.separator + "questions" + File.separator;
+		File uploadDir = new File(uploadPath);
+		if (!uploadDir.exists()) {
+			uploadDir.mkdirs();
+		}
+		// start here
+		MultipartFile file = questionFile.getUploadFile();
+
+		// isEmpty means file exists BUT NO Content
+		String fileName = null;
+		if (file != null && !file.isEmpty()) {
+			try {
+				fileName = questionFile.getUploadFile().getOriginalFilename();
+				String filePath = uploadPath + File.separator + fileName;
+				System.out.println("Path of file:" + filePath);
+				File storeFile = new File(filePath);
+				file.transferTo(storeFile);
+			} catch (Exception e) {
+				throw new RuntimeException("File uploading failed", e);
+			}
+		}
+		return fileName;
 	}
 
 }

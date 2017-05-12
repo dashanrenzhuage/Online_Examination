@@ -78,9 +78,9 @@
 										<li><a href="<c:url value = '/question/add'></c:url>">Add
 												Question</a></li>
 										<li><a
-											href="<c:url value = '/dataAdmin/uploadFile'></c:url>">Upload
+											href="<c:url value = '/question/uploadFile'></c:url>">Upload
 												Questions </a></li>
-												<li><a href="<c:url value = '#'></c:url>">List of Questions </a></li>
+												<%-- <li><a href="<c:url value = '#'></c:url>">List of Questions </a></li> --%>
 									</ul></li>
 							</ul>
 						</div>
@@ -181,24 +181,28 @@
 
 			<!-- page content -->
 			<div class="right_col" role="main">
-				<form:form modelAttribute="newProduct"
-					action="/OnlineTestConductSystem/dataAdmin/uploadFile"
-					class="form-horizontal" enctype="multipart/form-data">
+				<form:form modelAttribute="questionFile"
+					action="/OnlineTestConductSystem/question/uploadFile"
+					class="form-horizontal" enctype="multipart/form-data" method="POST">
+					<%--
 					Select File to upload(.xlsx format):
 				    <form:input path="uploadFile" type="file" name="fileToUpload"
 						id="fileToUpload" required="true"/>
 					<button type="submit" id="submit" class="btn">Submit</button>
-				</form:form>
+				 </form:form> --%>
 
+				
 
-
-				<div class="right_col" role="main">
 					<div id="cat" class="form-group">
 						<div class="row">
 							<div class="col-sm-1"></div>
-							<div class="col-sm-11">
+							<div class="col-sm-11" style="line-height:50px;">
+							Select File to upload(.xlsx format):
+				    <form:input path="uploadFile" type="file" name="fileToUpload"
+						id="fileToUpload" required="true"/>
+							
 								<label for="sel1">Select Category:</label><br> <select
-									id="category" name="category" style="padding: 5px 30px;">
+									id="category" name="category" required="required" style="padding: 5px 30px;">
 									<option value="">--Select Category--</option>
 									<c:forEach var="item" items="${listOfCategory}">
 										<option value="${item.id}">${item.name}</option>
@@ -210,8 +214,8 @@
 					</div>
 
 
-					<form:form modelAttribute="subcategory"
-						action="/OnlineTestConductSystem/question/upload" method="post">
+					<%-- form:form modelAttribute="subcategory"
+						action="/OnlineTestConductSystem/question/upload" method="post"> --%>
 
 						<div id="subcategorydd" class="form-group">
 							<div class="row">
@@ -226,8 +230,8 @@
 								<div class="col-sm-1"></div>
 								<div class="col-sm-4">
 									<div id="sel2">
-										<form:select path="id" id="subCategory" name="subCategory"
-											style="padding: 5px 30px;" required="true">
+										<form:select path="subCateroryId" id="subCategory" name="subCategory"
+											style="padding: 5px 30px;" required="required">
 
 										</form:select>
 									</div>
@@ -235,24 +239,12 @@
 							</div>
 						</div>
 
-						<div id="category" class="form-group">
-							<div class="row">
-								<div class="col-sm-1"></div>
-								<div class="col-sm-10">
-									<input type="text" class="form-control" id="fileName"
-										name="fileName" placeholder="Please enter your file Name" required="true"/>
-								</div>
-								<div class="col-sm-1"></div>
-							</div>
-						</div>
-
 
 						<div class="row">
-							<div class="col-sm-10"></div>
-							<div class="col-sm-1">
-								<button type="submit" id="submit" class="btn">Submit</button>
-							</div>
 							<div class="col-sm-1"></div>
+							<div class="col-sm-1">
+								<button type="submit" class="btn">Submit</button>
+							</div>
 						</div>
 
 					</form:form>

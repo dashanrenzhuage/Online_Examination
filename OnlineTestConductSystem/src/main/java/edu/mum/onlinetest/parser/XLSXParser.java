@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+import org.apache.commons.io.FilenameUtils;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.util.NumberToTextConverter;
@@ -23,8 +24,10 @@ public class XLSXParser {
 			String filePath = System.getProperty("catalina.home") + File.separator + "onlinetestconductsystem"
 					+ File.separator + "questions" + File.separator;
 			System.out.println("=====================" + filePath);
+			 String extension = FilenameUtils.getExtension(fileName);
+	           
 			File myFile = new File(filePath + fileName);
-			if(myFile.exists()){
+			if(myFile.exists() && "xlsx".equalsIgnoreCase(extension.trim())){
 				fis = new FileInputStream(myFile);
 	
 				// Finds the workbook instance for XLSX file

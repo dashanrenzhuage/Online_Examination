@@ -43,3 +43,9 @@ $(".checkbox_ans").click(function(){
 //		return false;
 //	}
 //})
+
+/*$("#questionsubmit").click(function(){
+	if($("#checkbox_ans").each() == ){
+		return false;
+	}
+})*/

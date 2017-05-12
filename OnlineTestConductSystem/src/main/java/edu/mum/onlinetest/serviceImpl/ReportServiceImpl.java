@@ -28,7 +28,7 @@ public class ReportServiceImpl implements ReportServiceInterface{
 	public JRDataSource getDataSourceStudent(Long id) {
 		System.out.println("************************* service1");
 		List<Marksheet> items = new ArrayList<>();
-		//Student student = studentService.getStudentByID(id);
+		Student student = studentService.getStudentByID(id);
 		//List<SubCategory> subCategoryList = student.getTest().getSubCategories();
 		
 		//added for dummydata
@@ -42,15 +42,15 @@ public class ReportServiceImpl implements ReportServiceInterface{
 		
 		for(int i = 0; i < 3/*subCategoryList.size()*/; i++){
 			Marksheet marksheet = new Marksheet();
-			/*marksheet.setStudentId(student.getId());
+			marksheet.setStudentId(student.getId());
 			marksheet.setName(student.getName());
-			marksheet.setEmail(student.getEmail());
+			/*marksheet.setEmail(student.getEmail());
 			marksheet.setAddress(student.getAddress());
 			marksheet.setCategory(student.getTest().getSubCategories().get(0).getCategory().getName().toString());
 			marksheet.setSubCategoryName(student.getTest().getSubCategories().get(i).getSubCatName().toString());*/
-			marksheet.setStudentId((long) 22);
+			/*marksheet.setStudentId((long) 22);
 			marksheet.setName("Sushil Pokhrel");
-			marksheet.setEmail("sp@gmail.com");
+			marksheet.setEmail("sp@gmail.com");*/
 			marksheet.setAddress("1000 N 4th ST");
 			marksheet.setCategory("Java");
 			marksheet.setSubCategoryName("Core Java");

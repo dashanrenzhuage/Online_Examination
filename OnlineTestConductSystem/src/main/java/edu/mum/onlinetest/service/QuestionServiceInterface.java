@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.data.repository.query.Param;
 
 import edu.mum.onlinetest.model.Category;
+import edu.mum.onlinetest.model.FileUpload;
 import edu.mum.onlinetest.model.Opts;
 import edu.mum.onlinetest.model.Question;
 import edu.mum.onlinetest.model.SubCategory;
@@ -21,4 +22,5 @@ public interface QuestionServiceInterface {
 	public List<Question> getRandomQuestion(List<SubCategory> subCategories);
 	public List<Question> uploadQuestion(Long subCatId, String fileName);
 	public boolean checkDuplicateOpts(List<Opts> opts);
+	public String getUploadedFileName(FileUpload questionFile);
 }
