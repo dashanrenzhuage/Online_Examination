@@ -168,7 +168,8 @@ public class AdminController {
 		Employee currentEmployee = employeeService.getEmployeeByID(id);
 
 		employeeService.saveEmployee(employee1);
-		return "listCoach";
+		
+		return "redirect:/employee/listCoach";
 	}
 
 	@RequestMapping(value = "/addAdmin/{id}", method = RequestMethod.GET)
@@ -195,7 +196,7 @@ public class AdminController {
 		}
 		// Employee currentEmployee = employeeService.getEmployeeByID(id);
 		employeeService.saveEmployee(employee1);
-		return "listAdmin";
+		return "redirect:/employee/listAdmin";
 	}
 
 	@RequestMapping(value = "/addDataAdmin/{id}", method = RequestMethod.GET)
@@ -204,13 +205,8 @@ public class AdminController {
 		System.out.println("************************66666666666666666666666666");
 		Employee employee = employeeService.getEmployeeByID(id);
 		model.addAttribute(employee);
-		/*
-		 * Employee newAdmin = employeeService.getEmployeeByID(id);
-		 * model.addAttribute(newAdmin);
-		 * System.out.println("************************ edit");
-		 * System.out.println(newAdmin);
-		 */
 		return "editDataAdmin";
+		
 	}
 
 	@RequestMapping(value = "/addDataAdmin/{id}", method = RequestMethod.POST)
@@ -224,7 +220,7 @@ public class AdminController {
 		// Employee currentEmployee = employeeService.getEmployeeByID(id);
 
 		employeeService.saveEmployee(employee1);
-		return "listDataAdmin";
+		return "redirect:/employee/listDataAdmin";
 	}
 
 	/*
